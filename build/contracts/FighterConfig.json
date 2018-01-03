@@ -1,0 +1,565 @@
+{
+  "contractName": "FighterConfig",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newProbability",
+          "type": "uint256"
+        }
+      ],
+      "name": "setFighterCreationChance",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newFactor",
+          "type": "uint256"
+        }
+      ],
+      "name": "setTrainingFactor",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "trainingFactor",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "chanceOfFighterCreation",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x60606040526003600181905560025560008054600160a060020a033316600160a060020a031990911617905561020d8061003a6000396000f3006060604052600436106100775763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166340e4e048811461007c578063495ac3a8146100945780638da5cb5b146100aa578063b64ce34a146100d9578063f2fde38b146100fe578063f36014d21461011d575b600080fd5b341561008757600080fd5b610092600435610130565b005b341561009f57600080fd5b610092600435610150565b34156100b557600080fd5b6100bd610170565b604051600160a060020a03909116815260200160405180910390f35b34156100e457600080fd5b6100ec61017f565b60405190815260200160405180910390f35b341561010957600080fd5b610092600160a060020a0360043516610185565b341561012857600080fd5b6100ec6101db565b60005433600160a060020a0390811691161461014b57600080fd5b600155565b60005433600160a060020a0390811691161461016b57600080fd5b600255565b600054600160a060020a031681565b60025481565b60005433600160a060020a039081169116146101a057600080fd5b600160a060020a038116156101d8576000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0383161790555b50565b600154815600a165627a7a72305820c9be303d05ddea69f34041434f4c8d15311663f0215eeb88bc3f6b435a9f23a30029",
+  "deployedBytecode": "0x6060604052600436106100775763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166340e4e048811461007c578063495ac3a8146100945780638da5cb5b146100aa578063b64ce34a146100d9578063f2fde38b146100fe578063f36014d21461011d575b600080fd5b341561008757600080fd5b610092600435610130565b005b341561009f57600080fd5b610092600435610150565b34156100b557600080fd5b6100bd610170565b604051600160a060020a03909116815260200160405180910390f35b34156100e457600080fd5b6100ec61017f565b60405190815260200160405180910390f35b341561010957600080fd5b610092600160a060020a0360043516610185565b341561012857600080fd5b6100ec6101db565b60005433600160a060020a0390811691161461014b57600080fd5b600155565b60005433600160a060020a0390811691161461016b57600080fd5b600255565b600054600160a060020a031681565b60025481565b60005433600160a060020a039081169116146101a057600080fd5b600160a060020a038116156101d8576000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0383161790555b50565b600154815600a165627a7a72305820c9be303d05ddea69f34041434f4c8d15311663f0215eeb88bc3f6b435a9f23a30029",
+  "sourceMap": "57:346:4:-;;;133:1;95:39;;;;138:30;;-1:-1:-1;97:18:2;;-1:-1:-1;;;;;105:10:2;97:18;-1:-1:-1;;;;;;97:18:2;;;;;;57:346:4;;;;;;",
+  "deployedSourceMap": "57:346:4:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;173:125;;;;;;;;;;;;;;;;302:99;;;;;;;;;;;;;;47:20:2;;;;;;;;;;;;;;;-1:-1:-1;;;;;47:20:2;;;;;;;;;;;;;;138:30:4;;;;;;;;;;;;;;;;;;;;;;;;;;;195:124:2;;;;;;;;;;-1:-1:-1;;;;;195:124:2;;;;;95:39:4;;;;;;;;;;;;173:125;:5:2;;159:10;-1:-1:-1;;;;;159:19:2;;;173:5;;159:19;151:28;;;;;;253:23:4;:40;173:125::o;302:99::-;173:5:2;;159:10;-1:-1:-1;;;;;159:19:2;;;173:5;;159:19;151:28;;;;;;370:14:4;:26;302:99::o;47:20:2:-;;;-1:-1:-1;;;;;47:20:2;;:::o;138:30:4:-;;;;:::o;195:124:2:-;173:5;;159:10;-1:-1:-1;;;;;159:19:2;;;173:5;;159:19;151:28;;;;;;-1:-1:-1;;;;;260:22:2;;;256:59;;292:5;:16;;-1:-1:-1;;292:16:2;-1:-1:-1;;;;;292:16:2;;;;;256:59;195:124;:::o;95:39:4:-;;;;:::o",
+  "source": "pragma solidity ^0.4.11;\n\nimport \"../base/Ownable.sol\";\n\ncontract FighterConfig is Ownable {\n  uint public chanceOfFighterCreation = 3;\n  uint public trainingFactor = 3;\n\n  function setFighterCreationChance(uint newProbability) external onlyOwner {\n    chanceOfFighterCreation = newProbability;\n  }\n\n  function setTrainingFactor(uint newFactor) external onlyOwner {\n    trainingFactor = newFactor;\n  }\n}\n",
+  "sourcePath": "/Users/Aaron/Projects/cryptoclash/contracts/fighter/FighterConfig.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/Users/Aaron/Projects/cryptoclash/contracts/fighter/FighterConfig.sol",
+      "exportedSymbols": {
+        "FighterConfig": [
+          534
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".11"
+          ]
+        },
+        "id": 500,
+        "name": "PragmaDirective",
+        "src": "0:24:4"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 198,
+          "absolutePath": "/Users/Aaron/Projects/cryptoclash/contracts/base/Ownable.sol",
+          "file": "../base/Ownable.sol",
+          "scope": 535,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 501,
+        "name": "ImportDirective",
+        "src": "26:29:4"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            197
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            534,
+            197
+          ],
+          "name": "FighterConfig",
+          "scope": 535
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": [
+                null
+              ]
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "Ownable",
+                  "referencedDeclaration": 197,
+                  "type": "contract Ownable"
+                },
+                "id": 502,
+                "name": "UserDefinedTypeName",
+                "src": "83:7:4"
+              }
+            ],
+            "id": 503,
+            "name": "InheritanceSpecifier",
+            "src": "83:7:4"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "chanceOfFighterCreation",
+              "scope": 534,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint256",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint",
+                  "type": "uint256"
+                },
+                "id": 504,
+                "name": "ElementaryTypeName",
+                "src": "95:4:4"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "33",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 3",
+                  "value": "3"
+                },
+                "id": 505,
+                "name": "Literal",
+                "src": "133:1:4"
+              }
+            ],
+            "id": 506,
+            "name": "VariableDeclaration",
+            "src": "95:39:4"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "trainingFactor",
+              "scope": 534,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint256",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint",
+                  "type": "uint256"
+                },
+                "id": 507,
+                "name": "ElementaryTypeName",
+                "src": "138:4:4"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "33",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 3",
+                  "value": "3"
+                },
+                "id": 508,
+                "name": "Literal",
+                "src": "167:1:4"
+              }
+            ],
+            "id": 509,
+            "name": "VariableDeclaration",
+            "src": "138:30:4"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "name": "setFighterCreationChance",
+              "payable": false,
+              "scope": 534,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "newProbability",
+                      "scope": 521,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 510,
+                        "name": "ElementaryTypeName",
+                        "src": "207:4:4"
+                      }
+                    ],
+                    "id": 511,
+                    "name": "VariableDeclaration",
+                    "src": "207:19:4"
+                  }
+                ],
+                "id": 512,
+                "name": "ParameterList",
+                "src": "206:21:4"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 515,
+                "name": "ParameterList",
+                "src": "247:0:4"
+              },
+              {
+                "attributes": {
+                  "arguments": [
+                    null
+                  ]
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 177,
+                      "type": "modifier ()",
+                      "value": "onlyOwner"
+                    },
+                    "id": 513,
+                    "name": "Identifier",
+                    "src": "237:9:4"
+                  }
+                ],
+                "id": 514,
+                "name": "ModifierInvocation",
+                "src": "237:9:4"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 506,
+                              "type": "uint256",
+                              "value": "chanceOfFighterCreation"
+                            },
+                            "id": 516,
+                            "name": "Identifier",
+                            "src": "253:23:4"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 511,
+                              "type": "uint256",
+                              "value": "newProbability"
+                            },
+                            "id": 517,
+                            "name": "Identifier",
+                            "src": "279:14:4"
+                          }
+                        ],
+                        "id": 518,
+                        "name": "Assignment",
+                        "src": "253:40:4"
+                      }
+                    ],
+                    "id": 519,
+                    "name": "ExpressionStatement",
+                    "src": "253:40:4"
+                  }
+                ],
+                "id": 520,
+                "name": "Block",
+                "src": "247:51:4"
+              }
+            ],
+            "id": 521,
+            "name": "FunctionDefinition",
+            "src": "173:125:4"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "name": "setTrainingFactor",
+              "payable": false,
+              "scope": 534,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "newFactor",
+                      "scope": 533,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 522,
+                        "name": "ElementaryTypeName",
+                        "src": "329:4:4"
+                      }
+                    ],
+                    "id": 523,
+                    "name": "VariableDeclaration",
+                    "src": "329:14:4"
+                  }
+                ],
+                "id": 524,
+                "name": "ParameterList",
+                "src": "328:16:4"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 527,
+                "name": "ParameterList",
+                "src": "364:0:4"
+              },
+              {
+                "attributes": {
+                  "arguments": [
+                    null
+                  ]
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 177,
+                      "type": "modifier ()",
+                      "value": "onlyOwner"
+                    },
+                    "id": 525,
+                    "name": "Identifier",
+                    "src": "354:9:4"
+                  }
+                ],
+                "id": 526,
+                "name": "ModifierInvocation",
+                "src": "354:9:4"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 509,
+                              "type": "uint256",
+                              "value": "trainingFactor"
+                            },
+                            "id": 528,
+                            "name": "Identifier",
+                            "src": "370:14:4"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 523,
+                              "type": "uint256",
+                              "value": "newFactor"
+                            },
+                            "id": 529,
+                            "name": "Identifier",
+                            "src": "387:9:4"
+                          }
+                        ],
+                        "id": 530,
+                        "name": "Assignment",
+                        "src": "370:26:4"
+                      }
+                    ],
+                    "id": 531,
+                    "name": "ExpressionStatement",
+                    "src": "370:26:4"
+                  }
+                ],
+                "id": 532,
+                "name": "Block",
+                "src": "364:37:4"
+              }
+            ],
+            "id": 533,
+            "name": "FunctionDefinition",
+            "src": "302:99:4"
+          }
+        ],
+        "id": 534,
+        "name": "ContractDefinition",
+        "src": "57:346:4"
+      }
+    ],
+    "id": 535,
+    "name": "SourceUnit",
+    "src": "0:404:4"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-01-03T14:31:22.735Z"
+}

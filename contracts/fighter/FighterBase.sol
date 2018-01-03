@@ -12,6 +12,7 @@ contract FighterBase {
     uint increaseValue
   );
   event Healed(address owner, uint fighterId);
+  event FighterFound(bool fighterWasFound);
 
   struct Fighter {
     uint256 maxHealth;
@@ -23,19 +24,16 @@ contract FighterBase {
   /*** STORAGE ***/
 
   Fighter[] fighters;
-  mapping(address => mapping(uint256 => uint256)) public ownedFighters; // owner address to a map of fighter Ids that they own
   mapping(address => uint256) public fighterCountForOwner; // Need this for ERC721 compliance
   mapping(uint256 => address) public fighterIdToOwner; // lookup for owner of a specific fighter
   mapping(uint256 => address) public fighterIdToApproved; // Shows appoved address for sending of fighters, Needed for ERC721
 
   function _transfer(address _from, address _to, uint256 _fighterId) internal {
-    ownedFighters[_to][_fighterId] = _fighterId; // Keep track of an addresses owned fighters
     fighterCountForOwner[_to]++;
     fighterIdToOwner[_fighterId] = _to;
 
     // Check that it isn't a newly created fighter before messing with ownership values
     if (_from != address(0)) {
-      delete ownedFighters[_from][_fighterId];
       delete fighterIdToApproved[_fighterId];
       fighterCountForOwner[_from]--;
     }
@@ -73,21 +71,22 @@ contract FighterBase {
     return newFighterId;
   }
 
-  function _trainMaxHealth(uint _fighterId, address _owner) internal {
+  function _trainMaxHealth(uint _fighterId, uint _attributeIncrease, address _owner) internal {
     Fighter memory _fighter = fighters[_fighterId];
-    _fighter.maxHealth += 1; // Randomly increase these in the future
+    _fighter.maxHealth += _attributeIncrease;
+    _fighter.health = _fighter.maxHealth;
     AttributeIncrease(_owner, _fighterId, 'Max Health', 1);
   }
 
-  function _trainSpeed(uint _fighterId, address _owner) internal {
+  function _trainSpeed(uint _fighterId, uint _attributeIncrease, address _owner) internal {
     Fighter memory _fighter = fighters[_fighterId];
-    _fighter.speed += 1; // Randomly increase these in the future
+    _fighter.speed += _attributeIncrease;
     AttributeIncrease(_owner, _fighterId, 'Speed', 1);
   }
 
-  function _trainStrength(uint _fighterId, address _owner) internal {
+  function _trainStrength(uint _fighterId, uint _attributeIncrease, address _owner) internal {
     Fighter memory _fighter = fighters[_fighterId];
-    _fighter.strength += 1; // Randomly increase these in the future
+    _fighter.strength += _attributeIncrease;
     AttributeIncrease(_owner, _fighterId, 'Strength', 1);
   }
 

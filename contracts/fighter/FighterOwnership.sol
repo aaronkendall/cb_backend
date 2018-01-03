@@ -1,10 +1,15 @@
 pragma solidity ^0.4.11;
 
+import "../lib/RandomNumber.sol";
+
 import "../base/ERC721.sol";
 import "../base/ERC721Metadata.sol";
+import "../base/Priced.sol";
+import "./FighterConfig.sol";
 import "./FighterBase.sol";
+import "./FighterTraining.sol";
 
-contract FighterOwnership is FighterBase, ERC721 {
+contract FighterOwnership is FighterConfig, FighterBase, FighterTraining, ERC721, Priced {
 
     /// @notice Name and symbol of the non fungible token, as defined in ERC721.
     string public constant name = "CryptoBrawl";
@@ -65,9 +70,7 @@ contract FighterOwnership is FighterBase, ERC721 {
 
     /// @dev Marks an address as being approved for transferFrom(), overwriting any previous
     ///  approval. Setting _approved to address(0) clears all transfer approval.
-    ///  NOTE: _approve() does NOT send the Approval event. This is intentional because
-    ///  _approve() and transferFrom() are used together for putting Kitties on auction, and
-    ///  there is no value in spamming the log with Approval events in that case.
+    ///  NOTE: _approve() does NOT send the Approval event.
     function _approve(uint256 _tokenId, address _approved) internal {
       fighterIdToApproved[_tokenId] = _approved;
     }
@@ -80,7 +83,7 @@ contract FighterOwnership is FighterBase, ERC721 {
     }
 
     /// @notice Transfers a Fighter to another address. If transferring to a smart
-    ///  contract be VERY CAREFUL to ensure that it is aware of ERC-721.
+    /// contract be VERY CAREFUL to ensure that it is aware of ERC-721.
     /// @param _to The address of the recipient, can be a user or contract.
     /// @param _tokenId The ID of the fighter to transfer.
     /// @dev Required for ERC-721 compliance.
@@ -88,16 +91,9 @@ contract FighterOwnership is FighterBase, ERC721 {
       // Safety check to prevent against an unexpected 0x0 default.
       require(_to != address(0));
       // Disallow transfers to this contract to prevent accidental misuse.
-      // The contract should never own any kitties (except very briefly
-      // after a gen0 cat is created and before it goes on auction).
       require(_to != address(this));
       // Disallow transfers to the auction contracts to prevent accidental
-      // misuse. Auction contracts should only take ownership of kitties
-      // through the allow + transferFrom flow.
-      /* require(_to != address(saleAuction)); */
-      /* require(_to != address(siringAuction)); */
-
-      // You can only send your own cat.
+      // You can only send your own fighter.
       require(_owns(msg.sender, _tokenId));
 
       // Reassign ownership, clear pending approvals, emit Transfer event.
@@ -132,8 +128,6 @@ contract FighterOwnership is FighterBase, ERC721 {
       // Safety check to prevent against an unexpected 0x0 default.
       require(_to != address(0));
       // Disallow transfers to this contract to prevent accidental misuse.
-      // The contract should never own any kitties (except very briefly
-      // after a gen0 cat is created and before it goes on auction).
       require(_to != address(this));
       // Check for approval and valid ownership
       require(_approvedFor(msg.sender, _tokenId));
@@ -143,10 +137,10 @@ contract FighterOwnership is FighterBase, ERC721 {
       _transfer(_from, _to, _tokenId);
     }
 
-    /// @notice Returns the total number of Kitties currently in existence.
+    /// @notice Returns the total number of fighters currently in existence.
     /// @dev Required for ERC-721 compliance.
     function totalSupply() public view returns (uint) {
-        return fighters.length - 1;
+        return fighters.length;
     }
 
     /// @notice Returns the address currently assigned ownership of a given fighter.
@@ -237,5 +231,45 @@ contract FighterOwnership is FighterBase, ERC721 {
         (buffer, count) = erc721Metadata.getMetadata(_tokenId, _preferredTransport);
 
         return _toString(buffer, count);
+    }
+
+    function healFighter(uint _fighterId) external {
+      require(_owns(msg.sender, _fighterId));
+      _heal(_fighterId);
+    }
+
+    function trainFighter(uint _fighterId, string _attribute, uint _seed) external payable costs(trainingCost) {
+      require(_owns(msg.sender, _fighterId));
+      uint _attributeIncrease = (RandomNumber.rand1To10(_seed) / trainingFactor);
+      _train(_fighterId, _attribute, _attributeIncrease);
+    }
+
+    function searchForFighter(uint _seed) external returns (bool fighterFound) {
+      uint randomNum = RandomNumber.randomNum(_seed);
+
+      if (randomNum % chanceOfFighterCreation == 0) {
+        uint _speed = RandomNumber.rand1To10(_seed);
+        uint _strength = RandomNumber.rand1To10(_seed);
+        _createFighter(10, _speed, _strength, msg.sender);
+        FighterFound(true);
+        return true;
+      }
+      FighterFound(false);
+      return false;
+    }
+
+    function ownerCreation(address _recipient, uint _seed) public onlyOwner {
+      uint _speed = RandomNumber.rand1To10(_seed);
+      uint _strength = RandomNumber.rand1To10(_seed);
+      _createFighter(10, _speed, _strength, _recipient);
+    }
+
+    function customOwnerCreation(address _recipient, uint _maxHealth, uint _speed, uint _strength) public onlyOwner {
+      _createFighter(_maxHealth, _speed, _strength, _recipient);
+    }
+
+    function getInfoForFighter(uint _fighterId) external returns (uint[4]) {
+      Fighter memory _fighter = fighters[_fighterId];
+      return [uint(_fighter.maxHealth), _fighter.health, _fighter.speed, _fighter.strength];
     }
 }

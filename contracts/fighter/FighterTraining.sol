@@ -1,22 +1,19 @@
 pragma solidity ^0.4.11;
 
-import "./FighterOwnership.sol";
+import "./FighterBase.sol";
 
-contract FighterTraining is FighterOwnership {
-  function trainFighter(uint _fighterId, string _attribute) external {
-    require(_owns(msg.sender, _fighterId));
-
+contract FighterTraining is FighterBase {
+  function _train(uint _fighterId, string _attribute, uint _attributeIncrease) internal {
     if (keccak256(_attribute) == keccak256('maxHealth')) {
-      _trainMaxHealth(_fighterId, msg.sender);
+      _trainMaxHealth(_fighterId, _attributeIncrease, msg.sender);
     } else if (keccak256(_attribute) == keccak256('strength')) {
-      _trainStrength(_fighterId, msg.sender);
+      _trainStrength(_fighterId, _attributeIncrease, msg.sender);
     } else if (keccak256(_attribute) == keccak256('speed')) {
-      _trainSpeed(_fighterId, msg.sender);
+      _trainSpeed(_fighterId, _attributeIncrease, msg.sender);
     }
   }
 
-  function healFighter(uint _fighterId) external {
-    require(_owns(msg.sender, _fighterId));
+  function _heal(uint _fighterId) internal {
     _healFighter(_fighterId, msg.sender);
   }
 }
