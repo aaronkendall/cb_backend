@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux';
-import categoryReducer from './categoryReducer';
+import coreReducer from './coreReducer';
 
 export default combineReducers({
-  categoryReducer
+  core: coreReducer
 })

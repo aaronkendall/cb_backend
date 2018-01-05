@@ -1,5 +1,5 @@
-import categoryActions from './categoryActions';
+import coreActions from './categoryActions';
 
 export {
-  categoryActions
+  coreActions
 }

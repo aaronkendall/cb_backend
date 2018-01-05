@@ -15,7 +15,7 @@ const store = configureStore(preloadedState, history);
 render(
   <Provider store={store}>
     <Router history={history}>
-      <App/>
+      <App />
     </Router>
   </Provider>,
   document.getElementById('app')
