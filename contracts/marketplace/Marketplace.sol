@@ -15,11 +15,6 @@ contract Marketplace is FighterOwnership, MarketplaceConfig {
     Fighter fighter;
   }
 
-  /* struct Sale {
-    Fighter fighter;
-    uint256 price;
-  } */
-
   function getPriceForFighter(uint _fighterId) constant external returns (uint256) {
     return fightersInMarket[_fighterId];
   }

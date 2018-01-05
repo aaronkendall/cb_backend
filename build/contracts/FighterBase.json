@@ -1982,7 +1982,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2151,
+                              "referencedDeclaration": 1443,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -3978,5 +3978,5 @@
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-01-05T10:46:53.470Z"
+  "updatedAt": "2018-01-05T11:02:32.937Z"
 }
