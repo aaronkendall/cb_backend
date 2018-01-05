@@ -268,7 +268,7 @@ contract FighterOwnership is FighterConfig, FighterBase, FighterTraining, ERC721
       _createFighter(_maxHealth, _speed, _strength, _recipient);
     }
 
-    function getInfoForFighter(uint _fighterId) external returns (uint maxHealth, uint health, uint speed, uint strength) {
+    function getInfoForFighter(uint _fighterId) constant external returns (uint maxHealth, uint health, uint speed, uint strength) {
       Fighter memory _fighter = fighters[_fighterId];
       return (_fighter.maxHealth, _fighter.health, _fighter.speed, _fighter.strength);
     }
