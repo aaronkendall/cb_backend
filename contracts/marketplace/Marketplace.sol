@@ -1,11 +1,11 @@
-pragma solidity ^0.4.11;
+pragma solidity ^0.4.18;
 
 import "../fighter/FighterOwnership.sol";
 import "./MarketplaceConfig.sol";
 
 contract Marketplace is FighterOwnership, MarketplaceConfig {
-  uint[] public fightersInMarket; // Storing of figher Ids against their price
-  uint[] public fightersInArena;
+  uint[] public fightersInMarket; // Storing of figher Ids against their sale Struct
+  uint[] public fightersInArena; // Storing of fighter Ids against their fighter Struct
 
   event PurchaseSuccess(address _buyer, uint _price, uint _fighterId);
   event FightComplete(address _winner, uint _winnerId);
@@ -15,8 +15,21 @@ contract Marketplace is FighterOwnership, MarketplaceConfig {
     Fighter fighter;
   }
 
-  function getPriceForFighter(uint _fighterId) constant external returns (uint) {
+  /* struct Sale {
+    Fighter fighter;
+    uint256 price;
+  } */
+
+  function getPriceForFighter(uint _fighterId) constant external returns (uint256) {
     return fightersInMarket[_fighterId];
+  }
+
+  function getFightersForSale() constant external returns (uint[]) {
+    return fightersInMarket;
+  }
+
+  function getFightersInArena() constant external returns (uint[]) {
+    return fightersInArena;
   }
 
   function removeFighterFromSale(uint _fighterId) external {
@@ -48,7 +61,7 @@ contract Marketplace is FighterOwnership, MarketplaceConfig {
     require(_owns(msg.sender, _fighterId));
     // Fighters can't be both for sale and open for brawling
     require(!_fighterIsForSale(_fighterId));
-    // We need to store something unique to this fighter that is greater than 0 here
+
     fightersInArena[_fighterId] = fighters[_fighterId].maxHealth;
   }
 
@@ -91,33 +104,33 @@ contract Marketplace is FighterOwnership, MarketplaceConfig {
     return _calculateCombatOutcome(orderOfCombat, _seed);
   }
 
-  function _calculateCombatOutcome(Combatant[] _fighters, uint _seed) internal returns (uint[2]) {
+  function _calculateCombatOutcome(Combatant[] _combatants, uint _seed) internal returns (uint[2]) {
     uint[2] memory winnerAndLoser;
 
-    while (_fighters[0].fighter.health > 0 && _fighters[1].fighter.health > 0) {
-      uint _fighter1StrengthCheck = (RandomNumber.randDecimal(_seed) * fighters[0].fighter.strength);
-      uint _fighter2SpeedCheck = (RandomNumber.randDecimal(_seed) * fighters[1].fighter.speed);
+    while ( _combatants[0].fighter.health > 0 &&  _combatants[1].fighter.health > 0) {
+      uint _fighter1StrengthCheck = (RandomNumber.randDecimal(_seed) *  _combatants[0].fighter.strength);
+      uint _fighter2SpeedCheck = (RandomNumber.randDecimal(_seed) *  _combatants[1].fighter.speed);
 
       if (_fighter1StrengthCheck > _fighter2SpeedCheck) {
-        _fighters[1].fighter.health -= (_fighter1StrengthCheck - _fighter2SpeedCheck);
+         _combatants[1].fighter.health -= (_fighter1StrengthCheck - _fighter2SpeedCheck);
       }
 
-      if (_fighters[1].fighter.health <= 0) {
-        winnerAndLoser[0] = _fighters[0].fighterId;
-        winnerAndLoser[1] = _fighters[1].fighterId;
+      if (_combatants[1].fighter.health <= 0) {
+        winnerAndLoser[0] =  _combatants[0].fighterId;
+        winnerAndLoser[1] =  _combatants[1].fighterId;
         break;
       }
 
-      uint _fighter2StrengthCheck = (RandomNumber.randDecimal(_seed) * fighters[1].fighter.strength);
-      uint _fighter1SpeedCheck = (RandomNumber.randDecimal(_seed) * fighters[0].fighter.speed);
+      uint _fighter2StrengthCheck = (RandomNumber.randDecimal(_seed) *  _combatants[1].fighter.strength);
+      uint _fighter1SpeedCheck = (RandomNumber.randDecimal(_seed) *  _combatants[0].fighter.speed);
 
       if (_fighter2StrengthCheck > _fighter1SpeedCheck) {
-        _fighters[0].fighter.health -= (_fighter2StrengthCheck - _fighter1SpeedCheck);
+         _combatants[0].fighter.health -= (_fighter2StrengthCheck - _fighter1SpeedCheck);
       }
 
-      if (_fighters[0].fighter.health <= 0) {
-        winnerAndLoser[0] = _fighters[1].fighterId;
-        winnerAndLoser[1] = _fighters[0].fighterId;
+      if (_combatants[0].fighter.health <= 0) {
+        winnerAndLoser[0] = _combatants[1].fighterId;
+        winnerAndLoser[1] = _combatants[0].fighterId;
         break;
       }
     }

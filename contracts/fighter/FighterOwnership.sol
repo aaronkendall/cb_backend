@@ -1,4 +1,4 @@
-pragma solidity ^0.4.11;
+pragma solidity ^0.4.18;
 
 import "../lib/RandomNumber.sol";
 
@@ -12,7 +12,7 @@ import "./FighterTraining.sol";
 contract FighterOwnership is FighterConfig, FighterBase, FighterTraining, ERC721, Priced {
 
     /// @notice Name and symbol of the non fungible token, as defined in ERC721.
-    string public constant name = "CryptoBrawl";
+    string public constant name = "CryptoBrawlers";
     string public constant symbol = "BRWL";
 
     // The contract that will return fighter metadata
@@ -258,18 +258,18 @@ contract FighterOwnership is FighterConfig, FighterBase, FighterTraining, ERC721
       return false;
     }
 
-    function ownerCreation(address _recipient, uint _seed) public onlyOwner {
+    function ownerCreation(address _recipient, uint _seed) external onlyOwner {
       uint _speed = RandomNumber.rand1To10(_seed);
       uint _strength = RandomNumber.rand1To10(_seed);
       _createFighter(10, _speed, _strength, _recipient);
     }
 
-    function customOwnerCreation(address _recipient, uint _maxHealth, uint _speed, uint _strength) public onlyOwner {
+    function customOwnerCreation(address _recipient, uint _maxHealth, uint _speed, uint _strength) external onlyOwner {
       _createFighter(_maxHealth, _speed, _strength, _recipient);
     }
 
-    function getInfoForFighter(uint _fighterId) external returns (uint[4]) {
-      Fighter memory _fighter = fighters[_fighterId];
-      return [uint(_fighter.maxHealth), _fighter.health, _fighter.speed, _fighter.strength];
+    function getInfoForFighter(uint _fighterId) external returns (Fighter) {
+      return fighters[_fighterId];
+      /* return [uint(_fighter.maxHealth), _fighter.health, _fighter.speed, _fighter.strength]; */
     }
 }

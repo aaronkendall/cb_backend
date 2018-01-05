@@ -179,7 +179,7 @@
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.4.11;\n\ncontract ERC721 {\n    // Required methods\n    function totalSupply() public view returns (uint256 total);\n    function balanceOf(address _owner) public view returns (uint256 balance);\n    function ownerOf(uint256 _tokenId) external view returns (address owner);\n    function approve(address _to, uint256 _tokenId) external;\n    function transfer(address _to, uint256 _tokenId) external;\n    function transferFrom(address _from, address _to, uint256 _tokenId) external;\n\n    // Events\n    event Transfer(address from, address to, uint256 tokenId);\n    event Approval(address owner, address approved, uint256 tokenId);\n\n    // ERC-165 Compatibility (https://github.com/ethereum/EIPs/issues/165)\n    function supportsInterface(bytes4 _interfaceID) external view returns (bool);\n}\n",
+  "source": "pragma solidity ^0.4.18;\n\ncontract ERC721 {\n    // Required methods\n    function totalSupply() public view returns (uint256 total);\n    function balanceOf(address _owner) public view returns (uint256 balance);\n    function ownerOf(uint256 _tokenId) external view returns (address owner);\n    function approve(address _to, uint256 _tokenId) external;\n    function transfer(address _to, uint256 _tokenId) external;\n    function transferFrom(address _from, address _to, uint256 _tokenId) external;\n\n    // Events\n    event Transfer(address from, address to, uint256 tokenId);\n    event Approval(address owner, address approved, uint256 tokenId);\n\n    // ERC-165 Compatibility (https://github.com/ethereum/EIPs/issues/165)\n    function supportsInterface(bytes4 _interfaceID) external view returns (bool);\n}\n",
   "sourcePath": "/Users/Aaron/Projects/cryptoclash/contracts/base/ERC721.sol",
   "ast": {
     "attributes": {
@@ -197,7 +197,7 @@
             "solidity",
             "^",
             "0.4",
-            ".11"
+            ".18"
           ]
         },
         "id": 1,
@@ -1068,5 +1068,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-01-03T14:31:22.732Z"
+  "updatedAt": "2018-01-05T10:46:53.463Z"
 }
