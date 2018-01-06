@@ -27,18 +27,30 @@ contract FighterBase {
   mapping(address => uint256) public fighterCountForOwner; // Need this for ERC721 compliance
   mapping(uint256 => address) public fighterIdToOwner; // lookup for owner of a specific fighter
   mapping(uint256 => address) public fighterIdToApproved; // Shows appoved address for sending of fighters, Needed for ERC721
+  mapping(address => uint256[]) public ownedFighters;
 
   function _transfer(address _from, address _to, uint256 _fighterId) internal {
     fighterCountForOwner[_to]++;
     fighterIdToOwner[_fighterId] = _to;
+    ownedFighters[_to].push(_fighterId);
 
     // Check that it isn't a newly created fighter before messing with ownership values
     if (_from != address(0)) {
       delete fighterIdToApproved[_fighterId];
+      _removeOwnedFighter(_from, _fighterId);
       fighterCountForOwner[_from]--;
     }
     // Emit the transfer event.
     Transfer(_from, _to, _fighterId);
+  }
+
+  function _removeOwnedFighter(address _oldOwner, uint256 _fighterId) internal {
+    uint index;
+    for(index = 0; index < ownedFighters[_oldOwner].length; index++) {
+      if (ownedFighters[_oldOwner][index] == _fighterId) {
+        delete ownedFighters[_oldOwner][index];
+      }
+    }
   }
 
   function _createFighter(

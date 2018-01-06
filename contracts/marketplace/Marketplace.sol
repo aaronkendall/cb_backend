@@ -4,8 +4,11 @@ import "../fighter/FighterOwnership.sol";
 import "./MarketplaceConfig.sol";
 
 contract Marketplace is FighterOwnership, MarketplaceConfig {
-  uint[] public fightersInMarket; // Storing of figher Ids against their sale Struct
-  uint[] public fightersInArena; // Storing of fighter Ids against their fighter Struct
+  mapping(uint256 => Sale) public fighterIdToSale; // Storing of figher Ids against their sale Struct
+  uint256[] public fightersInMarket; // List of all figher Ids in the market
+
+  mapping(uint256 => uint256) public fighterIdToMaxHealth; // Map of fighter Ids to their max health
+  uint256[] public fightersInArena; // List of all fighter ids in the arena
 
   event PurchaseSuccess(address _buyer, uint _price, uint _fighterId);
   event FightComplete(address _winner, uint _winnerId);
@@ -15,8 +18,13 @@ contract Marketplace is FighterOwnership, MarketplaceConfig {
     Fighter fighter;
   }
 
+  struct Sale {
+    uint256 fighterId;
+    uint256 price;
+  }
+
   function getPriceForFighter(uint _fighterId) constant external returns (uint256) {
-    return fightersInMarket[_fighterId];
+    return fighterIdToSale[_fighterId].price;
   }
 
   function getFightersForSale() constant external returns (uint[]) {
@@ -49,7 +57,8 @@ contract Marketplace is FighterOwnership, MarketplaceConfig {
     require(!_fighterIsForBrawl(_fighterId));
     require(_price > 0);
 
-    fightersInMarket[_fighterId] = _price;
+    fightersInMarket.push(_fighterId);
+    fighterIdToSale[_fighterId] = Sale({ fighterId: _fighterId, price: _price });
   }
 
   function makeFighterAvailableForBrawl(uint _fighterId) external {
@@ -57,7 +66,8 @@ contract Marketplace is FighterOwnership, MarketplaceConfig {
     // Fighters can't be both for sale and open for brawling
     require(!_fighterIsForSale(_fighterId));
 
-    fightersInArena[_fighterId] = fighters[_fighterId].maxHealth;
+    fightersInArena.push(_fighterId);
+    fighterIdToMaxHealth[_fighterId] = fighters[_fighterId].maxHealth;
   }
 
   function buyFighter(uint _fighterId) external payable {
@@ -137,7 +147,7 @@ contract Marketplace is FighterOwnership, MarketplaceConfig {
 
   function _makePurchase(uint _fighterId, uint _price) internal {
     require(_fighterIsForSale(_fighterId));
-    require(_price >= fightersInMarket[_fighterId]);
+    require(_price >= fighterIdToSale[_fighterId].price);
 
     address sellerAddress = fighterIdToOwner[_fighterId];
     _removeFighterFromSale(_fighterId);
@@ -154,18 +164,30 @@ contract Marketplace is FighterOwnership, MarketplaceConfig {
   }
 
   function _fighterIsForSale(uint _fighterId) internal returns (bool) {
-    return (fightersInMarket[_fighterId] > 0);
+    return (fighterIdToSale[_fighterId].price > 0);
   }
 
   function _fighterIsForBrawl(uint _fighterId) internal returns (bool) {
-    return (fightersInArena[_fighterId] > 0);
+    return (fighterIdToMaxHealth[_fighterId] > 0);
   }
 
   function _removeFighterFromSale(uint _fighterId) internal {
-    delete fightersInMarket[_fighterId];
+    uint index;
+    for(index = 0; index < fightersInMarket.length; index++) {
+      if (fightersInMarket[index] == _fighterId) {
+        delete fightersInMarket[index];
+      }
+    }
+    delete fighterIdToSale[_fighterId];
   }
 
   function _removeFighterFromArena(uint _fighterId) internal {
-    delete fightersInArena[_fighterId];
+    uint index;
+    for(index = 0; index < fightersInArena.length; index++) {
+      if (fightersInArena[index] == _fighterId) {
+        delete fightersInArena[index];
+      }
+    }
+    delete fighterIdToMaxHealth[_fighterId];
   }
 }

@@ -155,6 +155,10 @@ contract FighterOwnership is FighterConfig, FighterBase, FighterTraining, ERC721
         require(owner != address(0));
     }
 
+    function getFightersForAddress(address _owner) external returns(uint256[] _ownerTokens) {
+      return ownedFighters[_owner];
+    }
+
     /// @notice Returns a list of all Fighter IDs assigned to an address.
     /// @param _owner The owner whose Fighters we are interested in.
     // This is mega expensive, make sure it's only being called from web3

@@ -8,7 +8,7 @@ class Account extends ContractBase {
   }
 
   getFightersForAccount() {
-    return this.contract.tokensOfOwner(this.accountAddress)
+    return this.contract.getFightersForAccount(this.accountAddress)
       .then(result => result.map(id => this.getInfoForFighter(id.toNumber())))
       .catch(error => console.log(error));
   }
