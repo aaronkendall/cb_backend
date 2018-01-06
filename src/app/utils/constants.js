@@ -1,4 +1,4 @@
-export const CONTRACT_ADDRESS = '0x8a32fac06b43d520509f6ac4427b3871ff079c91';
+export const CONTRACT_ADDRESS = window._config.contractAddress;
 
 export const ACTION_TYPES = {
   core: {

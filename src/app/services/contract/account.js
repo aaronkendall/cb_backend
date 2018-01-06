@@ -15,7 +15,7 @@ class Account extends ContractBase {
 
   getInfoForFighter(fighterId) {
     return this.contract.getInfoForFighter(fighterId)
-      .then(rawFighter => new Fighter(rawFighter))
+      .then(rawFighter => new Fighter(rawFighter, fighterId))
       .catch(error => console.log(error));
   }
 

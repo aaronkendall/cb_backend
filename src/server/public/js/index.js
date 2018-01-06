@@ -10581,7 +10581,7 @@ function unescapeJsonPointer(str) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var CONTRACT_ADDRESS = exports.CONTRACT_ADDRESS = '0x8a32fac06b43d520509f6ac4427b3871ff079c91';
+var CONTRACT_ADDRESS = exports.CONTRACT_ADDRESS = window._config.contractAddress;
 
 var ACTION_TYPES = exports.ACTION_TYPES = {
   core: {
@@ -35696,10 +35696,11 @@ function _classCallCheck(instance, Constructor) {
   }
 }
 
-var Fighter = function Fighter(contractFighterArray) {
+var Fighter = function Fighter(contractFighterArray, fighterId) {
   _classCallCheck(this, Fighter);
 
   console.log(contractFighterArray);
+  this.id = fighterId;
   this.maxHealth = contractFighterArray[0];
   this.health = contractFighterArray[1];
   this.speed = contractFighterArray[2];
@@ -35925,7 +35926,7 @@ var Account = function (_ContractBase) {
     key: 'getInfoForFighter',
     value: function getInfoForFighter(fighterId) {
       return this.contract.getInfoForFighter(fighterId).then(function (rawFighter) {
-        return new _fighter2.default(rawFighter);
+        return new _fighter2.default(rawFighter, fighterId);
       }).catch(function (error) {
         return console.log(error);
       });

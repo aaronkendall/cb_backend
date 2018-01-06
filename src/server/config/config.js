@@ -4,7 +4,9 @@ const envConfig = {
   production: {}
 };
 
-const defaultConfig = {};
+const defaultConfig = {
+  contractAddress: process.env.CONTRACT_ADDRESS
+};
 
 const config = Object.assign({}, defaultConfig, envConfig[environment]);
 
