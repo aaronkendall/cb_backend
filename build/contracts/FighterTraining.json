@@ -417,7 +417,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2319,
+                                  "referencedDeclaration": 1506,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
@@ -470,7 +470,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2319,
+                                  "referencedDeclaration": 1506,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
@@ -597,7 +597,7 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2325,
+                                          "referencedDeclaration": 1512,
                                           "type": "msg",
                                           "value": "msg"
                                         },
@@ -668,7 +668,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2319,
+                                      "referencedDeclaration": 1506,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
@@ -721,7 +721,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2319,
+                                      "referencedDeclaration": 1506,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
@@ -848,7 +848,7 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 2325,
+                                              "referencedDeclaration": 1512,
                                               "type": "msg",
                                               "value": "msg"
                                             },
@@ -922,7 +922,7 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2319,
+                                          "referencedDeclaration": 1506,
                                           "type": "function () pure returns (bytes32)",
                                           "value": "keccak256"
                                         },
@@ -975,7 +975,7 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2319,
+                                          "referencedDeclaration": 1506,
                                           "type": "function () pure returns (bytes32)",
                                           "value": "keccak256"
                                         },
@@ -1102,7 +1102,7 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 2325,
+                                                  "referencedDeclaration": 1512,
                                                   "type": "msg",
                                                   "value": "msg"
                                                 },
@@ -1289,7 +1289,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2325,
+                                  "referencedDeclaration": 1512,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -1349,5 +1349,5 @@
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-01-06T22:03:23.120Z"
+  "updatedAt": "2018-01-07T10:15:56.352Z"
 }

@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:800|Montserrat:500');
+
+// defaults
+$max-width: 1400px;
+$default-padding: 55px;
+$default-mobile-padding: 20px;
+$margin-sm: 5px;
+$margin-md: 15px;
+$padding-sm: 5px;
+$padding-md: 15px;
+
+// colors
+$color-primary: #99B2DD;
+$color-secondary: #8D80AD;
+$color-tertiary: #FFBA49;
+$color-red: #EF5B5B;
+$color-grey: #ECEEEF;
+
+// screen widths
+$screen-md: 992px;
+$screen-sm: 768px;
+$screen-xs: 500px;
+
+// fonts
+$heading-font: 'Barlow Semi Condensed', sans-serif;
+$heading-font-weight: 800;
+$default-font: 'Montserrat', sans-serif;
+$default-font-weight: 500;
+
+$font-size-lg: 28px;
+$font-size-md: 20px;
+$font-size-sm: 14px;
+
+// header
+$header-height: 70px;

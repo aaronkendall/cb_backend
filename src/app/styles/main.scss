@@ -3,3 +3,39 @@
 
 // reset the styles
 @import 'base/reset';
+
+// components
+@import 'components/navbar';
+
+.view-container {
+  width: 100%;
+  max-width: $max-width;
+  overflow: hidden;
+  margin: 0 auto;
+
+  @media(max-width: $screen-md) {
+    padding: 0px $default-mobile-padding;
+  }
+}
+
+.page-container {
+  padding: 0 $default-padding;
+  min-height: 100vw;
+
+  @media(max-width: $screen-md) {
+    padding: 0px $default-mobile-padding;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+
+  &:focus {
+    color: #000;
+  }
+}

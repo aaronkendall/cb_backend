@@ -87,19 +87,19 @@ contract FighterBase {
     Fighter memory _fighter = fighters[_fighterId];
     _fighter.maxHealth += _attributeIncrease;
     _fighter.health = _fighter.maxHealth;
-    AttributeIncrease(_owner, _fighterId, 'Max Health', 1);
+    AttributeIncrease(_owner, _fighterId, 'maxHealth', _attributeIncrease);
   }
 
   function _trainSpeed(uint _fighterId, uint _attributeIncrease, address _owner) internal {
     Fighter memory _fighter = fighters[_fighterId];
     _fighter.speed += _attributeIncrease;
-    AttributeIncrease(_owner, _fighterId, 'Speed', 1);
+    AttributeIncrease(_owner, _fighterId, 'speed', _attributeIncrease);
   }
 
   function _trainStrength(uint _fighterId, uint _attributeIncrease, address _owner) internal {
     Fighter memory _fighter = fighters[_fighterId];
     _fighter.strength += _attributeIncrease;
-    AttributeIncrease(_owner, _fighterId, 'Strength', 1);
+    AttributeIncrease(_owner, _fighterId, 'strength', _attributeIncrease);
   }
 
   // This function assumes that a fighter can actually be healed i.e this check is done elsewhere before any eth is taken

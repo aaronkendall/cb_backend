@@ -6,6 +6,8 @@ export const ACTION_TYPES = {
     SET_PROVIDER: 'core/SET_PROVIDER'
   },
   account: {
-    ADD_FIGHTERS: 'account/ADD_FIGHTERS'
+    ADD_FIGHTERS: 'account/ADD_FIGHTERS',
+    INCREASE_FIGHTER_STATS: 'account/INCREASE_FIGHTER_STATS',
+    HEAL_FIGHTER: 'account/HEAL_FIGHTER'
   }
 }
