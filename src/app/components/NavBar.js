@@ -9,10 +9,10 @@ const NavBar = ({ signedIn, selectedItem, handleNavSelection }) => {
 
   return (
     <nav className="navigation">
-      <Link className="navigation__logo" to="/" onClick={() => handleNavSelection('home')}>Crypto Brawlers</Link>
+      <Link className="navigation__logo" to="/">Crypto Brawlers</Link>
       <ul className="navigation__links">
         {!signedIn && <li className={`navigation__links--item ${isSelected('signin') ? 'selected' : ''}`}>
-          <Link to="/signin" onClick={() => handleNavSelection('home')}>Sign In</Link>
+          <Link to="/signin" onClick={() => handleNavSelection('signin')}>Sign In</Link>
         </li>}
 
         {signedIn && <li className={`navigation__links--item ${isSelected('account') ? 'selected' : ''}`}>
