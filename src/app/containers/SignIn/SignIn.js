@@ -19,7 +19,7 @@ class SignIn extends React.Component {
       }
 
       return (
-        <div>
+        <div className="page-container">
           <h1>Sign In</h1>
           <button onClick={() => initialiseWeb3()}>MetaMask is On</button>
         </div>

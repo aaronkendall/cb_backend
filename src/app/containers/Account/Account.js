@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import reduxConnectProps from '../../utils/redux-connect-props';
+import { Redirect } from 'react-router-dom';
 
 import AccountService from '../../services/contract/account';
 import { addFighters, increaseFighterStats, healFighter } from '../../actions/accountActions';
@@ -8,7 +9,8 @@ import { addFighters, increaseFighterStats, healFighter } from '../../actions/ac
 @connect(store => ({
   provider: store.core.provider,
   defaultAccount: store.core.defaultAccount,
-  account: store.account
+  account: store.account,
+  userIsSignedIn: store.core.userIsSignedIn
 }))
 class Account extends React.Component {
   constructor(props) {
@@ -60,6 +62,10 @@ class Account extends React.Component {
   }
 
   render() {
+    if (!this.props.userIsSignedIn) {
+      return <Redirect to={{ pathname: '/signin' }} />;
+    }
+
     console.log(this.props.account.fighters);
     return (
       <div className="page-container">

@@ -1,6 +1,7 @@
 .navigation {
   height: $header-height;
-  width: $max-width;
+  width: 100vw;
+  max-width: $max-width;
   display: flex;
   justify-content: space-between;
   align-items: center;
