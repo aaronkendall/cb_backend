@@ -1,11 +1,14 @@
 .navigation {
   height: $header-height;
-  width: 100%;
+  width: $max-width;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid $color-primary;
   padding: 0px $default-padding;
+  background-color: #fff;
+  z-index: 99;
+  position: fixed;
 
   @media(max-width: $screen-md) {
     padding: 0px $default-mobile-padding;
@@ -29,12 +32,17 @@
       padding: 0 $padding-md;
       height: 100%;
       font-family: $heading-font;
-      font-size: $font-size-md;
+      font-size: $font-size-sm;
       font-weight: $heading-font-weight;
+      text-transform: uppercase;
 
       &:hover {
         text-decoration: underline;
         cursor: pointer;
+
+        &.selected {
+          text-decoration: none;
+        }
       }
 
       &.selected {

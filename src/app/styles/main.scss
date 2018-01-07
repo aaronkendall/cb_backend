@@ -20,7 +20,9 @@
 
 .page-container {
   padding: 0 $default-padding;
+  margin-top: $header-height;
   min-height: 100vw;
+  background-color: $color-grey;
 
   @media(max-width: $screen-md) {
     padding: 0px $default-mobile-padding;

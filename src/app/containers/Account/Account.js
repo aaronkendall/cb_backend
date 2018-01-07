@@ -7,18 +7,22 @@ import { addFighters, increaseFighterStats, healFighter } from '../../actions/ac
 
 @connect(store => ({
   provider: store.core.provider,
+  defaultAccount: store.core.defaultAccount,
   account: store.account
 }))
 class Account extends React.Component {
   constructor(props) {
     super(props);
-    this.accountService = new AccountService(props.provider);
+    const { provider, defaultAccount } = props;
+    this.accountService = new AccountService(provider, defaultAccount);
   }
 
   componentWillMount() {
-    this.accountService.getFightersForAccount()
-      .then(fightersPromiseArray => Promise.all(fightersPromiseArray))
-      .then(fighters => this.props.dispatch(addFighters(fighters)));
+    if (this.props.account.fighters.length === 0) {
+      this.accountService.getFightersForAccount()
+        .then(fightersPromiseArray => Promise.all(fightersPromiseArray))
+        .then(fighters => this.props.dispatch(addFighters(fighters)));
+    }
   }
 
   handleFighterSearch() {

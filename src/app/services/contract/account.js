@@ -3,8 +3,8 @@ import Fighter from '../../models/fighter.model';
 import { seedNum } from '../../utils/fighterUtils';
 
 class Account extends ContractBase {
-  constructor(provider) {
-    super(provider);
+  constructor(provider, defaultAccount) {
+    super(provider, defaultAccount);
   }
 
   getFightersForAccount() {

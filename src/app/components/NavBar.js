@@ -8,27 +8,40 @@ const NavBar = ({ signedIn, selectedItem, handleNavSelection }) => {
    }
 
   return (
-    <nav className="navigation">
+    <header className="navigation">
       <Link className="navigation__logo" to="/">Crypto Brawlers</Link>
-      <ul className="navigation__links">
-        {!signedIn && <li className={`navigation__links--item ${isSelected('signin') ? 'selected' : ''}`}>
-          <Link to="/signin" onClick={() => handleNavSelection('signin')}>Sign In</Link>
-        </li>}
+      <nav className="navigation__links">
+        {!signedIn &&
+          <Link
+            className={`navigation__links--item ${isSelected('signin') ? 'selected' : ''}`}
+            to="/signin"
+            onClick={() => handleNavSelection('signin')}>
+            Sign In
+          </Link>}
 
-        {signedIn && <li className={`navigation__links--item ${isSelected('account') ? 'selected' : ''}`}>
-          <Link to="/account" onClick={() => handleNavSelection('account')}>Account</Link>
-        </li>}
-        {signedIn && <li className={`navigation__links--item ${isSelected('training') ? 'selected' : ''}`}>
-          <Link to="/training" onClick={() => handleNavSelection('training')}>Training</Link>
-        </li>}
-        {signedIn && <li className={`navigation__links--item ${isSelected('marketplace') ? 'selected' : ''}`}>
-          <Link to="/marketplace" onClick={() => handleNavSelection('marketplace')}>Marketplace</Link>
-        </li>}
-        {signedIn && <li className={`navigation__links--item ${isSelected('arena') ? 'selected' : ''}`}>
-          <Link to="/arena" onClick={() => handleNavSelection('arena')}>Arena</Link>
-        </li>}
-      </ul>
-    </nav>
+        {signedIn &&
+          <Link
+            className={`navigation__links--item ${isSelected('account') ? 'selected' : ''}`}
+            to="/account"
+            onClick={() => handleNavSelection('account')}>
+            Account
+          </Link>}
+        {signedIn &&
+          <Link
+            className={`navigation__links--item ${isSelected('marketplace') ? 'selected' : ''}`}
+            to="/marketplace"
+            onClick={() => handleNavSelection('marketplace')}>
+            Marketplace
+          </Link>}
+        {signedIn &&
+          <Link
+            className={`navigation__links--item ${isSelected('arena') ? 'selected' : ''}`}
+            to="/arena"
+            onClick={() => handleNavSelection('arena')}>
+            Arena
+          </Link>}
+      </nav>
+    </header>
   );
 };
 
