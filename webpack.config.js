@@ -20,6 +20,7 @@ const plugins = {
 };
 
 module.exports = {
+    devtool: 'cheap-module-eval-source-map',
     entry: {
         index: "./src/app/index.js",
         style: "./src/app/styles/main.scss"
