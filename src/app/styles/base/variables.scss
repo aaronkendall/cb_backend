@@ -6,8 +6,10 @@ $default-padding: 55px;
 $default-mobile-padding: 20px;
 $margin-sm: 5px;
 $margin-md: 15px;
+$margin-lg: 30px;
 $padding-sm: 5px;
 $padding-md: 15px;
+$default-box-shadow: box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.75);
 
 // colors
 $color-primary: #99B2DD;
@@ -33,3 +35,15 @@ $font-size-sm: 14px;
 
 // header
 $header-height: 70px;
+
+// cards
+$min-card-width: 250px;
+$card-transform: scale(1.08);
+$card-transition: transform 0.6s ease-in-out;
+$card-icon-width: 14px;
+
+// icons
+$icon-max-health: url('/img/icon/max-health-icon.svg');
+$icon-health: url('/img/icon/health-icon.svg');
+$icon-speed: url('/img/icon/speed-icon.svg');
+$icon-strength: url('/img/icon/strength-icon.svg');

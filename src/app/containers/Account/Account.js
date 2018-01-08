@@ -6,6 +6,8 @@ import { Redirect } from 'react-router-dom';
 import AccountService from '../../services/contract/account';
 import { addFighters, increaseFighterStats, healFighter } from '../../actions/accountActions';
 
+import CardContainer from '../../components/Cards/CardContainer';
+
 @connect(store => ({
   provider: store.core.provider,
   defaultAccount: store.core.defaultAccount,
@@ -61,16 +63,23 @@ class Account extends React.Component {
       .catch(error => console.log('Error adding fighter to arena ', id, price));
   }
 
+  handleCardClick(id) {
+    console.log(id); // in lieu of this not being set up yet
+  }
+
   render() {
-    if (!this.props.userIsSignedIn) {
+    const { userIsSignedIn, account } = this.props;
+    const { fighters } = account;
+
+    if (!userIsSignedIn) {
       return <Redirect to={{ pathname: '/signin' }} />;
     }
 
-    console.log(this.props.account.fighters);
     return (
       <div className="page-container">
-        <h1>Account</h1>
         <button onClick={() => this.handleFighterSearch()}>Find</button>
+        {fighters.length > 0 && <CardContainer items={fighters} handleClick={id => this.handleCardClick(id)} />}
+        {fighters.length === 0 && <p>You don't have any fighters!</p>}
       </div>
     );
   }

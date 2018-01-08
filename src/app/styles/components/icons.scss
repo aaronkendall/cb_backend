@@ -1,0 +1,21 @@
+.icon {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &.icon--max-health {
+    background-image: $icon-max-health;
+  }
+
+  &.icon--health {
+    background-image: $icon-health;
+  }
+
+  &.icon--strength {
+    background-image: $icon-strength;
+  }
+
+  &.icon--speed {
+    background-image: $icon-speed;
+  }
+}

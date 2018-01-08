@@ -1,0 +1,63 @@
+.card-container {
+  width: 100%;
+  margin: $margin-lg -($margin-md) 0;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  .card {
+    width: calc(25% - 15px); // margin medium
+    min-width: $min-card-width;
+    margin: 0 ($margin-md / 2);
+    padding: $padding-md;
+    transition: $card-transition;
+    border-radius: 3px;
+    box-shadow: $default-box-shadow;
+
+    &:hover {
+      transform: $card-transform;
+      cursor: pointer;
+    }
+
+    .card__title {
+      font-family: $heading-font;
+      font-weight: $heading-font-weight;
+      font-size: $font-size-md;
+      text-transform: uppercase;
+    }
+
+    .card__subtitle {
+      font-family: $base-font;
+      font-weight: $base-font-weight;
+      font-size: $font-size-md;
+      margin: $margin-sm 0;
+    }
+
+    .card__image {
+      width: 100%;
+      margin: $margin-sm 0;
+    }
+
+    .card__info {
+      width: 100%;
+      list-style: none;
+      margin: $margin-sm 0;
+
+      .card__info--item {
+        width: 50%;
+        display: inline-block;
+
+        .card__info--item--icon {
+          height: $card-icon-width;
+          margin-right: $margin-sm;
+        }
+
+        .card__info--item--text {
+          font-size: $font-size-sm;
+          font-weight: $base-font-weight;
+          font-family: $base-font;
+        }
+      }
+    }
+  }
+}

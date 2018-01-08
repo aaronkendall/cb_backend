@@ -3,5 +3,13 @@ export function calculateLevel(fighter) {
 }
 
 export function seedNum() {
-  return Math.floor(Math.random() * 100) + 1;  
+  return Math.floor(Math.random() * 100) + 1;
+}
+
+export function getImageId(fighterId) {
+  if (fighterId <= 9) {
+    return fighterId;
+  }
+
+  return fighterId % 10;
 }
