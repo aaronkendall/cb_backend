@@ -12,19 +12,19 @@ const Card = ({ id, level, maxHealth, health, strength, speed, handleClick, isMa
     <ul className="card__info">
       <li className="card__info--item">
         <i className="icon icon--health card__info--item--icon" />
-        <span className="card__info--item--text">{health}</span>
+        <span className="card__info--item--text">Health: {health}</span>
       </li>
       <li className="card__info--item">
         <i className="icon icon--max-health card__info--item--icon" />
-        <span className="card__info--item--text">{maxHealth}</span>
+        <span className="card__info--item--text">Max Health: {maxHealth}</span>
       </li>
       <li className="card__info--item">
         <i className="icon icon--strength card__info--item--icon" />
-        <span className="card__info--item--text">{strength}</span>
+        <span className="card__info--item--text">Strength: {strength}</span>
       </li>
       <li className="card__info--item">
         <i className="icon icon--speed card__info--item--icon" />
-        <span className="card__info--item--text">{speed}</span>
+        <span className="card__info--item--text">Speed: {speed}</span>
       </li>
     </ul>
   </div>

@@ -1,7 +1,6 @@
 .icon {
-  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-repeat: no-repeat;
 
   &.icon--max-health {
     background-image: $icon-max-health;
