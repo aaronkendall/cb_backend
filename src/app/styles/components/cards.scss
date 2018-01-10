@@ -2,13 +2,13 @@
   width: 100%;
   margin: $margin-lg -($margin-md) 0;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   flex-wrap: wrap;
 
   .card {
     width: calc(25% - 15px); // margin medium
     min-width: $min-card-width;
-    margin: 0 ($margin-md / 2);
+    margin: 0 ($margin-md / 2) $margin-md;
     padding: $padding-md;
     transition: $card-transition;
     border-radius: 3px;
@@ -24,13 +24,15 @@
       font-weight: $heading-font-weight;
       font-size: $font-size-md;
       text-transform: uppercase;
+      text-align: center;
     }
 
     .card__subtitle {
-      font-family: $base-font;
-      font-weight: $base-font-weight;
+      font-family: $default-font;
+      font-weight: $default-font-weight;
       font-size: $font-size-md;
       margin: $margin-sm 0;
+      text-align: center;
     }
 
     .card__image {
@@ -48,14 +50,15 @@
         display: inline-block;
 
         .card__info--item--icon {
+          width: $card-icon-width;
           height: $card-icon-width;
           margin-right: $margin-sm;
         }
 
         .card__info--item--text {
           font-size: $font-size-sm;
-          font-weight: $base-font-weight;
-          font-family: $base-font;
+          font-weight: $default-font-weight;
+          font-family: $default-font;
         }
       }
     }

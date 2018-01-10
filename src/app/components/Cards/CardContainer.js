@@ -5,7 +5,7 @@ import Card from './Card';
 
 const CardContainer = ({ items, isMarketplace, handleClick }) => (
   <div className="card-container">
-    {items.map(item => <Card {...item} isMarketplace handleClick={handleClick} />)}
+    {items.map(item => <Card key={item.id} {...item} isMarketplace={isMarketplace} handleClick={handleClick} />)}
   </div>
 );
 

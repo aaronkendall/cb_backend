@@ -31,7 +31,7 @@ const Card = ({ id, level, maxHealth, health, strength, speed, handleClick, isMa
 );
 
 Card.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   level: PropTypes.number.isRequired,
   maxHealth: PropTypes.number.isRequired,
   health: PropTypes.number.isRequired,
@@ -46,3 +46,5 @@ Card.defaultProps = {
   isMarketplace: false,
   price: 0
 };
+
+export default Card;
