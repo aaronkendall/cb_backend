@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:800|Montserrat:500');
 
 // defaults
-$max-width: 1400px;
+$max-width: 1600px;
 $default-padding: 55px;
 $default-mobile-padding: 20px;
 $margin-sm: 5px;
@@ -9,14 +9,22 @@ $margin-md: 15px;
 $margin-lg: 30px;
 $padding-sm: 5px;
 $padding-md: 15px;
+$padding-lg: 30px;
+
 $default-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+$default-transition: 0.3s ease-in-out;
 
 // colors
 $color-primary: #99B2DD;
 $color-secondary: #8D80AD;
 $color-tertiary: #FFBA49;
 $color-red: #EF5B5B;
-$color-grey: #F7FEFF;
+$color-grey: #FFF;
+
+$color-primary-border: #8CA2C9;
+$color-secondary-border: #81759E;
+$color-tertiary-border: #E8AA43;
+$color-red-border: #DA5353;
 
 // screen widths
 $screen-md: 992px;
@@ -37,7 +45,7 @@ $font-size-sm: 14px;
 $header-height: 70px;
 
 // cards
-$min-card-width: 250px;
+$min-card-width: 310px;
 $card-transform: scale(1.04);
 $card-transition: transform 0.3s ease-in-out;
 $card-icon-width: 30px;
@@ -47,3 +55,7 @@ $icon-max-health: url('/img/icon/max-health-icon.svg');
 $icon-health: url('/img/icon/health-icon.svg');
 $icon-speed: url('/img/icon/speed-icon.svg');
 $icon-strength: url('/img/icon/strength-icon.svg');
+
+// buttons
+$button-border-bottom: 4px;
+$button-border-bottom-on-hover: 2px;

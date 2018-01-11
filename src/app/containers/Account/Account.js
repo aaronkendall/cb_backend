@@ -7,6 +7,7 @@ import AccountService from '../../services/contract/account';
 import { addFighters, increaseFighterStats, healFighter } from '../../actions/accountActions';
 
 import CardContainer from '../../components/Cards/CardContainer';
+import Button from '../../components/Button';
 
 @connect(store => ({
   provider: store.core.provider,
@@ -17,12 +18,15 @@ import CardContainer from '../../components/Cards/CardContainer';
 class Account extends React.Component {
   constructor(props) {
     super(props);
-    const { provider, defaultAccount } = props;
+    const { provider, defaultAccount } = this.props;
     this.accountService = new AccountService(provider, defaultAccount);
   }
 
   componentWillMount() {
-    if (this.props.account.fighters.length === 0) {
+    const { fighters } = this.props.account;
+    const { userIsSignedIn } = this.props;
+
+    if (fighters.length === 0 && userIsSignedIn) {
       this.accountService.getFightersForAccount()
         .then(fightersPromiseArray => Promise.all(fightersPromiseArray))
         .then(fighters => this.props.dispatch(addFighters(fighters)));
@@ -77,7 +81,7 @@ class Account extends React.Component {
 
     return (
       <div className="page-container">
-        <button onClick={() => this.handleFighterSearch()}>Find</button>
+        <Button type="red" text="Find Fighters" handleClick={() => this.handleFighterSearch()} />
         {fighters.length > 0 && <CardContainer items={fighters} handleClick={id => this.handleCardClick(id)} />}
         {fighters.length === 0 && <p>You don't have any fighters!</p>}
       </div>
