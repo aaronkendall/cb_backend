@@ -2,18 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import reduxConnectProps from '../../utils/redux-connect-props';
 import { Redirect } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import AccountService from '../../services/contract/account';
 import { addFighters, increaseFighterStats, healFighter } from '../../actions/accountActions';
+import { showModal, closeModal, updateFighterPrice } from '../../actions/modalActions';
 
 import CardContainer from '../../components/Cards/CardContainer';
 import Button from '../../components/Button';
+import FighterAccountModal from '../../components/modal/FighterAccountModal';
 
 @connect(store => ({
   provider: store.core.provider,
   defaultAccount: store.core.defaultAccount,
   account: store.account,
-  userIsSignedIn: store.core.userIsSignedIn
+  userIsSignedIn: store.core.userIsSignedIn,
+  modalFighterPrice: store.modal.fighter.price
 }))
 class Account extends React.Component {
   constructor(props) {
@@ -57,18 +61,31 @@ class Account extends React.Component {
 
   handleAddToMarket(id, price) {
     this.accountService.makeFighterAvailableForSale(id, price)
-      .then(result => console.log(result)) // probably want to do something on the UI to display this has happened
       .catch(error => console.log('Error adding fighter to market ', id, price));
   }
 
   handleAddToArena(id) {
     this.accountService.makeFighterAvailableForBrawl(id)
-      .then(result => console.log(result)) // Same as above, some notification or something
       .catch(error => console.log('Error adding fighter to arena ', id, price));
   }
 
   handleCardClick(id) {
-    console.log(id); // in lieu of this not being set up yet
+    const { dispatch, account, modalFighterPrice } = this.props;
+    const fighter = account.fighters.find(fighter => fighter.id === id);
+    if (!fighter) return console.log('No fighter selected!');
+
+    dispatch(showModal(
+      <FighterAccountModal
+        fighter={fighter}
+        handleTrainFighter={(id, attribute) => this.handleTrainFighter(id, attribute)}
+        handleHealFighter={id => this.handleHeal(id)}
+        handleCloseModal={() => dispatch(closeModal())}
+        handleAddFighterToArena={id => this.handleAddToArena(id)}
+        handleAddFighterToMarketplace={id => this.handleAddToMarket(id, price)}
+        handleUpdatePrice={e => dispatch(updateFighterPrice(e.target.value))}
+        price={modalFighterPrice}
+        />
+    ));
   }
 
   render() {

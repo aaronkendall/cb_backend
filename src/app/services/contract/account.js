@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import ContractBase from './contractBase';
 import Fighter from '../../models/fighter.model';
 import { seedNum } from '../../utils/fighterUtils';
@@ -8,7 +9,7 @@ class Account extends ContractBase {
   }
 
   getFightersForAccount() {
-    return this.contract.tokensOfOwner.call(this.accountAddress)
+    return this.contract.getFightersForAddress(this.accountAddress)
       .then(result => result.map(id => this.getInfoForFighter(id.toNumber())))
       .catch(error => console.log('Error getting fighters for account', this.accountAddress, error));
   }
@@ -23,30 +24,40 @@ class Account extends ContractBase {
     return this.contract.searchForFighter(seedNum())
       .then(result => {
         if (result.logs.length > 1) {
+          const fighterId = result.logs[0].args.fighterId.toNumber();
+          toast.success(`Fighter #${fighterId} Found!`);
           return {
             fighterFound: true,
-            fighter: this.getInfoForFighter(result.logs[0].args.fighterId.toNumber())
+            fighter: this.getInfoForFighter(fighterId)
           }
         }
+        toast.info('No Fighter Found :(');
         return { fighterFound: false };
       })
-      .catch(error => console.log('Error searching for fighter', error));
+      .catch((error) => {
+        toast.error('Error searching for fighter :(');
+        console.log('Error searching for fighter', error);
+      });
   }
 
   trainFighter(id, attribute) {
-    return this.contract.trainFighter(id, attribute, seedNum());
+    return this.contract.trainFighter(id, attribute, seedNum())
+      .then(result => toast.success(`Fighter #${id}'s ${attribute} increased!'`));
   }
 
   healFighter(id) {
-    return this.contract.healFighter(id);
+    return this.contract.healFighter(id)
+      .then(result => toast.success(`Fighter #${id} has been healed!`));
   }
 
   makeFighterAvailableForSale(id, price) {
-    return this.contract.makeFighterAvailableForSale(id, price);
+    return this.contract.makeFighterAvailableForSale(id, price)
+      .then(result => toast.info(`Fighter #${id} has been made available for sale at ${price} ETH`));
   }
 
   makeFighterAvailableForBrawl(id) {
-    return this.contract.makeFighterAvailableForBrawl(id);
+    return this.contract.makeFighterAvailableForBrawl(id)
+      .then(result => toast.info(`Fighter #${id} has entered the arena!`));
   }
 }
 
