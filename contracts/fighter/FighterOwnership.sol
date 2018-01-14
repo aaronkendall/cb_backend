@@ -242,10 +242,11 @@ contract FighterOwnership is FighterConfig, FighterBase, FighterTraining, ERC721
       _heal(_fighterId);
     }
 
-    function trainFighter(uint _fighterId, string _attribute, uint _seed) external payable costs(trainingCost) {
+    function trainFighter(uint _fighterId, string _attribute, uint _seed) external payable costs(trainingCost) returns (uint) {
       require(_owns(msg.sender, _fighterId));
       uint _attributeIncrease = (RandomNumber.rand1To10(_seed) / trainingFactor);
       _train(_fighterId, _attribute, _attributeIncrease);
+      return _attributeIncrease;
     }
 
     function searchForFighter(uint _seed) external returns (bool fighterFound) {
@@ -270,10 +271,5 @@ contract FighterOwnership is FighterConfig, FighterBase, FighterTraining, ERC721
 
     function customOwnerCreation(address _recipient, uint _maxHealth, uint _speed, uint _strength) external onlyOwner {
       _createFighter(_maxHealth, _speed, _strength, _recipient);
-    }
-
-    function getInfoForFighter(uint _fighterId) constant external returns (uint maxHealth, uint health, uint speed, uint strength) {
-      Fighter memory _fighter = fighters[_fighterId];
-      return (_fighter.maxHealth, _fighter.health, _fighter.speed, _fighter.strength);
     }
 }

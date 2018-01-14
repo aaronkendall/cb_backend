@@ -10,8 +10,6 @@ import NavBar from '../components/NavBar';
 import Routes from '../components/Routes';
 import ModalContainer from '../components/Modal/ModalContainer';
 
-import { closeModal } from '../actions/modalActions';
-
 @connect(store => ({
   core: store.core,
   modal: store.modal
@@ -28,12 +26,13 @@ class App extends React.Component {
     initialiseWeb3(this.props.dispatch);
   }
 
-  handleNavSelection(newPage) {
-    this.setState({ selectedPage: newPage });
+  componentWillReceiveProps(nextProps) {
+    const { showModal } = nextProps.modal;
+    document.body.classList.toggle('modalIsOpen', showModal);
   }
 
-  handleCloseModal() {
-    this.props.dispatch(closeModal());
+  handleNavSelection(newPage) {
+    this.setState({ selectedPage: newPage });
   }
 
   render() {
@@ -46,7 +45,7 @@ class App extends React.Component {
           selectedItem={this.state.selectedPage}
           handleNavSelection={(newPage) => this.handleNavSelection(newPage)}
           />
-        {modal.showModal && <ModalContainer contents={modal.contents} handleCloseModal={() => this.handleCloseModal()} />}
+        {modal.showModal && <ModalContainer contents={modal.contents} />}
         <ToastContainer />
         <Routes />
       </div>

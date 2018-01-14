@@ -55,7 +55,15 @@ $icon-max-health: url('/img/icon/max-health-icon.svg');
 $icon-health: url('/img/icon/health-icon.svg');
 $icon-speed: url('/img/icon/speed-icon.svg');
 $icon-strength: url('/img/icon/strength-icon.svg');
+$icon-close: url('/img/icon/close-icon.svg');
 
 // buttons
 $button-border-bottom: 4px;
 $button-border-bottom-on-hover: 2px;
+
+// modal
+$modal-width: 80%;
+$modal-mobile-width: 100%;
+$modal-container-bg: rgba(0,0,0,0.6);
+$modal-z-index: 999;
+$modal-close-icon-width: 45px;

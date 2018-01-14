@@ -37,4 +37,20 @@
     background-color: $color-red;
     border-bottom-color: $color-red-border;
   }
+
+  &.btn--disabled {
+    background-color: #EDEDED;
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+
+  .btn--subtitle {
+    display: block;
+    text-transform: uppercase;
+    font-size: $font-size-sm;
+    font-family: $heading-font;
+    font-weight: $heading-font-weight;
+  }
 }

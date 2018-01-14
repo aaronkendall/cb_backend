@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ModalContainer = ({ contents, handleCloseModal }) => (
-  <section className="modal-container" onClick={handleCloseModal}>
+const ModalContainer = ({ contents }) => (
+  <section className="modal-container">
     {contents}
   </section>
 );
 
 ModalContainer.propTypes = {
-  contents: PropTypes.node.isRequired,
-  handleCloseModal: PropTypes.func.isRequired
+  contents: PropTypes.node.isRequired
 };
 
 export default ModalContainer;

@@ -5,7 +5,9 @@ const envConfig = {
 };
 
 const defaultConfig = {
-  contractAddress: process.env.CONTRACT_ADDRESS
+  contractAddress: process.env.CONTRACT_ADDRESS,
+  trainingCost: process.env.TRAINING_COST,
+  defaultSearchGas: process.env.DEFAULT_SEARCH_GAS
 };
 
 const config = Object.assign({}, defaultConfig, envConfig[environment]);

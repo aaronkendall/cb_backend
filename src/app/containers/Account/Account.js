@@ -3,10 +3,20 @@ import { connect } from 'react-redux';
 import reduxConnectProps from '../../utils/redux-connect-props';
 import { Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import ethunits from 'ethereum-units';
 
 import AccountService from '../../services/contract/account';
-import { addFighters, increaseFighterStats, healFighter } from '../../actions/accountActions';
+import {
+  addFighters,
+  increaseFighterStats,
+  healFighter,
+  addFighterToMarketplace,
+  removeFighterFromMarketplace,
+  addFighterToArena,
+  removeFighterFromArena
+} from '../../actions/accountActions';
 import { showModal, closeModal, updateFighterPrice } from '../../actions/modalActions';
+import { TRAINING_COST } from '../../utils/constants';
 
 import CardContainer from '../../components/Cards/CardContainer';
 import Button from '../../components/Button';
@@ -48,25 +58,44 @@ class Account extends React.Component {
   }
 
   handleTrainFighter(id, attribute) {
-    this.accountService.trainFighter()
+    this.accountService.trainFighter(id, attribute)
       .then(result => this.props.dispatch(increaseFighterStats(result)))
       .catch(error => console.log('Error training fighter ', id, error));
   }
 
   handleHeal(id) {
-    this.accountService.healFighter()
+    this.accountService.healFighter(id)
       .then(result => this.props.dispatch(healFighter(id)))
       .catch(error => console.log('Error healing fighter ', id, error));
   }
 
-  handleAddToMarket(id, price) {
-    this.accountService.makeFighterAvailableForSale(id, price)
+  handleAddToMarket(e, id) {
+    e.preventDefault();
+
+    const { modalFighterPrice } = this.props;
+    const weiPrice = ethunits.convert(parseFloat(modalFighterPrice), 'ether', 'wei').floatValue();
+
+    this.accountService.makeFighterAvailableForSale(id, weiPrice)
+      .then(result => this.props.dispatch(addFighterToMarketplace(id)))
       .catch(error => console.log('Error adding fighter to market ', id, price));
   }
 
   handleAddToArena(id) {
     this.accountService.makeFighterAvailableForBrawl(id)
+      .then(result => this.props.dispatch(addFighterToArena(id)))
       .catch(error => console.log('Error adding fighter to arena ', id, price));
+  }
+
+  handleRemoveFighterFromSale(id) {
+    this.accountService.cancelFighterSale(id)
+      .then(result => this.props.dispatch(removeFighterFromMarketplace(id)))
+      .catch(error => console.log('Error removing fighter from marketplace', id));
+  }
+
+  handleRemoveFighterFromArena(id) {
+    this.accountService.cancelFighterBrawl(id)
+      .then(result => this.props.dispatch(removeFighterFromArena(id)))
+      .catch(error => console.log('Error removing fighter from arena', id));
   }
 
   handleCardClick(id) {
@@ -81,9 +110,11 @@ class Account extends React.Component {
         handleHealFighter={id => this.handleHeal(id)}
         handleCloseModal={() => dispatch(closeModal())}
         handleAddFighterToArena={id => this.handleAddToArena(id)}
-        handleAddFighterToMarketplace={id => this.handleAddToMarket(id, price)}
+        handleAddFighterToMarketplace={(e, id) => this.handleAddToMarket(e, id)}
         handleUpdatePrice={e => dispatch(updateFighterPrice(e.target.value))}
-        price={modalFighterPrice}
+        trainingPrice={ethunits.convert(TRAINING_COST, 'wei', 'ether').floatValue()}
+        handleCancelFighterBrawl={id => this.handleRemoveFighterFromArena(id)}
+        handleCancelFighterSale={id => this.handleRemoveFighterFromSale(id)}
         />
     ));
   }

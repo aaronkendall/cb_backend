@@ -1,4 +1,8 @@
 export const CONTRACT_ADDRESS = window._config.contractAddress;
+export const TRAINING_COST = window._config.trainingCost;
+export const DEFAULT_SEARCH_GAS = window._config.defaultSearchGas;
+export const DEFAULT_GAS = 60000;
+export const HEALING_PRICE_INCREASE = 1.5;
 
 export const ACTION_TYPES = {
   core: {
@@ -9,7 +13,11 @@ export const ACTION_TYPES = {
   account: {
     ADD_FIGHTERS: 'account/ADD_FIGHTERS',
     INCREASE_FIGHTER_STATS: 'account/INCREASE_FIGHTER_STATS',
-    HEAL_FIGHTER: 'account/HEAL_FIGHTER'
+    HEAL_FIGHTER: 'account/HEAL_FIGHTER',
+    ADD_FIGHTER_TO_MARKETPLACE: 'account/ADD_FIGHTER_TO_MARKETPLACE',
+    ADD_FIGHTER_TO_ARENA: 'account/ADD_FIGHTER_TO_ARENA',
+    REMOVE_FIGHTER_FROM_ARENA: 'account/REMOVE_FIGHTER_FROM_ARENA',
+    REMOVE_FIGHTER_FROM_MARKETPLACE: 'account/REMOVE_FIGHTER_FROM_MARKETPLACE'
   },
   modal: {
     SHOW_MODAL: 'modal/SHOW_MODAL',

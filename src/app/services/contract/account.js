@@ -1,7 +1,10 @@
 import { toast } from 'react-toastify';
+import ethunits from 'ethereum-units';
+
 import ContractBase from './contractBase';
 import Fighter from '../../models/fighter.model';
 import { seedNum } from '../../utils/fighterUtils';
+import { TRAINING_COST, DEFAULT_SEARCH_GAS, DEFAULT_GAS, HEALING_PRICE_INCREASE } from '../../utils/constants';
 
 class Account extends ContractBase {
   constructor(provider, defaultAccount) {
@@ -21,7 +24,7 @@ class Account extends ContractBase {
   }
 
   searchForFighter() {
-    return this.contract.searchForFighter(seedNum())
+    return this.contract.searchForFighter(seedNum(), { gas: DEFAULT_SEARCH_GAS })
       .then(result => {
         if (result.logs.length > 1) {
           const fighterId = result.logs[0].args.fighterId.toNumber();
@@ -41,23 +44,37 @@ class Account extends ContractBase {
   }
 
   trainFighter(id, attribute) {
-    return this.contract.trainFighter(id, attribute, seedNum())
-      .then(result => toast.success(`Fighter #${id}'s ${attribute} increased!'`));
+    return this.contract.trainFighter(id, attribute, seedNum(), { value: TRAINING_COST })
+      .then((result) => { console.log(result); toast.success(`Fighter #${id}'s ${attribute} increased!'`); });
   }
 
   healFighter(id) {
-    return this.contract.healFighter(id)
+    return this.contract.healFighter(id, { value: (TRAINING_COST * HEALING_PRICE_INCREASE) })
       .then(result => toast.success(`Fighter #${id} has been healed!`));
   }
 
   makeFighterAvailableForSale(id, price) {
     return this.contract.makeFighterAvailableForSale(id, price)
-      .then(result => toast.info(`Fighter #${id} has been made available for sale at ${price} ETH`));
+      .then(result =>
+        toast.success(`Fighter #${id} has been made available for sale at ${ethunits.convert(price, 'wei', 'ether')} ETH`)
+      );
   }
 
   makeFighterAvailableForBrawl(id) {
     return this.contract.makeFighterAvailableForBrawl(id)
-      .then(result => toast.info(`Fighter #${id} has entered the arena!`));
+      .then(result => toast.success(`Fighter #${id} has entered the arena!`));
+  }
+
+  cancelFighterSale(id) {
+    return this.contract.removeFighterFromSale(id, { gas: DEFAULT_GAS })
+      .then(result => toast.info(`Sale of fighter #${id} has been cancelled`))
+      .catch(error => { toast.error(`Cannot cancel sale!`); console.log(error) });
+  }
+
+  cancelFighterBrawl(id) {
+    return this.contract.removeFighterFromArena(id, { gas: DEFAULT_GAS })
+      .then(result => toast.info(`Fighter #${id} has been removed from the arena!`))
+      .catch(error => { toast.error(`Cannot cancel sale!`); console.log(error) });
   }
 }
 
