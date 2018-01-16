@@ -45,7 +45,20 @@ class Account extends ContractBase {
 
   trainFighter(id, attribute) {
     return this.contract.trainFighter(id, attribute, seedNum(), { value: TRAINING_COST })
-      .then((result) => { console.log(result); toast.success(`Fighter #${id}'s ${attribute} increased!'`); });
+      .then((result) => {
+        const { attribute } = result.logs[0].args;
+        let { increaseValue, fighterId } = result.logs[0].args;
+        increaseValue = increaseValue.toNumber();
+        fighterId = fighterId.toNumber();
+
+        toast.success(`Fighter #${fighterId}'s ${attribute} increased by ${increaseValue}!`);
+
+        return {
+          attribute,
+          increaseValue,
+          fighterId
+        }
+      });
   }
 
   healFighter(id) {

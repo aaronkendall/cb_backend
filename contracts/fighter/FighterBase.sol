@@ -93,7 +93,7 @@ contract FighterBase {
     if (_fighter.health == _fighter.maxHealth) {
       _fighter.health += _attributeIncrease;
     }
-    
+
     _fighter.maxHealth += _attributeIncrease;
     _updateFighterInStorage(_fighter, _fighterId);
 
@@ -119,6 +119,8 @@ contract FighterBase {
   // This function assumes that a fighter can actually be healed i.e this check is done elsewhere before any eth is taken
   function _healFighter(uint _fighterId, address _owner) internal {
     Fighter memory _fighter = fighters[_fighterId];
+    require(_fighter.health < _fighter.maxHealth);
+    
     _fighter.health = _fighter.maxHealth;
     _updateFighterInStorage(_fighter, _fighterId);
 

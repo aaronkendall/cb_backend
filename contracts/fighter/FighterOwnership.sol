@@ -237,7 +237,7 @@ contract FighterOwnership is FighterConfig, FighterBase, FighterTraining, ERC721
         return _toString(buffer, count);
     }
 
-    function healFighter(uint _fighterId) external {
+    function healFighter(uint _fighterId) external payable costs(trainingCost) {
       require(_owns(msg.sender, _fighterId));
       _heal(_fighterId);
     }

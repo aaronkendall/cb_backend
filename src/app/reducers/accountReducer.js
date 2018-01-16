@@ -16,6 +16,7 @@ export default function accountReducer(state = defaultState, action) {
 
       const updatedFighterArray = state.fighters.map((fighter) => {
         if (fighter.id === fighterId) {
+          if (attribute === 'maxHealth' && fighter.health === fighter.maxHealth) fighter.health += increaseValue;
           fighter[attribute] += increaseValue;
         }
         return fighter;

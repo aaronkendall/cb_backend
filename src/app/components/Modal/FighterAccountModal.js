@@ -28,7 +28,7 @@ const FighterAccountModal = ({
           <li className="fighter-account-modal__fighter__info--item">
             <i className="icon icon--health fighter-account-modal__fighter__info--icon" />
             <span className="fighter-account-modal__fighter__info--text">Health: <strong>{health}</strong></span>
-            <Button type='tertiary' text='Heal Fighter' handleClick={() => handleHealFighter(id)} subText={`costs ${trainingPrice * HEALING_PRICE_INCREASE} ETH`}/>
+            <Button type='tertiary' text='Heal Fighter' handleClick={() => handleHealFighter(id)} subText={`costs ${trainingPrice} ETH`}/>
           </li>
           <li className="fighter-account-modal__fighter__info--item">
             <i className="icon icon--max-health fighter-account-modal__fighter__info--icon" />

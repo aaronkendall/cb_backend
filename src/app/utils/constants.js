@@ -2,7 +2,7 @@ export const CONTRACT_ADDRESS = window._config.contractAddress;
 export const TRAINING_COST = window._config.trainingCost;
 export const DEFAULT_SEARCH_GAS = window._config.defaultSearchGas;
 export const DEFAULT_GAS = 60000;
-export const HEALING_PRICE_INCREASE = 1.5;
+// export const HEALING_PRICE_INCREASE = 1.5; Maybe reconsider this later
 
 export const ACTION_TYPES = {
   core: {
