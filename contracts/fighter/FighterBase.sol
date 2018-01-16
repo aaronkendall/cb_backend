@@ -83,22 +83,36 @@ contract FighterBase {
     return newFighterId;
   }
 
+  function _updateFighterInStorage(Fighter _updatedFighter, uint _fighterId) internal {
+    fighters[_fighterId] = _updatedFighter;
+  }
+
   function _trainMaxHealth(uint _fighterId, uint _attributeIncrease, address _owner) internal {
     Fighter memory _fighter = fighters[_fighterId];
+
+    if (_fighter.health == _fighter.maxHealth) {
+      _fighter.health += _attributeIncrease;
+    }
+    
     _fighter.maxHealth += _attributeIncrease;
-    _fighter.health = _fighter.maxHealth;
+    _updateFighterInStorage(_fighter, _fighterId);
+
     AttributeIncrease(_owner, _fighterId, 'maxHealth', _attributeIncrease);
   }
 
   function _trainSpeed(uint _fighterId, uint _attributeIncrease, address _owner) internal {
     Fighter memory _fighter = fighters[_fighterId];
     _fighter.speed += _attributeIncrease;
+    _updateFighterInStorage(_fighter, _fighterId);
+
     AttributeIncrease(_owner, _fighterId, 'speed', _attributeIncrease);
   }
 
   function _trainStrength(uint _fighterId, uint _attributeIncrease, address _owner) internal {
     Fighter memory _fighter = fighters[_fighterId];
     _fighter.strength += _attributeIncrease;
+    _updateFighterInStorage(_fighter, _fighterId);
+
     AttributeIncrease(_owner, _fighterId, 'strength', _attributeIncrease);
   }
 
@@ -106,6 +120,8 @@ contract FighterBase {
   function _healFighter(uint _fighterId, address _owner) internal {
     Fighter memory _fighter = fighters[_fighterId];
     _fighter.health = _fighter.maxHealth;
+    _updateFighterInStorage(_fighter, _fighterId);
+
     Healed(_owner, _fighterId);
   }
 }

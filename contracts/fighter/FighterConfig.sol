@@ -5,7 +5,7 @@ import "../base/Ownable.sol";
 contract FighterConfig is Ownable {
   uint public chanceOfFighterCreation = 3;
   uint public trainingFactor = 3;
-  uint public trainingCost = 5000000000000000; // cost of training in wei
+  uint256 public trainingCost = 5000000000000000; // cost of training in wei
 
   function setFighterCreationChance(uint newProbability) external onlyOwner {
     chanceOfFighterCreation = newProbability;
