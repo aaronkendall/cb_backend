@@ -11,7 +11,7 @@ class Arena extends ContractBase {
 
   getAllFightersInArena() {
     return this.contract.getFightersInArena()
-      .then(fighters => fighters)
+      .then(results => results.map(id => this.getInfoForFighter(id.toNumber())))
       .catch(error => console.log('Error getting fighters in arena', error))
   }
 

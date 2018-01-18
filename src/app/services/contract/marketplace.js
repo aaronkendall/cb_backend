@@ -1,6 +1,8 @@
-import ContractBase from './contractBase';
 import ethunits from 'ethereum-units';
 import toast from 'react-toastify';
+
+import ContractBase from './contractBase';
+import Sale from '../../models/sale.model';
 
 class Marketplace extends ContractBase {
   constructor() {
@@ -9,8 +11,17 @@ class Marketplace extends ContractBase {
 
   getAllFightersInMarket() {
     return this.contract.getFightersForSale()
-      .then(fighters => fighters)
+      .then(result => result.map(id => {
+        const fighterId = id.toNumber();
+        return Promise.all([this.getInfoForFighter(fighterId), this.getPriceForFighter(fighterId)])
+          .then(fighterInfo => new Sale(fighterInfo[0], fighterInfo[1]));
+      })
       .catch(error => console.log('Error getting fighters for sale', error))
+  }
+
+  getPriceForFighter(id) {
+    return this.contract.getPriceForFighter(id)
+      .then(price => price.toNumber())
   }
 
   buyFighter(fighterId, price) {

@@ -2,7 +2,6 @@ import { toast } from 'react-toastify';
 import ethunits from 'ethereum-units';
 
 import ContractBase from './contractBase';
-import Fighter from '../../models/fighter.model';
 import { seedNum } from '../../utils/fighterUtils';
 import { TRAINING_COST, DEFAULT_SEARCH_GAS, DEFAULT_GAS, HEALING_PRICE_INCREASE } from '../../utils/constants';
 
@@ -15,12 +14,6 @@ class Account extends ContractBase {
     return this.contract.getFightersForAddress(this.accountAddress)
       .then(result => result.map(id => this.getInfoForFighter(id.toNumber())))
       .catch(error => console.log('Error getting fighters for account', this.accountAddress, error));
-  }
-
-  getInfoForFighter(fighterId) {
-    return this.contract.getInfoForFighter(fighterId)
-      .then(rawFighter => new Fighter(rawFighter, fighterId))
-      .catch(error => console.log('Error getting info for fighter', fighterId, error));
   }
 
   searchForFighter() {
