@@ -6,9 +6,10 @@ html
   body
     #app
     script.
-      window._config = { 
+      window._config = {
         contractAddress: '!{contractAddress}',
         trainingCost: !{trainingCost},
-        defaultSearchGas: !{defaultSearchGas}
+        defaultSearchGas: !{defaultSearchGas},
+        defaultFightGas: !{defaultFightGas}
       }
     script(src="/js/index.js")

@@ -10,8 +10,8 @@ contract Marketplace is FighterOwnership, MarketplaceConfig {
   mapping(uint256 => uint256) public fighterIdToMaxHealth; // Map of fighter Ids to their max health
   uint256[] public fightersInArena; // List of all fighter ids in the arena
 
-  event PurchaseSuccess(address _buyer, uint _price, uint _fighterId);
-  event FightComplete(address _winner, uint _winnerId);
+  event PurchaseSuccess(address buyer, uint price, uint fighterId);
+  event FightComplete(address winner, uint winnerId);
 
   struct Combatant {
     uint256 fighterId;

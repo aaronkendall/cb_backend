@@ -8,7 +8,8 @@ router.get('*', function(req, res, next) {
     title: 'CryptoBrawlers',
     contractAddress: config.contractAddress,
     trainingCost: config.trainingCost,
-    defaultSearchGas: config.defaultSearchGas
+    defaultSearchGas: config.defaultSearchGas,
+    defaultFightGas: config.defaultFightGas
   });
 });
 
