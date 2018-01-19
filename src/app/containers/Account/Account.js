@@ -13,7 +13,9 @@ import {
   addFighterToMarketplace,
   removeFighterFromMarketplace,
   addFighterToArena,
-  removeFighterFromArena
+  removeFighterFromArena,
+  populateFighters,
+  searchForFighter
 } from '../../actions/accountActions';
 import { showModal, closeModal, updateFighterPrice } from '../../actions/modalActions';
 import { TRAINING_COST } from '../../utils/constants';
@@ -41,20 +43,12 @@ class Account extends React.Component {
     const { userIsSignedIn } = this.props;
 
     if (fighters.length === 0 && userIsSignedIn) {
-      this.accountService.getFightersForAccount()
-        .then(fightersPromiseArray => Promise.all(fightersPromiseArray))
-        .then(fighters => this.props.dispatch(addFighters(fighters)));
+      this.props.dispatch(populateFighters(this.accountService))
     }
   }
 
   handleFighterSearch() {
-    this.accountService.searchForFighter()
-      .then(result => {
-        if (result.fighterFound) {
-          result.fighter
-            .then(newFighter => this.props.dispatch(addFighters([newFighter])));
-        }
-      });
+    this.props.dispatch(searchForFighter(this.accountService))
   }
 
   handleTrainFighter(id, attribute) {
