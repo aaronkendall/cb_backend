@@ -20,3 +20,17 @@ export function incrementMarketplacePage() {
 export function resetMarketplacePage() {
   return { type: marketplace.RESET_PAGE_COUNTER };
 }
+
+export function removeFighterFromMarketplace(id) {
+  return { type: marketplace.REMOVE_FIGHTER_FROM_MARKETPLACE, payload: id }
+}
+
+export function purchaseFighter(marketService, id, price) {
+  return (dispatch) => {
+    marketService.buyFighter(id, price)
+      .then((result) => {
+        if (!result) return
+        dispatch(removeFighterFromMarketplace(id))
+      })
+  }
+}

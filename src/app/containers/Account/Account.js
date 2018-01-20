@@ -7,15 +7,14 @@ import ethunits from 'ethereum-units';
 
 import AccountService from '../../services/contract/account';
 import {
-  addFighters,
-  increaseFighterStats,
-  healFighter,
-  addFighterToMarketplace,
-  removeFighterFromMarketplace,
-  addFighterToArena,
-  removeFighterFromArena,
   populateFighters,
-  searchForFighter
+  searchForFighter,
+  trainFighter,
+  healFighterThunk,
+  approveFighterForSale,
+  approveFighterForArena,
+  cancelFighterSale,
+  cancelFighterBrawl
 } from '../../actions/accountActions';
 import { showModal, closeModal, updateFighterPrice } from '../../actions/modalActions';
 import { TRAINING_COST } from '../../utils/constants';
@@ -52,44 +51,32 @@ class Account extends React.Component {
   }
 
   handleTrainFighter(id, attribute) {
-    this.accountService.trainFighter(id, attribute)
-      .then(result => this.props.dispatch(increaseFighterStats(result)))
-      .catch(error => console.log('Error training fighter ', id, error));
+    this.props.dispatch(trainFighter(this.accountService, id, attribute))
   }
 
   handleHeal(id) {
-    this.accountService.healFighter(id)
-      .then(result => this.props.dispatch(healFighter(id)))
-      .catch(error => console.log('Error healing fighter ', id, error));
+    this.props.dispatch(healFighterThunk(this.accountService, id, attribute))
   }
 
   handleAddToMarket(e, id) {
-    e.preventDefault();
+    e.preventDefault()
 
-    const { modalFighterPrice } = this.props;
-    const weiPrice = ethunits.convert(parseFloat(modalFighterPrice), 'ether', 'wei').floatValue();
+    const { modalFighterPrice } = this.props
+    const weiPrice = ethunits.convert(parseFloat(modalFighterPrice), 'ether', 'wei').floatValue()
 
-    this.accountService.makeFighterAvailableForSale(id, weiPrice)
-      .then(result => this.props.dispatch(addFighterToMarketplace(id)))
-      .catch(error => console.log('Error adding fighter to market ', id, price));
+    this.props.dispatch(approveFighterForSale(this.accountService, id, weiPrice))
   }
 
   handleAddToArena(id) {
-    this.accountService.makeFighterAvailableForBrawl(id)
-      .then(result => this.props.dispatch(addFighterToArena(id)))
-      .catch(error => console.log('Error adding fighter to arena ', id, price));
+    this.props.dispatch(approveFighterForArena(this.accountService, id))
   }
 
   handleRemoveFighterFromSale(id) {
-    this.accountService.cancelFighterSale(id)
-      .then(result => this.props.dispatch(removeFighterFromMarketplace(id)))
-      .catch(error => console.log('Error removing fighter from marketplace', id));
+    this.props.dispatch(cancelFighterSale(this.accountService, id))
   }
 
   handleRemoveFighterFromArena(id) {
-    this.accountService.cancelFighterBrawl(id)
-      .then(result => this.props.dispatch(removeFighterFromArena(id)))
-      .catch(error => console.log('Error removing fighter from arena', id));
+    this.props.dispatch(cancelFighterBrawl(this.accountService, id))
   }
 
   handleCardClick(id) {

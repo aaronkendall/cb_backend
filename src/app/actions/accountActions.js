@@ -49,44 +49,50 @@ export function searchForFighter(accountService) {
   }
 }
 
-/* Turns these into thunks
-handleTrainFighter(id, attribute) {
-  this.accountService.trainFighter(id, attribute)
-    .then(result => this.props.dispatch(increaseFighterStats(result)))
-    .catch(error => console.log('Error training fighter ', id, error));
+export function trainFighter(accountService, id, attribute) {
+  return (dispatch) => {
+    accountService.trainFighter(id, attribute)
+      .then(result => dispatch(increaseFighterStats(result)))
+      .catch(error => console.log('Error training fighter ', id, error));
+  }
 }
 
-handleHeal(id) {
-  this.accountService.healFighter(id)
-    .then(result => this.props.dispatch(healFighter(id)))
-    .catch(error => console.log('Error healing fighter ', id, error));
+export function healFighterThunk(accountService, id) {
+  return (dispatch) => {
+    accountService.healFighter(id)
+      .then(result => dispatch(healFighter(id)))
+      .catch(error => console.log('Error healing fighter ', id, error));
+  }
 }
 
-handleAddToMarket(e, id) {
-  e.preventDefault();
-
-  const { modalFighterPrice } = this.props;
-  const weiPrice = ethunits.convert(parseFloat(modalFighterPrice), 'ether', 'wei').floatValue();
-
-  this.accountService.makeFighterAvailableForSale(id, weiPrice)
-    .then(result => this.props.dispatch(addFighterToMarketplace(id)))
-    .catch(error => console.log('Error adding fighter to market ', id, price));
+export function approveFighterForSale(accountService, id, price) {
+  return (dispatch) => {
+    accountService.makeFighterAvailableForSale(id, price)
+      .then(result => dispatch(addFighterToMarketplace(id)))
+      .catch(error => console.log('Error adding fighter to market ', id, price));
+  }
 }
 
-handleAddToArena(id) {
-  this.accountService.makeFighterAvailableForBrawl(id)
-    .then(result => this.props.dispatch(addFighterToArena(id)))
-    .catch(error => console.log('Error adding fighter to arena ', id, price));
+export function approveFighterForArena(accountService, id) {
+  return (dispatch) => {
+    accountService.makeFighterAvailableForBrawl(id)
+      .then(result => dispatch(addFighterToArena(id)))
+      .catch(error => console.log('Error adding fighter to arena ', id, price));
+  }
 }
 
-handleRemoveFighterFromSale(id) {
-  this.accountService.cancelFighterSale(id)
-    .then(result => this.props.dispatch(removeFighterFromMarketplace(id)))
-    .catch(error => console.log('Error removing fighter from marketplace', id));
+export function cancelFighterSale(accountService, id) {
+  return (dispatch) => {
+    accountService.cancelFighterSale(id)
+      .then(result => dispatch(removeFighterFromMarketplace(id)))
+      .catch(error => console.log('Error removing fighter from marketplace', id));
+  }
 }
 
-handleRemoveFighterFromArena(id) {
-  this.accountService.cancelFighterBrawl(id)
-    .then(result => this.props.dispatch(removeFighterFromArena(id)))
-    .catch(error => console.log('Error removing fighter from arena', id));
-}*/
+export function cancelFighterBrawl(accountService, id) {
+  return (dispatch) => {
+    accountService.cancelFighterBrawl(id)
+      .then(result => dispatch(removeFighterFromArena(id)))
+      .catch(error => console.log('Error removing fighter from arena', id));
+  }
+}

@@ -1,6 +1,13 @@
 export default class Sale {
   constructor(fighter, price) {
-    this.fighter = fighter;
+    this.id = fighter.id;
+    this.maxHealth = fighter.maxHealth;
+    this.health = fighter.health;
+    this.speed = fighter.speed
+    this.strength = fighter.strength;
+    this.isForSale = fighter.isForSale;
+    this.isInArena = fighter.isInArena;
+    this.level = fighter.level;
     this.price = price;
   }
 }

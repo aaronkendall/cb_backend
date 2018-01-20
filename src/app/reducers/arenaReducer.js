@@ -26,6 +26,24 @@ export default function arenaReducer(state = defaultState, action) {
       return { ...newState, ...{ selectFighterToBrawl: action.payload } };
     case arena.RESET_SELECTED_FIGHTER:
       return { ...newState, ...{ selectFighterToBrawl: undefined } };
+    case arena.REMOVE_FIGHTER_FROM_ARENA:
+      const id = action.payload
+      const indexOfFighter = newState.fightersInArena.findIndex(fighter => fighter.id === id)
+      const indexOfFilteredFighter = newState.filteredFighters.findIndex(fighter => fighter.id === id)
+
+      return {
+        ...newState,
+        ...{
+          fightersInArena: [
+            ...newState.fightersInArena.slice(0, indexOfFighter),
+            ...newState.fightersInArena.slice(indexOfFighter + 1)
+          ],
+          filteredFighters: [
+            ...newState.filteredFighters.slice(0, indexOfFilteredFighter),
+            ...newState.filteredFighters.slice(indexOfFilteredFighter + 1)
+          ]
+        }
+      }
 		default:
 			return newState;
 	}
