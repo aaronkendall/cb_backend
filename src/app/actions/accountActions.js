@@ -68,7 +68,7 @@ export function healFighterThunk(accountService, id) {
 export function approveFighterForSale(accountService, id, price) {
   return (dispatch) => {
     accountService.makeFighterAvailableForSale(id, price)
-      .then(result => dispatch(addFighterToMarketplace(id)))
+      .then(() => dispatch(addFighterToMarketplace(id)))
       .catch(error => console.log('Error adding fighter to market ', id, price));
   }
 }
@@ -76,7 +76,7 @@ export function approveFighterForSale(accountService, id, price) {
 export function approveFighterForArena(accountService, id) {
   return (dispatch) => {
     accountService.makeFighterAvailableForBrawl(id)
-      .then(result => dispatch(addFighterToArena(id)))
+      .then(() => dispatch(addFighterToArena(id)))
       .catch(error => console.log('Error adding fighter to arena ', id, price));
   }
 }

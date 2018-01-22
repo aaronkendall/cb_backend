@@ -5,15 +5,15 @@ import ContractBase from './contractBase';
 import Sale from '../../models/sale.model';
 
 class Marketplace extends ContractBase {
-  constructor() {
-    super();
+  constructor(provider, defaultAccount) {
+    super(provider, defaultAccount);
   }
 
   getAllFightersInMarket() {
     return this.contract.getFightersForSale()
       .then(result => result.map(id => {
         const fighterId = id.toNumber();
-        return Promise.all([this.getInfoForFighter(fighterId), this.getPriceForFighter(fighterId)])
+        return Promise.all([this.getInfoForFighter(fighterId), this.getPriceForFighterInEth(fighterId)])
           .then(fighterInfo => new Sale(fighterInfo[0], fighterInfo[1]));
       }))
       .catch(error => console.log('Error getting fighters for sale', error))
@@ -21,11 +21,11 @@ class Marketplace extends ContractBase {
 
   getPriceForFighterInEth(id) {
     return this.contract.getPriceForFighter(id)
-      .then(price => ethunits.convert(price.toNumber(), 'wei', 'ether').toNumber())
+      .then(price => ethunits.convert(price.toNumber(), 'wei', 'ether').floatValue())
   }
 
   buyFighter(fighterId, price) {
-    const weiPrice = ethunits.convert(price, 'ether', 'wei').toNumber()
+    const weiPrice = ethunits.convert(price, 'ether', 'wei').floatValue()
 
     return this.contract.buyFighter(fighterId, { value: weiPrice })
       .then(result => {

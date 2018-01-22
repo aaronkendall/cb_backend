@@ -20,7 +20,9 @@ export default function coreReducer(state = defaultState, action) {
       return { ...newState, ...{ defaultAccount: action.payload } }
     case core.SET_CONTRACT_SERVICE:
       const { name, service } = action.payload
-      return { ...newState, ...{ newState.services, ...{ [name]: service } }
+      const newServices = { ...newState.services, ...{ [name]: service } }
+
+      return { ...newState, ...{ services: newServices } }
 		default:
 			return newState;
 	}

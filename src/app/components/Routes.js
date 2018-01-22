@@ -4,7 +4,6 @@ import Home from '../containers/Home/Home';
 import SignIn from '../containers/SignIn/SignIn';
 import Account from '../containers/Account/Account';
 import Marketplace from '../containers/Marketplace/Marketplace';
-import Training from '../containers/Training/Training';
 
 const Routes = () => {
   return (
@@ -14,7 +13,6 @@ const Routes = () => {
       <Route path="/signin" exact component={SignIn} />
       <Route path="/marketplace" exact component={Marketplace} />
       <Route path="/arena" exact component={Marketplace} />
-      <Route path="/training" exact component={Training} />
     </Switch>
   );
 };

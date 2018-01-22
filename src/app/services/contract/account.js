@@ -62,7 +62,7 @@ class Account extends ContractBase {
   makeFighterAvailableForSale(id, price) {
     return this.contract.makeFighterAvailableForSale(id, price)
       .then(result =>
-        toast.success(`Fighter #${id} has been made available for sale at ${ethunits.convert(price, 'wei', 'ether').toNumber()} ETH`)
+        toast.success(`Fighter #${id} has been made available for sale at ${ethunits.convert(price, 'wei', 'ether').floatValue()} ETH`)
       );
   }
 

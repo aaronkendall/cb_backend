@@ -1,20 +1,6 @@
-import { Marketplace, Arena, Account } from '../services/contract';
+import * as Services from '../services'
 import { ACTION_TYPES } from '../utils/constants';
 const { core } = ACTION_TYPES;
-const contractServices = [
-  {
-    name: 'marketService',
-    service: Marketplace
-  },
-  {
-    name: 'arenaService',
-    service: Arena
-  },
-  {
-    name: 'accountService',
-    service: Account
-  }
-];
 
 export function signInOrOut(userIsSignedIn) {
   return { type: core.SIGNING_ACTION, payload: userIsSignedIn }
@@ -36,10 +22,11 @@ export function initApp(defaultAccount, ethProvider) {
   return (dispatch) => {
     dispatch(setDefaultAccount(defaultAccount))
     dispatch(setProvider(ethProvider))
-    contractServices.forEach(service =>
+
+    Object.keys(Services).forEach(serviceName =>
       dispatch(setContractService({
-        name: service.name,
-        service: new service.service(ethProvider, defaultAccount)
+        name: serviceName,
+        service: new Services[serviceName](ethProvider, defaultAccount)
       }))
     )
     dispatch(signInOrOut(true))

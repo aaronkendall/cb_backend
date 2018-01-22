@@ -26,7 +26,7 @@ import FighterAccountModal from '../../components/modal/FighterAccountModal';
   account: store.account,
   userIsSignedIn: store.core.userIsSignedIn,
   modalFighterPrice: store.modal.fighter.price,
-  accountService: store.core.services.account
+  accountService: store.core.services.Account
 }))
 class Account extends React.Component {
   constructor(props) {

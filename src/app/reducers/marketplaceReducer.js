@@ -21,7 +21,7 @@ export default function marketplaceReducer(state = defaultState, action) {
       return { ...newState, ...{ pageCounter: newState.pageCounter++ } };
     case marketplace.RESET_PAGE_COUNTER:
       return { ...newState, ...{ pageCounter: 1 } };
-    case martplace.REMOVE_FIGHTER_FROM_MARKETPLACE:
+    case marketplace.REMOVE_FIGHTER_FROM_MARKETPLACE:
       const id = action.payload
       const indexOfFighter = newState.fightersForSale.findIndex(fighter => fighter.id === id)
       const indexOfFilteredFighter = newState.filteredFighters.findIndex(fighter => fighter.id === id)

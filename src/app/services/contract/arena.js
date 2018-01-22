@@ -5,8 +5,8 @@ import { seedNum } from '../../utils/fighterUtils';
 import { DEFAULT_FIGHT_GAS } from '../../utils/constants';
 
 class Arena extends ContractBase {
-  constructor() {
-    super();
+  constructor(provider, defaultAccount) {
+    super(provider, defaultAccount);
   }
 
   getAllFightersInArena() {

@@ -2,18 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 import reduxConnectProps from '../../utils/redux-connect-props';
 
-import { purchaseFighter } from '../../actions/marketplaceActions';
+import { purchaseFighter, populateFighters } from '../../actions/marketplaceActions';
 import { FIGHTERS_PER_PAGE } from '../../utils/constants';
 
 import CardContainer from '../../components/Cards/CardContainer';
 
 @connect(store => ({
   marketplace: store.marketplace,
-  marketService: store.core.services.marketService
+  marketService: store.core.services.Marketplace
 }))
 class Marketplace extends React.Component {
   constructor(props) {
     super(props)
+  }
+
+  componentWillMount() {
+    const { marketService, dispatch } = this.props;
+
+    marketService.getAllFightersInMarket(fighters => dispatch(populateFighters(fighters)))
   }
 
   fightersToShow(fighters) {
