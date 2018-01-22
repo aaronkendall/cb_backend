@@ -5,7 +5,6 @@ import { Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import ethunits from 'ethereum-units';
 
-import AccountService from '../../services/contract/account';
 import {
   populateFighters,
   searchForFighter,
@@ -24,59 +23,62 @@ import Button from '../../components/Button';
 import FighterAccountModal from '../../components/modal/FighterAccountModal';
 
 @connect(store => ({
-  provider: store.core.provider,
-  defaultAccount: store.core.defaultAccount,
   account: store.account,
   userIsSignedIn: store.core.userIsSignedIn,
-  modalFighterPrice: store.modal.fighter.price
+  modalFighterPrice: store.modal.fighter.price,
+  accountService: store.core.services.account
 }))
 class Account extends React.Component {
   constructor(props) {
-    super(props);
-    const { provider, defaultAccount } = this.props;
-    this.accountService = new AccountService(provider, defaultAccount);
+    super(props)
   }
 
   componentWillMount() {
-    const { fighters } = this.props.account;
-    const { userIsSignedIn } = this.props;
+    const { fighters } = this.props.account
+    const { userIsSignedIn, accountService, dispatch } = this.props
 
     if (fighters.length === 0 && userIsSignedIn) {
-      this.props.dispatch(populateFighters(this.accountService))
+      dispatch(populateFighters(accountService))
     }
   }
 
   handleFighterSearch() {
-    this.props.dispatch(searchForFighter(this.accountService))
+    const { accountService, dispatch } = this.props
+    dispatch(searchForFighter(accountService))
   }
 
   handleTrainFighter(id, attribute) {
-    this.props.dispatch(trainFighter(this.accountService, id, attribute))
+    const { accountService, dispatch } = this.props
+    dispatch(trainFighter(accountService, id, attribute))
   }
 
   handleHeal(id) {
-    this.props.dispatch(healFighterThunk(this.accountService, id, attribute))
+    const { accountService, dispatch } = this.props
+    dispatch(healFighterThunk(accountService, id, attribute))
   }
 
   handleAddToMarket(e, id) {
     e.preventDefault()
 
-    const { modalFighterPrice } = this.props
+    const { modalFighterPrice, accountService, dispatch } = this.props
     const weiPrice = ethunits.convert(parseFloat(modalFighterPrice), 'ether', 'wei').floatValue()
 
-    this.props.dispatch(approveFighterForSale(this.accountService, id, weiPrice))
+    dispatch(approveFighterForSale(accountService, id, weiPrice))
   }
 
   handleAddToArena(id) {
-    this.props.dispatch(approveFighterForArena(this.accountService, id))
+    const { accountService, dispatch } = this.props
+    dispatch(approveFighterForArena(accountService, id))
   }
 
   handleRemoveFighterFromSale(id) {
-    this.props.dispatch(cancelFighterSale(this.accountService, id))
+    const { accountService, dispatch } = this.props
+    dispatch(cancelFighterSale(accountService, id))
   }
 
   handleRemoveFighterFromArena(id) {
-    this.props.dispatch(cancelFighterBrawl(this.accountService, id))
+    const { accountService, dispatch } = this.props
+    dispatch(cancelFighterBrawl(accountService, id))
   }
 
   handleCardClick(id) {

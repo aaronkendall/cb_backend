@@ -1,5 +1,5 @@
 import { DEVELOPMENT_BLOCKCHAIN_URI } from './constants';
-import { setProvider, signInOrOut, setDefaultAccount } from '../actions/coreActions';
+import { initApp } from '../actions/coreActions';
 
 export default function initialiseWeb3(dispatch) {
   if (typeof window.web3 !== 'undefined') {
@@ -8,9 +8,7 @@ export default function initialiseWeb3(dispatch) {
     if (web3.eth.defaultAccount) {
       // This needs to be added to state here as it doesn't persist otherwise and
       // we get some weird errors occasionally with the address being undefined
-      dispatch(setDefaultAccount(web3.eth.defaultAccount));
-      dispatch(setProvider(ethProvider));
-      dispatch(signInOrOut(true));
+      dispatch(initApp(web3.eth.defaultAccount, ethProvider))
     }
   }
 }
