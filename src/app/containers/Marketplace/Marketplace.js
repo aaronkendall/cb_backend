@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import reduxConnectProps from '../../utils/redux-connect-props';
 
-import { purchaseFighter, populateMarketplace } from '../../actions/marketplaceActions';
+import { purchaseFighter, populateMarketplaceThunk } from '../../actions/marketplaceActions';
 import { FIGHTERS_PER_PAGE } from '../../utils/constants';
 
 import CardContainer from '../../components/Cards/CardContainer';
@@ -17,10 +17,8 @@ class Marketplace extends React.Component {
   }
 
   componentWillMount() {
-    const { marketService, dispatch } = this.props;
-
-    marketService.getAllFightersInMarket()
-      .then(sales => dispatch(populateMarketplace(sales)))
+    const { marketService, dispatch } = this.props
+    dispatch(populateMarketplaceThunk(marketService))
   }
 
   fightersToShow(fighters) {
@@ -46,14 +44,14 @@ class Marketplace extends React.Component {
         {showAllFighters &&
           <CardContainer
             items={this.fightersToShow(fightersForSale)}
-            handleClick={id => this.handleCardClick(id)}
+            handleClick={(id, price) => this.handleCardClick(id, price)}
             isMarketplace
             />
         }
         {showFilteredFighters &&
           <CardContainer
             items={this.fightersToShow(filteredFighters)}
-            handleClick={id => this.handleCardClick(id)}
+            handleClick={(id, price) => this.handleCardClick(id, price)}
             isMarketplace
             />
         }

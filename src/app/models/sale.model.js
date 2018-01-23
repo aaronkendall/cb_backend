@@ -1,6 +1,6 @@
 export default class Sale {
   constructor(fighter, price) {
-    this.id = fighter.id;
+    this.id = fighter.id.toNumber();
     this.maxHealth = fighter.maxHealth;
     this.health = fighter.health;
     this.speed = fighter.speed

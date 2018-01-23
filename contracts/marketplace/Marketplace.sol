@@ -91,6 +91,8 @@ contract Marketplace is FighterOwnership, MarketplaceConfig {
     require(_fighterIsForBrawl(_defenderId));
     // Make sure the challenger is actually sending the transaction
     require(_owns(msg.sender, _attackerId));
+    // Also make sure that the challenger is not attacking his own fighter
+    require(!_owns(msg.sender, _defenderId));
 
     uint[2] memory winnerAndLoser = _determineWinner(_attackerId, _defenderId, _seed);
     uint _winnerId = winnerAndLoser[0];
@@ -98,6 +100,10 @@ contract Marketplace is FighterOwnership, MarketplaceConfig {
 
     if (_fighterIsForBrawl(_loserId)) {
       _removeFighterFromArena(_loserId);
+    }
+
+    if (_fighterIsForBrawl(_winnerId)) {
+      _removeFighterFromArena(_winnerId);
     }
 
     _transfer(fighterIdToOwner[_loserId], fighterIdToOwner[_winnerId], _loserId);
@@ -157,6 +163,7 @@ contract Marketplace is FighterOwnership, MarketplaceConfig {
   }
 
   function _makePurchase(uint _fighterId, uint _price) internal {
+    require(!_owns(msg.sender, _fighterId));
     require(_fighterIsForSale(_fighterId));
     require(_price >= fighterIdToSale[_fighterId].price);
 

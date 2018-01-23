@@ -1,5 +1,5 @@
 import ethunits from 'ethereum-units';
-import toast from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import ContractBase from './contractBase';
 import Sale from '../../models/sale.model';
@@ -12,12 +12,12 @@ class Marketplace extends ContractBase {
   async getAllFightersInMarket() {
     try {
       const fighterIdsInMarket = await this.contract.getFightersForSale()
-      return fighterIdsInMarket.map(async (id) => {
+      return Promise.all(fighterIdsInMarket.map(async (id) => {
         const fighter = await this.getInfoForFighter(id)
         const fighterPrice = await this.getPriceForFighterInEth(id)
 
         return new Sale(fighter, fighterPrice)
-      })
+      }))
     } catch(error) {
       console.log(error)
     }
@@ -33,7 +33,7 @@ class Marketplace extends ContractBase {
 
     return this.contract.buyFighter(fighterId, { value: weiPrice })
       .then(result => {
-        if (result.logs[0] && result.logs[0].args.fighterId === fighterId) {
+        if (result.logs[0] && result.logs[0].args.fighterId.toNumber() === fighterId) {
           toast.success(`Successfully purchsed Fighter #${fighterId}`)
           return true
         }
