@@ -1,15 +1,15 @@
 {
   "contractName": "RandomNumber",
   "abi": [],
-  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820b01093a38a89d21c6a7c6f510d611beec1e67816942cd0b7e8a6f3e6508192590029",
-  "deployedBytecode": "0x6060604052600080fd00a165627a7a72305820b01093a38a89d21c6a7c6f510d611beec1e67816942cd0b7e8a6f3e6508192590029",
+  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820cb6dfa3802c4604bf34ba9fb1dd749c3b56d33576d1b636061c9e5eb359f51ef0029",
+  "deployedBytecode": "0x6060604052600080fd00a165627a7a72305820cb6dfa3802c4604bf34ba9fb1dd749c3b56d33576d1b636061c9e5eb359f51ef0029",
   "sourceMap": "26:550:9:-;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "26:550:9:-;;;;;",
   "source": "pragma solidity ^0.4.18;\n\nlibrary RandomNumber {\n  function randomNum(uint seed) internal returns (uint) {\n    uint _number = (uint(keccak256(block.blockhash(block.number-1), seed))%100);\n    if (_number == 0) {\n      _number = 1;\n    }\n\n    return _number;\n  }\n\n  function rand1To10(uint seed) internal returns (uint) {\n    uint _number = (uint(keccak256(block.blockhash(block.number-1), seed))%10);\n    if (_number == 0) {\n      _number = 1;\n    }\n\n    return _number;\n  }\n\n  function randDecimal(uint seed) internal returns (uint) {\n    return (rand1To10(seed) / 10);\n  }\n}\n",
-  "sourcePath": "/Users/Aaron/Projects/cryptoclash/contracts/lib/RandomNumber.sol",
+  "sourcePath": "/Users/kendalla/projects/cryptoclash/contracts/lib/RandomNumber.sol",
   "ast": {
     "attributes": {
-      "absolutePath": "/Users/Aaron/Projects/cryptoclash/contracts/lib/RandomNumber.sol",
+      "absolutePath": "/Users/kendalla/projects/cryptoclash/contracts/lib/RandomNumber.sol",
       "exportedSymbols": {
         "RandomNumber": [
           1582
@@ -1379,8 +1379,13 @@
       "events": {},
       "links": {},
       "address": "0x01623578b200ab805dd100a6fdc09c54063bea73"
+    },
+    "1516713236517": {
+      "events": {},
+      "links": {},
+      "address": "0x8559049e35f2fcf66e27f656ca4753ac9fc6cdc1"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-01-22T18:45:04.520Z"
+  "updatedAt": "2018-01-23T13:14:51.422Z"
 }

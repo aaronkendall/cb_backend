@@ -9,14 +9,18 @@ class Marketplace extends ContractBase {
     super(provider, defaultAccount);
   }
 
-  getAllFightersInMarket() {
-    return this.contract.getFightersForSale()
-      .then(result => result.map(id => {
-        const fighterId = id.toNumber();
-        return Promise.all([this.getInfoForFighter(fighterId), this.getPriceForFighterInEth(fighterId)])
-          .then(fighterInfo => new Sale(fighterInfo[0], fighterInfo[1]));
-      }))
-      .catch(error => console.log('Error getting fighters for sale', error))
+  async getAllFightersInMarket() {
+    try {
+      const fighterIdsInMarket = await this.contract.getFightersForSale()
+      return fighterIdsInMarket.map(async (id) => {
+        const fighter = await this.getInfoForFighter(id)
+        const fighterPrice = await this.getPriceForFighterInEth(id)
+
+        return new Sale(fighter, fighterPrice)
+      })
+    } catch(error) {
+      console.log(error)
+    }
   }
 
   getPriceForFighterInEth(id) {
