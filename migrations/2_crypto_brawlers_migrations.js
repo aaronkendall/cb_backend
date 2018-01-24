@@ -3,7 +3,7 @@ const CryptoBrawlers = artifacts.require("./CryptoBrawlers.sol");
 
 module.exports = function(deployer) {
   deployer.deploy(RandomNumber).then(() => {
-    deployer.deploy(CryptoBrawlers);
+    deployer.deploy(CryptoBrawlers)
   });
-  deployer.link(RandomNumber, Marketplace);
+  deployer.link(RandomNumber, CryptoBrawlers);
 };

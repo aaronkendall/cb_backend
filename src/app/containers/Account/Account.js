@@ -37,7 +37,7 @@ class Account extends React.Component {
     const { fighters } = this.props.account
     const { userIsSignedIn, accountService, dispatch } = this.props
 
-    if (fighters.length === 0 && userIsSignedIn) {
+    if (userIsSignedIn) {
       dispatch(populateFighters(accountService))
     }
   }

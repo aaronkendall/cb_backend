@@ -1,18 +1,18 @@
 {
   "contractName": "Priced",
   "abi": [],
-  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a723058201a7e6bdd8e8096070e964bb10c31d27d652bfe8e877f38556c590e963b3db50c0029",
-  "deployedBytecode": "0x6060604052600080fd00a165627a7a723058201a7e6bdd8e8096070e964bb10c31d27d652bfe8e877f38556c590e963b3db50c0029",
-  "sourceMap": "26:101:5:-;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "26:101:5:-;;;;;",
+  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820fbbe040a5d79c7eb8896337cdd7a00a73a2d899e928c71f7f6138e891b34c2960029",
+  "deployedBytecode": "0x6060604052600080fd00a165627a7a72305820fbbe040a5d79c7eb8896337cdd7a00a73a2d899e928c71f7f6138e891b34c2960029",
+  "sourceMap": "26:101:4:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "26:101:4:-;;;;;",
   "source": "pragma solidity ^0.4.18;\n\ncontract Priced {\n  modifier costs(uint price) {\n    if (msg.value >= price) {\n        _;\n    }\n  }\n}\n",
-  "sourcePath": "/Users/kendalla/projects/cryptoclash/contracts/base/Priced.sol",
+  "sourcePath": "/Users/Aaron/Projects/cryptoclash/contracts/base/Priced.sol",
   "ast": {
     "attributes": {
-      "absolutePath": "/Users/kendalla/projects/cryptoclash/contracts/base/Priced.sol",
+      "absolutePath": "/Users/Aaron/Projects/cryptoclash/contracts/base/Priced.sol",
       "exportedSymbols": {
         "Priced": [
-          370
+          308
         ]
       }
     },
@@ -26,9 +26,9 @@
             ".18"
           ]
         },
-        "id": 357,
+        "id": 295,
         "name": "PragmaDirective",
-        "src": "0:24:5"
+        "src": "0:24:4"
       },
       {
         "attributes": {
@@ -42,10 +42,10 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            370
+            308
           ],
           "name": "Priced",
-          "scope": 371
+          "scope": 309
         },
         "children": [
           {
@@ -60,7 +60,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "price",
-                      "scope": 369,
+                      "scope": 307,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -73,19 +73,19 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 358,
+                        "id": 296,
                         "name": "ElementaryTypeName",
-                        "src": "61:4:5"
+                        "src": "61:4:4"
                       }
                     ],
-                    "id": 359,
+                    "id": 297,
                     "name": "VariableDeclaration",
-                    "src": "61:10:5"
+                    "src": "61:10:4"
                   }
                 ],
-                "id": 360,
+                "id": 298,
                 "name": "ParameterList",
-                "src": "60:12:5"
+                "src": "60:12:4"
               },
               {
                 "children": [
@@ -127,18 +127,18 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2535,
+                                  "referencedDeclaration": 2473,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 361,
+                                "id": 299,
                                 "name": "Identifier",
-                                "src": "83:3:5"
+                                "src": "83:3:4"
                               }
                             ],
-                            "id": 362,
+                            "id": 300,
                             "name": "MemberAccess",
-                            "src": "83:9:5"
+                            "src": "83:9:4"
                           },
                           {
                             "attributes": {
@@ -146,55 +146,55 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 359,
+                              "referencedDeclaration": 297,
                               "type": "uint256",
                               "value": "price"
                             },
-                            "id": 363,
+                            "id": 301,
                             "name": "Identifier",
-                            "src": "96:5:5"
+                            "src": "96:5:4"
                           }
                         ],
-                        "id": 364,
+                        "id": 302,
                         "name": "BinaryOperation",
-                        "src": "83:18:5"
+                        "src": "83:18:4"
                       },
                       {
                         "children": [
                           {
-                            "id": 365,
+                            "id": 303,
                             "name": "PlaceholderStatement",
-                            "src": "113:1:5"
+                            "src": "113:1:4"
                           }
                         ],
-                        "id": 366,
+                        "id": 304,
                         "name": "Block",
-                        "src": "103:18:5"
+                        "src": "103:18:4"
                       }
                     ],
-                    "id": 367,
+                    "id": 305,
                     "name": "IfStatement",
-                    "src": "79:42:5"
+                    "src": "79:42:4"
                   }
                 ],
-                "id": 368,
+                "id": 306,
                 "name": "Block",
-                "src": "73:52:5"
+                "src": "73:52:4"
               }
             ],
-            "id": 369,
+            "id": 307,
             "name": "ModifierDefinition",
-            "src": "46:79:5"
+            "src": "46:79:4"
           }
         ],
-        "id": 370,
+        "id": 308,
         "name": "ContractDefinition",
-        "src": "26:101:5"
+        "src": "26:101:4"
       }
     ],
-    "id": 371,
+    "id": 309,
     "name": "SourceUnit",
-    "src": "0:128:5"
+    "src": "0:128:4"
   },
   "compiler": {
     "name": "solc",
@@ -202,5 +202,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-01-24T13:16:20.187Z"
+  "updatedAt": "2018-01-24T19:33:32.115Z"
 }

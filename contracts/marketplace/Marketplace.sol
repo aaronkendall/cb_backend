@@ -183,9 +183,9 @@ contract Marketplace is FighterOwnership, MarketplaceConfig {
     for(index = 0; index < fightersInMarket.length; index++) {
       if (fightersInMarket[index] == _fighterId) {
         delete fightersInMarket[index];
+        delete fighterIdToSale[_fighterId];
       }
     }
-    delete fighterIdToSale[_fighterId];
   }
 
   function _removeFighterFromArena(uint _fighterId) internal {
@@ -193,8 +193,8 @@ contract Marketplace is FighterOwnership, MarketplaceConfig {
     for(index = 0; index < fightersInArena.length; index++) {
       if (fightersInArena[index] == _fighterId) {
         delete fightersInArena[index];
+        delete fighterIdToMaxHealth[_fighterId];
       }
     }
-    delete fighterIdToMaxHealth[_fighterId];
   }
 }
