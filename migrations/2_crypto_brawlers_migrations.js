@@ -1,9 +1,9 @@
 const RandomNumber = artifacts.require("./lib/RandomNumber.sol");
-const Marketplace = artifacts.require("./marketplace/Marketplace.sol");
+const CryptoBrawlers = artifacts.require("./CryptoBrawlers.sol");
 
 module.exports = function(deployer) {
   deployer.deploy(RandomNumber).then(() => {
-    deployer.deploy(Marketplace);
+    deployer.deploy(CryptoBrawlers);
   });
   deployer.link(RandomNumber, Marketplace);
 };

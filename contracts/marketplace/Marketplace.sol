@@ -75,17 +75,6 @@ contract Marketplace is FighterOwnership, MarketplaceConfig {
     _transfer(fighterIdToOwner[_fighterId], msg.sender, _fighterId);
   }
 
-  function getInfoForFighter(uint _fighterId) constant external returns (uint maxHealth, uint health, uint speed, uint strength, bool isForSale, bool isInArena) {
-    Fighter memory _fighter = fighters[_fighterId];
-    return (
-      _fighter.maxHealth,
-      _fighter.health, _fighter.speed,
-      _fighter.strength,
-      _fighterIsForSale(_fighterId),
-      _fighterIsForBrawl(_fighterId)
-    );
-  }
-
   function fight(uint _attackerId, uint _defenderId, uint _seed) external {
     // fighter actually in the arena is always the defender
     require(_fighterIsForBrawl(_defenderId));
