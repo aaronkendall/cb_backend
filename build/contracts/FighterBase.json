@@ -177,18 +177,18 @@
       "type": "event"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b6101e48061001e6000396000f3006060604052600436106100615763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663027f48f7811461006657806344e59ee9146100a45780634b193933146100e35780638357b8dd146100f9575b600080fd5b341561007157600080fd5b61009273ffffffffffffffffffffffffffffffffffffffff60043516610128565b60405190815260200160405180910390f35b34156100af57600080fd5b6100ba60043561013a565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100ee57600080fd5b6100ba600435610162565b341561010457600080fd5b61009273ffffffffffffffffffffffffffffffffffffffff6004351660243561018a565b60016020526000908152604090205481565b60036020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60026020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b6004602052816000526040600020818154811015156101a557fe5b60009182526020909120015491508290505600a165627a7a72305820002ba5a58784694af413b0322877626139ffb5c4542da802b5f65e4d96b7e38b0029",
-  "deployedBytecode": "0x6060604052600436106100615763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663027f48f7811461006657806344e59ee9146100a45780634b193933146100e35780638357b8dd146100f9575b600080fd5b341561007157600080fd5b61009273ffffffffffffffffffffffffffffffffffffffff60043516610128565b60405190815260200160405180910390f35b34156100af57600080fd5b6100ba60043561013a565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100ee57600080fd5b6100ba600435610162565b341561010457600080fd5b61009273ffffffffffffffffffffffffffffffffffffffff6004351660243561018a565b60016020526000908152604090205481565b60036020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60026020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b6004602052816000526040600020818154811015156101a557fe5b60009182526020909120015491508290505600a165627a7a72305820002ba5a58784694af413b0322877626139ffb5c4542da802b5f65e4d96b7e38b0029",
+  "bytecode": "0x6060604052341561000f57600080fd5b6101e48061001e6000396000f3006060604052600436106100615763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663027f48f7811461006657806344e59ee9146100a45780634b193933146100e35780638357b8dd146100f9575b600080fd5b341561007157600080fd5b61009273ffffffffffffffffffffffffffffffffffffffff60043516610128565b60405190815260200160405180910390f35b34156100af57600080fd5b6100ba60043561013a565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100ee57600080fd5b6100ba600435610162565b341561010457600080fd5b61009273ffffffffffffffffffffffffffffffffffffffff6004351660243561018a565b60016020526000908152604090205481565b60036020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60026020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b6004602052816000526040600020818154811015156101a557fe5b60009182526020909120015491508290505600a165627a7a7230582034a19fd0844acc9e4519bb6da39d0c4ac0f0ae89466d40bbc3cac85e4f11882e0029",
+  "deployedBytecode": "0x6060604052600436106100615763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663027f48f7811461006657806344e59ee9146100a45780634b193933146100e35780638357b8dd146100f9575b600080fd5b341561007157600080fd5b61009273ffffffffffffffffffffffffffffffffffffffff60043516610128565b60405190815260200160405180910390f35b34156100af57600080fd5b6100ba60043561013a565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100ee57600080fd5b6100ba600435610162565b341561010457600080fd5b61009273ffffffffffffffffffffffffffffffffffffffff6004351660243561018a565b60016020526000908152604090205481565b60036020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60026020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b6004602052816000526040600020818154811015156101a557fe5b60009182526020909120015491508290505600a165627a7a7230582034a19fd0844acc9e4519bb6da39d0c4ac0f0ae89466d40bbc3cac85e4f11882e0029",
   "sourceMap": "26:4049:5:-;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "26:4049:5:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;545:55;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;736:54;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;639:51;;;;;;;;;;;;;;862:50;;;;;;;;;;;;;;;;;;545:55;;;;;;;;;;;;;:::o;736:54::-;;;;;;;;;;;;;;;:::o;639:51::-;;;;;;;;;;;;;;;:::o;862:50::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;862:50:5;;-1:-1:-1;862:50:5:o",
   "source": "pragma solidity ^0.4.18;\n\ncontract FighterBase {\n  /*** EVENTS ***/\n\n  event Creation(address owner, uint256 fighterId);\n  event Transfer(address from, address to, uint256 fighterId);\n  event AttributeIncrease(\n    address owner,\n    uint fighterId,\n    string attribute,\n    uint increaseValue\n  );\n  event Healed(address owner, uint fighterId);\n  event FighterFound(bool fighterWasFound);\n\n  struct Fighter {\n    uint256 maxHealth;\n    uint256 health;\n    uint256 speed;\n    uint256 strength;\n  }\n\n  /*** STORAGE ***/\n\n  Fighter[] fighters;\n  mapping(address => uint256) public fighterCountForOwner; // Need this for ERC721 compliance\n  mapping(uint256 => address) public fighterIdToOwner; // lookup for owner of a specific fighter\n  mapping(uint256 => address) public fighterIdToApproved; // Shows appoved address for sending of fighters, Needed for ERC721\n  mapping(address => uint256[]) public ownedFighters;\n\n  function _transfer(address _from, address _to, uint256 _fighterId) internal {\n    fighterCountForOwner[_to]++;\n    fighterIdToOwner[_fighterId] = _to;\n    ownedFighters[_to].push(_fighterId);\n\n    // Check that it isn't a newly created fighter before messing with ownership values\n    if (_from != address(0)) {\n      delete fighterIdToApproved[_fighterId];\n      _removeOwnedFighter(_from, _fighterId);\n      fighterCountForOwner[_from]--;\n    }\n    // Emit the transfer event.\n    Transfer(_from, _to, _fighterId);\n  }\n\n  function _removeOwnedFighter(address _oldOwner, uint256 _fighterId) internal {\n    uint index;\n    for(index = 0; index < ownedFighters[_oldOwner].length; index++) {\n      if (ownedFighters[_oldOwner][index] == _fighterId) {\n        delete ownedFighters[_oldOwner][index];\n      }\n    }\n  }\n\n  function _createFighter(\n    uint _maxHealth,\n    uint _speed,\n    uint _strength,\n    address _owner\n  )\n    internal\n    returns (uint)\n  {\n    Fighter memory _fighter = Fighter({\n      maxHealth: _maxHealth,\n      health: _maxHealth, // Fighters are always created with maximum health\n      speed: _speed,\n      strength: _strength\n    });\n\n    uint256 newFighterId = fighters.push(_fighter) - 1;\n\n    // 4 billion fighters is the max lel\n    require(newFighterId == uint256(uint32(newFighterId)));\n\n    Creation(_owner, newFighterId);\n\n    // This will assign ownership, and also emit the Transfer event as\n    // per ERC721 draft\n    _transfer(0, _owner, newFighterId);\n\n    return newFighterId;\n  }\n\n  function _updateFighterInStorage(Fighter _updatedFighter, uint _fighterId) internal {\n    fighters[_fighterId] = _updatedFighter;\n  }\n\n  function _trainMaxHealth(uint _fighterId, uint _attributeIncrease, address _owner) internal {\n    Fighter memory _fighter = fighters[_fighterId];\n\n    if (_fighter.health == _fighter.maxHealth) {\n      _fighter.health += _attributeIncrease;\n    }\n\n    _fighter.maxHealth += _attributeIncrease;\n    _updateFighterInStorage(_fighter, _fighterId);\n\n    AttributeIncrease(_owner, _fighterId, 'maxHealth', _attributeIncrease);\n  }\n\n  function _trainSpeed(uint _fighterId, uint _attributeIncrease, address _owner) internal {\n    Fighter memory _fighter = fighters[_fighterId];\n    _fighter.speed += _attributeIncrease;\n    _updateFighterInStorage(_fighter, _fighterId);\n\n    AttributeIncrease(_owner, _fighterId, 'speed', _attributeIncrease);\n  }\n\n  function _trainStrength(uint _fighterId, uint _attributeIncrease, address _owner) internal {\n    Fighter memory _fighter = fighters[_fighterId];\n    _fighter.strength += _attributeIncrease;\n    _updateFighterInStorage(_fighter, _fighterId);\n\n    AttributeIncrease(_owner, _fighterId, 'strength', _attributeIncrease);\n  }\n\n  // This function assumes that a fighter can actually be healed i.e this check is done elsewhere before any eth is taken\n  function _healFighter(uint _fighterId, address _owner) internal {\n    Fighter memory _fighter = fighters[_fighterId];\n    require(_fighter.health < _fighter.maxHealth);\n    \n    _fighter.health = _fighter.maxHealth;\n    _updateFighterInStorage(_fighter, _fighterId);\n\n    Healed(_owner, _fighterId);\n  }\n}\n",
-  "sourcePath": "/Users/Aaron/Projects/cryptoclash/contracts/fighter/FighterBase.sol",
+  "sourcePath": "/Users/kendalla/projects/cryptoclash/contracts/fighter/FighterBase.sol",
   "ast": {
     "attributes": {
-      "absolutePath": "/Users/Aaron/Projects/cryptoclash/contracts/fighter/FighterBase.sol",
+      "absolutePath": "/Users/kendalla/projects/cryptoclash/contracts/fighter/FighterBase.sol",
       "exportedSymbols": {
         "FighterBase": [
-          695
+          696
         ]
       }
     },
@@ -202,7 +202,7 @@
             ".18"
           ]
         },
-        "id": 310,
+        "id": 311,
         "name": "PragmaDirective",
         "src": "0:24:5"
       },
@@ -218,10 +218,10 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            695
+            696
           ],
           "name": "FighterBase",
-          "scope": 696
+          "scope": 697
         },
         "children": [
           {
@@ -237,7 +237,7 @@
                       "constant": false,
                       "indexed": false,
                       "name": "owner",
-                      "scope": 316,
+                      "scope": 317,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -250,12 +250,12 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 311,
+                        "id": 312,
                         "name": "ElementaryTypeName",
                         "src": "86:7:5"
                       }
                     ],
-                    "id": 312,
+                    "id": 313,
                     "name": "VariableDeclaration",
                     "src": "86:13:5"
                   },
@@ -264,7 +264,7 @@
                       "constant": false,
                       "indexed": false,
                       "name": "fighterId",
-                      "scope": 316,
+                      "scope": 317,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -277,22 +277,22 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 313,
+                        "id": 314,
                         "name": "ElementaryTypeName",
                         "src": "101:7:5"
                       }
                     ],
-                    "id": 314,
+                    "id": 315,
                     "name": "VariableDeclaration",
                     "src": "101:17:5"
                   }
                 ],
-                "id": 315,
+                "id": 316,
                 "name": "ParameterList",
                 "src": "85:34:5"
               }
             ],
-            "id": 316,
+            "id": 317,
             "name": "EventDefinition",
             "src": "71:49:5"
           },
@@ -309,7 +309,7 @@
                       "constant": false,
                       "indexed": false,
                       "name": "from",
-                      "scope": 324,
+                      "scope": 325,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -322,12 +322,12 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 317,
+                        "id": 318,
                         "name": "ElementaryTypeName",
                         "src": "138:7:5"
                       }
                     ],
-                    "id": 318,
+                    "id": 319,
                     "name": "VariableDeclaration",
                     "src": "138:12:5"
                   },
@@ -336,7 +336,7 @@
                       "constant": false,
                       "indexed": false,
                       "name": "to",
-                      "scope": 324,
+                      "scope": 325,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -349,12 +349,12 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 319,
+                        "id": 320,
                         "name": "ElementaryTypeName",
                         "src": "152:7:5"
                       }
                     ],
-                    "id": 320,
+                    "id": 321,
                     "name": "VariableDeclaration",
                     "src": "152:10:5"
                   },
@@ -363,7 +363,7 @@
                       "constant": false,
                       "indexed": false,
                       "name": "fighterId",
-                      "scope": 324,
+                      "scope": 325,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -376,22 +376,22 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 321,
+                        "id": 322,
                         "name": "ElementaryTypeName",
                         "src": "164:7:5"
                       }
                     ],
-                    "id": 322,
+                    "id": 323,
                     "name": "VariableDeclaration",
                     "src": "164:17:5"
                   }
                 ],
-                "id": 323,
+                "id": 324,
                 "name": "ParameterList",
                 "src": "137:45:5"
               }
             ],
-            "id": 324,
+            "id": 325,
             "name": "EventDefinition",
             "src": "123:60:5"
           },
@@ -408,7 +408,7 @@
                       "constant": false,
                       "indexed": false,
                       "name": "owner",
-                      "scope": 334,
+                      "scope": 335,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -421,12 +421,12 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 325,
+                        "id": 326,
                         "name": "ElementaryTypeName",
                         "src": "215:7:5"
                       }
                     ],
-                    "id": 326,
+                    "id": 327,
                     "name": "VariableDeclaration",
                     "src": "215:13:5"
                   },
@@ -435,7 +435,7 @@
                       "constant": false,
                       "indexed": false,
                       "name": "fighterId",
-                      "scope": 334,
+                      "scope": 335,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -448,12 +448,12 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 327,
+                        "id": 328,
                         "name": "ElementaryTypeName",
                         "src": "234:4:5"
                       }
                     ],
-                    "id": 328,
+                    "id": 329,
                     "name": "VariableDeclaration",
                     "src": "234:14:5"
                   },
@@ -462,7 +462,7 @@
                       "constant": false,
                       "indexed": false,
                       "name": "attribute",
-                      "scope": 334,
+                      "scope": 335,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -475,12 +475,12 @@
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 329,
+                        "id": 330,
                         "name": "ElementaryTypeName",
                         "src": "254:6:5"
                       }
                     ],
-                    "id": 330,
+                    "id": 331,
                     "name": "VariableDeclaration",
                     "src": "254:16:5"
                   },
@@ -489,7 +489,7 @@
                       "constant": false,
                       "indexed": false,
                       "name": "increaseValue",
-                      "scope": 334,
+                      "scope": 335,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -502,22 +502,22 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 331,
+                        "id": 332,
                         "name": "ElementaryTypeName",
                         "src": "276:4:5"
                       }
                     ],
-                    "id": 332,
+                    "id": 333,
                     "name": "VariableDeclaration",
                     "src": "276:18:5"
                   }
                 ],
-                "id": 333,
+                "id": 334,
                 "name": "ParameterList",
                 "src": "209:89:5"
               }
             ],
-            "id": 334,
+            "id": 335,
             "name": "EventDefinition",
             "src": "186:113:5"
           },
@@ -534,7 +534,7 @@
                       "constant": false,
                       "indexed": false,
                       "name": "owner",
-                      "scope": 340,
+                      "scope": 341,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -547,12 +547,12 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 335,
+                        "id": 336,
                         "name": "ElementaryTypeName",
                         "src": "315:7:5"
                       }
                     ],
-                    "id": 336,
+                    "id": 337,
                     "name": "VariableDeclaration",
                     "src": "315:13:5"
                   },
@@ -561,7 +561,7 @@
                       "constant": false,
                       "indexed": false,
                       "name": "fighterId",
-                      "scope": 340,
+                      "scope": 341,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -574,22 +574,22 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 337,
+                        "id": 338,
                         "name": "ElementaryTypeName",
                         "src": "330:4:5"
                       }
                     ],
-                    "id": 338,
+                    "id": 339,
                     "name": "VariableDeclaration",
                     "src": "330:14:5"
                   }
                 ],
-                "id": 339,
+                "id": 340,
                 "name": "ParameterList",
                 "src": "314:31:5"
               }
             ],
-            "id": 340,
+            "id": 341,
             "name": "EventDefinition",
             "src": "302:44:5"
           },
@@ -606,7 +606,7 @@
                       "constant": false,
                       "indexed": false,
                       "name": "fighterWasFound",
-                      "scope": 344,
+                      "scope": 345,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -619,22 +619,22 @@
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 341,
+                        "id": 342,
                         "name": "ElementaryTypeName",
                         "src": "368:4:5"
                       }
                     ],
-                    "id": 342,
+                    "id": 343,
                     "name": "VariableDeclaration",
                     "src": "368:20:5"
                   }
                 ],
-                "id": 343,
+                "id": 344,
                 "name": "ParameterList",
                 "src": "367:22:5"
               }
             ],
-            "id": 344,
+            "id": 345,
             "name": "EventDefinition",
             "src": "349:41:5"
           },
@@ -642,7 +642,7 @@
             "attributes": {
               "canonicalName": "FighterBase.Fighter",
               "name": "Fighter",
-              "scope": 695,
+              "scope": 696,
               "visibility": "public"
             },
             "children": [
@@ -650,7 +650,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "maxHealth",
-                  "scope": 353,
+                  "scope": 354,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -663,12 +663,12 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 345,
+                    "id": 346,
                     "name": "ElementaryTypeName",
                     "src": "415:7:5"
                   }
                 ],
-                "id": 346,
+                "id": 347,
                 "name": "VariableDeclaration",
                 "src": "415:17:5"
               },
@@ -676,7 +676,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "health",
-                  "scope": 353,
+                  "scope": 354,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -689,12 +689,12 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 347,
+                    "id": 348,
                     "name": "ElementaryTypeName",
                     "src": "438:7:5"
                   }
                 ],
-                "id": 348,
+                "id": 349,
                 "name": "VariableDeclaration",
                 "src": "438:14:5"
               },
@@ -702,7 +702,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "speed",
-                  "scope": 353,
+                  "scope": 354,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -715,12 +715,12 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 349,
+                    "id": 350,
                     "name": "ElementaryTypeName",
                     "src": "458:7:5"
                   }
                 ],
-                "id": 350,
+                "id": 351,
                 "name": "VariableDeclaration",
                 "src": "458:13:5"
               },
@@ -728,7 +728,7 @@
                 "attributes": {
                   "constant": false,
                   "name": "strength",
-                  "scope": 353,
+                  "scope": 354,
                   "stateVariable": false,
                   "storageLocation": "default",
                   "type": "uint256",
@@ -741,17 +741,17 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 351,
+                    "id": 352,
                     "name": "ElementaryTypeName",
                     "src": "477:7:5"
                   }
                 ],
-                "id": 352,
+                "id": 353,
                 "name": "VariableDeclaration",
                 "src": "477:16:5"
               }
             ],
-            "id": 353,
+            "id": 354,
             "name": "StructDefinition",
             "src": "394:104:5"
           },
@@ -759,7 +759,7 @@
             "attributes": {
               "constant": false,
               "name": "fighters",
-              "scope": 695,
+              "scope": 696,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "struct FighterBase.Fighter storage ref[] storage ref",
@@ -777,20 +777,20 @@
                     "attributes": {
                       "contractScope": null,
                       "name": "Fighter",
-                      "referencedDeclaration": 353,
+                      "referencedDeclaration": 354,
                       "type": "struct FighterBase.Fighter storage pointer"
                     },
-                    "id": 354,
+                    "id": 355,
                     "name": "UserDefinedTypeName",
                     "src": "523:7:5"
                   }
                 ],
-                "id": 355,
+                "id": 356,
                 "name": "ArrayTypeName",
                 "src": "523:9:5"
               }
             ],
-            "id": 356,
+            "id": 357,
             "name": "VariableDeclaration",
             "src": "523:18:5"
           },
@@ -798,7 +798,7 @@
             "attributes": {
               "constant": false,
               "name": "fighterCountForOwner",
-              "scope": 695,
+              "scope": 696,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(address => uint256)",
@@ -816,7 +816,7 @@
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 357,
+                    "id": 358,
                     "name": "ElementaryTypeName",
                     "src": "553:7:5"
                   },
@@ -825,17 +825,17 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 358,
+                    "id": 359,
                     "name": "ElementaryTypeName",
                     "src": "564:7:5"
                   }
                 ],
-                "id": 359,
+                "id": 360,
                 "name": "Mapping",
                 "src": "545:27:5"
               }
             ],
-            "id": 360,
+            "id": 361,
             "name": "VariableDeclaration",
             "src": "545:55:5"
           },
@@ -843,7 +843,7 @@
             "attributes": {
               "constant": false,
               "name": "fighterIdToOwner",
-              "scope": 695,
+              "scope": 696,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(uint256 => address)",
@@ -861,7 +861,7 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 361,
+                    "id": 362,
                     "name": "ElementaryTypeName",
                     "src": "647:7:5"
                   },
@@ -870,17 +870,17 @@
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 362,
+                    "id": 363,
                     "name": "ElementaryTypeName",
                     "src": "658:7:5"
                   }
                 ],
-                "id": 363,
+                "id": 364,
                 "name": "Mapping",
                 "src": "639:27:5"
               }
             ],
-            "id": 364,
+            "id": 365,
             "name": "VariableDeclaration",
             "src": "639:51:5"
           },
@@ -888,7 +888,7 @@
             "attributes": {
               "constant": false,
               "name": "fighterIdToApproved",
-              "scope": 695,
+              "scope": 696,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(uint256 => address)",
@@ -906,7 +906,7 @@
                       "name": "uint256",
                       "type": "uint256"
                     },
-                    "id": 365,
+                    "id": 366,
                     "name": "ElementaryTypeName",
                     "src": "744:7:5"
                   },
@@ -915,17 +915,17 @@
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 366,
+                    "id": 367,
                     "name": "ElementaryTypeName",
                     "src": "755:7:5"
                   }
                 ],
-                "id": 367,
+                "id": 368,
                 "name": "Mapping",
                 "src": "736:27:5"
               }
             ],
-            "id": 368,
+            "id": 369,
             "name": "VariableDeclaration",
             "src": "736:54:5"
           },
@@ -933,7 +933,7 @@
             "attributes": {
               "constant": false,
               "name": "ownedFighters",
-              "scope": 695,
+              "scope": 696,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(address => uint256[] storage ref)",
@@ -951,7 +951,7 @@
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 369,
+                    "id": 370,
                     "name": "ElementaryTypeName",
                     "src": "870:7:5"
                   },
@@ -966,22 +966,22 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 370,
+                        "id": 371,
                         "name": "ElementaryTypeName",
                         "src": "881:7:5"
                       }
                     ],
-                    "id": 371,
+                    "id": 372,
                     "name": "ArrayTypeName",
                     "src": "881:9:5"
                   }
                 ],
-                "id": 372,
+                "id": 373,
                 "name": "Mapping",
                 "src": "862:29:5"
               }
             ],
-            "id": 373,
+            "id": 374,
             "name": "VariableDeclaration",
             "src": "862:50:5"
           },
@@ -995,7 +995,7 @@
               ],
               "name": "_transfer",
               "payable": false,
-              "scope": 695,
+              "scope": 696,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -1007,7 +1007,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 429,
+                      "scope": 430,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1020,12 +1020,12 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 374,
+                        "id": 375,
                         "name": "ElementaryTypeName",
                         "src": "936:7:5"
                       }
                     ],
-                    "id": 375,
+                    "id": 376,
                     "name": "VariableDeclaration",
                     "src": "936:13:5"
                   },
@@ -1033,7 +1033,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_to",
-                      "scope": 429,
+                      "scope": 430,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1046,12 +1046,12 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 376,
+                        "id": 377,
                         "name": "ElementaryTypeName",
                         "src": "951:7:5"
                       }
                     ],
-                    "id": 377,
+                    "id": 378,
                     "name": "VariableDeclaration",
                     "src": "951:11:5"
                   },
@@ -1059,7 +1059,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_fighterId",
-                      "scope": 429,
+                      "scope": 430,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1072,17 +1072,17 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 378,
+                        "id": 379,
                         "name": "ElementaryTypeName",
                         "src": "964:7:5"
                       }
                     ],
-                    "id": 379,
+                    "id": 380,
                     "name": "VariableDeclaration",
                     "src": "964:18:5"
                   }
                 ],
-                "id": 380,
+                "id": 381,
                 "name": "ParameterList",
                 "src": "935:48:5"
               },
@@ -1093,7 +1093,7 @@
                   ]
                 },
                 "children": [],
-                "id": 381,
+                "id": 382,
                 "name": "ParameterList",
                 "src": "993:0:5"
               },
@@ -1129,11 +1129,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 360,
+                                  "referencedDeclaration": 361,
                                   "type": "mapping(address => uint256)",
                                   "value": "fighterCountForOwner"
                                 },
-                                "id": 382,
+                                "id": 383,
                                 "name": "Identifier",
                                 "src": "999:20:5"
                               },
@@ -1143,26 +1143,26 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 377,
+                                  "referencedDeclaration": 378,
                                   "type": "address",
                                   "value": "_to"
                                 },
-                                "id": 383,
+                                "id": 384,
                                 "name": "Identifier",
                                 "src": "1020:3:5"
                               }
                             ],
-                            "id": 384,
+                            "id": 385,
                             "name": "IndexAccess",
                             "src": "999:25:5"
                           }
                         ],
-                        "id": 385,
+                        "id": 386,
                         "name": "UnaryOperation",
                         "src": "999:27:5"
                       }
                     ],
-                    "id": 386,
+                    "id": 387,
                     "name": "ExpressionStatement",
                     "src": "999:27:5"
                   },
@@ -1195,11 +1195,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 364,
+                                  "referencedDeclaration": 365,
                                   "type": "mapping(uint256 => address)",
                                   "value": "fighterIdToOwner"
                                 },
-                                "id": 387,
+                                "id": 388,
                                 "name": "Identifier",
                                 "src": "1032:16:5"
                               },
@@ -1209,16 +1209,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 379,
+                                  "referencedDeclaration": 380,
                                   "type": "uint256",
                                   "value": "_fighterId"
                                 },
-                                "id": 388,
+                                "id": 389,
                                 "name": "Identifier",
                                 "src": "1049:10:5"
                               }
                             ],
-                            "id": 389,
+                            "id": 390,
                             "name": "IndexAccess",
                             "src": "1032:28:5"
                           },
@@ -1228,21 +1228,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 377,
+                              "referencedDeclaration": 378,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 390,
+                            "id": 391,
                             "name": "Identifier",
                             "src": "1063:3:5"
                           }
                         ],
-                        "id": 391,
+                        "id": 392,
                         "name": "Assignment",
                         "src": "1032:34:5"
                       }
                     ],
-                    "id": 392,
+                    "id": 393,
                     "name": "ExpressionStatement",
                     "src": "1032:34:5"
                   },
@@ -1296,11 +1296,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 373,
+                                      "referencedDeclaration": 374,
                                       "type": "mapping(address => uint256[] storage ref)",
                                       "value": "ownedFighters"
                                     },
-                                    "id": 393,
+                                    "id": 394,
                                     "name": "Identifier",
                                     "src": "1072:13:5"
                                   },
@@ -1310,21 +1310,21 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 377,
+                                      "referencedDeclaration": 378,
                                       "type": "address",
                                       "value": "_to"
                                     },
-                                    "id": 394,
+                                    "id": 395,
                                     "name": "Identifier",
                                     "src": "1086:3:5"
                                   }
                                 ],
-                                "id": 395,
+                                "id": 396,
                                 "name": "IndexAccess",
                                 "src": "1072:18:5"
                               }
                             ],
-                            "id": 396,
+                            "id": 397,
                             "name": "MemberAccess",
                             "src": "1072:23:5"
                           },
@@ -1334,21 +1334,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 379,
+                              "referencedDeclaration": 380,
                               "type": "uint256",
                               "value": "_fighterId"
                             },
-                            "id": 397,
+                            "id": 398,
                             "name": "Identifier",
                             "src": "1096:10:5"
                           }
                         ],
-                        "id": 398,
+                        "id": 399,
                         "name": "FunctionCall",
                         "src": "1072:35:5"
                       }
                     ],
-                    "id": 399,
+                    "id": 400,
                     "name": "ExpressionStatement",
                     "src": "1072:35:5"
                   },
@@ -1378,11 +1378,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 375,
+                              "referencedDeclaration": 376,
                               "type": "address",
                               "value": "_from"
                             },
-                            "id": 400,
+                            "id": 401,
                             "name": "Identifier",
                             "src": "1206:5:5"
                           },
@@ -1416,7 +1416,7 @@
                                   "type": "type(address)",
                                   "value": "address"
                                 },
-                                "id": 401,
+                                "id": 402,
                                 "name": "ElementaryTypeNameExpression",
                                 "src": "1215:7:5"
                               },
@@ -1433,17 +1433,17 @@
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 402,
+                                "id": 403,
                                 "name": "Literal",
                                 "src": "1223:1:5"
                               }
                             ],
-                            "id": 403,
+                            "id": 404,
                             "name": "FunctionCall",
                             "src": "1215:10:5"
                           }
                         ],
-                        "id": 404,
+                        "id": 405,
                         "name": "BinaryOperation",
                         "src": "1206:19:5"
                       },
@@ -1479,11 +1479,11 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 368,
+                                          "referencedDeclaration": 369,
                                           "type": "mapping(uint256 => address)",
                                           "value": "fighterIdToApproved"
                                         },
-                                        "id": 405,
+                                        "id": 406,
                                         "name": "Identifier",
                                         "src": "1242:19:5"
                                       },
@@ -1493,26 +1493,26 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 379,
+                                          "referencedDeclaration": 380,
                                           "type": "uint256",
                                           "value": "_fighterId"
                                         },
-                                        "id": 406,
+                                        "id": 407,
                                         "name": "Identifier",
                                         "src": "1262:10:5"
                                       }
                                     ],
-                                    "id": 407,
+                                    "id": 408,
                                     "name": "IndexAccess",
                                     "src": "1242:31:5"
                                   }
                                 ],
-                                "id": 408,
+                                "id": 409,
                                 "name": "UnaryOperation",
                                 "src": "1235:38:5"
                               }
                             ],
-                            "id": 409,
+                            "id": 410,
                             "name": "ExpressionStatement",
                             "src": "1235:38:5"
                           },
@@ -1548,11 +1548,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 471,
+                                      "referencedDeclaration": 472,
                                       "type": "function (address,uint256)",
                                       "value": "_removeOwnedFighter"
                                     },
-                                    "id": 410,
+                                    "id": 411,
                                     "name": "Identifier",
                                     "src": "1281:19:5"
                                   },
@@ -1562,11 +1562,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 375,
+                                      "referencedDeclaration": 376,
                                       "type": "address",
                                       "value": "_from"
                                     },
-                                    "id": 411,
+                                    "id": 412,
                                     "name": "Identifier",
                                     "src": "1301:5:5"
                                   },
@@ -1576,21 +1576,21 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 379,
+                                      "referencedDeclaration": 380,
                                       "type": "uint256",
                                       "value": "_fighterId"
                                     },
-                                    "id": 412,
+                                    "id": 413,
                                     "name": "Identifier",
                                     "src": "1308:10:5"
                                   }
                                 ],
-                                "id": 413,
+                                "id": 414,
                                 "name": "FunctionCall",
                                 "src": "1281:38:5"
                               }
                             ],
-                            "id": 414,
+                            "id": 415,
                             "name": "ExpressionStatement",
                             "src": "1281:38:5"
                           },
@@ -1624,11 +1624,11 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 360,
+                                          "referencedDeclaration": 361,
                                           "type": "mapping(address => uint256)",
                                           "value": "fighterCountForOwner"
                                         },
-                                        "id": 415,
+                                        "id": 416,
                                         "name": "Identifier",
                                         "src": "1327:20:5"
                                       },
@@ -1638,36 +1638,36 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 375,
+                                          "referencedDeclaration": 376,
                                           "type": "address",
                                           "value": "_from"
                                         },
-                                        "id": 416,
+                                        "id": 417,
                                         "name": "Identifier",
                                         "src": "1348:5:5"
                                       }
                                     ],
-                                    "id": 417,
+                                    "id": 418,
                                     "name": "IndexAccess",
                                     "src": "1327:27:5"
                                   }
                                 ],
-                                "id": 418,
+                                "id": 419,
                                 "name": "UnaryOperation",
                                 "src": "1327:29:5"
                               }
                             ],
-                            "id": 419,
+                            "id": 420,
                             "name": "ExpressionStatement",
                             "src": "1327:29:5"
                           }
                         ],
-                        "id": 420,
+                        "id": 421,
                         "name": "Block",
                         "src": "1227:136:5"
                       }
                     ],
-                    "id": 421,
+                    "id": 422,
                     "name": "IfStatement",
                     "src": "1202:161:5"
                   },
@@ -1707,11 +1707,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 324,
+                              "referencedDeclaration": 325,
                               "type": "function (address,address,uint256)",
                               "value": "Transfer"
                             },
-                            "id": 422,
+                            "id": 423,
                             "name": "Identifier",
                             "src": "1400:8:5"
                           },
@@ -1721,11 +1721,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 375,
+                              "referencedDeclaration": 376,
                               "type": "address",
                               "value": "_from"
                             },
-                            "id": 423,
+                            "id": 424,
                             "name": "Identifier",
                             "src": "1409:5:5"
                           },
@@ -1735,11 +1735,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 377,
+                              "referencedDeclaration": 378,
                               "type": "address",
                               "value": "_to"
                             },
-                            "id": 424,
+                            "id": 425,
                             "name": "Identifier",
                             "src": "1416:3:5"
                           },
@@ -1749,31 +1749,31 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 379,
+                              "referencedDeclaration": 380,
                               "type": "uint256",
                               "value": "_fighterId"
                             },
-                            "id": 425,
+                            "id": 426,
                             "name": "Identifier",
                             "src": "1421:10:5"
                           }
                         ],
-                        "id": 426,
+                        "id": 427,
                         "name": "FunctionCall",
                         "src": "1400:32:5"
                       }
                     ],
-                    "id": 427,
+                    "id": 428,
                     "name": "ExpressionStatement",
                     "src": "1400:32:5"
                   }
                 ],
-                "id": 428,
+                "id": 429,
                 "name": "Block",
                 "src": "993:444:5"
               }
             ],
-            "id": 429,
+            "id": 430,
             "name": "FunctionDefinition",
             "src": "917:520:5"
           },
@@ -1787,7 +1787,7 @@
               ],
               "name": "_removeOwnedFighter",
               "payable": false,
-              "scope": 695,
+              "scope": 696,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -1799,7 +1799,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_oldOwner",
-                      "scope": 471,
+                      "scope": 472,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1812,12 +1812,12 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 430,
+                        "id": 431,
                         "name": "ElementaryTypeName",
                         "src": "1470:7:5"
                       }
                     ],
-                    "id": 431,
+                    "id": 432,
                     "name": "VariableDeclaration",
                     "src": "1470:17:5"
                   },
@@ -1825,7 +1825,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_fighterId",
-                      "scope": 471,
+                      "scope": 472,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1838,17 +1838,17 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 432,
+                        "id": 433,
                         "name": "ElementaryTypeName",
                         "src": "1489:7:5"
                       }
                     ],
-                    "id": 433,
+                    "id": 434,
                     "name": "VariableDeclaration",
                     "src": "1489:18:5"
                   }
                 ],
-                "id": 434,
+                "id": 435,
                 "name": "ParameterList",
                 "src": "1469:39:5"
               },
@@ -1859,7 +1859,7 @@
                   ]
                 },
                 "children": [],
-                "id": 435,
+                "id": 436,
                 "name": "ParameterList",
                 "src": "1518:0:5"
               },
@@ -1877,7 +1877,7 @@
                         "attributes": {
                           "constant": false,
                           "name": "index",
-                          "scope": 471,
+                          "scope": 472,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -1890,17 +1890,17 @@
                               "name": "uint",
                               "type": "uint256"
                             },
-                            "id": 436,
+                            "id": 437,
                             "name": "ElementaryTypeName",
                             "src": "1524:4:5"
                           }
                         ],
-                        "id": 437,
+                        "id": 438,
                         "name": "VariableDeclaration",
                         "src": "1524:10:5"
                       }
                     ],
-                    "id": 438,
+                    "id": 439,
                     "name": "VariableDeclarationStatement",
                     "src": "1524:10:5"
                   },
@@ -1925,11 +1925,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 437,
+                                  "referencedDeclaration": 438,
                                   "type": "uint256",
                                   "value": "index"
                                 },
-                                "id": 439,
+                                "id": 440,
                                 "name": "Identifier",
                                 "src": "1544:5:5"
                               },
@@ -1946,17 +1946,17 @@
                                   "type": "int_const 0",
                                   "value": "0"
                                 },
-                                "id": 440,
+                                "id": 441,
                                 "name": "Literal",
                                 "src": "1552:1:5"
                               }
                             ],
-                            "id": 441,
+                            "id": 442,
                             "name": "Assignment",
                             "src": "1544:9:5"
                           }
                         ],
-                        "id": 442,
+                        "id": 443,
                         "name": "ExpressionStatement",
                         "src": "1544:9:5"
                       },
@@ -1981,11 +1981,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 437,
+                              "referencedDeclaration": 438,
                               "type": "uint256",
                               "value": "index"
                             },
-                            "id": 443,
+                            "id": 444,
                             "name": "Identifier",
                             "src": "1555:5:5"
                           },
@@ -2017,11 +2017,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 373,
+                                      "referencedDeclaration": 374,
                                       "type": "mapping(address => uint256[] storage ref)",
                                       "value": "ownedFighters"
                                     },
-                                    "id": 444,
+                                    "id": 445,
                                     "name": "Identifier",
                                     "src": "1563:13:5"
                                   },
@@ -2031,26 +2031,26 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 431,
+                                      "referencedDeclaration": 432,
                                       "type": "address",
                                       "value": "_oldOwner"
                                     },
-                                    "id": 445,
+                                    "id": 446,
                                     "name": "Identifier",
                                     "src": "1577:9:5"
                                   }
                                 ],
-                                "id": 446,
+                                "id": 447,
                                 "name": "IndexAccess",
                                 "src": "1563:24:5"
                               }
                             ],
-                            "id": 447,
+                            "id": 448,
                             "name": "MemberAccess",
                             "src": "1563:31:5"
                           }
                         ],
-                        "id": 448,
+                        "id": 449,
                         "name": "BinaryOperation",
                         "src": "1555:39:5"
                       },
@@ -2074,21 +2074,21 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 437,
+                                  "referencedDeclaration": 438,
                                   "type": "uint256",
                                   "value": "index"
                                 },
-                                "id": 449,
+                                "id": 450,
                                 "name": "Identifier",
                                 "src": "1596:5:5"
                               }
                             ],
-                            "id": 450,
+                            "id": 451,
                             "name": "UnaryOperation",
                             "src": "1596:7:5"
                           }
                         ],
-                        "id": 451,
+                        "id": 452,
                         "name": "ExpressionStatement",
                         "src": "1596:7:5"
                       },
@@ -2140,11 +2140,11 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 373,
+                                              "referencedDeclaration": 374,
                                               "type": "mapping(address => uint256[] storage ref)",
                                               "value": "ownedFighters"
                                             },
-                                            "id": 452,
+                                            "id": 453,
                                             "name": "Identifier",
                                             "src": "1617:13:5"
                                           },
@@ -2154,16 +2154,16 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 431,
+                                              "referencedDeclaration": 432,
                                               "type": "address",
                                               "value": "_oldOwner"
                                             },
-                                            "id": 453,
+                                            "id": 454,
                                             "name": "Identifier",
                                             "src": "1631:9:5"
                                           }
                                         ],
-                                        "id": 454,
+                                        "id": 455,
                                         "name": "IndexAccess",
                                         "src": "1617:24:5"
                                       },
@@ -2173,16 +2173,16 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 437,
+                                          "referencedDeclaration": 438,
                                           "type": "uint256",
                                           "value": "index"
                                         },
-                                        "id": 455,
+                                        "id": 456,
                                         "name": "Identifier",
                                         "src": "1642:5:5"
                                       }
                                     ],
-                                    "id": 456,
+                                    "id": 457,
                                     "name": "IndexAccess",
                                     "src": "1617:31:5"
                                   },
@@ -2192,16 +2192,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 433,
+                                      "referencedDeclaration": 434,
                                       "type": "uint256",
                                       "value": "_fighterId"
                                     },
-                                    "id": 457,
+                                    "id": 458,
                                     "name": "Identifier",
                                     "src": "1652:10:5"
                                   }
                                 ],
-                                "id": 458,
+                                "id": 459,
                                 "name": "BinaryOperation",
                                 "src": "1617:45:5"
                               },
@@ -2247,11 +2247,11 @@
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 373,
+                                                      "referencedDeclaration": 374,
                                                       "type": "mapping(address => uint256[] storage ref)",
                                                       "value": "ownedFighters"
                                                     },
-                                                    "id": 459,
+                                                    "id": 460,
                                                     "name": "Identifier",
                                                     "src": "1681:13:5"
                                                   },
@@ -2261,16 +2261,16 @@
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 431,
+                                                      "referencedDeclaration": 432,
                                                       "type": "address",
                                                       "value": "_oldOwner"
                                                     },
-                                                    "id": 460,
+                                                    "id": 461,
                                                     "name": "Identifier",
                                                     "src": "1695:9:5"
                                                   }
                                                 ],
-                                                "id": 461,
+                                                "id": 462,
                                                 "name": "IndexAccess",
                                                 "src": "1681:24:5"
                                               },
@@ -2280,56 +2280,56 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 437,
+                                                  "referencedDeclaration": 438,
                                                   "type": "uint256",
                                                   "value": "index"
                                                 },
-                                                "id": 462,
+                                                "id": 463,
                                                 "name": "Identifier",
                                                 "src": "1706:5:5"
                                               }
                                             ],
-                                            "id": 463,
+                                            "id": 464,
                                             "name": "IndexAccess",
                                             "src": "1681:31:5"
                                           }
                                         ],
-                                        "id": 464,
+                                        "id": 465,
                                         "name": "UnaryOperation",
                                         "src": "1674:38:5"
                                       }
                                     ],
-                                    "id": 465,
+                                    "id": 466,
                                     "name": "ExpressionStatement",
                                     "src": "1674:38:5"
                                   }
                                 ],
-                                "id": 466,
+                                "id": 467,
                                 "name": "Block",
                                 "src": "1664:57:5"
                               }
                             ],
-                            "id": 467,
+                            "id": 468,
                             "name": "IfStatement",
                             "src": "1613:108:5"
                           }
                         ],
-                        "id": 468,
+                        "id": 469,
                         "name": "Block",
                         "src": "1605:122:5"
                       }
                     ],
-                    "id": 469,
+                    "id": 470,
                     "name": "ForStatement",
                     "src": "1540:187:5"
                   }
                 ],
-                "id": 470,
+                "id": 471,
                 "name": "Block",
                 "src": "1518:213:5"
               }
             ],
-            "id": 471,
+            "id": 472,
             "name": "FunctionDefinition",
             "src": "1441:290:5"
           },
@@ -2343,7 +2343,7 @@
               ],
               "name": "_createFighter",
               "payable": false,
-              "scope": 695,
+              "scope": 696,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -2355,7 +2355,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_maxHealth",
-                      "scope": 526,
+                      "scope": 527,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2368,12 +2368,12 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 472,
+                        "id": 473,
                         "name": "ElementaryTypeName",
                         "src": "1764:4:5"
                       }
                     ],
-                    "id": 473,
+                    "id": 474,
                     "name": "VariableDeclaration",
                     "src": "1764:15:5"
                   },
@@ -2381,7 +2381,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_speed",
-                      "scope": 526,
+                      "scope": 527,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2394,12 +2394,12 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 474,
+                        "id": 475,
                         "name": "ElementaryTypeName",
                         "src": "1785:4:5"
                       }
                     ],
-                    "id": 475,
+                    "id": 476,
                     "name": "VariableDeclaration",
                     "src": "1785:11:5"
                   },
@@ -2407,7 +2407,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_strength",
-                      "scope": 526,
+                      "scope": 527,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2420,12 +2420,12 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 476,
+                        "id": 477,
                         "name": "ElementaryTypeName",
                         "src": "1802:4:5"
                       }
                     ],
-                    "id": 477,
+                    "id": 478,
                     "name": "VariableDeclaration",
                     "src": "1802:14:5"
                   },
@@ -2433,7 +2433,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 526,
+                      "scope": 527,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -2446,17 +2446,17 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 478,
+                        "id": 479,
                         "name": "ElementaryTypeName",
                         "src": "1822:7:5"
                       }
                     ],
-                    "id": 479,
+                    "id": 480,
                     "name": "VariableDeclaration",
                     "src": "1822:14:5"
                   }
                 ],
-                "id": 480,
+                "id": 481,
                 "name": "ParameterList",
                 "src": "1758:82:5"
               },
@@ -2466,7 +2466,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 526,
+                      "scope": 527,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -2479,17 +2479,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 481,
+                        "id": 482,
                         "name": "ElementaryTypeName",
                         "src": "1867:4:5"
                       }
                     ],
-                    "id": 482,
+                    "id": 483,
                     "name": "VariableDeclaration",
                     "src": "1867:4:5"
                   }
                 ],
-                "id": 483,
+                "id": 484,
                 "name": "ParameterList",
                 "src": "1866:6:5"
               },
@@ -2498,7 +2498,7 @@
                   {
                     "attributes": {
                       "assignments": [
-                        485
+                        486
                       ]
                     },
                     "children": [
@@ -2506,7 +2506,7 @@
                         "attributes": {
                           "constant": false,
                           "name": "_fighter",
-                          "scope": 526,
+                          "scope": 527,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct FighterBase.Fighter memory",
@@ -2518,15 +2518,15 @@
                             "attributes": {
                               "contractScope": null,
                               "name": "Fighter",
-                              "referencedDeclaration": 353,
+                              "referencedDeclaration": 354,
                               "type": "struct FighterBase.Fighter storage pointer"
                             },
-                            "id": 484,
+                            "id": 485,
                             "name": "UserDefinedTypeName",
                             "src": "1881:7:5"
                           }
                         ],
-                        "id": 485,
+                        "id": 486,
                         "name": "VariableDeclaration",
                         "src": "1881:23:5"
                       },
@@ -2554,11 +2554,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 353,
+                              "referencedDeclaration": 354,
                               "type": "type(struct FighterBase.Fighter storage pointer)",
                               "value": "Fighter"
                             },
-                            "id": 486,
+                            "id": 487,
                             "name": "Identifier",
                             "src": "1907:7:5"
                           },
@@ -2568,11 +2568,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 473,
+                              "referencedDeclaration": 474,
                               "type": "uint256",
                               "value": "_maxHealth"
                             },
-                            "id": 487,
+                            "id": 488,
                             "name": "Identifier",
                             "src": "1934:10:5"
                           },
@@ -2582,11 +2582,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 473,
+                              "referencedDeclaration": 474,
                               "type": "uint256",
                               "value": "_maxHealth"
                             },
-                            "id": 488,
+                            "id": 489,
                             "name": "Identifier",
                             "src": "1960:10:5"
                           },
@@ -2596,11 +2596,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 475,
+                              "referencedDeclaration": 476,
                               "type": "uint256",
                               "value": "_speed"
                             },
-                            "id": 489,
+                            "id": 490,
                             "name": "Identifier",
                             "src": "2036:6:5"
                           },
@@ -2610,28 +2610,28 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 477,
+                              "referencedDeclaration": 478,
                               "type": "uint256",
                               "value": "_strength"
                             },
-                            "id": 490,
+                            "id": 491,
                             "name": "Identifier",
                             "src": "2060:9:5"
                           }
                         ],
-                        "id": 491,
+                        "id": 492,
                         "name": "FunctionCall",
                         "src": "1907:169:5"
                       }
                     ],
-                    "id": 492,
+                    "id": 493,
                     "name": "VariableDeclarationStatement",
                     "src": "1881:195:5"
                   },
                   {
                     "attributes": {
                       "assignments": [
-                        494
+                        495
                       ]
                     },
                     "children": [
@@ -2639,7 +2639,7 @@
                         "attributes": {
                           "constant": false,
                           "name": "newFighterId",
-                          "scope": 526,
+                          "scope": 527,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -2652,12 +2652,12 @@
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 493,
+                            "id": 494,
                             "name": "ElementaryTypeName",
                             "src": "2083:7:5"
                           }
                         ],
-                        "id": 494,
+                        "id": 495,
                         "name": "VariableDeclaration",
                         "src": "2083:20:5"
                       },
@@ -2695,7 +2695,7 @@
                                 "attributes": {
                                   "argumentTypes": [
                                     {
-                                      "typeIdentifier": "t_struct$_Fighter_$353_memory_ptr",
+                                      "typeIdentifier": "t_struct$_Fighter_$354_memory_ptr",
                                       "typeString": "struct FighterBase.Fighter memory"
                                     }
                                   ],
@@ -2714,16 +2714,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 356,
+                                      "referencedDeclaration": 357,
                                       "type": "struct FighterBase.Fighter storage ref[] storage ref",
                                       "value": "fighters"
                                     },
-                                    "id": 495,
+                                    "id": 496,
                                     "name": "Identifier",
                                     "src": "2106:8:5"
                                   }
                                 ],
-                                "id": 496,
+                                "id": 497,
                                 "name": "MemberAccess",
                                 "src": "2106:13:5"
                               },
@@ -2733,16 +2733,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 485,
+                                  "referencedDeclaration": 486,
                                   "type": "struct FighterBase.Fighter memory",
                                   "value": "_fighter"
                                 },
-                                "id": 497,
+                                "id": 498,
                                 "name": "Identifier",
                                 "src": "2120:8:5"
                               }
                             ],
-                            "id": 498,
+                            "id": 499,
                             "name": "FunctionCall",
                             "src": "2106:23:5"
                           },
@@ -2759,17 +2759,17 @@
                               "type": "int_const 1",
                               "value": "1"
                             },
-                            "id": 499,
+                            "id": 500,
                             "name": "Literal",
                             "src": "2132:1:5"
                           }
                         ],
-                        "id": 500,
+                        "id": 501,
                         "name": "BinaryOperation",
                         "src": "2106:27:5"
                       }
                     ],
-                    "id": 501,
+                    "id": 502,
                     "name": "VariableDeclarationStatement",
                     "src": "2083:50:5"
                   },
@@ -2801,11 +2801,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2476,
+                              "referencedDeclaration": 2477,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 502,
+                            "id": 503,
                             "name": "Identifier",
                             "src": "2181:7:5"
                           },
@@ -2830,11 +2830,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 494,
+                                  "referencedDeclaration": 495,
                                   "type": "uint256",
                                   "value": "newFighterId"
                                 },
-                                "id": 503,
+                                "id": 504,
                                 "name": "Identifier",
                                 "src": "2189:12:5"
                               },
@@ -2868,7 +2868,7 @@
                                       "type": "type(uint256)",
                                       "value": "uint256"
                                     },
-                                    "id": 504,
+                                    "id": 505,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "2205:7:5"
                                   },
@@ -2902,7 +2902,7 @@
                                           "type": "type(uint32)",
                                           "value": "uint32"
                                         },
-                                        "id": 505,
+                                        "id": 506,
                                         "name": "ElementaryTypeNameExpression",
                                         "src": "2213:6:5"
                                       },
@@ -2912,36 +2912,36 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 494,
+                                          "referencedDeclaration": 495,
                                           "type": "uint256",
                                           "value": "newFighterId"
                                         },
-                                        "id": 506,
+                                        "id": 507,
                                         "name": "Identifier",
                                         "src": "2220:12:5"
                                       }
                                     ],
-                                    "id": 507,
+                                    "id": 508,
                                     "name": "FunctionCall",
                                     "src": "2213:20:5"
                                   }
                                 ],
-                                "id": 508,
+                                "id": 509,
                                 "name": "FunctionCall",
                                 "src": "2205:29:5"
                               }
                             ],
-                            "id": 509,
+                            "id": 510,
                             "name": "BinaryOperation",
                             "src": "2189:45:5"
                           }
                         ],
-                        "id": 510,
+                        "id": 511,
                         "name": "FunctionCall",
                         "src": "2181:54:5"
                       }
                     ],
-                    "id": 511,
+                    "id": 512,
                     "name": "ExpressionStatement",
                     "src": "2181:54:5"
                   },
@@ -2977,11 +2977,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 316,
+                              "referencedDeclaration": 317,
                               "type": "function (address,uint256)",
                               "value": "Creation"
                             },
-                            "id": 512,
+                            "id": 513,
                             "name": "Identifier",
                             "src": "2242:8:5"
                           },
@@ -2991,11 +2991,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 479,
+                              "referencedDeclaration": 480,
                               "type": "address",
                               "value": "_owner"
                             },
-                            "id": 513,
+                            "id": 514,
                             "name": "Identifier",
                             "src": "2251:6:5"
                           },
@@ -3005,21 +3005,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 494,
+                              "referencedDeclaration": 495,
                               "type": "uint256",
                               "value": "newFighterId"
                             },
-                            "id": 514,
+                            "id": 515,
                             "name": "Identifier",
                             "src": "2259:12:5"
                           }
                         ],
-                        "id": 515,
+                        "id": 516,
                         "name": "FunctionCall",
                         "src": "2242:30:5"
                       }
                     ],
-                    "id": 516,
+                    "id": 517,
                     "name": "ExpressionStatement",
                     "src": "2242:30:5"
                   },
@@ -3059,11 +3059,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 429,
+                              "referencedDeclaration": 430,
                               "type": "function (address,address,uint256)",
                               "value": "_transfer"
                             },
-                            "id": 517,
+                            "id": 518,
                             "name": "Identifier",
                             "src": "2374:9:5"
                           },
@@ -3080,7 +3080,7 @@
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 518,
+                            "id": 519,
                             "name": "Literal",
                             "src": "2384:1:5"
                           },
@@ -3090,11 +3090,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 479,
+                              "referencedDeclaration": 480,
                               "type": "address",
                               "value": "_owner"
                             },
-                            "id": 519,
+                            "id": 520,
                             "name": "Identifier",
                             "src": "2387:6:5"
                           },
@@ -3104,27 +3104,27 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 494,
+                              "referencedDeclaration": 495,
                               "type": "uint256",
                               "value": "newFighterId"
                             },
-                            "id": 520,
+                            "id": 521,
                             "name": "Identifier",
                             "src": "2395:12:5"
                           }
                         ],
-                        "id": 521,
+                        "id": 522,
                         "name": "FunctionCall",
                         "src": "2374:34:5"
                       }
                     ],
-                    "id": 522,
+                    "id": 523,
                     "name": "ExpressionStatement",
                     "src": "2374:34:5"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 483
+                      "functionReturnParameters": 484
                     },
                     "children": [
                       {
@@ -3133,26 +3133,26 @@
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 494,
+                          "referencedDeclaration": 495,
                           "type": "uint256",
                           "value": "newFighterId"
                         },
-                        "id": 523,
+                        "id": 524,
                         "name": "Identifier",
                         "src": "2422:12:5"
                       }
                     ],
-                    "id": 524,
+                    "id": 525,
                     "name": "Return",
                     "src": "2415:19:5"
                   }
                 ],
-                "id": 525,
+                "id": 526,
                 "name": "Block",
                 "src": "1875:564:5"
               }
             ],
-            "id": 526,
+            "id": 527,
             "name": "FunctionDefinition",
             "src": "1735:704:5"
           },
@@ -3166,7 +3166,7 @@
               ],
               "name": "_updateFighterInStorage",
               "payable": false,
-              "scope": 695,
+              "scope": 696,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -3178,7 +3178,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_updatedFighter",
-                      "scope": 540,
+                      "scope": 541,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "struct FighterBase.Fighter memory",
@@ -3190,15 +3190,15 @@
                         "attributes": {
                           "contractScope": null,
                           "name": "Fighter",
-                          "referencedDeclaration": 353,
+                          "referencedDeclaration": 354,
                           "type": "struct FighterBase.Fighter storage pointer"
                         },
-                        "id": 527,
+                        "id": 528,
                         "name": "UserDefinedTypeName",
                         "src": "2476:7:5"
                       }
                     ],
-                    "id": 528,
+                    "id": 529,
                     "name": "VariableDeclaration",
                     "src": "2476:23:5"
                   },
@@ -3206,7 +3206,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_fighterId",
-                      "scope": 540,
+                      "scope": 541,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3219,17 +3219,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 529,
+                        "id": 530,
                         "name": "ElementaryTypeName",
                         "src": "2501:4:5"
                       }
                     ],
-                    "id": 530,
+                    "id": 531,
                     "name": "VariableDeclaration",
                     "src": "2501:15:5"
                   }
                 ],
-                "id": 531,
+                "id": 532,
                 "name": "ParameterList",
                 "src": "2475:42:5"
               },
@@ -3240,7 +3240,7 @@
                   ]
                 },
                 "children": [],
-                "id": 532,
+                "id": 533,
                 "name": "ParameterList",
                 "src": "2527:0:5"
               },
@@ -3275,11 +3275,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 356,
+                                  "referencedDeclaration": 357,
                                   "type": "struct FighterBase.Fighter storage ref[] storage ref",
                                   "value": "fighters"
                                 },
-                                "id": 533,
+                                "id": 534,
                                 "name": "Identifier",
                                 "src": "2533:8:5"
                               },
@@ -3289,16 +3289,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 530,
+                                  "referencedDeclaration": 531,
                                   "type": "uint256",
                                   "value": "_fighterId"
                                 },
-                                "id": 534,
+                                "id": 535,
                                 "name": "Identifier",
                                 "src": "2542:10:5"
                               }
                             ],
-                            "id": 535,
+                            "id": 536,
                             "name": "IndexAccess",
                             "src": "2533:20:5"
                           },
@@ -3308,31 +3308,31 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 528,
+                              "referencedDeclaration": 529,
                               "type": "struct FighterBase.Fighter memory",
                               "value": "_updatedFighter"
                             },
-                            "id": 536,
+                            "id": 537,
                             "name": "Identifier",
                             "src": "2556:15:5"
                           }
                         ],
-                        "id": 537,
+                        "id": 538,
                         "name": "Assignment",
                         "src": "2533:38:5"
                       }
                     ],
-                    "id": 538,
+                    "id": 539,
                     "name": "ExpressionStatement",
                     "src": "2533:38:5"
                   }
                 ],
-                "id": 539,
+                "id": 540,
                 "name": "Block",
                 "src": "2527:49:5"
               }
             ],
-            "id": 540,
+            "id": 541,
             "name": "FunctionDefinition",
             "src": "2443:133:5"
           },
@@ -3346,7 +3346,7 @@
               ],
               "name": "_trainMaxHealth",
               "payable": false,
-              "scope": 695,
+              "scope": 696,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -3358,7 +3358,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_fighterId",
-                      "scope": 587,
+                      "scope": 588,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3371,12 +3371,12 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 541,
+                        "id": 542,
                         "name": "ElementaryTypeName",
                         "src": "2605:4:5"
                       }
                     ],
-                    "id": 542,
+                    "id": 543,
                     "name": "VariableDeclaration",
                     "src": "2605:15:5"
                   },
@@ -3384,7 +3384,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_attributeIncrease",
-                      "scope": 587,
+                      "scope": 588,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -3397,12 +3397,12 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 543,
+                        "id": 544,
                         "name": "ElementaryTypeName",
                         "src": "2622:4:5"
                       }
                     ],
-                    "id": 544,
+                    "id": 545,
                     "name": "VariableDeclaration",
                     "src": "2622:23:5"
                   },
@@ -3410,7 +3410,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 587,
+                      "scope": 588,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -3423,17 +3423,17 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 545,
+                        "id": 546,
                         "name": "ElementaryTypeName",
                         "src": "2647:7:5"
                       }
                     ],
-                    "id": 546,
+                    "id": 547,
                     "name": "VariableDeclaration",
                     "src": "2647:14:5"
                   }
                 ],
-                "id": 547,
+                "id": 548,
                 "name": "ParameterList",
                 "src": "2604:58:5"
               },
@@ -3444,7 +3444,7 @@
                   ]
                 },
                 "children": [],
-                "id": 548,
+                "id": 549,
                 "name": "ParameterList",
                 "src": "2672:0:5"
               },
@@ -3453,7 +3453,7 @@
                   {
                     "attributes": {
                       "assignments": [
-                        550
+                        551
                       ]
                     },
                     "children": [
@@ -3461,7 +3461,7 @@
                         "attributes": {
                           "constant": false,
                           "name": "_fighter",
-                          "scope": 587,
+                          "scope": 588,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct FighterBase.Fighter memory",
@@ -3473,15 +3473,15 @@
                             "attributes": {
                               "contractScope": null,
                               "name": "Fighter",
-                              "referencedDeclaration": 353,
+                              "referencedDeclaration": 354,
                               "type": "struct FighterBase.Fighter storage pointer"
                             },
-                            "id": 549,
+                            "id": 550,
                             "name": "UserDefinedTypeName",
                             "src": "2678:7:5"
                           }
                         ],
-                        "id": 550,
+                        "id": 551,
                         "name": "VariableDeclaration",
                         "src": "2678:23:5"
                       },
@@ -3501,11 +3501,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 356,
+                              "referencedDeclaration": 357,
                               "type": "struct FighterBase.Fighter storage ref[] storage ref",
                               "value": "fighters"
                             },
-                            "id": 551,
+                            "id": 552,
                             "name": "Identifier",
                             "src": "2704:8:5"
                           },
@@ -3515,21 +3515,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 542,
+                              "referencedDeclaration": 543,
                               "type": "uint256",
                               "value": "_fighterId"
                             },
-                            "id": 552,
+                            "id": 553,
                             "name": "Identifier",
                             "src": "2713:10:5"
                           }
                         ],
-                        "id": 553,
+                        "id": 554,
                         "name": "IndexAccess",
                         "src": "2704:20:5"
                       }
                     ],
-                    "id": 554,
+                    "id": 555,
                     "name": "VariableDeclarationStatement",
                     "src": "2678:46:5"
                   },
@@ -3561,7 +3561,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "health",
-                              "referencedDeclaration": 348,
+                              "referencedDeclaration": 349,
                               "type": "uint256"
                             },
                             "children": [
@@ -3571,16 +3571,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 550,
+                                  "referencedDeclaration": 551,
                                   "type": "struct FighterBase.Fighter memory",
                                   "value": "_fighter"
                                 },
-                                "id": 555,
+                                "id": 556,
                                 "name": "Identifier",
                                 "src": "2735:8:5"
                               }
                             ],
-                            "id": 556,
+                            "id": 557,
                             "name": "MemberAccess",
                             "src": "2735:15:5"
                           },
@@ -3592,7 +3592,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "maxHealth",
-                              "referencedDeclaration": 346,
+                              "referencedDeclaration": 347,
                               "type": "uint256"
                             },
                             "children": [
@@ -3602,21 +3602,21 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 550,
+                                  "referencedDeclaration": 551,
                                   "type": "struct FighterBase.Fighter memory",
                                   "value": "_fighter"
                                 },
-                                "id": 557,
+                                "id": 558,
                                 "name": "Identifier",
                                 "src": "2754:8:5"
                               }
                             ],
-                            "id": 558,
+                            "id": 559,
                             "name": "MemberAccess",
                             "src": "2754:18:5"
                           }
                         ],
-                        "id": 559,
+                        "id": 560,
                         "name": "BinaryOperation",
                         "src": "2735:37:5"
                       },
@@ -3643,7 +3643,7 @@
                                       "isPure": false,
                                       "lValueRequested": true,
                                       "member_name": "health",
-                                      "referencedDeclaration": 348,
+                                      "referencedDeclaration": 349,
                                       "type": "uint256"
                                     },
                                     "children": [
@@ -3653,16 +3653,16 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 550,
+                                          "referencedDeclaration": 551,
                                           "type": "struct FighterBase.Fighter memory",
                                           "value": "_fighter"
                                         },
-                                        "id": 560,
+                                        "id": 561,
                                         "name": "Identifier",
                                         "src": "2782:8:5"
                                       }
                                     ],
-                                    "id": 562,
+                                    "id": 563,
                                     "name": "MemberAccess",
                                     "src": "2782:15:5"
                                   },
@@ -3672,31 +3672,31 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 544,
+                                      "referencedDeclaration": 545,
                                       "type": "uint256",
                                       "value": "_attributeIncrease"
                                     },
-                                    "id": 563,
+                                    "id": 564,
                                     "name": "Identifier",
                                     "src": "2801:18:5"
                                   }
                                 ],
-                                "id": 564,
+                                "id": 565,
                                 "name": "Assignment",
                                 "src": "2782:37:5"
                               }
                             ],
-                            "id": 565,
+                            "id": 566,
                             "name": "ExpressionStatement",
                             "src": "2782:37:5"
                           }
                         ],
-                        "id": 566,
+                        "id": 567,
                         "name": "Block",
                         "src": "2774:52:5"
                       }
                     ],
-                    "id": 567,
+                    "id": 568,
                     "name": "IfStatement",
                     "src": "2731:95:5"
                   },
@@ -3721,7 +3721,7 @@
                               "isPure": false,
                               "lValueRequested": true,
                               "member_name": "maxHealth",
-                              "referencedDeclaration": 346,
+                              "referencedDeclaration": 347,
                               "type": "uint256"
                             },
                             "children": [
@@ -3731,16 +3731,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 550,
+                                  "referencedDeclaration": 551,
                                   "type": "struct FighterBase.Fighter memory",
                                   "value": "_fighter"
                                 },
-                                "id": 568,
+                                "id": 569,
                                 "name": "Identifier",
                                 "src": "2832:8:5"
                               }
                             ],
-                            "id": 570,
+                            "id": 571,
                             "name": "MemberAccess",
                             "src": "2832:18:5"
                           },
@@ -3750,21 +3750,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 544,
+                              "referencedDeclaration": 545,
                               "type": "uint256",
                               "value": "_attributeIncrease"
                             },
-                            "id": 571,
+                            "id": 572,
                             "name": "Identifier",
                             "src": "2854:18:5"
                           }
                         ],
-                        "id": 572,
+                        "id": 573,
                         "name": "Assignment",
                         "src": "2832:40:5"
                       }
                     ],
-                    "id": 573,
+                    "id": 574,
                     "name": "ExpressionStatement",
                     "src": "2832:40:5"
                   },
@@ -3789,7 +3789,7 @@
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_struct$_Fighter_$353_memory_ptr",
+                                  "typeIdentifier": "t_struct$_Fighter_$354_memory_ptr",
                                   "typeString": "struct FighterBase.Fighter memory"
                                 },
                                 {
@@ -3800,11 +3800,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 540,
+                              "referencedDeclaration": 541,
                               "type": "function (struct FighterBase.Fighter memory,uint256)",
                               "value": "_updateFighterInStorage"
                             },
-                            "id": 574,
+                            "id": 575,
                             "name": "Identifier",
                             "src": "2878:23:5"
                           },
@@ -3814,11 +3814,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 550,
+                              "referencedDeclaration": 551,
                               "type": "struct FighterBase.Fighter memory",
                               "value": "_fighter"
                             },
-                            "id": 575,
+                            "id": 576,
                             "name": "Identifier",
                             "src": "2902:8:5"
                           },
@@ -3828,21 +3828,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 542,
+                              "referencedDeclaration": 543,
                               "type": "uint256",
                               "value": "_fighterId"
                             },
-                            "id": 576,
+                            "id": 577,
                             "name": "Identifier",
                             "src": "2912:10:5"
                           }
                         ],
-                        "id": 577,
+                        "id": 578,
                         "name": "FunctionCall",
                         "src": "2878:45:5"
                       }
                     ],
-                    "id": 578,
+                    "id": 579,
                     "name": "ExpressionStatement",
                     "src": "2878:45:5"
                   },
@@ -3886,11 +3886,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 334,
+                              "referencedDeclaration": 335,
                               "type": "function (address,uint256,string memory,uint256)",
                               "value": "AttributeIncrease"
                             },
-                            "id": 579,
+                            "id": 580,
                             "name": "Identifier",
                             "src": "2930:17:5"
                           },
@@ -3900,11 +3900,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 546,
+                              "referencedDeclaration": 547,
                               "type": "address",
                               "value": "_owner"
                             },
-                            "id": 580,
+                            "id": 581,
                             "name": "Identifier",
                             "src": "2948:6:5"
                           },
@@ -3914,11 +3914,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 542,
+                              "referencedDeclaration": 543,
                               "type": "uint256",
                               "value": "_fighterId"
                             },
-                            "id": 581,
+                            "id": 582,
                             "name": "Identifier",
                             "src": "2956:10:5"
                           },
@@ -3935,7 +3935,7 @@
                               "type": "literal_string \"maxHealth\"",
                               "value": "maxHealth"
                             },
-                            "id": 582,
+                            "id": 583,
                             "name": "Literal",
                             "src": "2968:11:5"
                           },
@@ -3945,31 +3945,31 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 544,
+                              "referencedDeclaration": 545,
                               "type": "uint256",
                               "value": "_attributeIncrease"
                             },
-                            "id": 583,
+                            "id": 584,
                             "name": "Identifier",
                             "src": "2981:18:5"
                           }
                         ],
-                        "id": 584,
+                        "id": 585,
                         "name": "FunctionCall",
                         "src": "2930:70:5"
                       }
                     ],
-                    "id": 585,
+                    "id": 586,
                     "name": "ExpressionStatement",
                     "src": "2930:70:5"
                   }
                 ],
-                "id": 586,
+                "id": 587,
                 "name": "Block",
                 "src": "2672:333:5"
               }
             ],
-            "id": 587,
+            "id": 588,
             "name": "FunctionDefinition",
             "src": "2580:425:5"
           },
@@ -3983,7 +3983,7 @@
               ],
               "name": "_trainSpeed",
               "payable": false,
-              "scope": 695,
+              "scope": 696,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -3995,7 +3995,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_fighterId",
-                      "scope": 621,
+                      "scope": 622,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4008,12 +4008,12 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 588,
+                        "id": 589,
                         "name": "ElementaryTypeName",
                         "src": "3030:4:5"
                       }
                     ],
-                    "id": 589,
+                    "id": 590,
                     "name": "VariableDeclaration",
                     "src": "3030:15:5"
                   },
@@ -4021,7 +4021,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_attributeIncrease",
-                      "scope": 621,
+                      "scope": 622,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4034,12 +4034,12 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 590,
+                        "id": 591,
                         "name": "ElementaryTypeName",
                         "src": "3047:4:5"
                       }
                     ],
-                    "id": 591,
+                    "id": 592,
                     "name": "VariableDeclaration",
                     "src": "3047:23:5"
                   },
@@ -4047,7 +4047,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 621,
+                      "scope": 622,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4060,17 +4060,17 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 592,
+                        "id": 593,
                         "name": "ElementaryTypeName",
                         "src": "3072:7:5"
                       }
                     ],
-                    "id": 593,
+                    "id": 594,
                     "name": "VariableDeclaration",
                     "src": "3072:14:5"
                   }
                 ],
-                "id": 594,
+                "id": 595,
                 "name": "ParameterList",
                 "src": "3029:58:5"
               },
@@ -4081,7 +4081,7 @@
                   ]
                 },
                 "children": [],
-                "id": 595,
+                "id": 596,
                 "name": "ParameterList",
                 "src": "3097:0:5"
               },
@@ -4090,7 +4090,7 @@
                   {
                     "attributes": {
                       "assignments": [
-                        597
+                        598
                       ]
                     },
                     "children": [
@@ -4098,7 +4098,7 @@
                         "attributes": {
                           "constant": false,
                           "name": "_fighter",
-                          "scope": 621,
+                          "scope": 622,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct FighterBase.Fighter memory",
@@ -4110,15 +4110,15 @@
                             "attributes": {
                               "contractScope": null,
                               "name": "Fighter",
-                              "referencedDeclaration": 353,
+                              "referencedDeclaration": 354,
                               "type": "struct FighterBase.Fighter storage pointer"
                             },
-                            "id": 596,
+                            "id": 597,
                             "name": "UserDefinedTypeName",
                             "src": "3103:7:5"
                           }
                         ],
-                        "id": 597,
+                        "id": 598,
                         "name": "VariableDeclaration",
                         "src": "3103:23:5"
                       },
@@ -4138,11 +4138,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 356,
+                              "referencedDeclaration": 357,
                               "type": "struct FighterBase.Fighter storage ref[] storage ref",
                               "value": "fighters"
                             },
-                            "id": 598,
+                            "id": 599,
                             "name": "Identifier",
                             "src": "3129:8:5"
                           },
@@ -4152,21 +4152,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 589,
+                              "referencedDeclaration": 590,
                               "type": "uint256",
                               "value": "_fighterId"
                             },
-                            "id": 599,
+                            "id": 600,
                             "name": "Identifier",
                             "src": "3138:10:5"
                           }
                         ],
-                        "id": 600,
+                        "id": 601,
                         "name": "IndexAccess",
                         "src": "3129:20:5"
                       }
                     ],
-                    "id": 601,
+                    "id": 602,
                     "name": "VariableDeclarationStatement",
                     "src": "3103:46:5"
                   },
@@ -4191,7 +4191,7 @@
                               "isPure": false,
                               "lValueRequested": true,
                               "member_name": "speed",
-                              "referencedDeclaration": 350,
+                              "referencedDeclaration": 351,
                               "type": "uint256"
                             },
                             "children": [
@@ -4201,16 +4201,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 597,
+                                  "referencedDeclaration": 598,
                                   "type": "struct FighterBase.Fighter memory",
                                   "value": "_fighter"
                                 },
-                                "id": 602,
+                                "id": 603,
                                 "name": "Identifier",
                                 "src": "3155:8:5"
                               }
                             ],
-                            "id": 604,
+                            "id": 605,
                             "name": "MemberAccess",
                             "src": "3155:14:5"
                           },
@@ -4220,21 +4220,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 591,
+                              "referencedDeclaration": 592,
                               "type": "uint256",
                               "value": "_attributeIncrease"
                             },
-                            "id": 605,
+                            "id": 606,
                             "name": "Identifier",
                             "src": "3173:18:5"
                           }
                         ],
-                        "id": 606,
+                        "id": 607,
                         "name": "Assignment",
                         "src": "3155:36:5"
                       }
                     ],
-                    "id": 607,
+                    "id": 608,
                     "name": "ExpressionStatement",
                     "src": "3155:36:5"
                   },
@@ -4259,7 +4259,7 @@
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_struct$_Fighter_$353_memory_ptr",
+                                  "typeIdentifier": "t_struct$_Fighter_$354_memory_ptr",
                                   "typeString": "struct FighterBase.Fighter memory"
                                 },
                                 {
@@ -4270,11 +4270,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 540,
+                              "referencedDeclaration": 541,
                               "type": "function (struct FighterBase.Fighter memory,uint256)",
                               "value": "_updateFighterInStorage"
                             },
-                            "id": 608,
+                            "id": 609,
                             "name": "Identifier",
                             "src": "3197:23:5"
                           },
@@ -4284,11 +4284,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 597,
+                              "referencedDeclaration": 598,
                               "type": "struct FighterBase.Fighter memory",
                               "value": "_fighter"
                             },
-                            "id": 609,
+                            "id": 610,
                             "name": "Identifier",
                             "src": "3221:8:5"
                           },
@@ -4298,21 +4298,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 589,
+                              "referencedDeclaration": 590,
                               "type": "uint256",
                               "value": "_fighterId"
                             },
-                            "id": 610,
+                            "id": 611,
                             "name": "Identifier",
                             "src": "3231:10:5"
                           }
                         ],
-                        "id": 611,
+                        "id": 612,
                         "name": "FunctionCall",
                         "src": "3197:45:5"
                       }
                     ],
-                    "id": 612,
+                    "id": 613,
                     "name": "ExpressionStatement",
                     "src": "3197:45:5"
                   },
@@ -4356,11 +4356,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 334,
+                              "referencedDeclaration": 335,
                               "type": "function (address,uint256,string memory,uint256)",
                               "value": "AttributeIncrease"
                             },
-                            "id": 613,
+                            "id": 614,
                             "name": "Identifier",
                             "src": "3249:17:5"
                           },
@@ -4370,11 +4370,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 593,
+                              "referencedDeclaration": 594,
                               "type": "address",
                               "value": "_owner"
                             },
-                            "id": 614,
+                            "id": 615,
                             "name": "Identifier",
                             "src": "3267:6:5"
                           },
@@ -4384,11 +4384,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 589,
+                              "referencedDeclaration": 590,
                               "type": "uint256",
                               "value": "_fighterId"
                             },
-                            "id": 615,
+                            "id": 616,
                             "name": "Identifier",
                             "src": "3275:10:5"
                           },
@@ -4405,7 +4405,7 @@
                               "type": "literal_string \"speed\"",
                               "value": "speed"
                             },
-                            "id": 616,
+                            "id": 617,
                             "name": "Literal",
                             "src": "3287:7:5"
                           },
@@ -4415,31 +4415,31 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 591,
+                              "referencedDeclaration": 592,
                               "type": "uint256",
                               "value": "_attributeIncrease"
                             },
-                            "id": 617,
+                            "id": 618,
                             "name": "Identifier",
                             "src": "3296:18:5"
                           }
                         ],
-                        "id": 618,
+                        "id": 619,
                         "name": "FunctionCall",
                         "src": "3249:66:5"
                       }
                     ],
-                    "id": 619,
+                    "id": 620,
                     "name": "ExpressionStatement",
                     "src": "3249:66:5"
                   }
                 ],
-                "id": 620,
+                "id": 621,
                 "name": "Block",
                 "src": "3097:223:5"
               }
             ],
-            "id": 621,
+            "id": 622,
             "name": "FunctionDefinition",
             "src": "3009:311:5"
           },
@@ -4453,7 +4453,7 @@
               ],
               "name": "_trainStrength",
               "payable": false,
-              "scope": 695,
+              "scope": 696,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -4465,7 +4465,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_fighterId",
-                      "scope": 655,
+                      "scope": 656,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4478,12 +4478,12 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 622,
+                        "id": 623,
                         "name": "ElementaryTypeName",
                         "src": "3348:4:5"
                       }
                     ],
-                    "id": 623,
+                    "id": 624,
                     "name": "VariableDeclaration",
                     "src": "3348:15:5"
                   },
@@ -4491,7 +4491,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_attributeIncrease",
-                      "scope": 655,
+                      "scope": 656,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4504,12 +4504,12 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 624,
+                        "id": 625,
                         "name": "ElementaryTypeName",
                         "src": "3365:4:5"
                       }
                     ],
-                    "id": 625,
+                    "id": 626,
                     "name": "VariableDeclaration",
                     "src": "3365:23:5"
                   },
@@ -4517,7 +4517,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 655,
+                      "scope": 656,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4530,17 +4530,17 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 626,
+                        "id": 627,
                         "name": "ElementaryTypeName",
                         "src": "3390:7:5"
                       }
                     ],
-                    "id": 627,
+                    "id": 628,
                     "name": "VariableDeclaration",
                     "src": "3390:14:5"
                   }
                 ],
-                "id": 628,
+                "id": 629,
                 "name": "ParameterList",
                 "src": "3347:58:5"
               },
@@ -4551,7 +4551,7 @@
                   ]
                 },
                 "children": [],
-                "id": 629,
+                "id": 630,
                 "name": "ParameterList",
                 "src": "3415:0:5"
               },
@@ -4560,7 +4560,7 @@
                   {
                     "attributes": {
                       "assignments": [
-                        631
+                        632
                       ]
                     },
                     "children": [
@@ -4568,7 +4568,7 @@
                         "attributes": {
                           "constant": false,
                           "name": "_fighter",
-                          "scope": 655,
+                          "scope": 656,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct FighterBase.Fighter memory",
@@ -4580,15 +4580,15 @@
                             "attributes": {
                               "contractScope": null,
                               "name": "Fighter",
-                              "referencedDeclaration": 353,
+                              "referencedDeclaration": 354,
                               "type": "struct FighterBase.Fighter storage pointer"
                             },
-                            "id": 630,
+                            "id": 631,
                             "name": "UserDefinedTypeName",
                             "src": "3421:7:5"
                           }
                         ],
-                        "id": 631,
+                        "id": 632,
                         "name": "VariableDeclaration",
                         "src": "3421:23:5"
                       },
@@ -4608,11 +4608,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 356,
+                              "referencedDeclaration": 357,
                               "type": "struct FighterBase.Fighter storage ref[] storage ref",
                               "value": "fighters"
                             },
-                            "id": 632,
+                            "id": 633,
                             "name": "Identifier",
                             "src": "3447:8:5"
                           },
@@ -4622,21 +4622,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 623,
+                              "referencedDeclaration": 624,
                               "type": "uint256",
                               "value": "_fighterId"
                             },
-                            "id": 633,
+                            "id": 634,
                             "name": "Identifier",
                             "src": "3456:10:5"
                           }
                         ],
-                        "id": 634,
+                        "id": 635,
                         "name": "IndexAccess",
                         "src": "3447:20:5"
                       }
                     ],
-                    "id": 635,
+                    "id": 636,
                     "name": "VariableDeclarationStatement",
                     "src": "3421:46:5"
                   },
@@ -4661,7 +4661,7 @@
                               "isPure": false,
                               "lValueRequested": true,
                               "member_name": "strength",
-                              "referencedDeclaration": 352,
+                              "referencedDeclaration": 353,
                               "type": "uint256"
                             },
                             "children": [
@@ -4671,16 +4671,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 631,
+                                  "referencedDeclaration": 632,
                                   "type": "struct FighterBase.Fighter memory",
                                   "value": "_fighter"
                                 },
-                                "id": 636,
+                                "id": 637,
                                 "name": "Identifier",
                                 "src": "3473:8:5"
                               }
                             ],
-                            "id": 638,
+                            "id": 639,
                             "name": "MemberAccess",
                             "src": "3473:17:5"
                           },
@@ -4690,21 +4690,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 625,
+                              "referencedDeclaration": 626,
                               "type": "uint256",
                               "value": "_attributeIncrease"
                             },
-                            "id": 639,
+                            "id": 640,
                             "name": "Identifier",
                             "src": "3494:18:5"
                           }
                         ],
-                        "id": 640,
+                        "id": 641,
                         "name": "Assignment",
                         "src": "3473:39:5"
                       }
                     ],
-                    "id": 641,
+                    "id": 642,
                     "name": "ExpressionStatement",
                     "src": "3473:39:5"
                   },
@@ -4729,7 +4729,7 @@
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_struct$_Fighter_$353_memory_ptr",
+                                  "typeIdentifier": "t_struct$_Fighter_$354_memory_ptr",
                                   "typeString": "struct FighterBase.Fighter memory"
                                 },
                                 {
@@ -4740,11 +4740,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 540,
+                              "referencedDeclaration": 541,
                               "type": "function (struct FighterBase.Fighter memory,uint256)",
                               "value": "_updateFighterInStorage"
                             },
-                            "id": 642,
+                            "id": 643,
                             "name": "Identifier",
                             "src": "3518:23:5"
                           },
@@ -4754,11 +4754,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 631,
+                              "referencedDeclaration": 632,
                               "type": "struct FighterBase.Fighter memory",
                               "value": "_fighter"
                             },
-                            "id": 643,
+                            "id": 644,
                             "name": "Identifier",
                             "src": "3542:8:5"
                           },
@@ -4768,21 +4768,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 623,
+                              "referencedDeclaration": 624,
                               "type": "uint256",
                               "value": "_fighterId"
                             },
-                            "id": 644,
+                            "id": 645,
                             "name": "Identifier",
                             "src": "3552:10:5"
                           }
                         ],
-                        "id": 645,
+                        "id": 646,
                         "name": "FunctionCall",
                         "src": "3518:45:5"
                       }
                     ],
-                    "id": 646,
+                    "id": 647,
                     "name": "ExpressionStatement",
                     "src": "3518:45:5"
                   },
@@ -4826,11 +4826,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 334,
+                              "referencedDeclaration": 335,
                               "type": "function (address,uint256,string memory,uint256)",
                               "value": "AttributeIncrease"
                             },
-                            "id": 647,
+                            "id": 648,
                             "name": "Identifier",
                             "src": "3570:17:5"
                           },
@@ -4840,11 +4840,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 627,
+                              "referencedDeclaration": 628,
                               "type": "address",
                               "value": "_owner"
                             },
-                            "id": 648,
+                            "id": 649,
                             "name": "Identifier",
                             "src": "3588:6:5"
                           },
@@ -4854,11 +4854,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 623,
+                              "referencedDeclaration": 624,
                               "type": "uint256",
                               "value": "_fighterId"
                             },
-                            "id": 649,
+                            "id": 650,
                             "name": "Identifier",
                             "src": "3596:10:5"
                           },
@@ -4875,7 +4875,7 @@
                               "type": "literal_string \"strength\"",
                               "value": "strength"
                             },
-                            "id": 650,
+                            "id": 651,
                             "name": "Literal",
                             "src": "3608:10:5"
                           },
@@ -4885,31 +4885,31 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 625,
+                              "referencedDeclaration": 626,
                               "type": "uint256",
                               "value": "_attributeIncrease"
                             },
-                            "id": 651,
+                            "id": 652,
                             "name": "Identifier",
                             "src": "3620:18:5"
                           }
                         ],
-                        "id": 652,
+                        "id": 653,
                         "name": "FunctionCall",
                         "src": "3570:69:5"
                       }
                     ],
-                    "id": 653,
+                    "id": 654,
                     "name": "ExpressionStatement",
                     "src": "3570:69:5"
                   }
                 ],
-                "id": 654,
+                "id": 655,
                 "name": "Block",
                 "src": "3415:229:5"
               }
             ],
-            "id": 655,
+            "id": 656,
             "name": "FunctionDefinition",
             "src": "3324:320:5"
           },
@@ -4923,7 +4923,7 @@
               ],
               "name": "_healFighter",
               "payable": false,
-              "scope": 695,
+              "scope": 696,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -4935,7 +4935,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_fighterId",
-                      "scope": 694,
+                      "scope": 695,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -4948,12 +4948,12 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 656,
+                        "id": 657,
                         "name": "ElementaryTypeName",
                         "src": "3792:4:5"
                       }
                     ],
-                    "id": 657,
+                    "id": 658,
                     "name": "VariableDeclaration",
                     "src": "3792:15:5"
                   },
@@ -4961,7 +4961,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_owner",
-                      "scope": 694,
+                      "scope": 695,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -4974,17 +4974,17 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 658,
+                        "id": 659,
                         "name": "ElementaryTypeName",
                         "src": "3809:7:5"
                       }
                     ],
-                    "id": 659,
+                    "id": 660,
                     "name": "VariableDeclaration",
                     "src": "3809:14:5"
                   }
                 ],
-                "id": 660,
+                "id": 661,
                 "name": "ParameterList",
                 "src": "3791:33:5"
               },
@@ -4995,7 +4995,7 @@
                   ]
                 },
                 "children": [],
-                "id": 661,
+                "id": 662,
                 "name": "ParameterList",
                 "src": "3834:0:5"
               },
@@ -5004,7 +5004,7 @@
                   {
                     "attributes": {
                       "assignments": [
-                        663
+                        664
                       ]
                     },
                     "children": [
@@ -5012,7 +5012,7 @@
                         "attributes": {
                           "constant": false,
                           "name": "_fighter",
-                          "scope": 694,
+                          "scope": 695,
                           "stateVariable": false,
                           "storageLocation": "memory",
                           "type": "struct FighterBase.Fighter memory",
@@ -5024,15 +5024,15 @@
                             "attributes": {
                               "contractScope": null,
                               "name": "Fighter",
-                              "referencedDeclaration": 353,
+                              "referencedDeclaration": 354,
                               "type": "struct FighterBase.Fighter storage pointer"
                             },
-                            "id": 662,
+                            "id": 663,
                             "name": "UserDefinedTypeName",
                             "src": "3840:7:5"
                           }
                         ],
-                        "id": 663,
+                        "id": 664,
                         "name": "VariableDeclaration",
                         "src": "3840:23:5"
                       },
@@ -5052,11 +5052,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 356,
+                              "referencedDeclaration": 357,
                               "type": "struct FighterBase.Fighter storage ref[] storage ref",
                               "value": "fighters"
                             },
-                            "id": 664,
+                            "id": 665,
                             "name": "Identifier",
                             "src": "3866:8:5"
                           },
@@ -5066,21 +5066,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 657,
+                              "referencedDeclaration": 658,
                               "type": "uint256",
                               "value": "_fighterId"
                             },
-                            "id": 665,
+                            "id": 666,
                             "name": "Identifier",
                             "src": "3875:10:5"
                           }
                         ],
-                        "id": 666,
+                        "id": 667,
                         "name": "IndexAccess",
                         "src": "3866:20:5"
                       }
                     ],
-                    "id": 667,
+                    "id": 668,
                     "name": "VariableDeclarationStatement",
                     "src": "3840:46:5"
                   },
@@ -5112,11 +5112,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2476,
+                              "referencedDeclaration": 2477,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 668,
+                            "id": 669,
                             "name": "Identifier",
                             "src": "3892:7:5"
                           },
@@ -5143,7 +5143,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "health",
-                                  "referencedDeclaration": 348,
+                                  "referencedDeclaration": 349,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -5153,16 +5153,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 663,
+                                      "referencedDeclaration": 664,
                                       "type": "struct FighterBase.Fighter memory",
                                       "value": "_fighter"
                                     },
-                                    "id": 669,
+                                    "id": 670,
                                     "name": "Identifier",
                                     "src": "3900:8:5"
                                   }
                                 ],
-                                "id": 670,
+                                "id": 671,
                                 "name": "MemberAccess",
                                 "src": "3900:15:5"
                               },
@@ -5174,7 +5174,7 @@
                                   "isPure": false,
                                   "lValueRequested": false,
                                   "member_name": "maxHealth",
-                                  "referencedDeclaration": 346,
+                                  "referencedDeclaration": 347,
                                   "type": "uint256"
                                 },
                                 "children": [
@@ -5184,31 +5184,31 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 663,
+                                      "referencedDeclaration": 664,
                                       "type": "struct FighterBase.Fighter memory",
                                       "value": "_fighter"
                                     },
-                                    "id": 671,
+                                    "id": 672,
                                     "name": "Identifier",
                                     "src": "3918:8:5"
                                   }
                                 ],
-                                "id": 672,
+                                "id": 673,
                                 "name": "MemberAccess",
                                 "src": "3918:18:5"
                               }
                             ],
-                            "id": 673,
+                            "id": 674,
                             "name": "BinaryOperation",
                             "src": "3900:36:5"
                           }
                         ],
-                        "id": 674,
+                        "id": 675,
                         "name": "FunctionCall",
                         "src": "3892:45:5"
                       }
                     ],
-                    "id": 675,
+                    "id": 676,
                     "name": "ExpressionStatement",
                     "src": "3892:45:5"
                   },
@@ -5233,7 +5233,7 @@
                               "isPure": false,
                               "lValueRequested": true,
                               "member_name": "health",
-                              "referencedDeclaration": 348,
+                              "referencedDeclaration": 349,
                               "type": "uint256"
                             },
                             "children": [
@@ -5243,16 +5243,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 663,
+                                  "referencedDeclaration": 664,
                                   "type": "struct FighterBase.Fighter memory",
                                   "value": "_fighter"
                                 },
-                                "id": 676,
+                                "id": 677,
                                 "name": "Identifier",
                                 "src": "3948:8:5"
                               }
                             ],
-                            "id": 678,
+                            "id": 679,
                             "name": "MemberAccess",
                             "src": "3948:15:5"
                           },
@@ -5264,7 +5264,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "member_name": "maxHealth",
-                              "referencedDeclaration": 346,
+                              "referencedDeclaration": 347,
                               "type": "uint256"
                             },
                             "children": [
@@ -5274,26 +5274,26 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 663,
+                                  "referencedDeclaration": 664,
                                   "type": "struct FighterBase.Fighter memory",
                                   "value": "_fighter"
                                 },
-                                "id": 679,
+                                "id": 680,
                                 "name": "Identifier",
                                 "src": "3966:8:5"
                               }
                             ],
-                            "id": 680,
+                            "id": 681,
                             "name": "MemberAccess",
                             "src": "3966:18:5"
                           }
                         ],
-                        "id": 681,
+                        "id": 682,
                         "name": "Assignment",
                         "src": "3948:36:5"
                       }
                     ],
-                    "id": 682,
+                    "id": 683,
                     "name": "ExpressionStatement",
                     "src": "3948:36:5"
                   },
@@ -5318,7 +5318,7 @@
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_struct$_Fighter_$353_memory_ptr",
+                                  "typeIdentifier": "t_struct$_Fighter_$354_memory_ptr",
                                   "typeString": "struct FighterBase.Fighter memory"
                                 },
                                 {
@@ -5329,11 +5329,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 540,
+                              "referencedDeclaration": 541,
                               "type": "function (struct FighterBase.Fighter memory,uint256)",
                               "value": "_updateFighterInStorage"
                             },
-                            "id": 683,
+                            "id": 684,
                             "name": "Identifier",
                             "src": "3990:23:5"
                           },
@@ -5343,11 +5343,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 663,
+                              "referencedDeclaration": 664,
                               "type": "struct FighterBase.Fighter memory",
                               "value": "_fighter"
                             },
-                            "id": 684,
+                            "id": 685,
                             "name": "Identifier",
                             "src": "4014:8:5"
                           },
@@ -5357,21 +5357,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 657,
+                              "referencedDeclaration": 658,
                               "type": "uint256",
                               "value": "_fighterId"
                             },
-                            "id": 685,
+                            "id": 686,
                             "name": "Identifier",
                             "src": "4024:10:5"
                           }
                         ],
-                        "id": 686,
+                        "id": 687,
                         "name": "FunctionCall",
                         "src": "3990:45:5"
                       }
                     ],
-                    "id": 687,
+                    "id": 688,
                     "name": "ExpressionStatement",
                     "src": "3990:45:5"
                   },
@@ -5407,11 +5407,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 340,
+                              "referencedDeclaration": 341,
                               "type": "function (address,uint256)",
                               "value": "Healed"
                             },
-                            "id": 688,
+                            "id": 689,
                             "name": "Identifier",
                             "src": "4042:6:5"
                           },
@@ -5421,11 +5421,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 659,
+                              "referencedDeclaration": 660,
                               "type": "address",
                               "value": "_owner"
                             },
-                            "id": 689,
+                            "id": 690,
                             "name": "Identifier",
                             "src": "4049:6:5"
                           },
@@ -5435,41 +5435,41 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 657,
+                              "referencedDeclaration": 658,
                               "type": "uint256",
                               "value": "_fighterId"
                             },
-                            "id": 690,
+                            "id": 691,
                             "name": "Identifier",
                             "src": "4057:10:5"
                           }
                         ],
-                        "id": 691,
+                        "id": 692,
                         "name": "FunctionCall",
                         "src": "4042:26:5"
                       }
                     ],
-                    "id": 692,
+                    "id": 693,
                     "name": "ExpressionStatement",
                     "src": "4042:26:5"
                   }
                 ],
-                "id": 693,
+                "id": 694,
                 "name": "Block",
                 "src": "3834:239:5"
               }
             ],
-            "id": 694,
+            "id": 695,
             "name": "FunctionDefinition",
             "src": "3770:303:5"
           }
         ],
-        "id": 695,
+        "id": 696,
         "name": "ContractDefinition",
         "src": "26:4049:5"
       }
     ],
-    "id": 696,
+    "id": 697,
     "name": "SourceUnit",
     "src": "0:4076:5"
   },
@@ -5479,5 +5479,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-01-24T19:33:32.118Z"
+  "updatedAt": "2018-01-25T13:24:16.211Z"
 }

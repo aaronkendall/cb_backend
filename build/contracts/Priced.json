@@ -1,18 +1,18 @@
 {
   "contractName": "Priced",
   "abi": [],
-  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820fbbe040a5d79c7eb8896337cdd7a00a73a2d899e928c71f7f6138e891b34c2960029",
-  "deployedBytecode": "0x6060604052600080fd00a165627a7a72305820fbbe040a5d79c7eb8896337cdd7a00a73a2d899e928c71f7f6138e891b34c2960029",
+  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a723058201a7e6bdd8e8096070e964bb10c31d27d652bfe8e877f38556c590e963b3db50c0029",
+  "deployedBytecode": "0x6060604052600080fd00a165627a7a723058201a7e6bdd8e8096070e964bb10c31d27d652bfe8e877f38556c590e963b3db50c0029",
   "sourceMap": "26:101:4:-;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "26:101:4:-;;;;;",
   "source": "pragma solidity ^0.4.18;\n\ncontract Priced {\n  modifier costs(uint price) {\n    if (msg.value >= price) {\n        _;\n    }\n  }\n}\n",
-  "sourcePath": "/Users/Aaron/Projects/cryptoclash/contracts/base/Priced.sol",
+  "sourcePath": "/Users/kendalla/projects/cryptoclash/contracts/base/Priced.sol",
   "ast": {
     "attributes": {
-      "absolutePath": "/Users/Aaron/Projects/cryptoclash/contracts/base/Priced.sol",
+      "absolutePath": "/Users/kendalla/projects/cryptoclash/contracts/base/Priced.sol",
       "exportedSymbols": {
         "Priced": [
-          308
+          309
         ]
       }
     },
@@ -26,7 +26,7 @@
             ".18"
           ]
         },
-        "id": 295,
+        "id": 296,
         "name": "PragmaDirective",
         "src": "0:24:4"
       },
@@ -42,10 +42,10 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            308
+            309
           ],
           "name": "Priced",
-          "scope": 309
+          "scope": 310
         },
         "children": [
           {
@@ -60,7 +60,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "price",
-                      "scope": 307,
+                      "scope": 308,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -73,17 +73,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 296,
+                        "id": 297,
                         "name": "ElementaryTypeName",
                         "src": "61:4:4"
                       }
                     ],
-                    "id": 297,
+                    "id": 298,
                     "name": "VariableDeclaration",
                     "src": "61:10:4"
                   }
                 ],
-                "id": 298,
+                "id": 299,
                 "name": "ParameterList",
                 "src": "60:12:4"
               },
@@ -127,16 +127,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2473,
+                                  "referencedDeclaration": 2474,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 299,
+                                "id": 300,
                                 "name": "Identifier",
                                 "src": "83:3:4"
                               }
                             ],
-                            "id": 300,
+                            "id": 301,
                             "name": "MemberAccess",
                             "src": "83:9:4"
                           },
@@ -146,53 +146,53 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 297,
+                              "referencedDeclaration": 298,
                               "type": "uint256",
                               "value": "price"
                             },
-                            "id": 301,
+                            "id": 302,
                             "name": "Identifier",
                             "src": "96:5:4"
                           }
                         ],
-                        "id": 302,
+                        "id": 303,
                         "name": "BinaryOperation",
                         "src": "83:18:4"
                       },
                       {
                         "children": [
                           {
-                            "id": 303,
+                            "id": 304,
                             "name": "PlaceholderStatement",
                             "src": "113:1:4"
                           }
                         ],
-                        "id": 304,
+                        "id": 305,
                         "name": "Block",
                         "src": "103:18:4"
                       }
                     ],
-                    "id": 305,
+                    "id": 306,
                     "name": "IfStatement",
                     "src": "79:42:4"
                   }
                 ],
-                "id": 306,
+                "id": 307,
                 "name": "Block",
                 "src": "73:52:4"
               }
             ],
-            "id": 307,
+            "id": 308,
             "name": "ModifierDefinition",
             "src": "46:79:4"
           }
         ],
-        "id": 308,
+        "id": 309,
         "name": "ContractDefinition",
         "src": "26:101:4"
       }
     ],
-    "id": 309,
+    "id": 310,
     "name": "SourceUnit",
     "src": "0:128:4"
   },
@@ -202,5 +202,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-01-24T19:33:32.115Z"
+  "updatedAt": "2018-01-25T13:24:16.209Z"
 }
