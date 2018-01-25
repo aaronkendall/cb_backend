@@ -28,3 +28,11 @@ export function selectFighterToBrawl(fighterId) {
 export function resetSelectedFighter() {
   return { type: arena.RESET_SELECTED_FIGHTER };
 }
+
+export function populateArenaThunk(arenaService) {
+  return (dispatch) => {
+    arenaService.getFightersInArena()
+      .then(fightersPromiseArray => Promise.all(fightersPromiseArray))
+      .then(fighters => dispatch(populateArena(fighters)))
+  }
+}

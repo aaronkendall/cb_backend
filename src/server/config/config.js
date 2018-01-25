@@ -8,7 +8,8 @@ const defaultConfig = {
   contractAddress: process.env.CONTRACT_ADDRESS,
   trainingCost: process.env.TRAINING_COST,
   defaultSearchGas: process.env.DEFAULT_SEARCH_GAS,
-  defaultFightGas: process.env.DEFAULT_FIGHT_GAS
+  defaultFightGas: process.env.DEFAULT_FIGHT_GAS,
+  defaultCallGas: process.env.DEFAULT_CALL_GAS
 };
 
 const config = Object.assign({}, defaultConfig, envConfig[environment]);

@@ -155,7 +155,7 @@ contract FighterOwnership is FighterConfig, FighterBase, FighterTraining, ERC721
         require(owner != address(0));
     }
 
-    function getFightersForAddress(address _owner) constant external returns(uint256[]) {
+    function getFightersForAddress(address _owner) external returns(uint256[]) {
       return ownedFighters[_owner];
     }
 

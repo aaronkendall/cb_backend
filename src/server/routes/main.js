@@ -9,7 +9,8 @@ router.get('*', function(req, res, next) {
     contractAddress: config.contractAddress,
     trainingCost: config.trainingCost,
     defaultSearchGas: config.defaultSearchGas,
-    defaultFightGas: config.defaultFightGas
+    defaultFightGas: config.defaultFightGas,
+    defaultCallGas: config.defaultCallGas
   });
 });
 

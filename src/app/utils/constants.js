@@ -3,6 +3,7 @@ export const TRAINING_COST = window._config.trainingCost;
 export const DEFAULT_SEARCH_GAS = window._config.defaultSearchGas;
 export const DEFAULT_GAS = 60000;
 export const DEFAULT_FIGHT_GAS = window._config.defaultFightGas;
+export const DEFAULT_CALL_GAS = window._config.defaultCallGas;
 // export const HEALING_PRICE_INCREASE = 1.5; Maybe reconsider this later
 
 export const FIGHTERS_PER_PAGE = 24;

@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 
 import ContractBase from './contractBase';
 import Sale from '../../models/sale.model';
+import { DEFAULT_CALL_GAS } from '../../utils/constants';
 
 class Marketplace extends ContractBase {
   constructor(provider, defaultAccount) {
@@ -11,20 +12,20 @@ class Marketplace extends ContractBase {
 
   async getAllFightersInMarket() {
     try {
-      const fighterIdsInMarket = await this.contract.getFightersForSale()
-      return Promise.all(fighterIdsInMarket.map(async (id) => {
+      const fighterIdsInMarket = await this.contract.getFightersForSale.call({ gas: DEFAULT_CALL_GAS })
+      return fighterIdsInMarket.map(async (id) => {
         const fighter = await this.getInfoForFighter(id)
         const fighterPrice = await this.getPriceForFighterInEth(id)
 
         return new Sale(fighter, fighterPrice)
-      }))
+      })
     } catch(error) {
       console.log(error)
     }
   }
 
   getPriceForFighterInEth(id) {
-    return this.contract.getPriceForFighter(id)
+    return this.contract.getPriceForFighter.call(id, { gas: DEFAULT_CALL_GAS })
       .then(price => ethunits.convert(price.toNumber(), 'wei', 'ether').floatValue())
   }
 

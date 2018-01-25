@@ -1,6 +1,6 @@
 import contract from 'truffle-contract';
-import Marketplace from '../../../../build/contracts/Marketplace.json';
-import { CONTRACT_ADDRESS } from '../../utils/constants';
+import CryptoBrawlers from '../../../../build/contracts/CryptoBrawlers.json';
+import { CONTRACT_ADDRESS, DEFAULT_CALL_GAS } from '../../utils/constants';
 import Fighter from '../../models/fighter.model';
 
 class ContractBase {
@@ -10,7 +10,7 @@ class ContractBase {
   }
 
   initialiseContract(provider) {
-    const fighterContract = contract({ abi: Marketplace.abi });
+    const fighterContract = contract({ abi: CryptoBrawlers.abi });
     fighterContract.setProvider(provider);
     fighterContract.defaults({ from: this.accountAddress, gasLimit: 999999 });
 
@@ -18,7 +18,7 @@ class ContractBase {
   }
 
   getInfoForFighter(fighterId) {
-    return this.contract.getInfoForFighter(fighterId)
+    return this.contract.getInfoForFighter.call(fighterId, { gas: DEFAULT_CALL_GAS })
       .then(rawFighter => new Fighter(rawFighter, fighterId))
       .catch(error => console.log('Error getting info for fighter', fighterId, error));
   }

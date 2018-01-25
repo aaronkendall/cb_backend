@@ -3,7 +3,7 @@ import ethunits from 'ethereum-units';
 
 import ContractBase from './contractBase';
 import { seedNum } from '../../utils/fighterUtils';
-import { TRAINING_COST, DEFAULT_SEARCH_GAS, DEFAULT_GAS, HEALING_PRICE_INCREASE } from '../../utils/constants';
+import { TRAINING_COST, DEFAULT_SEARCH_GAS, DEFAULT_GAS, HEALING_PRICE_INCREASE, DEFAULT_CALL_GAS } from '../../utils/constants';
 
 class Account extends ContractBase {
   constructor(provider, defaultAccount) {
@@ -11,7 +11,7 @@ class Account extends ContractBase {
   }
 
   getFightersForAccount() {
-    return this.contract.getFightersForAddress(this.accountAddress)
+    return this.contract.getFightersForAddress.call(this.accountAddress, { gas: DEFAULT_CALL_GAS })
       .then(result => result.map(id => this.getInfoForFighter(id.toNumber())))
       .catch(error => console.log('Error getting fighters for account', this.accountAddress, error));
   }

@@ -38,6 +38,7 @@ export function purchaseFighter(marketService, id, price) {
 export function populateMarketplaceThunk(marketService) {
   return (dispatch) => {
     marketService.getAllFightersInMarket()
+      .then(salesPromiseArray => Promise.all(salesPromiseArray))
       .then(sales => dispatch(populateMarketplace(sales)))
   }
 }

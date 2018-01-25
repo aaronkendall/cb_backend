@@ -2,7 +2,7 @@ import toast from 'react-toastify';
 
 import ContractBase from './contractBase';
 import { seedNum } from '../../utils/fighterUtils';
-import { DEFAULT_FIGHT_GAS } from '../../utils/constants';
+import { DEFAULT_FIGHT_GAS, DEFAULT_CALL_GAS } from '../../utils/constants';
 
 class Arena extends ContractBase {
   constructor(provider, defaultAccount) {
@@ -10,7 +10,7 @@ class Arena extends ContractBase {
   }
 
   getAllFightersInArena() {
-    return this.contract.getFightersInArena()
+    return this.contract.getFightersInArena.call({ gas: DEFAULT_CALL_GAS })
       .then(results => results.map(id => this.getInfoForFighter(id.toNumber())))
       .catch(error => console.log('Error getting fighters in arena', error))
   }
