@@ -10,11 +10,14 @@ contract CryptoBrawlers is Marketplace {
     for(count = 1; count <= startingFighters; count++) {
       uint createdFighterId = _createFighter(10, 5, 5, msg.sender);
 
-      fightersInMarket.push(createdFighterId);
-      fighterIdToSale[createdFighterId] = Sale({
-        fighterId: createdFighterId,
-        price: startingFighterPrice
-      });
+      // fighter 0 must always be owned by the creator as it causes problems when trying to be purchased
+      // and transferred etc
+      if (createdFighterId > 0) {
+        fighterIdToSale[createdFighterId] = Sale({
+          fighterId: createdFighterId,
+          price: startingFighterPrice
+        });
+      }
     }
   }
 
