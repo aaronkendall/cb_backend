@@ -50,21 +50,21 @@ const FighterAccountModal = ({
       <div className="fighter-account-modal__other-actions">
         <div className="fighter-account-modal__other-actions--action">
           <h3 className="fighter-account-modal__other-actions--action--title">Marketplace</h3>
-          {(!isForSale && !isInArena) && <form onSubmit={(e) => handleAddFighterToMarketplace(e, id)}>
+          {(!isForSale && !isInArena) && <form onSubmit={(e) => handleAddFighterToMarketplace(e, fighter)}>
             <input
               placeholder='price in ETH'
               className="fighter-account-modal__other-actions--action--input"
               type="text"
               onChange={handleUpdatePrice}
               />
-            <Button type='red' text='Add To Marketplace' handleClick={(e) => handleAddFighterToMarketplace(e, id)} />
+            <Button type='red' text='Add To Marketplace' handleClick={(e) => handleAddFighterToMarketplace(e, fighter)} />
           </form>}
           {isInArena && <Button text='Fighter is in arena' isDisabled />}
           {isForSale && <Button type='red' text='Cancel Sale' handleClick={() => handleCancelFighterSale(id)} />}
         </div>
         <div className="fighter-account-modal__other-actions--action">
           <h3 className="fighter-account-modal__other-actions--action--title">Arena</h3>
-          {(!isForSale && !isInArena) && <Button type='red' text='Add To Arena' handleClick={() => handleAddFighterToArena(id)} />}
+          {(!isForSale && !isInArena) && <Button type='red' text='Add To Arena' handleClick={() => handleAddFighterToArena(fighter)} />}
           {isForSale && <Button text='Fighter is for sale' isDisabled />}
           {isInArena && <Button type='red' text='Remove from arena' handleClick={() => handleCancelFighterBrawl(id)} />}
         </div>

@@ -48,3 +48,7 @@ export const ACTION_TYPES = {
     REMOVE_FIGHTER_FROM_ARENA: 'arena/REMOVE_FIGHTER_FROM_ARENA'
   }
 }
+
+export const MARKETPLACE_ENDPOINT = '/api/marketplace'
+
+export const ARENA_ENDPOINT = '/api/arena'

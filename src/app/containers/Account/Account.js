@@ -57,18 +57,18 @@ class Account extends React.Component {
     dispatch(healFighterThunk(accountService, id, attribute))
   }
 
-  handleAddToMarket(e, id) {
+  handleAddToMarket(e, fighter) {
     e.preventDefault()
 
     const { modalFighterPrice, accountService, dispatch } = this.props
     const weiPrice = ethunits.convert(parseFloat(modalFighterPrice), 'ether', 'wei').floatValue()
 
-    dispatch(approveFighterForSale(accountService, id, weiPrice))
+    dispatch(approveFighterForSale(accountService, fighter, weiPrice))
   }
 
-  handleAddToArena(id) {
+  handleAddToArena(fighter) {
     const { accountService, dispatch } = this.props
-    dispatch(approveFighterForArena(accountService, id))
+    dispatch(approveFighterForArena(accountService, fighter))
   }
 
   handleRemoveFighterFromSale(id) {
@@ -92,8 +92,8 @@ class Account extends React.Component {
         handleTrainFighter={(id, attribute) => this.handleTrainFighter(id, attribute)}
         handleHealFighter={id => this.handleHeal(id)}
         handleCloseModal={() => dispatch(closeModal())}
-        handleAddFighterToArena={id => this.handleAddToArena(id)}
-        handleAddFighterToMarketplace={(e, id) => this.handleAddToMarket(e, id)}
+        handleAddFighterToArena={fighter => this.handleAddToArena(fighter)}
+        handleAddFighterToMarketplace={(e, fighter) => this.handleAddToMarket(e, fighter)}
         handleUpdatePrice={e => dispatch(updateFighterPrice(e.target.value))}
         trainingPrice={ethunits.convert(TRAINING_COST, 'wei', 'ether').floatValue()}
         handleCancelFighterBrawl={id => this.handleRemoveFighterFromArena(id)}

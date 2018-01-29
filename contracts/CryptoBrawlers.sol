@@ -12,12 +12,12 @@ contract CryptoBrawlers is Marketplace {
 
       // fighter 0 must always be owned by the creator as it causes problems when trying to be purchased
       // and transferred etc
-      if (createdFighterId > 0) {
+      /* if (createdFighterId > 0) {
         fighterIdToSale[createdFighterId] = Sale({
           fighterId: createdFighterId,
           price: startingFighterPrice
         });
-      }
+      } */
     }
   }
 

@@ -1,5 +1,5 @@
-import { ACTION_TYPES } from '../utils/constants';
-const { marketplace } = ACTION_TYPES;
+import { ACTION_TYPES, MARKETPLACE_ENDPOINT } from '../utils/constants'
+const { marketplace } = ACTION_TYPES
 
 export function populateMarketplace(fighters) {
   return { type: marketplace.POPULATE_MARKETPLACE, payload: fighters };
@@ -35,9 +35,9 @@ export function purchaseFighter(marketService, id, price) {
   }
 }
 
-export function populateMarketplaceThunk(marketService) {
+export function populateMarketplaceThunk(marketService, query, offset) {
   return (dispatch) => {
-    marketService.getAllFightersInMarket()
+    marketService.getAllFightersInMarket(query, offset)
       .then(salesPromiseArray => Promise.all(salesPromiseArray))
       .then(sales => dispatch(populateMarketplace(sales)))
   }
