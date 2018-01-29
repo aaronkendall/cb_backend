@@ -24,7 +24,7 @@ router.get('/all/:offset/filter/:filter/value/:value/sortBy/:sortBy/direction/:d
   const { offset, filter, value, sortBy, direction } = req.params;
 
   Brawl
-    .find({ `fighter.${filter}`: { $gte: value } })
+    .find({ [`fighter.${filter}`]: { $gte: value } })
     .skip(offset * queryReturnLimit)
     .limit(queryReturnLimit)
     .sort({ [sortBy]: direction })

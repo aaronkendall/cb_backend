@@ -24,7 +24,7 @@ router.get('/find/:offset/filter/:filter/value/:value/sortBy/:sortBy/direction/:
   const { offset, filter, value, sortBy, direction } = req.params;
 
   Sale
-    .find({ `fighter.${filter}`: { $gte: value } })
+    .find({ [`fighter.${filter}`]: { $gte: value } })
     .skip(offset * queryReturnLimit)
     .limit(queryReturnLimit)
     .sort({ [sortBy]: direction })
