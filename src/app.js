@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const web3 = require('web3');
+const events = require('./services/events');
 
 dotenv.config();
 mongoose.connect(process.env.MONGODB_URI);
@@ -26,5 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/marketplace', marketplace);
 app.use('/api/arena', arena);
+
+events.watch(web3);
 
 module.exports = app;
