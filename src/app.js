@@ -11,7 +11,6 @@ mongoose.connect(process.env.MONGODB_URI);
 
 const marketplace = require('./routes/marketplace');
 const arena = require('./routes/arena');
-const main = require('./routes/main');
 
 const app = express();
 
@@ -27,6 +26,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/marketplace', marketplace);
 app.use('/api/arena', arena);
-app.use('/', main);
 
 module.exports = app;
