@@ -10,7 +10,8 @@ const envConfig = {
 
 const defaultConfig = {
   queryReturnLimit: 40,
-  contractAddress: process.env.CONTRACT_ADDRESS
+  contractAddress: process.env.CONTRACT_ADDRESS,
+  fromEthAddress: process.env.FROM_ETH_ADDRESS
 };
 
 const config = Object.assign({}, defaultConfig, envConfig[environment]);

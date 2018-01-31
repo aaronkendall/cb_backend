@@ -6,9 +6,12 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const web3 = require('web3');
+const contract = require('truffle-contract');
 const events = require('./services/events');
-
 dotenv.config();
+const config = require('./config/config');
+const contractABI = require('../build/contracts/CryptoBrawlers.json').abi;
+
 mongoose.connect(process.env.MONGODB_URI);
 
 const marketplace = require('./routes/marketplace');
@@ -29,6 +32,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/marketplace', marketplace);
 app.use('/api/arena', arena);
 
-events.watch(web3);
+// Ethereum provider setup
+const provider = new Web3.providers.HttpProvider(config.httpProvider);
+const contractInstance = contract({ abi: contractABI });
+contractInstance.setProvider(provider);
+contractInstance.defaults({ from: config.fromEthAddress, gasLimit: 999999 });
+
+const CryptoBrawlers = contractInstance.at(config.contractAddress);
+
+events.watch(CryptoBrawlers);
 
 module.exports = app;
