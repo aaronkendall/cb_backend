@@ -3,10 +3,7 @@ const timestamps = require('mongoose-timestamp');
 const { Schema } = mongoose;
 
 const Brawl = new Schema({
-  fighter: {
-    id: Number,
-    level: Number
-  }
+  fighter: { type: Schema.Types.ObjectId, ref: 'Fighter' }
 });
 
 Brawl.plugin(timestamps);
