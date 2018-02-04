@@ -16,6 +16,7 @@ mongoose.connect(process.env.MONGODB_URI);
 
 const marketplace = require('./routes/marketplace');
 const arena = require('./routes/arena');
+const account = require('./routes/account');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/marketplace', marketplace);
 app.use('/api/arena', arena);
+app.use('/api/account', account);
 
 // Ethereum provider setup
 const provider = new Web3.providers.HttpProvider(config.httpProvider);

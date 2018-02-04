@@ -1,20 +1,21 @@
 const Brawl = require('../../models/brawl.model');
 const Fighter = require('../../models/fighter.model');
 const User = require('../../models/user.model');
+const Event = require('../../models/event.model');
 
 const arenaEvents = (contract) => {
   contract.FightComplete((error, tx) => {
     if (error) return console.log('Error with FightComplete ', error);
 
     const { winnerId, winner, loserId, loser } = tx.args
-    Brawl.remove({ 'fighter.id': fighterId })
+    Brawl.remove({ 'fighter.id': fighterId }) // look into this
       .then(() => {
         Fighter.findByIdAndUpdate(winnerId, { $set: { isInArena: false } })
         Fighter.findByIdAndUpdate(loserId, { $set: { isInArena: false } })
 
         Promise.all([
-          User.update({ address: loser }, { $pull: { fighters: loserId } }),
-          User.update({ address: winner }, { $push: { fighters: loserId } })
+          User.update({ address: loser }, { $push: { events: new Event({}) } }),
+          User.update({ address: winner }, { $push: { events: new Event({}) } })
         ]).then(() => {
           console.log(`Fighter #${fighterId} removed from sale after purchase`)
         })

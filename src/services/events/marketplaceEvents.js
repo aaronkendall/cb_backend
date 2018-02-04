@@ -1,18 +1,23 @@
+const ethunits = require('ethereum-units');
+
 const Sale = require('../../models/sale.model.js');
 const Fighter = require('../../models/fighter.model.js');
 const User = require('../../models/user.model.js');
+const Event = require('../../models/event.model.js');
 
 const marketplaceEvents = (contract) => {
   contract.PurchaseSuccess((error, tx) => {
     if (error) return console.log('Error with PurchaseSuccess ', error);
 
-    const { fighterId, buyer, seller } = tx.args
+    const { fighterId, buyer, seller, price } = tx.args
+    const ethPrice = ethunits.convert('wei', 'ether', price).floatValue()
+
     Sale.remove({ 'fighter.id': fighterId })
       .then(() => {
         Fighter.findByIdAndUpdate(fighterId, { $set: { isForSale: false } })
         Promise.all([
-          User.update({ address: seller }, { $pull: { fighters: fighterId } }),
-          User.update({ address: buyer }, { $push: { fighters: fighterId } })
+          User.update({ address: seller }, { $push: { events: new Event({ fighterId, type: 'PurchaseSuccess', message: `You sold Fighter #${fighterId} for ${ethPrice}` }) } }),
+          User.update({ address: buyer }, { $push: { events: new Event({ fighterId, type: 'PurchaseSuccess', message: `You bought Fighter #${fighterId} for ${ethPrice}` }) } })
         ]).then(() => {
           console.log(`Fighter #${fighterId} removed from sale after purchase`)
         })
@@ -42,7 +47,7 @@ const marketplaceEvents = (contract) => {
 
     const { fighterId, price } = tx.args;
     new Sale({ fighter: fighterId , price }).save()
-      .then((newFighter) => {
+      .then((newSale) => {
         Fighter.findByIdAndUpdate(fighterId, { $set: { isForSale: true } })
         console.log(`Successfully added Fighter #${fighterId} to the marketplace`)
       })
