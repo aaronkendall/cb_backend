@@ -7,21 +7,21 @@ const arenaEvents = (contract) => {
   contract.FightComplete((error, tx) => {
     if (error) return console.log('Error with FightComplete ', error);
 
-    const { winnerId, winner, loserId, loser } = tx.args
-    Brawl.remove({ 'fighter.id': fighterId }) // look into this
+    const { winnerId, winner, loserId, loser, fighterInArena } = tx.args
+    Brawl.remove({ 'fighter.id': fighterInArena })
       .then(() => {
         Fighter.findByIdAndUpdate(winnerId, { $set: { isInArena: false } })
         Fighter.findByIdAndUpdate(loserId, { $set: { isInArena: false } })
 
         Promise.all([
-          User.update({ address: loser }, { $push: { events: new Event({}) } }),
-          User.update({ address: winner }, { $push: { events: new Event({}) } })
+          User.update({ address: loser }, { $push: { events: new Event({ fighterId: loserId, type: 'Fight Complete', message: `You lost Fighter #${loserId} in a brawl with Fighter #${winnerId}!` }) } }),
+          User.update({ address: winner }, { $push: { events: new Event({ fighterId: winnerId, type: 'Fight Complete', message: `You won Fighter #${loserId} in a brawl with Fighter #${winnerId}!` }) } })
         ]).then(() => {
-          console.log(`Fighter #${fighterId} removed from sale after purchase`)
+          console.log(`Fighter #${loserId} lost to Fighter #${winnerId}`)
         })
       })
       .catch((error) => {
-        console.log(`Error removing Fighter #${fighterId} after purchase `, error)
+        console.log(`Error with Fighter #${loserId} losing to Fighter #${winnerId}`, error)
       })
   })
 
@@ -36,7 +36,7 @@ const arenaEvents = (contract) => {
         console.log(`Fighter #${fighterId} removed from sale after cancellation`)
       })
       .catch((error) => {
-        console.log(`Error removing Fighter #${fighterId} after cancellation ` error)
+        console.log(`Error removing Fighter #${fighterId} after cancellation in arena` error)
       })
   })
 
@@ -50,7 +50,7 @@ const arenaEvents = (contract) => {
         console.log(`Successfully added Fighter #${fighterId} to the marketplace`)
       })
       .catch((error) => {
-        console.log(`Error adding Fighter #${fighterId} to marketplace`)
+        console.log(`Error adding Fighter #${fighterId} to arena`)
       })
   })
 }
