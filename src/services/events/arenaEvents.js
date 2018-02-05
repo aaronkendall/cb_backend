@@ -53,6 +53,36 @@ const arenaEvents = (contract) => {
         console.log(`Error adding Fighter #${fighterId} to arena`)
       })
   })
+
+  contract.CombatRound((error, tx) => {
+    if (error) return console.log('Error with CombatRound ', error);
+
+    const { attacker, defender, attackerId, defenderId, hit, damage } = tx.args;
+
+    if (hit) {
+      return Promise.all([
+        User.update({ address: attacker }, { $push: { events: new Event({ fighterId: attackerId, type: 'Combat Round', message: `You pounded Fighter #${defenderId} for ${damage} damage!` }) } }),
+        User.update({ address: defender }, { $push: { events: new Event({ fighterId: defenderId, type: 'Combat Round', message: `Fighter #${attackerId} slammed you for ${damage} damage!` }) } }),
+      ])
+      .then(() => {
+        console.log('Combat Round successfully recorded')
+      })
+      .catch((error) => {
+        console.log(`Error recording Combat Round with Fighter #${attackerId} and Fighter #${defenderId} `, error)
+      })
+    }
+
+    return Promise.all([
+      User.update({ address: attacker }, { $push: { events: new Event({ fighterId: attackerId, type: 'Combat Round', message: `You swung and missed Fighter #${defenderId}!` }) } }),
+      User.update({ address: defender }, { $push: { events: new Event({ fighterId: defenderId, type: 'Combat Round', message: `You dodged Fighter #${attackerId}'s attack!` }) } }),
+    ])
+    .then(() => {
+      console.log('Combat Round successfully recorded')
+    })
+    .catch((error) => {
+      console.log(`Error recording Combat Round with Fighter #${attackerId} and Fighter #${defenderId} `, error)
+    })
+  })
 }
 
 module.exports.default = arenaEvents

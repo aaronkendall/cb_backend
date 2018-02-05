@@ -9,6 +9,7 @@ const Fighter = new Schema({
   speed: Number,
   health: Number,
   maxHealth: Number,
+  type: String,
   isForSale: { type: Boolean, required: true, default: false },
   isInArena: { type: Boolean, required: true, default: false }
 });

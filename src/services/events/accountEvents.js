@@ -7,13 +7,13 @@ const accountEvents = (contract) => {
   contract.Creation((error, tx) => {
     if (error) return console.log('Error with Fighter Creation ', error);
 
-    const { owner, fighterId, maxHealth, speed, strength } = tx.args
+    const { owner, fighterId, maxHealth, speed, strength, fighterType } = tx.args
     const level = calculateLevel({ maxHealth, speed, strength })
 
     User.findOneAndUpdate(
       { address: owner },
       { $push: {
-          fighters: new Fighter({ _id: fighterId, strenght, speed, maxHealth, health: maxHealth, level }),
+          fighters: new Fighter({ _id: fighterId, strength, speed, maxHealth, health: maxHealth, level, type: fighterType }),
           events: new Event({ fighterId, type: 'Creation', message: `Fighter #${fighterId} created!` })
         }
       },
