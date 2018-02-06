@@ -35,7 +35,11 @@ app.use('/api/arena', arena);
 app.use('/api/account', account);
 
 // Ethereum provider setup
-const provider = new Web3.providers.HttpProvider(config.httpProvider);
+
+// Truffle expects web3 0.2 API so we need to set this
+web3.providers.HttpProvider.prototype.sendAsync = web3.providers.HttpProvider.prototype.send
+
+const provider = new web3.providers.HttpProvider(config.httpProvider);
 const contractInstance = contract({ abi: contractABI });
 contractInstance.setProvider(provider);
 contractInstance.defaults({ from: config.fromEthAddress, gasLimit: 999999 });

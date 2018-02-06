@@ -13,8 +13,8 @@ const accountEvents = (contract) => {
     User.findOneAndUpdate(
       { address: owner },
       { $push: {
-          fighters: new Fighter({ _id: fighterId, strength, speed, maxHealth, health: maxHealth, level, type: fighterType }),
-          events: new Event({ fighterId, type: 'Creation', message: `Fighter #${fighterId} created!` })
+          fighters: new Fighter({ _id: fighterId, strength, speed, maxHealth, health: maxHealth, level, type: fighterType }).save(),
+          events: new Event({ fighterId, type: 'Creation', message: `Fighter #${fighterId} created!` }).save()
         }
       },
       { upsert: true, new: true, setDefaultsOnInsert: true }
@@ -24,7 +24,7 @@ const accountEvents = (contract) => {
       console.log(`Fighter #${fighterId} created and User ${owner} updated`)
     })
     .catch((error) => {
-      console.log(`Error with creation of Fighter #${fighterId} for ${owner}`)
+      console.log(`Error with creation of Fighter #${fighterId} for ${owner}`, error)
     })
   })
 
@@ -96,7 +96,7 @@ const accountEvents = (contract) => {
   contract.FighterFound((error, tx) => {
     if (error) return console.log('Error with Finding Fighter ', error);
 
-    const { owner, fighterId, fighterWasFound }
+    const { owner, fighterId, fighterWasFound } = tx.args
 
     if (!fighterWasFound) return
 
@@ -107,4 +107,4 @@ const accountEvents = (contract) => {
   })
 }
 
-module.exports.default = accountEvents
+module.exports = accountEvents

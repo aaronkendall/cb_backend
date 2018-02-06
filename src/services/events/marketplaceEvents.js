@@ -38,7 +38,7 @@ const marketplaceEvents = (contract) => {
         console.log(`Fighter #${fighterId} removed from sale after cancellation`)
       })
       .catch((error) => {
-        console.log(`Error removing Fighter #${fighterId} after cancellation ` error)
+        console.log(`Error removing Fighter #${fighterId} after cancellation `, error)
       })
   })
 
@@ -57,4 +57,4 @@ const marketplaceEvents = (contract) => {
   })
 }
 
-module.exports.default = marketplaceEvents
+module.exports = marketplaceEvents

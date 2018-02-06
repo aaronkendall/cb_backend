@@ -3,7 +3,7 @@ const timestamps = require('mongoose-timestamp');
 const { Schema } = mongoose;
 
 const Fighter = new Schema({
-  _id: { type: Number, unique: true, required: true },
+  _id: { type: Number, required: true },
   level: Number,
   strength: Number,
   speed: Number,

@@ -36,7 +36,7 @@ const arenaEvents = (contract) => {
         console.log(`Fighter #${fighterId} removed from sale after cancellation`)
       })
       .catch((error) => {
-        console.log(`Error removing Fighter #${fighterId} after cancellation in arena` error)
+        console.log(`Error removing Fighter #${fighterId} after cancellation in arena `, error)
       })
   })
 
@@ -85,4 +85,4 @@ const arenaEvents = (contract) => {
   })
 }
 
-module.exports.default = arenaEvents
+module.exports = arenaEvents
