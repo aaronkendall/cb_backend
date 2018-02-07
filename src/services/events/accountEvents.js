@@ -13,8 +13,8 @@ const accountEvents = (contract) => {
     User.findOneAndUpdate(
       { address: owner },
       { $push: {
-          fighters: new Fighter({ _id: fighterId, strength, speed, maxHealth, health: maxHealth, level, type: fighterType }).save(),
-          events: new Event({ fighterId, type: 'Creation', message: `Fighter #${fighterId} created!` }).save()
+          fighters: { _id: fighterId, strength, speed, maxHealth, health: maxHealth, level, type: fighterType },
+          events: { fighterId, type: 'Creation', message: `Fighter #${fighterId} created!` }
         }
       },
       { upsert: true, new: true, setDefaultsOnInsert: true }
