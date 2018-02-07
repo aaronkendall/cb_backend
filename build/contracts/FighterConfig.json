@@ -116,8 +116,8 @@
   ],
   "bytecode": "0x60606040526003600181905560028190556611c37937e08000905560008054600160a060020a033316600160a060020a0319909116179055610272806100466000396000f30060606040526004361061008d5763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166340e4e0488114610092578063495ac3a8146100aa578063701a19fd146100c05780638da5cb5b146100e5578063a5557ce014610114578063b64ce34a1461012a578063f2fde38b1461013d578063f36014d21461015c575b600080fd5b341561009d57600080fd5b6100a860043561016f565b005b34156100b557600080fd5b6100a860043561018f565b34156100cb57600080fd5b6100d36101af565b60405190815260200160405180910390f35b34156100f057600080fd5b6100f86101b5565b604051600160a060020a03909116815260200160405180910390f35b341561011f57600080fd5b6100a86004356101c4565b341561013557600080fd5b6100d36101e4565b341561014857600080fd5b6100a8600160a060020a03600435166101ea565b341561016757600080fd5b6100d3610240565b60005433600160a060020a0390811691161461018a57600080fd5b600155565b60005433600160a060020a039081169116146101aa57600080fd5b600255565b60035481565b600054600160a060020a031681565b60005433600160a060020a039081169116146101df57600080fd5b600355565b60025481565b60005433600160a060020a0390811691161461020557600080fd5b600160a060020a0381161561023d576000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0383161790555b50565b600154815600a165627a7a72305820ad978efd43dbf29714d8d759eb0991a88fad30d79801d288591151394c0af1a20029",
   "deployedBytecode": "0x60606040526004361061008d5763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166340e4e0488114610092578063495ac3a8146100aa578063701a19fd146100c05780638da5cb5b146100e5578063a5557ce014610114578063b64ce34a1461012a578063f2fde38b1461013d578063f36014d21461015c575b600080fd5b341561009d57600080fd5b6100a860043561016f565b005b34156100b557600080fd5b6100a860043561018f565b34156100cb57600080fd5b6100d36101af565b60405190815260200160405180910390f35b34156100f057600080fd5b6100f86101b5565b604051600160a060020a03909116815260200160405180910390f35b341561011f57600080fd5b6100a86004356101c4565b341561013557600080fd5b6100d36101e4565b341561014857600080fd5b6100a8600160a060020a03600435166101ea565b341561016757600080fd5b6100d3610240565b60005433600160a060020a0390811691161461018a57600080fd5b600155565b60005433600160a060020a039081169116146101aa57600080fd5b600255565b60035481565b600054600160a060020a031681565b60005433600160a060020a039081169116146101df57600080fd5b600355565b60025481565b60005433600160a060020a0390811691161461020557600080fd5b600160a060020a0381161561023d576000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0383161790555b50565b600154815600a165627a7a72305820ad978efd43dbf29714d8d759eb0991a88fad30d79801d288591151394c0af1a20029",
-  "sourceMap": "57:521:7:-;;;133:1;95:39;;;;138:30;;;;202:16;172:46;;-1:-1:-1;97:18:4;;-1:-1:-1;;;;;105:10:4;97:18;-1:-1:-1;;;;;;97:18:4;;;;;;57:521:7;;;;;;",
-  "deployedSourceMap": "57:521:7:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;250:125;;;;;;;;;;;;;;;;379:99;;;;;;;;;;;;;;172:46;;;;;;;;;;;;;;;;;;;;;;;;;;;47:20:4;;;;;;;;;;;;;;;-1:-1:-1;;;;;47:20:4;;;;;;;;;;;;;;482:94:7;;;;;;;;;;;;;;138:30;;;;;;;;;;;;195:124:4;;;;;;;;;;-1:-1:-1;;;;;195:124:4;;;;;95:39:7;;;;;;;;;;;;250:125;173:5:4;;159:10;-1:-1:-1;;;;;159:19:4;;;173:5;;159:19;151:28;;;;;;330:23:7;:40;250:125::o;379:99::-;173:5:4;;159:10;-1:-1:-1;;;;;159:19:4;;;173:5;;159:19;151:28;;;;;;447:14:7;:26;379:99::o;172:46::-;;;;:::o;47:20:4:-;;;-1:-1:-1;;;;;47:20:4;;:::o;482:94:7:-;173:5:4;;159:10;-1:-1:-1;;;;;159:19:4;;;173:5;;159:19;151:28;;;;;;549:12:7;:22;482:94::o;138:30::-;;;;:::o;195:124:4:-;173:5;;159:10;-1:-1:-1;;;;;159:19:4;;;173:5;;159:19;151:28;;;;;;-1:-1:-1;;;;;260:22:4;;;256:59;;292:5;:16;;-1:-1:-1;;292:16:4;-1:-1:-1;;;;;292:16:4;;;;;256:59;195:124;:::o;95:39:7:-;;;;:::o",
+  "sourceMap": "57:521:5:-;;;133:1;95:39;;;;138:30;;;;202:16;172:46;;-1:-1:-1;97:18:2;;-1:-1:-1;;;;;105:10:2;97:18;-1:-1:-1;;;;;;97:18:2;;;;;;57:521:5;;;;;;",
+  "deployedSourceMap": "57:521:5:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;250:125;;;;;;;;;;;;;;;;379:99;;;;;;;;;;;;;;172:46;;;;;;;;;;;;;;;;;;;;;;;;;;;47:20:2;;;;;;;;;;;;;;;-1:-1:-1;;;;;47:20:2;;;;;;;;;;;;;;482:94:5;;;;;;;;;;;;;;138:30;;;;;;;;;;;;195:124:2;;;;;;;;;;-1:-1:-1;;;;;195:124:2;;;;;95:39:5;;;;;;;;;;;;250:125;173:5:2;;159:10;-1:-1:-1;;;;;159:19:2;;;173:5;;159:19;151:28;;;;;;330:23:5;:40;250:125::o;379:99::-;173:5:2;;159:10;-1:-1:-1;;;;;159:19:2;;;173:5;;159:19;151:28;;;;;;447:14:5;:26;379:99::o;172:46::-;;;;:::o;47:20:2:-;;;-1:-1:-1;;;;;47:20:2;;:::o;482:94:5:-;173:5:2;;159:10;-1:-1:-1;;;;;159:19:2;;;173:5;;159:19;151:28;;;;;;549:12:5;:22;482:94::o;138:30::-;;;;:::o;195:124:2:-;173:5;;159:10;-1:-1:-1;;;;;159:19:2;;;173:5;;159:19;151:28;;;;;;-1:-1:-1;;;;;260:22:2;;;256:59;;292:5;:16;;-1:-1:-1;;292:16:2;-1:-1:-1;;;;;292:16:2;;;;;256:59;195:124;:::o;95:39:5:-;;;;:::o",
   "source": "pragma solidity ^0.4.18;\n\nimport \"../base/Ownable.sol\";\n\ncontract FighterConfig is Ownable {\n  uint public chanceOfFighterCreation = 3;\n  uint public trainingFactor = 3;\n  uint256 public trainingCost = 5000000000000000; // cost of training in wei\n\n  function setFighterCreationChance(uint newProbability) external onlyOwner {\n    chanceOfFighterCreation = newProbability;\n  }\n\n  function setTrainingFactor(uint newFactor) external onlyOwner {\n    trainingFactor = newFactor;\n  }\n\n  function setNewTrainingCost(uint newCost) external onlyOwner {\n    trainingCost = newCost;\n  }\n}\n",
   "sourcePath": "/Users/kendalla/projects/cryptoclash/contracts/fighter/FighterConfig.sol",
   "ast": {
@@ -125,7 +125,7 @@
       "absolutePath": "/Users/kendalla/projects/cryptoclash/contracts/fighter/FighterConfig.sol",
       "exportedSymbols": {
         "FighterConfig": [
-          917
+          727
         ]
       }
     },
@@ -139,39 +139,39 @@
             ".18"
           ]
         },
-        "id": 868,
+        "id": 678,
         "name": "PragmaDirective",
-        "src": "0:24:7"
+        "src": "0:24:5"
       },
       {
         "attributes": {
-          "SourceUnit": 388,
+          "SourceUnit": 198,
           "absolutePath": "/Users/kendalla/projects/cryptoclash/contracts/base/Ownable.sol",
           "file": "../base/Ownable.sol",
-          "scope": 918,
+          "scope": 728,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 869,
+        "id": 679,
         "name": "ImportDirective",
-        "src": "26:29:7"
+        "src": "26:29:5"
       },
       {
         "attributes": {
           "contractDependencies": [
-            387
+            197
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            917,
-            387
+            727,
+            197
           ],
           "name": "FighterConfig",
-          "scope": 918
+          "scope": 728
         },
         "children": [
           {
@@ -185,23 +185,23 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "Ownable",
-                  "referencedDeclaration": 387,
+                  "referencedDeclaration": 197,
                   "type": "contract Ownable"
                 },
-                "id": 870,
+                "id": 680,
                 "name": "UserDefinedTypeName",
-                "src": "83:7:7"
+                "src": "83:7:5"
               }
             ],
-            "id": 871,
+            "id": 681,
             "name": "InheritanceSpecifier",
-            "src": "83:7:7"
+            "src": "83:7:5"
           },
           {
             "attributes": {
               "constant": false,
               "name": "chanceOfFighterCreation",
-              "scope": 917,
+              "scope": 727,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -213,9 +213,9 @@
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 872,
+                "id": 682,
                 "name": "ElementaryTypeName",
-                "src": "95:4:7"
+                "src": "95:4:5"
               },
               {
                 "attributes": {
@@ -230,20 +230,20 @@
                   "type": "int_const 3",
                   "value": "3"
                 },
-                "id": 873,
+                "id": 683,
                 "name": "Literal",
-                "src": "133:1:7"
+                "src": "133:1:5"
               }
             ],
-            "id": 874,
+            "id": 684,
             "name": "VariableDeclaration",
-            "src": "95:39:7"
+            "src": "95:39:5"
           },
           {
             "attributes": {
               "constant": false,
               "name": "trainingFactor",
-              "scope": 917,
+              "scope": 727,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -255,9 +255,9 @@
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 875,
+                "id": 685,
                 "name": "ElementaryTypeName",
-                "src": "138:4:7"
+                "src": "138:4:5"
               },
               {
                 "attributes": {
@@ -272,20 +272,20 @@
                   "type": "int_const 3",
                   "value": "3"
                 },
-                "id": 876,
+                "id": 686,
                 "name": "Literal",
-                "src": "167:1:7"
+                "src": "167:1:5"
               }
             ],
-            "id": 877,
+            "id": 687,
             "name": "VariableDeclaration",
-            "src": "138:30:7"
+            "src": "138:30:5"
           },
           {
             "attributes": {
               "constant": false,
               "name": "trainingCost",
-              "scope": 917,
+              "scope": 727,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -297,9 +297,9 @@
                   "name": "uint256",
                   "type": "uint256"
                 },
-                "id": 878,
+                "id": 688,
                 "name": "ElementaryTypeName",
-                "src": "172:7:7"
+                "src": "172:7:5"
               },
               {
                 "attributes": {
@@ -314,14 +314,14 @@
                   "type": "int_const 5000000000000000",
                   "value": "5000000000000000"
                 },
-                "id": 879,
+                "id": 689,
                 "name": "Literal",
-                "src": "202:16:7"
+                "src": "202:16:5"
               }
             ],
-            "id": 880,
+            "id": 690,
             "name": "VariableDeclaration",
-            "src": "172:46:7"
+            "src": "172:46:5"
           },
           {
             "attributes": {
@@ -330,7 +330,7 @@
               "isConstructor": false,
               "name": "setFighterCreationChance",
               "payable": false,
-              "scope": 917,
+              "scope": 727,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "external"
@@ -342,7 +342,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "newProbability",
-                      "scope": 892,
+                      "scope": 702,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -355,19 +355,19 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 881,
+                        "id": 691,
                         "name": "ElementaryTypeName",
-                        "src": "284:4:7"
+                        "src": "284:4:5"
                       }
                     ],
-                    "id": 882,
+                    "id": 692,
                     "name": "VariableDeclaration",
-                    "src": "284:19:7"
+                    "src": "284:19:5"
                   }
                 ],
-                "id": 883,
+                "id": 693,
                 "name": "ParameterList",
-                "src": "283:21:7"
+                "src": "283:21:5"
               },
               {
                 "attributes": {
@@ -376,9 +376,9 @@
                   ]
                 },
                 "children": [],
-                "id": 886,
+                "id": 696,
                 "name": "ParameterList",
-                "src": "324:0:7"
+                "src": "324:0:5"
               },
               {
                 "attributes": {
@@ -393,18 +393,18 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 367,
+                      "referencedDeclaration": 177,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 884,
+                    "id": 694,
                     "name": "Identifier",
-                    "src": "314:9:7"
+                    "src": "314:9:5"
                   }
                 ],
-                "id": 885,
+                "id": 695,
                 "name": "ModifierInvocation",
-                "src": "314:9:7"
+                "src": "314:9:5"
               },
               {
                 "children": [
@@ -427,13 +427,13 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 874,
+                              "referencedDeclaration": 684,
                               "type": "uint256",
                               "value": "chanceOfFighterCreation"
                             },
-                            "id": 887,
+                            "id": 697,
                             "name": "Identifier",
-                            "src": "330:23:7"
+                            "src": "330:23:5"
                           },
                           {
                             "attributes": {
@@ -441,33 +441,33 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 882,
+                              "referencedDeclaration": 692,
                               "type": "uint256",
                               "value": "newProbability"
                             },
-                            "id": 888,
+                            "id": 698,
                             "name": "Identifier",
-                            "src": "356:14:7"
+                            "src": "356:14:5"
                           }
                         ],
-                        "id": 889,
+                        "id": 699,
                         "name": "Assignment",
-                        "src": "330:40:7"
+                        "src": "330:40:5"
                       }
                     ],
-                    "id": 890,
+                    "id": 700,
                     "name": "ExpressionStatement",
-                    "src": "330:40:7"
+                    "src": "330:40:5"
                   }
                 ],
-                "id": 891,
+                "id": 701,
                 "name": "Block",
-                "src": "324:51:7"
+                "src": "324:51:5"
               }
             ],
-            "id": 892,
+            "id": 702,
             "name": "FunctionDefinition",
-            "src": "250:125:7"
+            "src": "250:125:5"
           },
           {
             "attributes": {
@@ -476,7 +476,7 @@
               "isConstructor": false,
               "name": "setTrainingFactor",
               "payable": false,
-              "scope": 917,
+              "scope": 727,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "external"
@@ -488,7 +488,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "newFactor",
-                      "scope": 904,
+                      "scope": 714,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -501,19 +501,19 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 893,
+                        "id": 703,
                         "name": "ElementaryTypeName",
-                        "src": "406:4:7"
+                        "src": "406:4:5"
                       }
                     ],
-                    "id": 894,
+                    "id": 704,
                     "name": "VariableDeclaration",
-                    "src": "406:14:7"
+                    "src": "406:14:5"
                   }
                 ],
-                "id": 895,
+                "id": 705,
                 "name": "ParameterList",
-                "src": "405:16:7"
+                "src": "405:16:5"
               },
               {
                 "attributes": {
@@ -522,9 +522,9 @@
                   ]
                 },
                 "children": [],
-                "id": 898,
+                "id": 708,
                 "name": "ParameterList",
-                "src": "441:0:7"
+                "src": "441:0:5"
               },
               {
                 "attributes": {
@@ -539,18 +539,18 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 367,
+                      "referencedDeclaration": 177,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 896,
+                    "id": 706,
                     "name": "Identifier",
-                    "src": "431:9:7"
+                    "src": "431:9:5"
                   }
                 ],
-                "id": 897,
+                "id": 707,
                 "name": "ModifierInvocation",
-                "src": "431:9:7"
+                "src": "431:9:5"
               },
               {
                 "children": [
@@ -573,13 +573,13 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 877,
+                              "referencedDeclaration": 687,
                               "type": "uint256",
                               "value": "trainingFactor"
                             },
-                            "id": 899,
+                            "id": 709,
                             "name": "Identifier",
-                            "src": "447:14:7"
+                            "src": "447:14:5"
                           },
                           {
                             "attributes": {
@@ -587,33 +587,33 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 894,
+                              "referencedDeclaration": 704,
                               "type": "uint256",
                               "value": "newFactor"
                             },
-                            "id": 900,
+                            "id": 710,
                             "name": "Identifier",
-                            "src": "464:9:7"
+                            "src": "464:9:5"
                           }
                         ],
-                        "id": 901,
+                        "id": 711,
                         "name": "Assignment",
-                        "src": "447:26:7"
+                        "src": "447:26:5"
                       }
                     ],
-                    "id": 902,
+                    "id": 712,
                     "name": "ExpressionStatement",
-                    "src": "447:26:7"
+                    "src": "447:26:5"
                   }
                 ],
-                "id": 903,
+                "id": 713,
                 "name": "Block",
-                "src": "441:37:7"
+                "src": "441:37:5"
               }
             ],
-            "id": 904,
+            "id": 714,
             "name": "FunctionDefinition",
-            "src": "379:99:7"
+            "src": "379:99:5"
           },
           {
             "attributes": {
@@ -622,7 +622,7 @@
               "isConstructor": false,
               "name": "setNewTrainingCost",
               "payable": false,
-              "scope": 917,
+              "scope": 727,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "external"
@@ -634,7 +634,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "newCost",
-                      "scope": 916,
+                      "scope": 726,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -647,19 +647,19 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 905,
+                        "id": 715,
                         "name": "ElementaryTypeName",
-                        "src": "510:4:7"
+                        "src": "510:4:5"
                       }
                     ],
-                    "id": 906,
+                    "id": 716,
                     "name": "VariableDeclaration",
-                    "src": "510:12:7"
+                    "src": "510:12:5"
                   }
                 ],
-                "id": 907,
+                "id": 717,
                 "name": "ParameterList",
-                "src": "509:14:7"
+                "src": "509:14:5"
               },
               {
                 "attributes": {
@@ -668,9 +668,9 @@
                   ]
                 },
                 "children": [],
-                "id": 910,
+                "id": 720,
                 "name": "ParameterList",
-                "src": "543:0:7"
+                "src": "543:0:5"
               },
               {
                 "attributes": {
@@ -685,18 +685,18 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 367,
+                      "referencedDeclaration": 177,
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 908,
+                    "id": 718,
                     "name": "Identifier",
-                    "src": "533:9:7"
+                    "src": "533:9:5"
                   }
                 ],
-                "id": 909,
+                "id": 719,
                 "name": "ModifierInvocation",
-                "src": "533:9:7"
+                "src": "533:9:5"
               },
               {
                 "children": [
@@ -719,13 +719,13 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 880,
+                              "referencedDeclaration": 690,
                               "type": "uint256",
                               "value": "trainingCost"
                             },
-                            "id": 911,
+                            "id": 721,
                             "name": "Identifier",
-                            "src": "549:12:7"
+                            "src": "549:12:5"
                           },
                           {
                             "attributes": {
@@ -733,43 +733,43 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 906,
+                              "referencedDeclaration": 716,
                               "type": "uint256",
                               "value": "newCost"
                             },
-                            "id": 912,
+                            "id": 722,
                             "name": "Identifier",
-                            "src": "564:7:7"
+                            "src": "564:7:5"
                           }
                         ],
-                        "id": 913,
+                        "id": 723,
                         "name": "Assignment",
-                        "src": "549:22:7"
+                        "src": "549:22:5"
                       }
                     ],
-                    "id": 914,
+                    "id": 724,
                     "name": "ExpressionStatement",
-                    "src": "549:22:7"
+                    "src": "549:22:5"
                   }
                 ],
-                "id": 915,
+                "id": 725,
                 "name": "Block",
-                "src": "543:33:7"
+                "src": "543:33:5"
               }
             ],
-            "id": 916,
+            "id": 726,
             "name": "FunctionDefinition",
-            "src": "482:94:7"
+            "src": "482:94:5"
           }
         ],
-        "id": 917,
+        "id": 727,
         "name": "ContractDefinition",
-        "src": "57:521:7"
+        "src": "57:521:5"
       }
     ],
-    "id": 918,
+    "id": 728,
     "name": "SourceUnit",
-    "src": "0:579:7"
+    "src": "0:579:5"
   },
   "compiler": {
     "name": "solc",
@@ -777,5 +777,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-02-06T16:53:53.810Z"
+  "updatedAt": "2018-02-07T12:10:29.177Z"
 }
