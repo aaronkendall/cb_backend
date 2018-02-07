@@ -4,58 +4,62 @@ const Event = require('../../models/event.model')
 const { calculateLevel } = require('../../lib/utils')
 
 const accountEvents = (contract) => {
-  contract.Creation((error, tx) => {
+  contract.Creation(async (error, tx) => {
     if (error) return console.log('Error with Fighter Creation ', error);
 
     const { owner, fighterId, maxHealth, speed, strength, fighterType } = tx.args
     const level = calculateLevel({ maxHealth, speed, strength })
 
-    User.findOneAndUpdate(
-      { address: owner },
-      { $push: {
-          fighters: { _id: fighterId, strength, speed, maxHealth, health: maxHealth, level, type: fighterType },
-          events: { fighterId, type: 'Creation', message: `Fighter #${fighterId} created!` }
-        }
-      },
-      { upsert: true, new: true, setDefaultsOnInsert: true }
-    )
-    .exec()
-    .then((user) => {
+    try {
+      const newFighter = await new Fighter({ _id: fighterId, strength, speed, maxHealth, health: maxHealth, level, type: fighterType }).save()
+      const creationEvent = await new Event({ fighterId, type: 'Creation', message: `Fighter #${fighterId} created!` }).save()
+
+      await User.findOneAndUpdate(
+        { address: owner },
+        { $push: {
+            fighters: newFighter.id,
+            events: creationEvent.id
+          }
+        },
+        { upsert: true, new: true, setDefaultsOnInsert: true }
+      ).exec()
       console.log(`Fighter #${fighterId} created and User ${owner} updated`)
-    })
-    .catch((error) => {
+    } catch(error) {
       console.log(`Error with creation of Fighter #${fighterId} for ${owner}`, error)
-    })
+    }
   })
 
-  contract.Transfer((error, tx) => {
+  contract.Transfer(async (error, tx) => {
     if (error) return console.log('Error with Fighter Transfer ', error)
 
     const { from, to, fighterId } = tx.args
 
-    Promise.all([
-      User.update(
-        { address: from },
-        {
-          $pull: { fighters: fighterId },
-          $push: { events: new Event({ fighterId, type: 'Transfer', message: `Fighter #${fighterId} transferred to ${to}` }) }
-        }
-      ),
-      User.update(
-        { address: to },
-        {
-          $push: {
-            fighters: fighterId,
-            events: new Event({ fighterId, type: 'Transfer', message: `Fighter #${fighterId} transferred to you from ${from}` })
+    try {
+      const fromEvent = await new Event({ fighterId, type: 'Transfer', message: `Fighter #${fighterId} transferred to ${to}` }).save()
+      const toEvent = await new Event({ fighterId, type: 'Transfer', message: `Fighter #${fighterId} transferred to you from ${from}` }).save()
+      
+      await Promise.all([
+        User.update(
+          { address: from },
+          {
+            $pull: { fighters: fighterId },
+            $push: { events: fromEvent.id }
           }
-        }
-      )
-    ]).then(() => {
+        ),
+        User.update(
+          { address: to },
+          {
+            $push: {
+              fighters: fighterId,
+              events: toEvent.id
+            }
+          }
+        )
+      ])
       console.log(`Successfully transferred Fighter #${fighterId} from ${from} to ${to}`)
-    })
-    .catch((error) => {
+    } catch(error) {
       console.log(`Error transferring fighter ${fighterId} from ${from} to ${to}`, error)
-    })
+    }
   })
 
   contract.AttributeIncrease((error, tx) => {
