@@ -62,52 +62,59 @@ const accountEvents = (contract) => {
     }
   })
 
-  contract.AttributeIncrease((error, tx) => {
+  contract.AttributeIncrease(async (error, tx) => {
     if (error) return console.log('Error with Fighter Attribute Increase ', error);
 
     const { owner, fighterId, attribute, increaseValue } = tx.args
 
-    Fighter.findById(fighterId)
-      .then((fighter) => {
-        fighter[attribute] = fighter[attribute] + increaseValue
-        // Double check that the fighter's level hasn't updated
-        fighter.level = calculateLevel(fighter)
+    try {
+      const fighter = await Fighter.findById(fighterId)
+      const newEvent = await new Event({ fighterId, type: 'Attribute Increase', message: `Fighter #${fighterId}'s ${attribute} increased by ${increaseValue}!` }).save()
 
-        fighter.save()
-          .then(() => {
-            User.update({ address: owner }, { $push: { events: new Event({ fighterId, type: 'Attribute Increase', message: `Fighter #${fighterId}'s ${attribute} increased by ${increaseValue}!` }) } })
-          })
-      })
-      .catch((error) => {
-        console.log(`Error updating fighter #${fighterId}'s ${attribute} by ${increaseValue}`, error)
-      })
+      fighter[attribute] = fighter[attribute] + increaseValue.toNumber()
+      // Double check that the fighter's level hasn't updated
+      fighter.level = calculateLevel(fighter)
+
+      await fighter.save()
+      await User.update({ address: owner }, { $push: { events: newEvent } })
+      console.log(`Fighter #${fighterId}'s ${attribute} increased by ${increaseValue}`)
+    } catch(error) {
+      console.log(`Error updating fighter #${fighterId}'s ${attribute} by ${increaseValue}`, error)
+    }
   })
 
-  contract.Healed((error, tx) => {
+  contract.Healed(async (error, tx) => {
     if (error) return console.log('Error with Fighter Healing ', error);
 
     const { owner, fighterId, maxHealth } = tx.args
 
-    Fighter.update({ address: owner }, { $set: { health: maxHealth } })
-      .then(() => {
-        User.update({ address: owner }, { $push: { events: new Event({ fighterId, type: 'Heal', message: `Fighter #${fighterId} was healed to full health!` }) } })
-      })
-      .catch((error) => {
-        console.log(`Error healing fighter #${fighterId}`, error)
-      })
+    try {
+      const newEvent = await new Event({ fighterId, type: 'Heal', message: `Fighter #${fighterId} was healed to full health!` }).save()
+      await Promise.all([
+        Fighter.update({ address: owner }, { $set: { health: maxHealth.toNumber() } }),
+        User.update({ address: owner }, { $push: { events: newEvent } })
+      ])
+
+      console.log(`Fighter #${fighterId} successfully healed`)
+    } catch(error) {
+      console.log(`Error healing fighter #${fighterId}`, error)
+    }
   })
 
-  contract.FighterFound((error, tx) => {
+  contract.FighterFound(async (error, tx) => {
     if (error) return console.log('Error with Finding Fighter ', error);
 
     const { owner, fighterId, fighterWasFound } = tx.args
-
     if (!fighterWasFound) return
 
-    User.update({ address: owner }, { $push: { events: new Event({ fighterId, type: 'Fighter Found', message: `You found Fighter #${fighterId} while patrolling the streets!` }) } })
-      .catch((error) => {
-        console.log(`Error updating the fighter found event for owner ${owner} and fighter #${fighterId}`, error)
-      })
+    try {
+      const newEvent = await new Event({ fighterId, type: 'Fighter Found', message: `You found Fighter #${fighterId} while patrolling the streets!` }).save()
+      await User.update({ address: owner }, { $push: { events: newEvent } })
+
+      console.log(`Owner ${owner} found Fighter #${fighterId}`)
+    } catch(error) {
+      console.log(`Error updating the fighter found event for owner ${owner} and fighter #${fighterId}`, error)
+    }
   })
 }
 
