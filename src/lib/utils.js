@@ -1,3 +1,3 @@
 module.exports.calculateLevel = (fighter) => {
-  return Math.floor((fighter.maxHealth + fighter.speed + fighter.strength) / 10);
+  return Math.floor((fighter.maxHealth.toNumber() + fighter.speed.toNumber() + fighter.strength.toNumber()) / 10);
 }

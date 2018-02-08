@@ -37,7 +37,7 @@ const accountEvents = (contract) => {
     try {
       const fromEvent = await new Event({ fighterId, type: 'Transfer', message: `Fighter #${fighterId} transferred to ${to}` }).save()
       const toEvent = await new Event({ fighterId, type: 'Transfer', message: `Fighter #${fighterId} transferred to you from ${from}` }).save()
-      
+
       await Promise.all([
         User.update(
           { address: from },
