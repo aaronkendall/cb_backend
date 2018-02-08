@@ -1,10 +1,12 @@
 const environment = process.env.NODE_ENV || 'development';
 const envConfig = {
   development: {
-    httpProvider: 'http://localhost:8545'
+    httpProvider: 'http://localhost:8545',
+    webSocketProvider: 'wss://localhost:8545'
   },
   production: {
-    httpProvider: 'http://'
+    httpProvider: 'http://mainnet.infura.io',
+    webSocketProvider: 'wss://mainnet.infura.io/ws'
   }
 };
 
