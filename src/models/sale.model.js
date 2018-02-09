@@ -3,7 +3,7 @@ const timestamps = require('mongoose-timestamp');
 const { Schema } = mongoose;
 
 const Sale = new Schema({
-  fighter: { type: Schema.Types.ObjectId, ref: 'Fighter' },
+  fighter: { type: Schema.Types.Number, ref: 'Fighter' },
   price: Number
 });
 

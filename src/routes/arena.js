@@ -11,6 +11,7 @@ router.get('/all/:offset', function(req, res, next) {
     .find({})
     .skip(offset * queryReturnLimit)
     .limit(queryReturnLimit)
+    .populate('fighters')
     .exec()
     .then((sales) => {
       return res.status(200).send({ sales })
@@ -28,35 +29,13 @@ router.get('/all/:offset/filter/:filter/value/:value/sortBy/:sortBy/direction/:d
     .skip(offset * queryReturnLimit)
     .limit(queryReturnLimit)
     .sort({ [sortBy]: direction })
+    .populate('fighters')
     .exec()
     .then((results) => {
       return res.status(200).send({ fights: results })
     })
     .catch((error) => {
       return res.status(404).send({ error, message: 'could not find any Brawls matching those criteria' })
-    })
-});
-
-router.post('/add', function(req, res, next) {
-  const { fighter, price } = req.body;
-  new Brawl({ fighter, price }).save()
-    .then((newFighter) => {
-      return res.status(201).send({ fighter: newFighter, messgae: 'fighter Brawl created!' })
-    })
-    .catch((error) => {
-      return res.status(400).send({ error, message: 'could not save fighter' })
-    })
-});
-
-router.delete('/remove/:id', function(req, res, next) {
-  const { id } = req.params;
-
-  Brawl.remove({ 'fighter.id': id })
-    .then(() => {
-      return res.status(204).send({ message: `fighter ${id} successfully removed from Brawl`})
-    })
-    .catch((error) => {
-      return res.status(400).send({ error, message: `fighter ${id} could not be removed from Brawl` })
     })
 });
 

@@ -46,15 +46,16 @@ const accountEvents = (contract) => {
             $push: { events: fromEvent.id }
           }
         ),
-        User.update(
+        User.findOneAndUpdate(
           { address: to },
           {
             $push: {
               fighters: fighterId,
               events: toEvent.id
             }
-          }
-        )
+          },
+          { upsert: true, new: true, setDefaultsOnInsert: true }
+        ).exec()
       ])
       console.log(`Successfully transferred Fighter #${fighterId} from ${from} to ${to}`)
     } catch(error) {

@@ -9,6 +9,8 @@ router.get('/:address', async (req, res, next) => {
 
   User
     .findOneAndUpdate({ address }, {}, { upsert: true, new: true, setDefaultsOnInsert: true })
+    .populate('fighters')
+    .populate('events')
     .exec()
     .then((user) => {
       return res.status(200).send({ user })
