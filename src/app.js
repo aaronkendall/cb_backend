@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const web3 = require('web3');
 const contract = require('truffle-contract');
+const cors = require('cors');
 const events = require('./services/events');
 dotenv.config();
 const config = require('./config/config');
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 app.use('/api/marketplace', marketplace);
 app.use('/api/arena', arena);
@@ -39,7 +41,7 @@ app.use('/api/account', account);
 // Truffle expects web3 0.2 API so we need to set this
 web3.providers.HttpProvider.prototype.sendAsync = web3.providers.HttpProvider.prototype.send
 
-const provider = new web3.providers.WebsocketProvider(config.webSocketProvider);
+const provider = new web3.providers.HttpProvider(config.webSocketProvider);
 const contractInstance = contract({ abi: contractABI });
 contractInstance.setProvider(provider);
 contractInstance.defaults({ from: config.fromEthAddress, gasLimit: 999999 });

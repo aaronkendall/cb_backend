@@ -12,7 +12,16 @@ const Fighter = new Schema({
   type: String,
   isForSale: { type: Boolean, required: true, default: false },
   isInArena: { type: Boolean, required: true, default: false }
+})
+
+Fighter.plugin(timestamps)
+
+Fighter.set('toJSON', {
+   transform: function (doc, ret, options) {
+     ret.id = ret._id;
+     delete ret._id;
+     delete ret.__v;
+   }
 });
 
-Fighter.plugin(timestamps);
 module.exports = mongoose.model('Fighter', Fighter);
