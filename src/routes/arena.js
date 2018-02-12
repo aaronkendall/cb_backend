@@ -21,8 +21,8 @@ router.get('/all/:offset', function(req, res, next) {
     })
 });
 
-router.get('/all/:offset/filter/:filter/value/:value/sortBy/:sortBy/direction/:direction', function(req, res, next) {
-  const { offset, filter, value, sortBy, direction } = req.params;
+router.get('/all/:offset/filters/:filters/sortBy/:sortBy/direction/:direction', function(req, res, next) {
+  const { offset, filters, sortBy, direction } = req.params;
 
   Brawl
     .find({ [`fighter.${filter}`]: { $gte: value } })

@@ -21,8 +21,11 @@ router.get('/all/:offset', function(req, res, next) {
     })
 });
 
-router.get('/find/:offset/filter/:filter/value/:value/sortBy/:sortBy/direction/:direction', function(req, res, next) {
-  const { offset, filter, value, sortBy, direction } = req.params;
+router.get('/find/:offset/filters/:filters/sortBy/:sortBy/direction/:direction', function(req, res, next) {
+  const { offset, filters, sortBy, direction } = req.params;
+
+  // filters currently are a string in the format 'filterKey: filterValue,filterKey: filterValue'
+  // method here to parse them appropriately then plug that into the mongoose query
 
   Sale
     .find({ [`fighter.${filter}`]: { $gte: value } })
