@@ -1,8 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const config = require('../config/config');
-const Sale = require('../models/sale.model');
-const { queryReturnLimit } = config;
+const express = require('express')
+const router = express.Router()
+const config = require('../config/config')
+const Sale = require('../models/sale.model')
+const { filterStringToQueryObject } = require('../lib/utils')
+const { queryReturnLimit } = config
 
 router.get('/all/:offset', function(req, res, next) {
   const { offset } = req.params;
@@ -22,13 +23,10 @@ router.get('/all/:offset', function(req, res, next) {
 });
 
 router.get('/find/:offset/filters/:filters/sortBy/:sortBy/direction/:direction', function(req, res, next) {
-  const { offset, filters, sortBy, direction } = req.params;
-
-  // filters currently are a string in the format 'filterKey: filterValue,filterKey: filterValue'
-  // method here to parse them appropriately then plug that into the mongoose query
+  const { offset, filters, sortBy, direction } = req.params
 
   Sale
-    .find({ [`fighter.${filter}`]: { $gte: value } })
+    .find(filterStringToQueryObject(filters))
     .skip(offset * queryReturnLimit)
     .limit(queryReturnLimit)
     .sort({ [sortBy]: direction })
