@@ -17,7 +17,7 @@ const marketplaceEvents = (contract) => {
       const sellerEvent = await new Event({ fighterId, type: 'PurchaseSuccess', message: `You sold Fighter #${fighterId} for ${ethPrice}` }).save()
       const buyerEvent = await new Event({ fighterId, type: 'PurchaseSuccess', message: `You bought Fighter #${fighterId} for ${ethPrice}` }).save()
 
-      await Fighter.findByIdAndUpdate(fighterId, { $set: { isForSale: false } })
+      await Fighter.update({ _id: fighterId }, { $set: { isForSale: false } })
       await Promise.all([
         User.update({ address: seller }, { $push: { events: sellerEvent } }),
         User.update({ address: buyer }, { $push: { events: buyerEvent } })
@@ -36,7 +36,7 @@ const marketplaceEvents = (contract) => {
 
     try {
       await Sale.remove({ 'fighter.id': fighterId })
-      await Fighter.findByIdAndUpdate(fighterId, { $set: { isForSale: false } }).exec()
+      await Fighter.update({ _id: fighterId }, { $set: { isForSale: false } })
       console.log(`Fighter #${fighterId} removed from sale after cancellation`)
     } catch(error) {
       console.log(`Error removing Fighter #${fighterId} after cancellation `, error)
@@ -50,7 +50,7 @@ const marketplaceEvents = (contract) => {
 
     try {
       await new Sale({ fighter: fighterId , price: price.toNumber() }).save()
-      await Fighter.findByIdAndUpdate(fighterId, { $set: { isForSale: true } }).exec()
+      await Fighter.update({ _id: fighterId }, { $set: { isForSale: true } })
       console.log(`Successfully added Fighter #${fighterId} to the marketplace`)
     } catch(error) {
       console.log(`Error adding Fighter #${fighterId} to marketplace`)

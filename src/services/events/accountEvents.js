@@ -92,7 +92,7 @@ const accountEvents = (contract) => {
     try {
       const newEvent = await new Event({ fighterId, type: 'Heal', message: `Fighter #${fighterId} was healed to full health!` }).save()
       await Promise.all([
-        Fighter.update({ address: owner }, { $set: { health: maxHealth.toNumber() } }),
+        Fighter.update({ _id: fighterId }, { $set: { health: maxHealth.toNumber() } }),
         User.update({ address: owner }, { $push: { events: newEvent } })
       ])
 
