@@ -36,7 +36,7 @@ const marketplaceEvents = (contract) => {
 
     try {
       await Sale.remove({ 'fighter.id': fighterId })
-      await Fighter.findByIdAndUpdate(fighterId, { $set: { isForSale: false } })
+      await Fighter.findByIdAndUpdate(fighterId, { $set: { isForSale: false } }).exec()
       console.log(`Fighter #${fighterId} removed from sale after cancellation`)
     } catch(error) {
       console.log(`Error removing Fighter #${fighterId} after cancellation `, error)
@@ -49,8 +49,8 @@ const marketplaceEvents = (contract) => {
     const { fighterId, price } = tx.args
 
     try {
-      await new Sale({ fighter: fighterId , price }).save()
-      await Fighter.findByIdAndUpdate(fighterId, { $set: { isForSale: true } })
+      await new Sale({ fighter: fighterId , price: price.toNumber() }).save()
+      await Fighter.findByIdAndUpdate(fighterId, { $set: { isForSale: true } }).exec()
       console.log(`Successfully added Fighter #${fighterId} to the marketplace`)
     } catch(error) {
       console.log(`Error adding Fighter #${fighterId} to marketplace`)

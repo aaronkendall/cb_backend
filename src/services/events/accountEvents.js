@@ -69,7 +69,7 @@ const accountEvents = (contract) => {
     const { owner, fighterId, attribute, increaseValue } = tx.args
 
     try {
-      const fighter = await Fighter.findById(fighterId)
+      const fighter = await Fighter.findById(fighterId).exec()
       const newEvent = await new Event({ fighterId, type: 'Attribute Increase', message: `Fighter #${fighterId}'s ${attribute} increased by ${increaseValue}!` }).save()
 
       fighter[attribute] = fighter[attribute] + increaseValue.toNumber()

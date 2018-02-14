@@ -7,13 +7,13 @@ const arenaEvents = (contract) => {
   contract.FightComplete(async (error, tx) => {
     if (error) return console.log('Error with FightComplete ', error);
 
-    const { winnerId, winner, loserId, loser, fighterInArena } = tx.args
+    const { winnerId, winner, winnersHealth, loserId, loser, fighterInArena } = tx.args
 
     try {
       await Brawl.remove({ 'fighter.id': fighterInArena })
       await Promise.all([
-        Fighter.findByIdAndUpdate(winnerId, { $set: { isInArena: false } }),
-        Fighter.findByIdAndUpdate(loserId, { $set: { isInArena: false } })
+        Fighter.findByIdAndUpdate(winnerId, { $set: { isInArena: false, health: winnersHealth.toNumber() } }).exec(),
+        Fighter.findByIdAndUpdate(loserId, { $set: { isInArena: false, health: 0 } }).exec()
       ])
 
       const loserEvent = await new Event({ fighterId: loserId, type: 'Fight Complete', message: `You lost Fighter #${loserId} in a brawl with Fighter #${winnerId}!` }).save()
@@ -36,7 +36,7 @@ const arenaEvents = (contract) => {
 
     try {
       await Brawl.remove({ 'fighter.id': fighterId })
-      await Fighter.findByIdAndUpdate(fighterId, { $set: { isInArena: false } })
+      await Fighter.findByIdAndUpdate(fighterId, { $set: { isInArena: false } }).exec()
       console.log(`Fighter #${fighterId} removed from sale after cancellation`)
     } catch(error) {
       console.log(`Error removing Fighter #${fighterId} after cancellation in arena `, error)
@@ -50,8 +50,8 @@ const arenaEvents = (contract) => {
 
     try {
       await new Brawl({ fighter: fighterId }).save()
-      await Fighter.findByIdAndUpdate(fighterId, { $set: { isInArena: true } })
-      console.log(`Successfully added Fighter #${fighterId} to the marketplace`)
+      await Fighter.findByIdAndUpdate(fighterId, { $set: { isInArena: true } }).exec()
+      console.log(`Successfully added Fighter #${fighterId} to the arena`)
     } catch(error) {
       console.log(`Error adding Fighter #${fighterId} to arena`)
     }
