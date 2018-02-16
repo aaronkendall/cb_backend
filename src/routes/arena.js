@@ -43,6 +43,10 @@ router.get('/all/:offset/filters/:filters/sortBy/:sortBy/direction/:direction', 
 router.post('/fight', (req, res, next) => {
   console.log(req.body)
 
+//   _addFighterType('Mob Boss', 'Mob Boss');
+// _addFighterType('Local MMA Star', 'Henchman');
+// _addFighterType('Roadman', 'Local MMA Star');
+// _addFighterType('Henchman', 'Roadman');
   // returns winnerId, loserId, winnersHealth in the format 'winnerId-loserId-winnersHealth' for easy processing by the contract
   return res.status(200).send({ outcomeString: '2-1-5' })
 })
