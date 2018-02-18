@@ -40,8 +40,9 @@ router.get('/all/:offset/filters/:filters/sortBy/:sortBy/direction/:direction', 
     })
 });
 
-router.post('/fight', (req, res, next) => {
-  console.log(req.body)
+router.get('/calculateWinner/attacker/:attackerId/defender/:defenderId', (req, res, next) => {
+  const { attackerId, defenderId } = req.params
+  console.log(attackerId, defenderId)
 
 //   _addFighterType('Mob Boss', 'Mob Boss');
 // _addFighterType('Local MMA Star', 'Henchman');
