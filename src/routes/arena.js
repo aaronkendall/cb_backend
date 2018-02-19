@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const config = require('../config/config');
 const Brawl = require('../models/brawl.model');
+const Fighter = require('../models/fighter.model');
 const { filterStringToQueryObject } = require('../lib/utils')
+const { calculateWinner } = require('../lib/combat')
 const { queryReturnLimit } = config
 
 router.get('/all/:offset', (req, res, next) => {
@@ -40,14 +42,11 @@ router.get('/all/:offset/filters/:filters/sortBy/:sortBy/direction/:direction', 
     })
 });
 
-router.get('/calculateWinner/attacker/:attackerId/defender/:defenderId', (req, res, next) => {
+router.get('/calculateWinner/attacker/:attackerId/defender/:defenderId', async (req, res, next) => {
   const { attackerId, defenderId } = req.params
-  console.log(attackerId, defenderId)
 
-//   _addFighterType('Mob Boss', 'Mob Boss');
-// _addFighterType('Local MMA Star', 'Henchman');
-// _addFighterType('Roadman', 'Local MMA Star');
-// _addFighterType('Henchman', 'Roadman');
+  const fighters = await Promise.all([Fighter.find({ id: attackerId }).exec(), Fighter.find({ id: defenderId }).exec()])
+  const outcomeString = calculateWinner(fighters[0], fighters[1])
   // returns winnerId, loserId, winnersHealth in the format 'winnerId-loserId-winnersHealth' for easy processing by the contract
   return res.status(200).send({ outcomeString: '2-1-5' })
 })
