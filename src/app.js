@@ -40,8 +40,11 @@ app.use('/api/account', account);
 
 // Truffle expects web3 0.2 API so we need to set this
 web3.providers.HttpProvider.prototype.sendAsync = web3.providers.HttpProvider.prototype.send
+web3.providers.WebsocketProvider.prototype.sendAsync = web3.providers.WebsocketProvider.prototype.send
 
-const provider = new web3.providers.HttpProvider(config.webSocketProvider);
+let provider = new web3.providers.HttpProvider(config.httpProvider)
+if (process.env.NODE_ENV !== 'development') provider = new web3.providers.WebsocketProvider(config.webSocketProvider)
+
 const contractInstance = contract({ abi: contractABI });
 contractInstance.setProvider(provider);
 contractInstance.defaults({ from: config.fromEthAddress, gasLimit: 999999 });
