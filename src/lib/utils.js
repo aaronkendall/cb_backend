@@ -18,7 +18,12 @@ const filterStringToQueryObject = (filterString) => {
     }, {})
 }
 
+const randomNumberMinToMax = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
 module.exports = {
   calculateLevel,
-  filterStringToQueryObject
+  filterStringToQueryObject,
+  randomNumberMinToMax
 }
