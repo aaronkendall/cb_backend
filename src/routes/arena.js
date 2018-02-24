@@ -45,10 +45,14 @@ router.get('/all/:offset/filters/:filters/sortBy/:sortBy/direction/:direction', 
 router.get('/calculateWinner/attacker/:attackerId/defender/:defenderId', async (req, res, next) => {
   const { attackerId, defenderId } = req.params
 
-  const fighters = await Promise.all([Fighter.find({ id: attackerId }).exec(), Fighter.find({ id: defenderId }).exec()])
-  const outcomeString = calculateWinner(fighters[0], fighters[1])
-  // returns winnerId, loserId, winnersHealth in the format 'winnerId-loserId-winnersHealth' for easy processing by the contract
-  return res.status(200).send({ outcomeString: '2-1-5' })
+  try {
+    const fighters = await Promise.all([Fighter.findOne({ _id: attackerId }), Fighter.findOne({ _id: defenderId })])
+    const outcomeString = calculateWinner(fighters[0], fighters[1])
+    // returns winnerId, loserId, winnersHealth in the format 'winnerId-loserId-winnersHealth' for easy processing by the contract
+    return res.status(200).send({ outcomeString })
+  } catch(error) {
+    return res.status(404).send({ message: 'Could not find fighter', error })
+  }
 })
 
 module.exports = router;

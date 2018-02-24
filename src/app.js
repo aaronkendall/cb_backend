@@ -43,7 +43,7 @@ web3.providers.HttpProvider.prototype.sendAsync = web3.providers.HttpProvider.pr
 web3.providers.WebsocketProvider.prototype.sendAsync = web3.providers.WebsocketProvider.prototype.send
 
 let provider = new web3.providers.HttpProvider(config.httpProvider)
-if (process.env.NODE_ENV !== 'development') provider = new web3.providers.WebsocketProvider(config.webSocketProvider)
+if (process.env.USE_WS) provider = new web3.providers.WebsocketProvider(config.webSocketProvider)
 
 const contractInstance = contract({ abi: contractABI });
 contractInstance.setProvider(provider);
