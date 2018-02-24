@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./src/app/bin/www",
+    "start": "node ./src/bin/www",
     "prod": "NODE_ENV=production npm start",
     "dev": "NODE_ENV=development nodemon ./src/bin/www"
   },
