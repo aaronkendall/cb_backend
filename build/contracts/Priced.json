@@ -1,8 +1,8 @@
 {
   "contractName": "Priced",
   "abi": [],
-  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820fbbe040a5d79c7eb8896337cdd7a00a73a2d899e928c71f7f6138e891b34c2960029",
-  "deployedBytecode": "0x6060604052600080fd00a165627a7a72305820fbbe040a5d79c7eb8896337cdd7a00a73a2d899e928c71f7f6138e891b34c2960029",
+  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a723058201ce544d1ef80451551b7b18690feb3530c30ed39b58db028db77dcf1fb63fec30029",
+  "deployedBytecode": "0x6060604052600080fd00a165627a7a723058201ce544d1ef80451551b7b18690feb3530c30ed39b58db028db77dcf1fb63fec30029",
   "sourceMap": "26:101:5:-;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "26:101:5:-;;;;;",
   "source": "pragma solidity ^0.4.18;\n\ncontract Priced {\n  modifier costs(uint price) {\n    if (msg.value >= price) {\n        _;\n    }\n  }\n}\n",
@@ -127,7 +127,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2943,
+                                  "referencedDeclaration": 8484,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -198,9 +198,9 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-02-09T18:00:20.417Z"
+  "updatedAt": "2018-02-24T11:17:37.872Z"
 }

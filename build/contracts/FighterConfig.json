@@ -2,34 +2,6 @@
   "contractName": "FighterConfig",
   "abi": [
     {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "newProbability",
-          "type": "uint256"
-        }
-      ],
-      "name": "setFighterCreationChance",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "newFactor",
-          "type": "uint256"
-        }
-      ],
-      "name": "setTrainingFactor",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
       "constant": true,
       "inputs": [],
       "name": "trainingCost",
@@ -55,20 +27,6 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "newCost",
-          "type": "uint256"
-        }
-      ],
-      "name": "setNewTrainingCost",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -112,10 +70,52 @@
       "payable": false,
       "stateMutability": "view",
       "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newProbability",
+          "type": "uint256"
+        }
+      ],
+      "name": "setFighterCreationChance",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newFactor",
+          "type": "uint256"
+        }
+      ],
+      "name": "setTrainingFactor",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newCost",
+          "type": "uint256"
+        }
+      ],
+      "name": "setNewTrainingCost",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ],
-  "bytecode": "0x60606040526003600181905560028190556611c37937e08000905560008054600160a060020a033316600160a060020a0319909116179055610272806100466000396000f30060606040526004361061008d5763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166340e4e0488114610092578063495ac3a8146100aa578063701a19fd146100c05780638da5cb5b146100e5578063a5557ce014610114578063b64ce34a1461012a578063f2fde38b1461013d578063f36014d21461015c575b600080fd5b341561009d57600080fd5b6100a860043561016f565b005b34156100b557600080fd5b6100a860043561018f565b34156100cb57600080fd5b6100d36101af565b60405190815260200160405180910390f35b34156100f057600080fd5b6100f86101b5565b604051600160a060020a03909116815260200160405180910390f35b341561011f57600080fd5b6100a86004356101c4565b341561013557600080fd5b6100d36101e4565b341561014857600080fd5b6100a8600160a060020a03600435166101ea565b341561016757600080fd5b6100d3610240565b60005433600160a060020a0390811691161461018a57600080fd5b600155565b60005433600160a060020a039081169116146101aa57600080fd5b600255565b60035481565b600054600160a060020a031681565b60005433600160a060020a039081169116146101df57600080fd5b600355565b60025481565b60005433600160a060020a0390811691161461020557600080fd5b600160a060020a0381161561023d576000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0383161790555b50565b600154815600a165627a7a723058202ce6905b6ca4de45254647a28424701d1abc93f1bdca5b5962e26206eb6aaeff0029",
-  "deployedBytecode": "0x60606040526004361061008d5763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166340e4e0488114610092578063495ac3a8146100aa578063701a19fd146100c05780638da5cb5b146100e5578063a5557ce014610114578063b64ce34a1461012a578063f2fde38b1461013d578063f36014d21461015c575b600080fd5b341561009d57600080fd5b6100a860043561016f565b005b34156100b557600080fd5b6100a860043561018f565b34156100cb57600080fd5b6100d36101af565b60405190815260200160405180910390f35b34156100f057600080fd5b6100f86101b5565b604051600160a060020a03909116815260200160405180910390f35b341561011f57600080fd5b6100a86004356101c4565b341561013557600080fd5b6100d36101e4565b341561014857600080fd5b6100a8600160a060020a03600435166101ea565b341561016757600080fd5b6100d3610240565b60005433600160a060020a0390811691161461018a57600080fd5b600155565b60005433600160a060020a039081169116146101aa57600080fd5b600255565b60035481565b600054600160a060020a031681565b60005433600160a060020a039081169116146101df57600080fd5b600355565b60025481565b60005433600160a060020a0390811691161461020557600080fd5b600160a060020a0381161561023d576000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0383161790555b50565b600154815600a165627a7a723058202ce6905b6ca4de45254647a28424701d1abc93f1bdca5b5962e26206eb6aaeff0029",
+  "bytecode": "0x60606040526003600181905560028190556611c37937e08000905560008054600160a060020a033316600160a060020a0319909116179055610272806100466000396000f30060606040526004361061008d5763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166340e4e0488114610092578063495ac3a8146100aa578063701a19fd146100c05780638da5cb5b146100e5578063a5557ce014610114578063b64ce34a1461012a578063f2fde38b1461013d578063f36014d21461015c575b600080fd5b341561009d57600080fd5b6100a860043561016f565b005b34156100b557600080fd5b6100a860043561018f565b34156100cb57600080fd5b6100d36101af565b60405190815260200160405180910390f35b34156100f057600080fd5b6100f86101b5565b604051600160a060020a03909116815260200160405180910390f35b341561011f57600080fd5b6100a86004356101c4565b341561013557600080fd5b6100d36101e4565b341561014857600080fd5b6100a8600160a060020a03600435166101ea565b341561016757600080fd5b6100d3610240565b60005433600160a060020a0390811691161461018a57600080fd5b600155565b60005433600160a060020a039081169116146101aa57600080fd5b600255565b60035481565b600054600160a060020a031681565b60005433600160a060020a039081169116146101df57600080fd5b600355565b60025481565b60005433600160a060020a0390811691161461020557600080fd5b600160a060020a0381161561023d576000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0383161790555b50565b600154815600a165627a7a72305820a33e8120de7539705968ff69351d20088968e2c2cf3336a08812b8d86b22ef280029",
+  "deployedBytecode": "0x60606040526004361061008d5763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166340e4e0488114610092578063495ac3a8146100aa578063701a19fd146100c05780638da5cb5b146100e5578063a5557ce014610114578063b64ce34a1461012a578063f2fde38b1461013d578063f36014d21461015c575b600080fd5b341561009d57600080fd5b6100a860043561016f565b005b34156100b557600080fd5b6100a860043561018f565b34156100cb57600080fd5b6100d36101af565b60405190815260200160405180910390f35b34156100f057600080fd5b6100f86101b5565b604051600160a060020a03909116815260200160405180910390f35b341561011f57600080fd5b6100a86004356101c4565b341561013557600080fd5b6100d36101e4565b341561014857600080fd5b6100a8600160a060020a03600435166101ea565b341561016757600080fd5b6100d3610240565b60005433600160a060020a0390811691161461018a57600080fd5b600155565b60005433600160a060020a039081169116146101aa57600080fd5b600255565b60035481565b600054600160a060020a031681565b60005433600160a060020a039081169116146101df57600080fd5b600355565b60025481565b60005433600160a060020a0390811691161461020557600080fd5b600160a060020a0381161561023d576000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0383161790555b50565b600154815600a165627a7a72305820a33e8120de7539705968ff69351d20088968e2c2cf3336a08812b8d86b22ef280029",
   "sourceMap": "57:521:7:-;;;133:1;95:39;;;;138:30;;;;202:16;172:46;;-1:-1:-1;97:18:4;;-1:-1:-1;;;;;105:10:4;97:18;-1:-1:-1;;;;;;97:18:4;;;;;;57:521:7;;;;;;",
   "deployedSourceMap": "57:521:7:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;250:125;;;;;;;;;;;;;;;;379:99;;;;;;;;;;;;;;172:46;;;;;;;;;;;;;;;;;;;;;;;;;;;47:20:4;;;;;;;;;;;;;;;-1:-1:-1;;;;;47:20:4;;;;;;;;;;;;;;482:94:7;;;;;;;;;;;;;;138:30;;;;;;;;;;;;195:124:4;;;;;;;;;;-1:-1:-1;;;;;195:124:4;;;;;95:39:7;;;;;;;;;;;;250:125;173:5:4;;159:10;-1:-1:-1;;;;;159:19:4;;;173:5;;159:19;151:28;;;;;;330:23:7;:40;250:125::o;379:99::-;173:5:4;;159:10;-1:-1:-1;;;;;159:19:4;;;173:5;;159:19;151:28;;;;;;447:14:7;:26;379:99::o;172:46::-;;;;:::o;47:20:4:-;;;-1:-1:-1;;;;;47:20:4;;:::o;482:94:7:-;173:5:4;;159:10;-1:-1:-1;;;;;159:19:4;;;173:5;;159:19;151:28;;;;;;549:12:7;:22;482:94::o;138:30::-;;;;:::o;195:124:4:-;173:5;;159:10;-1:-1:-1;;;;;159:19:4;;;173:5;;159:19;151:28;;;;;;-1:-1:-1;;;;;260:22:4;;;256:59;;292:5;:16;;-1:-1:-1;;292:16:4;-1:-1:-1;;;;;292:16:4;;;;;256:59;195:124;:::o;95:39:7:-;;;;:::o",
   "source": "pragma solidity ^0.4.18;\n\nimport \"../base/Ownable.sol\";\n\ncontract FighterConfig is Ownable {\n  uint public chanceOfFighterCreation = 3;\n  uint public trainingFactor = 3;\n  uint256 public trainingCost = 5000000000000000; // cost of training in wei\n\n  function setFighterCreationChance(uint newProbability) external onlyOwner {\n    chanceOfFighterCreation = newProbability;\n  }\n\n  function setTrainingFactor(uint newFactor) external onlyOwner {\n    trainingFactor = newFactor;\n  }\n\n  function setNewTrainingCost(uint newCost) external onlyOwner {\n    trainingCost = newCost;\n  }\n}\n",
@@ -125,7 +125,7 @@
       "absolutePath": "/Users/Aaron/Projects/cryptoclash/contracts/fighter/FighterConfig.sol",
       "exportedSymbols": {
         "FighterConfig": [
-          917
+          892
         ]
       }
     },
@@ -139,7 +139,7 @@
             ".18"
           ]
         },
-        "id": 868,
+        "id": 843,
         "name": "PragmaDirective",
         "src": "0:24:7"
       },
@@ -148,13 +148,13 @@
           "SourceUnit": 388,
           "absolutePath": "/Users/Aaron/Projects/cryptoclash/contracts/base/Ownable.sol",
           "file": "../base/Ownable.sol",
-          "scope": 918,
+          "scope": 893,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 869,
+        "id": 844,
         "name": "ImportDirective",
         "src": "26:29:7"
       },
@@ -167,11 +167,11 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            917,
+            892,
             387
           ],
           "name": "FighterConfig",
-          "scope": 918
+          "scope": 893
         },
         "children": [
           {
@@ -188,12 +188,12 @@
                   "referencedDeclaration": 387,
                   "type": "contract Ownable"
                 },
-                "id": 870,
+                "id": 845,
                 "name": "UserDefinedTypeName",
                 "src": "83:7:7"
               }
             ],
-            "id": 871,
+            "id": 846,
             "name": "InheritanceSpecifier",
             "src": "83:7:7"
           },
@@ -201,7 +201,7 @@
             "attributes": {
               "constant": false,
               "name": "chanceOfFighterCreation",
-              "scope": 917,
+              "scope": 892,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -213,7 +213,7 @@
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 872,
+                "id": 847,
                 "name": "ElementaryTypeName",
                 "src": "95:4:7"
               },
@@ -230,12 +230,12 @@
                   "type": "int_const 3",
                   "value": "3"
                 },
-                "id": 873,
+                "id": 848,
                 "name": "Literal",
                 "src": "133:1:7"
               }
             ],
-            "id": 874,
+            "id": 849,
             "name": "VariableDeclaration",
             "src": "95:39:7"
           },
@@ -243,7 +243,7 @@
             "attributes": {
               "constant": false,
               "name": "trainingFactor",
-              "scope": 917,
+              "scope": 892,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -255,7 +255,7 @@
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 875,
+                "id": 850,
                 "name": "ElementaryTypeName",
                 "src": "138:4:7"
               },
@@ -272,12 +272,12 @@
                   "type": "int_const 3",
                   "value": "3"
                 },
-                "id": 876,
+                "id": 851,
                 "name": "Literal",
                 "src": "167:1:7"
               }
             ],
-            "id": 877,
+            "id": 852,
             "name": "VariableDeclaration",
             "src": "138:30:7"
           },
@@ -285,7 +285,7 @@
             "attributes": {
               "constant": false,
               "name": "trainingCost",
-              "scope": 917,
+              "scope": 892,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -297,7 +297,7 @@
                   "name": "uint256",
                   "type": "uint256"
                 },
-                "id": 878,
+                "id": 853,
                 "name": "ElementaryTypeName",
                 "src": "172:7:7"
               },
@@ -314,12 +314,12 @@
                   "type": "int_const 5000000000000000",
                   "value": "5000000000000000"
                 },
-                "id": 879,
+                "id": 854,
                 "name": "Literal",
                 "src": "202:16:7"
               }
             ],
-            "id": 880,
+            "id": 855,
             "name": "VariableDeclaration",
             "src": "172:46:7"
           },
@@ -330,7 +330,7 @@
               "isConstructor": false,
               "name": "setFighterCreationChance",
               "payable": false,
-              "scope": 917,
+              "scope": 892,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "external"
@@ -342,7 +342,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "newProbability",
-                      "scope": 892,
+                      "scope": 867,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -355,17 +355,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 881,
+                        "id": 856,
                         "name": "ElementaryTypeName",
                         "src": "284:4:7"
                       }
                     ],
-                    "id": 882,
+                    "id": 857,
                     "name": "VariableDeclaration",
                     "src": "284:19:7"
                   }
                 ],
-                "id": 883,
+                "id": 858,
                 "name": "ParameterList",
                 "src": "283:21:7"
               },
@@ -376,7 +376,7 @@
                   ]
                 },
                 "children": [],
-                "id": 886,
+                "id": 861,
                 "name": "ParameterList",
                 "src": "324:0:7"
               },
@@ -397,12 +397,12 @@
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 884,
+                    "id": 859,
                     "name": "Identifier",
                     "src": "314:9:7"
                   }
                 ],
-                "id": 885,
+                "id": 860,
                 "name": "ModifierInvocation",
                 "src": "314:9:7"
               },
@@ -427,11 +427,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 874,
+                              "referencedDeclaration": 849,
                               "type": "uint256",
                               "value": "chanceOfFighterCreation"
                             },
-                            "id": 887,
+                            "id": 862,
                             "name": "Identifier",
                             "src": "330:23:7"
                           },
@@ -441,31 +441,31 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 882,
+                              "referencedDeclaration": 857,
                               "type": "uint256",
                               "value": "newProbability"
                             },
-                            "id": 888,
+                            "id": 863,
                             "name": "Identifier",
                             "src": "356:14:7"
                           }
                         ],
-                        "id": 889,
+                        "id": 864,
                         "name": "Assignment",
                         "src": "330:40:7"
                       }
                     ],
-                    "id": 890,
+                    "id": 865,
                     "name": "ExpressionStatement",
                     "src": "330:40:7"
                   }
                 ],
-                "id": 891,
+                "id": 866,
                 "name": "Block",
                 "src": "324:51:7"
               }
             ],
-            "id": 892,
+            "id": 867,
             "name": "FunctionDefinition",
             "src": "250:125:7"
           },
@@ -476,7 +476,7 @@
               "isConstructor": false,
               "name": "setTrainingFactor",
               "payable": false,
-              "scope": 917,
+              "scope": 892,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "external"
@@ -488,7 +488,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "newFactor",
-                      "scope": 904,
+                      "scope": 879,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -501,17 +501,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 893,
+                        "id": 868,
                         "name": "ElementaryTypeName",
                         "src": "406:4:7"
                       }
                     ],
-                    "id": 894,
+                    "id": 869,
                     "name": "VariableDeclaration",
                     "src": "406:14:7"
                   }
                 ],
-                "id": 895,
+                "id": 870,
                 "name": "ParameterList",
                 "src": "405:16:7"
               },
@@ -522,7 +522,7 @@
                   ]
                 },
                 "children": [],
-                "id": 898,
+                "id": 873,
                 "name": "ParameterList",
                 "src": "441:0:7"
               },
@@ -543,12 +543,12 @@
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 896,
+                    "id": 871,
                     "name": "Identifier",
                     "src": "431:9:7"
                   }
                 ],
-                "id": 897,
+                "id": 872,
                 "name": "ModifierInvocation",
                 "src": "431:9:7"
               },
@@ -573,11 +573,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 877,
+                              "referencedDeclaration": 852,
                               "type": "uint256",
                               "value": "trainingFactor"
                             },
-                            "id": 899,
+                            "id": 874,
                             "name": "Identifier",
                             "src": "447:14:7"
                           },
@@ -587,31 +587,31 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 894,
+                              "referencedDeclaration": 869,
                               "type": "uint256",
                               "value": "newFactor"
                             },
-                            "id": 900,
+                            "id": 875,
                             "name": "Identifier",
                             "src": "464:9:7"
                           }
                         ],
-                        "id": 901,
+                        "id": 876,
                         "name": "Assignment",
                         "src": "447:26:7"
                       }
                     ],
-                    "id": 902,
+                    "id": 877,
                     "name": "ExpressionStatement",
                     "src": "447:26:7"
                   }
                 ],
-                "id": 903,
+                "id": 878,
                 "name": "Block",
                 "src": "441:37:7"
               }
             ],
-            "id": 904,
+            "id": 879,
             "name": "FunctionDefinition",
             "src": "379:99:7"
           },
@@ -622,7 +622,7 @@
               "isConstructor": false,
               "name": "setNewTrainingCost",
               "payable": false,
-              "scope": 917,
+              "scope": 892,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "external"
@@ -634,7 +634,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "newCost",
-                      "scope": 916,
+                      "scope": 891,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -647,17 +647,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 905,
+                        "id": 880,
                         "name": "ElementaryTypeName",
                         "src": "510:4:7"
                       }
                     ],
-                    "id": 906,
+                    "id": 881,
                     "name": "VariableDeclaration",
                     "src": "510:12:7"
                   }
                 ],
-                "id": 907,
+                "id": 882,
                 "name": "ParameterList",
                 "src": "509:14:7"
               },
@@ -668,7 +668,7 @@
                   ]
                 },
                 "children": [],
-                "id": 910,
+                "id": 885,
                 "name": "ParameterList",
                 "src": "543:0:7"
               },
@@ -689,12 +689,12 @@
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 908,
+                    "id": 883,
                     "name": "Identifier",
                     "src": "533:9:7"
                   }
                 ],
-                "id": 909,
+                "id": 884,
                 "name": "ModifierInvocation",
                 "src": "533:9:7"
               },
@@ -719,11 +719,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 880,
+                              "referencedDeclaration": 855,
                               "type": "uint256",
                               "value": "trainingCost"
                             },
-                            "id": 911,
+                            "id": 886,
                             "name": "Identifier",
                             "src": "549:12:7"
                           },
@@ -733,49 +733,49 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 906,
+                              "referencedDeclaration": 881,
                               "type": "uint256",
                               "value": "newCost"
                             },
-                            "id": 912,
+                            "id": 887,
                             "name": "Identifier",
                             "src": "564:7:7"
                           }
                         ],
-                        "id": 913,
+                        "id": 888,
                         "name": "Assignment",
                         "src": "549:22:7"
                       }
                     ],
-                    "id": 914,
+                    "id": 889,
                     "name": "ExpressionStatement",
                     "src": "549:22:7"
                   }
                 ],
-                "id": 915,
+                "id": 890,
                 "name": "Block",
                 "src": "543:33:7"
               }
             ],
-            "id": 916,
+            "id": 891,
             "name": "FunctionDefinition",
             "src": "482:94:7"
           }
         ],
-        "id": 917,
+        "id": 892,
         "name": "ContractDefinition",
         "src": "57:521:7"
       }
     ],
-    "id": 918,
+    "id": 893,
     "name": "SourceUnit",
     "src": "0:579:7"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-02-09T18:00:20.418Z"
+  "updatedAt": "2018-02-24T11:17:37.874Z"
 }

@@ -231,8 +231,8 @@
       "type": "event"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b6103378061001e6000396000f30060606040526004361061006c5763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663027f48f7811461007157806344e59ee9146100af5780634b193933146100ee5780638357b8dd14610104578063d9861dab14610133575b600080fd5b341561007c57600080fd5b61009d73ffffffffffffffffffffffffffffffffffffffff600435166101c0565b60405190815260200160405180910390f35b34156100ba57600080fd5b6100c56004356101d2565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100f957600080fd5b6100c56004356101fa565b341561010f57600080fd5b61009d73ffffffffffffffffffffffffffffffffffffffff60043516602435610222565b341561013e57600080fd5b610149600435610250565b60405160208082528190810183818151815260200191508051906020019080838360005b8381101561018557808201518382015260200161016d565b50505050905090810190601f1680156101b25780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b60016020526000908152604090205481565b60036020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60026020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60046020528160005260406000208181548110151561023d57fe5b6000918252602090912001549150829050565b600580548290811061025e57fe5b90600052602060002090016000915090508054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103035780601f106102d857610100808354040283529160200191610303565b820191906000526020600020905b8154815290600101906020018083116102e657829003601f168201915b5050505050815600a165627a7a72305820b13b48901a2111a512ce62776fb8a0aa986310ced53569ab62c73ea6311ba0860029",
-  "deployedBytecode": "0x60606040526004361061006c5763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663027f48f7811461007157806344e59ee9146100af5780634b193933146100ee5780638357b8dd14610104578063d9861dab14610133575b600080fd5b341561007c57600080fd5b61009d73ffffffffffffffffffffffffffffffffffffffff600435166101c0565b60405190815260200160405180910390f35b34156100ba57600080fd5b6100c56004356101d2565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100f957600080fd5b6100c56004356101fa565b341561010f57600080fd5b61009d73ffffffffffffffffffffffffffffffffffffffff60043516602435610222565b341561013e57600080fd5b610149600435610250565b60405160208082528190810183818151815260200191508051906020019080838360005b8381101561018557808201518382015260200161016d565b50505050905090810190601f1680156101b25780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b60016020526000908152604090205481565b60036020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60026020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60046020528160005260406000208181548110151561023d57fe5b6000918252602090912001549150829050565b600580548290811061025e57fe5b90600052602060002090016000915090508054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103035780601f106102d857610100808354040283529160200191610303565b820191906000526020600020905b8154815290600101906020018083116102e657829003601f168201915b5050505050815600a165627a7a72305820b13b48901a2111a512ce62776fb8a0aa986310ced53569ab62c73ea6311ba0860029",
+  "bytecode": "0x6060604052341561000f57600080fd5b6103378061001e6000396000f30060606040526004361061006c5763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663027f48f7811461007157806344e59ee9146100af5780634b193933146100ee5780638357b8dd14610104578063d9861dab14610133575b600080fd5b341561007c57600080fd5b61009d73ffffffffffffffffffffffffffffffffffffffff600435166101c0565b60405190815260200160405180910390f35b34156100ba57600080fd5b6100c56004356101d2565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100f957600080fd5b6100c56004356101fa565b341561010f57600080fd5b61009d73ffffffffffffffffffffffffffffffffffffffff60043516602435610222565b341561013e57600080fd5b610149600435610250565b60405160208082528190810183818151815260200191508051906020019080838360005b8381101561018557808201518382015260200161016d565b50505050905090810190601f1680156101b25780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b60016020526000908152604090205481565b60036020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60026020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60046020528160005260406000208181548110151561023d57fe5b6000918252602090912001549150829050565b600580548290811061025e57fe5b90600052602060002090016000915090508054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103035780601f106102d857610100808354040283529160200191610303565b820191906000526020600020905b8154815290600101906020018083116102e657829003601f168201915b5050505050815600a165627a7a7230582037376c4f28c461a6ab8a87ef17077cbfe66b59cc015fb1656e0cf45aaacf65670029",
+  "deployedBytecode": "0x60606040526004361061006c5763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663027f48f7811461007157806344e59ee9146100af5780634b193933146100ee5780638357b8dd14610104578063d9861dab14610133575b600080fd5b341561007c57600080fd5b61009d73ffffffffffffffffffffffffffffffffffffffff600435166101c0565b60405190815260200160405180910390f35b34156100ba57600080fd5b6100c56004356101d2565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100f957600080fd5b6100c56004356101fa565b341561010f57600080fd5b61009d73ffffffffffffffffffffffffffffffffffffffff60043516602435610222565b341561013e57600080fd5b610149600435610250565b60405160208082528190810183818151815260200191508051906020019080838360005b8381101561018557808201518382015260200161016d565b50505050905090810190601f1680156101b25780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b60016020526000908152604090205481565b60036020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60026020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60046020528160005260406000208181548110151561023d57fe5b6000918252602090912001549150829050565b600580548290811061025e57fe5b90600052602060002090016000915090508054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103035780601f106102d857610100808354040283529160200191610303565b820191906000526020600020905b8154815290600101906020018083116102e657829003601f168201915b5050505050815600a165627a7a7230582037376c4f28c461a6ab8a87ef17077cbfe66b59cc015fb1656e0cf45aaacf65670029",
   "sourceMap": "55:617:9:-;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "55:617:9:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;688:55:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;879:54;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;782:51;;;;;;;;;;;;;;1005:50;;;;;;;;;;;;;;;;;;1060:28;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:2;8:100;;;99:1;94:3;90;84:5;71:3;;;64:6;52:2;45:3;8:100;;;12:14;3:109;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;688:55:6;;;;;;;;;;;;;:::o;879:54::-;;;;;;;;;;;;;;;:::o;782:51::-;;;;;;;;;;;;;;;:::o;1005:50::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;1005:50:6;;-1:-1:-1;1005:50:6:o;1060:28::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
   "source": "pragma solidity ^0.4.18;\n\nimport \"./FighterBase.sol\";\n\ncontract FighterTraining is FighterBase {\n  function _train(uint _fighterId, string _attribute, uint _attributeIncrease) internal {\n    if (keccak256(_attribute) == keccak256('maxHealth')) {\n      _trainMaxHealth(_fighterId, _attributeIncrease, msg.sender);\n    } else if (keccak256(_attribute) == keccak256('strength')) {\n      _trainStrength(_fighterId, _attributeIncrease, msg.sender);\n    } else if (keccak256(_attribute) == keccak256('speed')) {\n      _trainSpeed(_fighterId, _attributeIncrease, msg.sender);\n    }\n  }\n\n  function _heal(uint _fighterId) internal {\n    _healFighter(_fighterId, msg.sender);\n  }\n}\n",
@@ -242,7 +242,7 @@
       "absolutePath": "/Users/Aaron/Projects/cryptoclash/contracts/fighter/FighterTraining.sol",
       "exportedSymbols": {
         "FighterTraining": [
-          1741
+          1716
         ]
       }
     },
@@ -256,39 +256,39 @@
             ".18"
           ]
         },
-        "id": 1667,
+        "id": 1642,
         "name": "PragmaDirective",
         "src": "0:24:9"
       },
       {
         "attributes": {
-          "SourceUnit": 867,
+          "SourceUnit": 842,
           "absolutePath": "/Users/Aaron/Projects/cryptoclash/contracts/fighter/FighterBase.sol",
           "file": "./FighterBase.sol",
-          "scope": 1742,
+          "scope": 1717,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 1668,
+        "id": 1643,
         "name": "ImportDirective",
         "src": "26:27:9"
       },
       {
         "attributes": {
           "contractDependencies": [
-            866
+            841
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            1741,
-            866
+            1716,
+            841
           ],
           "name": "FighterTraining",
-          "scope": 1742
+          "scope": 1717
         },
         "children": [
           {
@@ -302,15 +302,15 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "FighterBase",
-                  "referencedDeclaration": 866,
+                  "referencedDeclaration": 841,
                   "type": "contract FighterBase"
                 },
-                "id": 1669,
+                "id": 1644,
                 "name": "UserDefinedTypeName",
                 "src": "83:11:9"
               }
             ],
-            "id": 1670,
+            "id": 1645,
             "name": "InheritanceSpecifier",
             "src": "83:11:9"
           },
@@ -324,7 +324,7 @@
               ],
               "name": "_train",
               "payable": false,
-              "scope": 1741,
+              "scope": 1716,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -336,7 +336,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_fighterId",
-                      "scope": 1728,
+                      "scope": 1703,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -349,12 +349,12 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 1671,
+                        "id": 1646,
                         "name": "ElementaryTypeName",
                         "src": "115:4:9"
                       }
                     ],
-                    "id": 1672,
+                    "id": 1647,
                     "name": "VariableDeclaration",
                     "src": "115:15:9"
                   },
@@ -362,7 +362,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_attribute",
-                      "scope": 1728,
+                      "scope": 1703,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string memory",
@@ -375,12 +375,12 @@
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 1673,
+                        "id": 1648,
                         "name": "ElementaryTypeName",
                         "src": "132:6:9"
                       }
                     ],
-                    "id": 1674,
+                    "id": 1649,
                     "name": "VariableDeclaration",
                     "src": "132:17:9"
                   },
@@ -388,7 +388,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_attributeIncrease",
-                      "scope": 1728,
+                      "scope": 1703,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -401,17 +401,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 1675,
+                        "id": 1650,
                         "name": "ElementaryTypeName",
                         "src": "151:4:9"
                       }
                     ],
-                    "id": 1676,
+                    "id": 1651,
                     "name": "VariableDeclaration",
                     "src": "151:23:9"
                   }
                 ],
-                "id": 1677,
+                "id": 1652,
                 "name": "ParameterList",
                 "src": "114:61:9"
               },
@@ -422,7 +422,7 @@
                   ]
                 },
                 "children": [],
-                "id": 1678,
+                "id": 1653,
                 "name": "ParameterList",
                 "src": "185:0:9"
               },
@@ -471,11 +471,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2937,
+                                  "referencedDeclaration": 8478,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 1679,
+                                "id": 1654,
                                 "name": "Identifier",
                                 "src": "195:9:9"
                               },
@@ -485,16 +485,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1674,
+                                  "referencedDeclaration": 1649,
                                   "type": "string memory",
                                   "value": "_attribute"
                                 },
-                                "id": 1680,
+                                "id": 1655,
                                 "name": "Identifier",
                                 "src": "205:10:9"
                               }
                             ],
-                            "id": 1681,
+                            "id": 1656,
                             "name": "FunctionCall",
                             "src": "195:21:9"
                           },
@@ -524,11 +524,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2937,
+                                  "referencedDeclaration": 8478,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
-                                "id": 1682,
+                                "id": 1657,
                                 "name": "Identifier",
                                 "src": "220:9:9"
                               },
@@ -545,17 +545,17 @@
                                   "type": "literal_string \"maxHealth\"",
                                   "value": "maxHealth"
                                 },
-                                "id": 1683,
+                                "id": 1658,
                                 "name": "Literal",
                                 "src": "230:11:9"
                               }
                             ],
-                            "id": 1684,
+                            "id": 1659,
                             "name": "FunctionCall",
                             "src": "220:22:9"
                           }
                         ],
-                        "id": 1685,
+                        "id": 1660,
                         "name": "BinaryOperation",
                         "src": "195:47:9"
                       },
@@ -597,11 +597,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 756,
+                                      "referencedDeclaration": 731,
                                       "type": "function (uint256,uint256,address)",
                                       "value": "_trainMaxHealth"
                                     },
-                                    "id": 1686,
+                                    "id": 1661,
                                     "name": "Identifier",
                                     "src": "252:15:9"
                                   },
@@ -611,11 +611,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1672,
+                                      "referencedDeclaration": 1647,
                                       "type": "uint256",
                                       "value": "_fighterId"
                                     },
-                                    "id": 1687,
+                                    "id": 1662,
                                     "name": "Identifier",
                                     "src": "268:10:9"
                                   },
@@ -625,11 +625,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1676,
+                                      "referencedDeclaration": 1651,
                                       "type": "uint256",
                                       "value": "_attributeIncrease"
                                     },
-                                    "id": 1688,
+                                    "id": 1663,
                                     "name": "Identifier",
                                     "src": "280:18:9"
                                   },
@@ -651,31 +651,31 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2943,
+                                          "referencedDeclaration": 8484,
                                           "type": "msg",
                                           "value": "msg"
                                         },
-                                        "id": 1689,
+                                        "id": 1664,
                                         "name": "Identifier",
                                         "src": "300:3:9"
                                       }
                                     ],
-                                    "id": 1690,
+                                    "id": 1665,
                                     "name": "MemberAccess",
                                     "src": "300:10:9"
                                   }
                                 ],
-                                "id": 1691,
+                                "id": 1666,
                                 "name": "FunctionCall",
                                 "src": "252:59:9"
                               }
                             ],
-                            "id": 1692,
+                            "id": 1667,
                             "name": "ExpressionStatement",
                             "src": "252:59:9"
                           }
                         ],
-                        "id": 1693,
+                        "id": 1668,
                         "name": "Block",
                         "src": "244:74:9"
                       },
@@ -722,11 +722,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2937,
+                                      "referencedDeclaration": 8478,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
-                                    "id": 1694,
+                                    "id": 1669,
                                     "name": "Identifier",
                                     "src": "328:9:9"
                                   },
@@ -736,16 +736,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 1674,
+                                      "referencedDeclaration": 1649,
                                       "type": "string memory",
                                       "value": "_attribute"
                                     },
-                                    "id": 1695,
+                                    "id": 1670,
                                     "name": "Identifier",
                                     "src": "338:10:9"
                                   }
                                 ],
-                                "id": 1696,
+                                "id": 1671,
                                 "name": "FunctionCall",
                                 "src": "328:21:9"
                               },
@@ -775,11 +775,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2937,
+                                      "referencedDeclaration": 8478,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
-                                    "id": 1697,
+                                    "id": 1672,
                                     "name": "Identifier",
                                     "src": "353:9:9"
                                   },
@@ -796,17 +796,17 @@
                                       "type": "literal_string \"strength\"",
                                       "value": "strength"
                                     },
-                                    "id": 1698,
+                                    "id": 1673,
                                     "name": "Literal",
                                     "src": "363:10:9"
                                   }
                                 ],
-                                "id": 1699,
+                                "id": 1674,
                                 "name": "FunctionCall",
                                 "src": "353:21:9"
                               }
                             ],
-                            "id": 1700,
+                            "id": 1675,
                             "name": "BinaryOperation",
                             "src": "328:46:9"
                           },
@@ -848,11 +848,11 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 824,
+                                          "referencedDeclaration": 799,
                                           "type": "function (uint256,uint256,address)",
                                           "value": "_trainStrength"
                                         },
-                                        "id": 1701,
+                                        "id": 1676,
                                         "name": "Identifier",
                                         "src": "384:14:9"
                                       },
@@ -862,11 +862,11 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1672,
+                                          "referencedDeclaration": 1647,
                                           "type": "uint256",
                                           "value": "_fighterId"
                                         },
-                                        "id": 1702,
+                                        "id": 1677,
                                         "name": "Identifier",
                                         "src": "399:10:9"
                                       },
@@ -876,11 +876,11 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1676,
+                                          "referencedDeclaration": 1651,
                                           "type": "uint256",
                                           "value": "_attributeIncrease"
                                         },
-                                        "id": 1703,
+                                        "id": 1678,
                                         "name": "Identifier",
                                         "src": "411:18:9"
                                       },
@@ -902,31 +902,31 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 2943,
+                                              "referencedDeclaration": 8484,
                                               "type": "msg",
                                               "value": "msg"
                                             },
-                                            "id": 1704,
+                                            "id": 1679,
                                             "name": "Identifier",
                                             "src": "431:3:9"
                                           }
                                         ],
-                                        "id": 1705,
+                                        "id": 1680,
                                         "name": "MemberAccess",
                                         "src": "431:10:9"
                                       }
                                     ],
-                                    "id": 1706,
+                                    "id": 1681,
                                     "name": "FunctionCall",
                                     "src": "384:58:9"
                                   }
                                 ],
-                                "id": 1707,
+                                "id": 1682,
                                 "name": "ExpressionStatement",
                                 "src": "384:58:9"
                               }
                             ],
-                            "id": 1708,
+                            "id": 1683,
                             "name": "Block",
                             "src": "376:73:9"
                           },
@@ -976,11 +976,11 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2937,
+                                          "referencedDeclaration": 8478,
                                           "type": "function () pure returns (bytes32)",
                                           "value": "keccak256"
                                         },
-                                        "id": 1709,
+                                        "id": 1684,
                                         "name": "Identifier",
                                         "src": "459:9:9"
                                       },
@@ -990,16 +990,16 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1674,
+                                          "referencedDeclaration": 1649,
                                           "type": "string memory",
                                           "value": "_attribute"
                                         },
-                                        "id": 1710,
+                                        "id": 1685,
                                         "name": "Identifier",
                                         "src": "469:10:9"
                                       }
                                     ],
-                                    "id": 1711,
+                                    "id": 1686,
                                     "name": "FunctionCall",
                                     "src": "459:21:9"
                                   },
@@ -1029,11 +1029,11 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 2937,
+                                          "referencedDeclaration": 8478,
                                           "type": "function () pure returns (bytes32)",
                                           "value": "keccak256"
                                         },
-                                        "id": 1712,
+                                        "id": 1687,
                                         "name": "Identifier",
                                         "src": "484:9:9"
                                       },
@@ -1050,17 +1050,17 @@
                                           "type": "literal_string \"speed\"",
                                           "value": "speed"
                                         },
-                                        "id": 1713,
+                                        "id": 1688,
                                         "name": "Literal",
                                         "src": "494:7:9"
                                       }
                                     ],
-                                    "id": 1714,
+                                    "id": 1689,
                                     "name": "FunctionCall",
                                     "src": "484:18:9"
                                   }
                                 ],
-                                "id": 1715,
+                                "id": 1690,
                                 "name": "BinaryOperation",
                                 "src": "459:43:9"
                               },
@@ -1102,11 +1102,11 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 790,
+                                              "referencedDeclaration": 765,
                                               "type": "function (uint256,uint256,address)",
                                               "value": "_trainSpeed"
                                             },
-                                            "id": 1716,
+                                            "id": 1691,
                                             "name": "Identifier",
                                             "src": "512:11:9"
                                           },
@@ -1116,11 +1116,11 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1672,
+                                              "referencedDeclaration": 1647,
                                               "type": "uint256",
                                               "value": "_fighterId"
                                             },
-                                            "id": 1717,
+                                            "id": 1692,
                                             "name": "Identifier",
                                             "src": "524:10:9"
                                           },
@@ -1130,11 +1130,11 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 1676,
+                                              "referencedDeclaration": 1651,
                                               "type": "uint256",
                                               "value": "_attributeIncrease"
                                             },
-                                            "id": 1718,
+                                            "id": 1693,
                                             "name": "Identifier",
                                             "src": "536:18:9"
                                           },
@@ -1156,56 +1156,56 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 2943,
+                                                  "referencedDeclaration": 8484,
                                                   "type": "msg",
                                                   "value": "msg"
                                                 },
-                                                "id": 1719,
+                                                "id": 1694,
                                                 "name": "Identifier",
                                                 "src": "556:3:9"
                                               }
                                             ],
-                                            "id": 1720,
+                                            "id": 1695,
                                             "name": "MemberAccess",
                                             "src": "556:10:9"
                                           }
                                         ],
-                                        "id": 1721,
+                                        "id": 1696,
                                         "name": "FunctionCall",
                                         "src": "512:55:9"
                                       }
                                     ],
-                                    "id": 1722,
+                                    "id": 1697,
                                     "name": "ExpressionStatement",
                                     "src": "512:55:9"
                                   }
                                 ],
-                                "id": 1723,
+                                "id": 1698,
                                 "name": "Block",
                                 "src": "504:70:9"
                               }
                             ],
-                            "id": 1724,
+                            "id": 1699,
                             "name": "IfStatement",
                             "src": "455:119:9"
                           }
                         ],
-                        "id": 1725,
+                        "id": 1700,
                         "name": "IfStatement",
                         "src": "324:250:9"
                       }
                     ],
-                    "id": 1726,
+                    "id": 1701,
                     "name": "IfStatement",
                     "src": "191:383:9"
                   }
                 ],
-                "id": 1727,
+                "id": 1702,
                 "name": "Block",
                 "src": "185:393:9"
               }
             ],
-            "id": 1728,
+            "id": 1703,
             "name": "FunctionDefinition",
             "src": "99:479:9"
           },
@@ -1219,7 +1219,7 @@
               ],
               "name": "_heal",
               "payable": false,
-              "scope": 1741,
+              "scope": 1716,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "internal"
@@ -1231,7 +1231,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_fighterId",
-                      "scope": 1740,
+                      "scope": 1715,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1244,17 +1244,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 1729,
+                        "id": 1704,
                         "name": "ElementaryTypeName",
                         "src": "597:4:9"
                       }
                     ],
-                    "id": 1730,
+                    "id": 1705,
                     "name": "VariableDeclaration",
                     "src": "597:15:9"
                   }
                 ],
-                "id": 1731,
+                "id": 1706,
                 "name": "ParameterList",
                 "src": "596:17:9"
               },
@@ -1265,7 +1265,7 @@
                   ]
                 },
                 "children": [],
-                "id": 1732,
+                "id": 1707,
                 "name": "ParameterList",
                 "src": "623:0:9"
               },
@@ -1303,11 +1303,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 865,
+                              "referencedDeclaration": 840,
                               "type": "function (uint256,address)",
                               "value": "_healFighter"
                             },
-                            "id": 1733,
+                            "id": 1708,
                             "name": "Identifier",
                             "src": "629:12:9"
                           },
@@ -1317,11 +1317,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1730,
+                              "referencedDeclaration": 1705,
                               "type": "uint256",
                               "value": "_fighterId"
                             },
-                            "id": 1734,
+                            "id": 1709,
                             "name": "Identifier",
                             "src": "642:10:9"
                           },
@@ -1343,54 +1343,54 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2943,
+                                  "referencedDeclaration": 8484,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 1735,
+                                "id": 1710,
                                 "name": "Identifier",
                                 "src": "654:3:9"
                               }
                             ],
-                            "id": 1736,
+                            "id": 1711,
                             "name": "MemberAccess",
                             "src": "654:10:9"
                           }
                         ],
-                        "id": 1737,
+                        "id": 1712,
                         "name": "FunctionCall",
                         "src": "629:36:9"
                       }
                     ],
-                    "id": 1738,
+                    "id": 1713,
                     "name": "ExpressionStatement",
                     "src": "629:36:9"
                   }
                 ],
-                "id": 1739,
+                "id": 1714,
                 "name": "Block",
                 "src": "623:47:9"
               }
             ],
-            "id": 1740,
+            "id": 1715,
             "name": "FunctionDefinition",
             "src": "582:88:9"
           }
         ],
-        "id": 1741,
+        "id": 1716,
         "name": "ContractDefinition",
         "src": "55:617:9"
       }
     ],
-    "id": 1742,
+    "id": 1717,
     "name": "SourceUnit",
     "src": "0:673:9"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-02-09T18:00:20.421Z"
+  "updatedAt": "2018-02-24T11:17:37.880Z"
 }
