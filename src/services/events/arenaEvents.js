@@ -12,8 +12,8 @@ const arenaEvents = (contract) => {
     try {
       await Brawl.remove({ 'fighter.id': fighterInArena })
       await Promise.all([
-        Fighter.update({ _id: winnerId }, { $set: { isInArena: false, health: winnersHealth.toNumber() } }),
-        Fighter.update({ _id: loserId }, { $set: { isInArena: false, health: 0 } })
+        Fighter.update({ _id: winnerId }, { $set: { isInArena: false } }),
+        Fighter.update({ _id: loserId }, { $set: { isInArena: false } })
       ])
 
       const loserEvent = await new Event({ fighterId: loserId, type: 'Fight Complete', message: `You lost Fighter #${loserId} in a brawl with Fighter #${winnerId}!` }).save()
@@ -56,30 +56,6 @@ const arenaEvents = (contract) => {
       console.log(`Error adding Fighter #${fighterId} to arena`)
     }
   })
-
-  // contract.CombatRound(async (error, tx) => {
-  //   if (error) return console.log('Error with CombatRound ', error);
-  //
-  //   const { attacker, defender, attackerId, defenderId, hit, damage } = tx.args;
-  //
-  //   try {
-  //     if (hit) {
-  //       await Promise.all([
-  //         User.update({ address: attacker }, { $push: { events: new Event({ fighterId: attackerId, type: 'Combat Round', message: `You pounded Fighter #${defenderId} for ${damage} damage!` }) } }),
-  //         User.update({ address: defender }, { $push: { events: new Event({ fighterId: defenderId, type: 'Combat Round', message: `Fighter #${attackerId} slammed you for ${damage} damage!` }) } }),
-  //       ])
-  //       return console.log('Combat Round successfully recorded')
-  //     }
-  //
-  //     await Promise.all([
-  //       User.update({ address: attacker }, { $push: { events: new Event({ fighterId: attackerId, type: 'Combat Round', message: `You swung and missed Fighter #${defenderId}!` }) } }),
-  //       User.update({ address: defender }, { $push: { events: new Event({ fighterId: defenderId, type: 'Combat Round', message: `You dodged Fighter #${attackerId}'s attack!` }) } }),
-  //     ])
-  //     return console.log('Combat Round successfully recorded')
-  //   } catch(error) {
-  //     console.log(`Error recording Combat Round with Fighter #${attackerId} and Fighter #${defenderId} `, error)
-  //   }
-  // })
 }
 
 module.exports = arenaEvents
