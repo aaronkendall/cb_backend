@@ -14,7 +14,7 @@ router.get('/all/:offset', (req, res, next) => {
     .find({})
     .skip(offset * queryReturnLimit)
     .limit(queryReturnLimit)
-    .populate('fighters')
+    .populate('fighter')
     .exec()
     .then((fights) => {
       return res.status(200).send({ fights })
@@ -32,7 +32,7 @@ router.get('/all/:offset/filters/:filters/sortBy/:sortBy/direction/:direction', 
     .skip(offset * queryReturnLimit)
     .limit(queryReturnLimit)
     .sort({ [sortBy]: direction })
-    .populate('fighters')
+    .populate('fighter')
     .exec()
     .then((results) => {
       return res.status(200).send({ fights: results })
