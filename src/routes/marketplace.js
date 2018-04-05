@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const config = require('../config/config')
 const Sale = require('../models/sale.model')
+const Fighter = require('../models/fighter.model')
 const { filterStringToQueryObject } = require('../lib/utils')
 const { queryReturnLimit } = config
 
@@ -25,12 +26,11 @@ router.get('/all/:offset', function(req, res, next) {
 router.get('/find/:offset/filters/:filters/sortBy/:sortBy/direction/:direction', function(req, res, next) {
   const { offset, filters, sortBy, direction } = req.params
 
-  Sale
-    .find(filterStringToQueryObject(filters))
+  Fighter
+    .find(filterStringToQueryObject(filters, { isForSale: true }))
     .skip(offset * queryReturnLimit)
     .limit(queryReturnLimit)
     .sort({ [sortBy]: direction })
-    .populate('fighter')
     .exec()
     .then((results) => {
       return res.status(200).send({ sales: results })

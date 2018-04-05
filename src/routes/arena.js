@@ -27,12 +27,11 @@ router.get('/all/:offset', (req, res, next) => {
 router.get('/all/:offset/filters/:filters/sortBy/:sortBy/direction/:direction', (req, res, next) => {
   const { offset, filters, sortBy, direction } = req.params;
 
-  Brawl
-    .find(filterStringToQueryObject(filters))
+  Fighter
+    .find(filterStringToQueryObject(filters, { isInArena: true }))
     .skip(offset * queryReturnLimit)
     .limit(queryReturnLimit)
     .sort({ [sortBy]: direction })
-    .populate('fighter')
     .exec()
     .then((results) => {
       return res.status(200).send({ fights: results })
