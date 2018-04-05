@@ -24,15 +24,11 @@ router.get('/all/:offset', (req, res, next) => {
     })
 });
 
-router.get('/all/:offset/filters/:filters/sortBy/:sortBy/direction/:direction', (req, res, next) => {
+router.get('/find/:offset/filters/:filters/sortBy/:sortBy/direction/:direction', (req, res, next) => {
   const { offset, filters, sortBy, direction } = req.params;
 
-  Fighter
-    .find(filterStringToQueryObject(filters, { isInArena: true }))
-    .skip(offset * queryReturnLimit)
-    .limit(queryReturnLimit)
-    .sort({ [sortBy]: direction })
-    .exec()
+  Brawl
+    .findBrawls(filterStringToQueryObject(filters), offset, queryReturnLimit, sortBy, direction)
     .then((results) => {
       return res.status(200).send({ fights: results })
     })
