@@ -12,12 +12,12 @@ const arenaEvents = (contract) => {
     try {
       await Brawl.findOneAndRemove({ 'fighter': fighterInArena.toNumber() })
       await Promise.all([
-        Fighter.update({ _id: winnerId }, { $set: { isInArena: false } }),
-        Fighter.update({ _id: loserId }, { $set: { isInArena: false } })
+        Fighter.update({ _id: winnerId.toNumber() }, { $set: { isInArena: false } }),
+        Fighter.update({ _id: loserId.toNumber() }, { $set: { isInArena: false } })
       ])
 
-      const loserEvent = await new Event({ fighterId: loserId, type: 'Fight Complete', message: `You lost Fighter #${loserId} in a brawl with Fighter #${winnerId}!` }).save()
-      const winnerEvent = await new Event({ fighterId: winnerId, type: 'Fight Complete', message: `You won Fighter #${loserId} in a brawl with Fighter #${winnerId}!` }).save()
+      const loserEvent = await new Event({ fighterId: loserId.toNumber(), type: 'Fight Complete', message: `You lost Fighter #${loserId} in a brawl with Fighter #${winnerId}!` }).save()
+      const winnerEvent = await new Event({ fighterId: winnerId.toNumber(), type: 'Fight Complete', message: `You won Fighter #${loserId} in a brawl with Fighter #${winnerId}!` }).save()
       await Promise.all([
         User.update({ address: loser }, { $push: { events: loserEvent } }),
         User.update({ address: winner }, { $push: { events: winnerEvent } })
@@ -35,7 +35,7 @@ const arenaEvents = (contract) => {
     const { fighterId, owner } = tx.args
 
     try {
-      await Brawl.findOneAndRemove({ 'fighter': fighterId.toNumber() })
+      await Brawl.findOneAndRemove({ fighter: fighterId.toNumber() })
       await Fighter.update({ _id: fighterId }, { $set: { isInArena: false } })
       console.log(`Fighter #${fighterId} removed from sale after cancellation`)
     } catch(error) {
