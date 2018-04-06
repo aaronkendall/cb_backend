@@ -10,7 +10,7 @@ const arenaEvents = (contract) => {
     const { winnerId, winner, winnersHealth, loserId, loser, fighterInArena } = tx.args
 
     try {
-      await Brawl.findOneAndRemove({ 'fighter': fighterInArena })
+      await Brawl.findOneAndRemove({ 'fighter': fighterInArena.toNumber() })
       await Promise.all([
         Fighter.update({ _id: winnerId }, { $set: { isInArena: false } }),
         Fighter.update({ _id: loserId }, { $set: { isInArena: false } })
@@ -35,7 +35,7 @@ const arenaEvents = (contract) => {
     const { fighterId, owner } = tx.args
 
     try {
-      await Brawl.findOneAndRemove({ 'fighter': fighterId })
+      await Brawl.findOneAndRemove({ 'fighter': fighterId.toNumber() })
       await Fighter.update({ _id: fighterId }, { $set: { isInArena: false } })
       console.log(`Fighter #${fighterId} removed from sale after cancellation`)
     } catch(error) {
