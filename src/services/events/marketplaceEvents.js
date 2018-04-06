@@ -13,7 +13,7 @@ const marketplaceEvents = (contract) => {
     const ethPrice = ethunits.convert('wei', 'ether', price).floatValue()
 
     try {
-      await Sale.remove({ 'fighter.id': fighterId })
+      await Sale.remove({ 'fighter': fighterId })
       const sellerEvent = await new Event({ fighterId, type: 'PurchaseSuccess', message: `You sold Fighter #${fighterId} for ${ethPrice}` }).save()
       const buyerEvent = await new Event({ fighterId, type: 'PurchaseSuccess', message: `You bought Fighter #${fighterId} for ${ethPrice}` }).save()
 
@@ -35,7 +35,7 @@ const marketplaceEvents = (contract) => {
     const { fighterId } = tx.args
 
     try {
-      await Sale.remove({ 'fighter.id': fighterId })
+      await Sale.remove({ 'fighter': fighterId })
       await Fighter.update({ _id: fighterId }, { $set: { isForSale: false } })
       console.log(`Fighter #${fighterId} removed from sale after cancellation`)
     } catch(error) {
