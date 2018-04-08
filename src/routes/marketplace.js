@@ -1,3 +1,4 @@
+const ethunits = require('ethereum-units')
 const express = require('express')
 const router = express.Router()
 const config = require('../config/config')
@@ -22,10 +23,10 @@ router.get('/all/:offset', function(req, res, next) {
     })
 });
 
-router.get('/find/:offset/filters/:filters/sortBy/:sortBy/direction/:direction', function(req, res, next) {
-  const { offset, filters, sortBy, direction } = req.params
+router.get('/find/:offset/filters/:filters/sortBy/:sortBy/direction/:direction/price/:price', function(req, res, next) {
+  const { offset, filters, sortBy, direction, price } = req.params
 
-  Sale.findSales(filterStringToQueryObject(filters), offset, queryReturnLimit, sortBy, direction)
+  Sale.findSales(filterStringToQueryObject(filters), offset, queryReturnLimit, sortBy, direction, ethunits.convert(parseFloat(price), 'ether', 'wei'))
     .then((results) => {
       return res.status(200).send({ sales: results })
     })

@@ -9,11 +9,11 @@ const Sale = new Schema({
 });
 
 Sale.plugin(timestamps);
-Sale.statics.findSales = async function(fighterQuery, offset, queryReturnLimit, sortBy, direction) {
+Sale.statics.findSales = async function(fighterQuery, offset, queryReturnLimit, sortBy, direction, price) {
   const fighters = await Fighter.find({ ...fighterQuery, isForSale: true }).exec()
 
   return this
-    .find({ fighter: { $in: fighters.map(fighter => fighter._id) } })
+    .find({ fighter: { $in: fighters.map(fighter => fighter._id) }, price: { $gte: price } })
     .skip(offset * queryReturnLimit)
     .limit(queryReturnLimit)
     .sort({ [sortBy]: direction })
