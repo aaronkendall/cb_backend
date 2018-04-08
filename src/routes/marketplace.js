@@ -25,8 +25,9 @@ router.get('/all/:offset', function(req, res, next) {
 
 router.get('/find/:offset/filters/:filters/sortBy/:sortBy/direction/:direction/price/:price', function(req, res, next) {
   const { offset, filters, sortBy, direction, price } = req.params
+  const weiPrice = ethunits.convert(parseFloat(price), 'ether', 'wei').floatValue()
 
-  Sale.findSales(filterStringToQueryObject(filters), offset, queryReturnLimit, sortBy, direction, ethunits.convert(parseFloat(price), 'ether', 'wei'))
+  Sale.findSales(filterStringToQueryObject(filters), offset, queryReturnLimit, sortBy, direction, weiPrice)
     .then((results) => {
       return res.status(200).send({ sales: results })
     })

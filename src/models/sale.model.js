@@ -12,6 +12,7 @@ Sale.plugin(timestamps);
 Sale.statics.findSales = async function(fighterQuery, offset, queryReturnLimit, sortBy, direction, price) {
   const fighters = await Fighter.find({ ...fighterQuery, isForSale: true }).exec()
 
+  console.log(price)
   return this
     .find({ fighter: { $in: fighters.map(fighter => fighter._id) }, price: { $gte: price } })
     .skip(offset * queryReturnLimit)
