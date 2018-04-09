@@ -10,10 +10,10 @@ const marketplaceEvents = (contract) => {
     if (error) return console.log('Error with PurchaseSuccess ', error);
 
     try {
-      const { fighterId, buyer, seller, price } = tx.args
-      console.log('arguments for the PurchaseSuccess event ', tx.args.fighterId.toNumber())
+      const { buyer, seller, price } = tx.args
+
       const ethPrice = ethunits.convert('wei', 'ether', price).floatValue()
-      const idNumber = fighterId.toNumber()
+      const idNumber = tx.args.fighterId.toNumber()
 
       await Sale.findOneAndRemove({ 'fighter': idNumber })
       const sellerEvent = await new Event({ idNumber, type: 'PurchaseSuccess', message: `You sold Fighter #${idNumber} for ${ethPrice}` }).save()
