@@ -33,6 +33,7 @@ const accountEvents = (contract) => {
     if (error) return console.log('Error with Fighter Transfer ', error)
 
     const { from, to, fighterId } = tx.args
+    const idNumber = fighterId.toNumber()
 
     try {
       const fromEvent = await new Event({ fighterId, type: 'Transfer', message: `Fighter #${fighterId} transferred to ${to}` }).save()
@@ -42,7 +43,7 @@ const accountEvents = (contract) => {
         User.update(
           { address: from },
           {
-            $pull: { fighters: fighterId },
+            $pull: { fighters: idNumber },
             $push: { events: fromEvent.id }
           }
         ),
@@ -50,7 +51,7 @@ const accountEvents = (contract) => {
           { address: to },
           {
             $push: {
-              fighters: fighterId,
+              fighters: idNumber,
               events: toEvent.id
             }
           },

@@ -33,13 +33,14 @@ const arenaEvents = (contract) => {
     if (error) return console.log('Error with ArenaRemoval ', error);
 
     const { fighterId, owner } = tx.args
+    const idNumber = fighterId.toNumber()
 
     try {
-      await Brawl.findOneAndRemove({ fighter: fighterId.toNumber() })
-      await Fighter.update({ _id: fighterId }, { $set: { isInArena: false } })
-      console.log(`Fighter #${fighterId} removed from sale after cancellation`)
+      await Brawl.findOneAndRemove({ fighter: idNumber })
+      await Fighter.update({ _id: idNumber }, { $set: { isInArena: false } })
+      console.log(`Fighter #${idNumber} removed from sale after cancellation`)
     } catch(error) {
-      console.log(`Error removing Fighter #${fighterId} after cancellation in arena `, error)
+      console.log(`Error removing Fighter #${idNumber} after cancellation in arena `, error)
     }
   })
 
@@ -47,13 +48,14 @@ const arenaEvents = (contract) => {
     if (error) return console.log('Error with ArenaAdd ', error);
 
     const { fighterId } = tx.args
+    const idNumber = fighterId.toNumber()
 
     try {
-      await new Brawl({ fighter: fighterId }).save()
-      await Fighter.update({ _id: fighterId }, { $set: { isInArena: true } })
-      console.log(`Successfully added Fighter #${fighterId} to the arena`)
+      await new Brawl({ fighter: idNumber }).save()
+      await Fighter.update({ _id: idNumber }, { $set: { isInArena: true } })
+      console.log(`Successfully added Fighter #${idNumber} to the arena`)
     } catch(error) {
-      console.log(`Error adding Fighter #${fighterId} to arena`)
+      console.log(`Error adding Fighter #${idNumber} to arena`)
     }
   })
 }

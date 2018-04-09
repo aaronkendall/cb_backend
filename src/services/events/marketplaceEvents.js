@@ -11,21 +11,22 @@ const marketplaceEvents = (contract) => {
 
     const { fighterId, buyer, seller, price } = tx.args
     const ethPrice = ethunits.convert('wei', 'ether', price).floatValue()
+    const idNumber = fighterId.toNumber()
 
     try {
-      await Sale.findOneAndRemove({ 'fighter': fighterId.toNumber() })
-      const sellerEvent = await new Event({ fighterId, type: 'PurchaseSuccess', message: `You sold Fighter #${fighterId} for ${ethPrice}` }).save()
-      const buyerEvent = await new Event({ fighterId, type: 'PurchaseSuccess', message: `You bought Fighter #${fighterId} for ${ethPrice}` }).save()
+      await Sale.findOneAndRemove({ 'fighter': idNumber })
+      const sellerEvent = await new Event({ idNumber, type: 'PurchaseSuccess', message: `You sold Fighter #${idNumber} for ${ethPrice}` }).save()
+      const buyerEvent = await new Event({ idNumber, type: 'PurchaseSuccess', message: `You bought Fighter #${idNumber} for ${ethPrice}` }).save()
 
-      await Fighter.update({ _id: fighterId }, { $set: { isForSale: false } })
+      await Fighter.update({ _id: idNumber }, { $set: { isForSale: false } })
       await Promise.all([
         User.update({ address: seller }, { $push: { events: sellerEvent } }),
         User.update({ address: buyer }, { $push: { events: buyerEvent } })
       ])
 
-      console.log(`Fighter #${fighterId} removed from sale after purchase`)
+      console.log(`Fighter #${idNumber} removed from sale after purchase`)
     } catch(error) {
-      console.log(`Error removing Fighter #${fighterId} after purchase `, error)
+      console.log(`Error removing Fighter #${idNumber} after purchase `, error)
     }
   })
 
@@ -33,13 +34,14 @@ const marketplaceEvents = (contract) => {
     if (error) return console.log('Error with MarketplaceRemoval ', error);
 
     const { fighterId } = tx.args
+    const idNumber = fighterId.toNumber()
 
     try {
-      await Sale.findOneAndRemove({ fighter: fighterId.toNumber() })
-      await Fighter.update({ _id: fighterId }, { $set: { isForSale: false } })
-      console.log(`Fighter #${fighterId} removed from sale after cancellation`)
+      await Sale.findOneAndRemove({ fighter: idNumber })
+      await Fighter.update({ _id: idNumber }, { $set: { isForSale: false } })
+      console.log(`Fighter #${idNumber} removed from sale after cancellation`)
     } catch(error) {
-      console.log(`Error removing Fighter #${fighterId} after cancellation `, error)
+      console.log(`Error removing Fighter #${idNumber} after cancellation `, error)
     }
   })
 
@@ -47,13 +49,14 @@ const marketplaceEvents = (contract) => {
     if (error) return console.log('Error with MarketplaceAdd ', error);
 
     const { fighterId, price } = tx.args
+    const idNumber = fighter.toNumber()
 
     try {
-      await new Sale({ fighter: fighterId.toNumber(), price: price.toNumber() }).save()
-      await Fighter.update({ _id: fighterId }, { $set: { isForSale: true } })
-      console.log(`Successfully added Fighter #${fighterId} to the marketplace`)
+      await new Sale({ fighter: idNumber, price: price.toNumber() }).save()
+      await Fighter.update({ _id: idNumber }, { $set: { isForSale: true } })
+      console.log(`Successfully added Fighter #${idNumber} to the marketplace`)
     } catch(error) {
-      console.log(`Error adding Fighter #${fighterId} to marketplace`)
+      console.log(`Error adding Fighter #${idNumber} to marketplace`)
     }
   })
 }
