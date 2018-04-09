@@ -49,7 +49,7 @@ const marketplaceEvents = (contract) => {
     if (error) return console.log('Error with MarketplaceAdd ', error);
 
     const { fighterId, price } = tx.args
-    const idNumber = fighter.toNumber()
+    const idNumber = fighterId.toNumber()
 
     try {
       await new Sale({ fighter: idNumber, price: price.toNumber() }).save()
