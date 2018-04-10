@@ -33,9 +33,9 @@ const accountEvents = (contract) => {
     if (error) return console.log('Error with Fighter Transfer ', error)
 
     try {
-      const { from, to, fighterId } = tx.args
-      console.log(`Transferring Fighter #${figherId.toNumber()}`)
-      const idNumber = fighterId.toNumber()
+      const { from, to, tokenId } = tx.args
+      console.log(`Transferring Fighter #${tokenId.toNumber()}`)
+      const idNumber = tokenId.toNumber()
 
       const fromEvent = await new Event({ idNumber, type: 'Transfer', message: `Fighter #${idNumber} transferred to ${to}` }).save()
       const toEvent = await new Event({ idNumber, type: 'Transfer', message: `Fighter #${idNumber} transferred to you from ${from}` }).save()
