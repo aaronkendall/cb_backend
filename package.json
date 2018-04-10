@@ -24,8 +24,8 @@
     "mongoose-timestamp": "^0.6.0",
     "morgan": "1.8.1",
     "pug": "2.0.0-beta11",
-    "truffle-contract": "^3.0.4",
-    "web3": "0.20.1",
+    "truffle-contract": "^3.0.1",
+    "web3": "1.0.0-beta.30",
     "xhr2": "0.1.4"
   }
 }
