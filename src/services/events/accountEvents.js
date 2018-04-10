@@ -32,10 +32,11 @@ const accountEvents = (contract) => {
   contract.Transfer(async (error, tx) => {
     if (error) return console.log('Error with Fighter Transfer ', error)
 
-    const { from, to, fighterId } = tx.args
-    const idNumber = fighterId.toNumber()
-
     try {
+      const { from, to, fighterId } = tx.args
+      console.log(`Transferring Fighter #${figherId.toNumber()}`)
+      const idNumber = fighterId.toNumber()
+
       const fromEvent = await new Event({ idNumber, type: 'Transfer', message: `Fighter #${idNumber} transferred to ${to}` }).save()
       const toEvent = await new Event({ idNumber, type: 'Transfer', message: `Fighter #${idNumber} transferred to you from ${from}` }).save()
 
