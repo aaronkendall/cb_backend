@@ -9,6 +9,7 @@ const marketplaceEvents = (contract) => {
   contract.PurchaseSuccess(async (error, tx) => {
     if (error) return console.log('Error with PurchaseSuccess ', error)
 
+    console.log('PurchaseSuccess Event is happening')
     const { fighterId, buyer, seller, price } = tx.args
 
     const ethPrice = ethunits.convert('wei', 'ether', price.toNumber()).floatValue()
