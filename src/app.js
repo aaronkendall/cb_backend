@@ -40,8 +40,13 @@ app.use('/api/account', account);
 // Ethereum provider setup
 
 // Truffle expects web3 0.2 API so we need to set this
-web3.providers.HttpProvider.prototype.sendAsync = web3.providers.HttpProvider.prototype.send
-web3.providers.WebsocketProvider.prototype.sendAsync = web3.providers.WebsocketProvider.prototype.send
+if (typeof web3.providers.HttpProvider.prototype.sendAsync !== 'function') {
+  web3.providers.HttpProvider.prototype.sendAsync = web3.providers.HttpProvider.prototype.send
+}
+
+if (typeof web3.providers.WebsocketProvider.prototype.sendAsync !== 'function') {
+  web3.providers.WebsocketProvider.prototype.sendAsync = web3.providers.WebsocketProvider.prototype.send
+}
 
 let provider = new web3.providers.HttpProvider(config.httpProvider)
 if (process.env.USE_WS) provider = new web3.providers.WebsocketProvider(config.webSocketProvider)
