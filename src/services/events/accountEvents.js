@@ -60,7 +60,7 @@ const accountEvents = (contract) => {
       ])
       console.log(`Successfully transferred Fighter #${fighterId} from ${from} to ${to}`)
     } catch(error) {
-      console.log(`Error transferring fighter ${fighterId} from ${from} to ${to}`, error)
+      console.log(`Error transferring fighter ${fighterId} from ${from} to ${to}`, error, `Event args = ${tx.args}`)
     }
   })
 
