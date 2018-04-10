@@ -59,7 +59,7 @@ const accountEvents = (contract) => {
           { upsert: true, new: true, setDefaultsOnInsert: true }
         ).exec()
       ])
-      console.log(`Successfully transferred Fighter #${fighterId} from ${from} to ${to}`)
+      console.log(`Successfully transferred Fighter #${idNumber} from ${from} to ${to}`)
     } catch(error) {
       console.log(`Error transferring fighter ${fighterId} from ${from} to ${to}`, error, `Event args = ${tx.args}`)
     }
