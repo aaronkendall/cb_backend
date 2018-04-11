@@ -28,5 +28,6 @@ const randomNumberMinToMax = (min, max) => {
 module.exports = {
   calculateLevel,
   filterStringToQueryObject,
-  randomNumberMinToMax
+  randomNumberMinToMax,
+  calculateLevelFromDb
 }

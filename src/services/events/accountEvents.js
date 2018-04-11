@@ -1,7 +1,7 @@
 const Fighter = require('../../models/fighter.model')
 const User = require('../../models/user.model')
 const Event = require('../../models/event.model')
-const { calculateLevel } = require('../../lib/utils')
+const { calculateLevel, calculateLevelFromDb } = require('../../lib/utils')
 
 const accountEvents = (contract) => {
   contract.Creation(async (error, tx) => {
@@ -76,7 +76,7 @@ const accountEvents = (contract) => {
 
       fighter[attribute] = fighter[attribute] + increaseValue.toNumber()
       // Double check that the fighter's level hasn't updated
-      fighter.level = calculateLevel(fighter)
+      fighter.level = calculateLevelFromDb(fighter)
 
       await fighter.save()
       await User.update({ address: owner }, { $addToSet: { events: newEvent } })
