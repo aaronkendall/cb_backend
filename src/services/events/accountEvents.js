@@ -16,7 +16,7 @@ const accountEvents = (contract) => {
 
       await User.findOneAndUpdate(
         { address: owner },
-        { $push: {
+        { $addToSet: {
             fighters: newFighter.id,
             events: creationEvent.id
           }
@@ -45,13 +45,13 @@ const accountEvents = (contract) => {
           { address: from },
           {
             $pull: { fighters: idNumber },
-            $push: { events: fromEvent.id }
+            $addToSet: { events: fromEvent.id }
           }
         ),
         User.findOneAndUpdate(
           { address: to },
           {
-            $push: {
+            $addToSet: {
               fighters: idNumber,
               events: toEvent.id
             }
@@ -71,7 +71,7 @@ const accountEvents = (contract) => {
     const { owner, fighterId, attribute, increaseValue } = tx.args
 
     try {
-      const fighter = await Fighter.findById(fighterId).exec()
+      const fighter = await Fighter.findById(fighterId.toNumber()).exec()
       const newEvent = await new Event({ fighterId, type: 'Attribute Increase', message: `Fighter #${fighterId}'s ${attribute} increased by ${increaseValue}!` }).save()
 
       fighter[attribute] = fighter[attribute] + increaseValue.toNumber()
@@ -79,7 +79,7 @@ const accountEvents = (contract) => {
       fighter.level = calculateLevel(fighter)
 
       await fighter.save()
-      await User.update({ address: owner }, { $push: { events: newEvent } })
+      await User.update({ address: owner }, { $addToSet: { events: newEvent } })
       console.log(`Fighter #${fighterId}'s ${attribute} increased by ${increaseValue}`)
     } catch(error) {
       console.log(`Error updating fighter #${fighterId}'s ${attribute} by ${increaseValue}`, error)
@@ -95,7 +95,7 @@ const accountEvents = (contract) => {
       const newEvent = await new Event({ fighterId, type: 'Heal', message: `Fighter #${fighterId} was healed to full health!` }).save()
       await Promise.all([
         Fighter.update({ _id: fighterId }, { $set: { health: maxHealth.toNumber() } }),
-        User.update({ address: owner }, { $push: { events: newEvent } })
+        User.update({ address: owner }, { $addToSet: { events: newEvent } })
       ])
 
       console.log(`Fighter #${fighterId} successfully healed`)
@@ -112,7 +112,7 @@ const accountEvents = (contract) => {
 
     try {
       const newEvent = await new Event({ fighterId, type: 'Fighter Found', message: `You found Fighter #${fighterId} while patrolling the streets!` }).save()
-      await User.update({ address: owner }, { $push: { events: newEvent } })
+      await User.update({ address: owner }, { $addToSet: { events: newEvent } })
 
       console.log(`Owner ${owner} found Fighter #${fighterId}`)
     } catch(error) {

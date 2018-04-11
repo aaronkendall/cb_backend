@@ -22,8 +22,8 @@ const marketplaceEvents = (contract) => {
 
       await Fighter.update({ _id: idNumber }, { $set: { isForSale: false } })
       await Promise.all([
-        User.update({ address: seller }, { $push: { events: sellerEvent } }),
-        User.update({ address: buyer }, { $push: { events: buyerEvent } })
+        User.update({ address: seller }, { $addToSet: { events: sellerEvent } }),
+        User.update({ address: buyer }, { $addToSet: { events: buyerEvent } })
       ])
 
       console.log(`Fighter #${idNumber} removed from sale after purchase`)
