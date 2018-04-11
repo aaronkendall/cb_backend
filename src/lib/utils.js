@@ -2,6 +2,10 @@ const calculateLevel = (fighter) => {
   return Math.floor((fighter.maxHealth.toNumber() + fighter.speed.toNumber() + fighter.strength.toNumber()) / 10);
 }
 
+const calculateLevelFromDb = (fighter) => {
+  return Math.floor((fighter.maxHealth + fighter.speed + fighter.strength) / 10);
+}
+
 const filterStringToQueryObject = (filterString, initialQuery = {}) => {
   // 'speed: 1, level: 3'
   return filterString
