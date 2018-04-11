@@ -43,7 +43,7 @@ const calculateWinner = (fighter1, fighter2) => {
     }
   }
 
-  return `${winner.id}-${loser.id}-${winner.health}`
+  return `${winner.id}-${loser.id}`
 }
 
 module.exports = {

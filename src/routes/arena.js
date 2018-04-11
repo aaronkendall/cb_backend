@@ -43,7 +43,7 @@ router.get('/calculateWinner/attacker/:attackerId/defender/:defenderId', async (
   try {
     const fighters = await Promise.all([Fighter.findOne({ _id: attackerId }), Fighter.findOne({ _id: defenderId })])
     const outcomeString = calculateWinner(fighters[0], fighters[1])
-    // returns winnerId, loserId, winnersHealth in the format 'winnerId-loserId-winnersHealth' for easy processing by the contract
+    // returns winnerId, loserId, winnersHealth in the format 'winnerId-loserId' for easy processing by the contract
     return res.status(200).send({ outcomeString })
   } catch(error) {
     return res.status(404).send({ message: 'Could not find fighter', error })
