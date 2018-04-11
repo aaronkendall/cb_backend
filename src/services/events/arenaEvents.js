@@ -7,7 +7,7 @@ const arenaEvents = (contract) => {
   contract.FightComplete(async (error, tx) => {
     if (error) return console.log('Error with FightComplete ', error);
 
-    const { winnerId, winner, winnersHealth, loserId, loser, fighterInArena } = tx.args
+    const { winnerId, winner, loserId, loser, fighterInArena } = tx.args
 
     try {
       await Brawl.findOneAndRemove({ 'fighter': fighterInArena.toNumber() })
