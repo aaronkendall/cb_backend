@@ -3,8 +3,8 @@
   "abi": [],
   "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820b176e07e17965b8f7cae813ed4c1f6990b3ff27bd37d9946358e609852042a530029",
   "deployedBytecode": "0x6060604052600080fd00a165627a7a72305820b176e07e17965b8f7cae813ed4c1f6990b3ff27bd37d9946358e609852042a530029",
-  "sourceMap": "26:101:3:-;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "26:101:3:-;;;;;",
+  "sourceMap": "26:101:5:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "26:101:5:-;;;;;",
   "source": "pragma solidity ^0.4.18;\n\ncontract Priced {\n  modifier costs(uint price) {\n    if (msg.value >= price) {\n        _;\n    }\n  }\n}\n",
   "sourcePath": "/Users/kendalla/projects/cryptoclash/contracts/base/Priced.sol",
   "ast": {
@@ -12,7 +12,7 @@
       "absolutePath": "/Users/kendalla/projects/cryptoclash/contracts/base/Priced.sol",
       "exportedSymbols": {
         "Priced": [
-          212
+          424
         ]
       }
     },
@@ -26,9 +26,9 @@
             ".18"
           ]
         },
-        "id": 199,
+        "id": 411,
         "name": "PragmaDirective",
-        "src": "0:24:3"
+        "src": "0:24:5"
       },
       {
         "attributes": {
@@ -42,10 +42,10 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            212
+            424
           ],
           "name": "Priced",
-          "scope": 213
+          "scope": 425
         },
         "children": [
           {
@@ -60,7 +60,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "price",
-                      "scope": 211,
+                      "scope": 423,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -73,19 +73,19 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 200,
+                        "id": 412,
                         "name": "ElementaryTypeName",
-                        "src": "61:4:3"
+                        "src": "61:4:5"
                       }
                     ],
-                    "id": 201,
+                    "id": 413,
                     "name": "VariableDeclaration",
-                    "src": "61:10:3"
+                    "src": "61:10:5"
                   }
                 ],
-                "id": 202,
+                "id": 414,
                 "name": "ParameterList",
-                "src": "60:12:3"
+                "src": "60:12:5"
               },
               {
                 "children": [
@@ -127,18 +127,18 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 8295,
+                                  "referencedDeclaration": 8531,
                                   "type": "msg",
                                   "value": "msg"
                                 },
-                                "id": 203,
+                                "id": 415,
                                 "name": "Identifier",
-                                "src": "83:3:3"
+                                "src": "83:3:5"
                               }
                             ],
-                            "id": 204,
+                            "id": 416,
                             "name": "MemberAccess",
-                            "src": "83:9:3"
+                            "src": "83:9:5"
                           },
                           {
                             "attributes": {
@@ -146,55 +146,55 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 201,
+                              "referencedDeclaration": 413,
                               "type": "uint256",
                               "value": "price"
                             },
-                            "id": 205,
+                            "id": 417,
                             "name": "Identifier",
-                            "src": "96:5:3"
+                            "src": "96:5:5"
                           }
                         ],
-                        "id": 206,
+                        "id": 418,
                         "name": "BinaryOperation",
-                        "src": "83:18:3"
+                        "src": "83:18:5"
                       },
                       {
                         "children": [
                           {
-                            "id": 207,
+                            "id": 419,
                             "name": "PlaceholderStatement",
-                            "src": "113:1:3"
+                            "src": "113:1:5"
                           }
                         ],
-                        "id": 208,
+                        "id": 420,
                         "name": "Block",
-                        "src": "103:18:3"
+                        "src": "103:18:5"
                       }
                     ],
-                    "id": 209,
+                    "id": 421,
                     "name": "IfStatement",
-                    "src": "79:42:3"
+                    "src": "79:42:5"
                   }
                 ],
-                "id": 210,
+                "id": 422,
                 "name": "Block",
-                "src": "73:52:3"
+                "src": "73:52:5"
               }
             ],
-            "id": 211,
+            "id": 423,
             "name": "ModifierDefinition",
-            "src": "46:79:3"
+            "src": "46:79:5"
           }
         ],
-        "id": 212,
+        "id": 424,
         "name": "ContractDefinition",
-        "src": "26:101:3"
+        "src": "26:101:5"
       }
     ],
-    "id": 213,
+    "id": 425,
     "name": "SourceUnit",
-    "src": "0:128:3"
+    "src": "0:128:5"
   },
   "compiler": {
     "name": "solc",
@@ -202,5 +202,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-10T12:11:47.380Z"
+  "updatedAt": "2018-04-12T12:37:42.194Z"
 }
