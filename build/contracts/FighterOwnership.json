@@ -1231,7 +1231,7 @@
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 8525,
+                          "referencedDeclaration": 8604,
                           "type": "function () pure returns (bytes32)",
                           "value": "keccak256"
                         },
@@ -1486,7 +1486,7 @@
                                                               "overloadedDeclarations": [
                                                                 null
                                                               ],
-                                                              "referencedDeclaration": 8525,
+                                                              "referencedDeclaration": 8604,
                                                               "type": "function () pure returns (bytes32)",
                                                               "value": "keccak256"
                                                             },
@@ -1581,7 +1581,7 @@
                                                               "overloadedDeclarations": [
                                                                 null
                                                               ],
-                                                              "referencedDeclaration": 8525,
+                                                              "referencedDeclaration": 8604,
                                                               "type": "function () pure returns (bytes32)",
                                                               "value": "keccak256"
                                                             },
@@ -1681,7 +1681,7 @@
                                                           "overloadedDeclarations": [
                                                             null
                                                           ],
-                                                          "referencedDeclaration": 8525,
+                                                          "referencedDeclaration": 8604,
                                                           "type": "function () pure returns (bytes32)",
                                                           "value": "keccak256"
                                                         },
@@ -1781,7 +1781,7 @@
                                                       "overloadedDeclarations": [
                                                         null
                                                       ],
-                                                      "referencedDeclaration": 8525,
+                                                      "referencedDeclaration": 8604,
                                                       "type": "function () pure returns (bytes32)",
                                                       "value": "keccak256"
                                                     },
@@ -1881,7 +1881,7 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 8525,
+                                                  "referencedDeclaration": 8604,
                                                   "type": "function () pure returns (bytes32)",
                                                   "value": "keccak256"
                                                 },
@@ -1981,7 +1981,7 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 8525,
+                                              "referencedDeclaration": 8604,
                                               "type": "function () pure returns (bytes32)",
                                               "value": "keccak256"
                                             },
@@ -2081,7 +2081,7 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 8525,
+                                          "referencedDeclaration": 8604,
                                           "type": "function () pure returns (bytes32)",
                                           "value": "keccak256"
                                         },
@@ -2181,7 +2181,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 8525,
+                                      "referencedDeclaration": 8604,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
@@ -2281,7 +2281,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 8525,
+                                  "referencedDeclaration": 8604,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
@@ -2381,7 +2381,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 8525,
+                              "referencedDeclaration": 8604,
                               "type": "function () pure returns (bytes32)",
                               "value": "keccak256"
                             },
@@ -3711,7 +3711,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 8534,
+                              "referencedDeclaration": 8613,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -3847,7 +3847,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 8534,
+                              "referencedDeclaration": 8613,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -3924,7 +3924,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 8558,
+                                      "referencedDeclaration": 8637,
                                       "type": "contract FighterOwnership",
                                       "value": "this"
                                     },
@@ -3980,7 +3980,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 8534,
+                              "referencedDeclaration": 8613,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -4044,7 +4044,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 8531,
+                                      "referencedDeclaration": 8610,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -4148,7 +4148,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 8531,
+                                  "referencedDeclaration": 8610,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -4325,7 +4325,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 8534,
+                              "referencedDeclaration": 8613,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -4389,7 +4389,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 8531,
+                                      "referencedDeclaration": 8610,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -4571,7 +4571,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 8531,
+                                  "referencedDeclaration": 8610,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -4774,7 +4774,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 8534,
+                              "referencedDeclaration": 8613,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -4910,7 +4910,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 8534,
+                              "referencedDeclaration": 8613,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -4987,7 +4987,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 8558,
+                                      "referencedDeclaration": 8637,
                                       "type": "contract FighterOwnership",
                                       "value": "this"
                                     },
@@ -5043,7 +5043,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 8534,
+                              "referencedDeclaration": 8613,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -5107,7 +5107,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 8531,
+                                      "referencedDeclaration": 8610,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -5177,7 +5177,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 8534,
+                              "referencedDeclaration": 8613,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -5677,7 +5677,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 8534,
+                              "referencedDeclaration": 8613,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -8232,7 +8232,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 8534,
+                              "referencedDeclaration": 8613,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -8813,7 +8813,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 8534,
+                              "referencedDeclaration": 8613,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -8877,7 +8877,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 8531,
+                                      "referencedDeclaration": 8610,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -9185,7 +9185,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 8534,
+                              "referencedDeclaration": 8613,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
@@ -9249,7 +9249,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 8531,
+                                      "referencedDeclaration": 8610,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -10527,7 +10527,7 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 8531,
+                                          "referencedDeclaration": 8610,
                                           "type": "msg",
                                           "value": "msg"
                                         },
@@ -10672,7 +10672,7 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 8531,
+                                          "referencedDeclaration": 8610,
                                           "type": "msg",
                                           "value": "msg"
                                         },
@@ -10825,7 +10825,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 8531,
+                                  "referencedDeclaration": 8610,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -11959,5 +11959,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-12T12:37:42.195Z"
+  "updatedAt": "2018-04-13T13:34:19.935Z"
 }
