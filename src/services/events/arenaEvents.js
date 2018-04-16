@@ -8,6 +8,15 @@ const arenaEvents = (contract) => {
     if (error) return console.log('Error with FightComplete ', error);
 
     const { winnerId, winner, loserId, loser, fighterInArena } = tx.args
+    console.log('=== tx args', tx.args)
+    console.log('==== winnerId String', winnerId.toString())
+    console.log('==== loserId String', loserId.toString())
+
+    console.log('==== winnerId Fixed rounded up', winnerId.toFixed(0, 0))
+    console.log('==== loserId Fixed rounded up', loserId.toFixed(0, 0))
+
+    console.log('==== winnerId Fixed rounded down', winnerId.toFixed(0, 1))
+    console.log('==== loserId Fixed rounded down', loserId.toFixed(0, 1))
 
     try {
       await Brawl.findOneAndRemove({ 'fighter': fighterInArena.toNumber() })
