@@ -248,15 +248,15 @@
       "type": "event"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b6103378061001e6000396000f30060606040526004361061006c5763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663027f48f7811461007157806344e59ee9146100af5780634b193933146100ee5780638357b8dd14610104578063d9861dab14610133575b600080fd5b341561007c57600080fd5b61009d73ffffffffffffffffffffffffffffffffffffffff600435166101c0565b60405190815260200160405180910390f35b34156100ba57600080fd5b6100c56004356101d2565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100f957600080fd5b6100c56004356101fa565b341561010f57600080fd5b61009d73ffffffffffffffffffffffffffffffffffffffff60043516602435610222565b341561013e57600080fd5b610149600435610250565b60405160208082528190810183818151815260200191508051906020019080838360005b8381101561018557808201518382015260200161016d565b50505050905090810190601f1680156101b25780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b60016020526000908152604090205481565b60036020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60026020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60046020528160005260406000208181548110151561023d57fe5b6000918252602090912001549150829050565b600580548290811061025e57fe5b90600052602060002090016000915090508054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103035780601f106102d857610100808354040283529160200191610303565b820191906000526020600020905b8154815290600101906020018083116102e657829003601f168201915b5050505050815600a165627a7a723058201733578723bfa35244d57976c96ed86dda578726bf8db80a23607b8d3b47ee7f0029",
-  "deployedBytecode": "0x60606040526004361061006c5763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663027f48f7811461007157806344e59ee9146100af5780634b193933146100ee5780638357b8dd14610104578063d9861dab14610133575b600080fd5b341561007c57600080fd5b61009d73ffffffffffffffffffffffffffffffffffffffff600435166101c0565b60405190815260200160405180910390f35b34156100ba57600080fd5b6100c56004356101d2565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100f957600080fd5b6100c56004356101fa565b341561010f57600080fd5b61009d73ffffffffffffffffffffffffffffffffffffffff60043516602435610222565b341561013e57600080fd5b610149600435610250565b60405160208082528190810183818151815260200191508051906020019080838360005b8381101561018557808201518382015260200161016d565b50505050905090810190601f1680156101b25780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b60016020526000908152604090205481565b60036020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60026020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60046020528160005260406000208181548110151561023d57fe5b6000918252602090912001549150829050565b600580548290811061025e57fe5b90600052602060002090016000915090508054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103035780601f106102d857610100808354040283529160200191610303565b820191906000526020600020905b8154815290600101906020018083116102e657829003601f168201915b5050505050815600a165627a7a723058201733578723bfa35244d57976c96ed86dda578726bf8db80a23607b8d3b47ee7f0029",
+  "bytecode": "0x6060604052341561000f57600080fd5b6103378061001e6000396000f30060606040526004361061006c5763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663027f48f7811461007157806344e59ee9146100af5780634b193933146100ee5780638357b8dd14610104578063d9861dab14610133575b600080fd5b341561007c57600080fd5b61009d73ffffffffffffffffffffffffffffffffffffffff600435166101c0565b60405190815260200160405180910390f35b34156100ba57600080fd5b6100c56004356101d2565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100f957600080fd5b6100c56004356101fa565b341561010f57600080fd5b61009d73ffffffffffffffffffffffffffffffffffffffff60043516602435610222565b341561013e57600080fd5b610149600435610250565b60405160208082528190810183818151815260200191508051906020019080838360005b8381101561018557808201518382015260200161016d565b50505050905090810190601f1680156101b25780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b60016020526000908152604090205481565b60036020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60026020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60046020528160005260406000208181548110151561023d57fe5b6000918252602090912001549150829050565b600580548290811061025e57fe5b90600052602060002090016000915090508054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103035780601f106102d857610100808354040283529160200191610303565b820191906000526020600020905b8154815290600101906020018083116102e657829003601f168201915b5050505050815600a165627a7a72305820d1ce832adb17397fceb95eb41c1b6ad2708ee692981a7633e75a24eb2adf2ffa0029",
+  "deployedBytecode": "0x60606040526004361061006c5763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663027f48f7811461007157806344e59ee9146100af5780634b193933146100ee5780638357b8dd14610104578063d9861dab14610133575b600080fd5b341561007c57600080fd5b61009d73ffffffffffffffffffffffffffffffffffffffff600435166101c0565b60405190815260200160405180910390f35b34156100ba57600080fd5b6100c56004356101d2565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100f957600080fd5b6100c56004356101fa565b341561010f57600080fd5b61009d73ffffffffffffffffffffffffffffffffffffffff60043516602435610222565b341561013e57600080fd5b610149600435610250565b60405160208082528190810183818151815260200191508051906020019080838360005b8381101561018557808201518382015260200161016d565b50505050905090810190601f1680156101b25780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b60016020526000908152604090205481565b60036020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60026020526000908152604090205473ffffffffffffffffffffffffffffffffffffffff1681565b60046020528160005260406000208181548110151561023d57fe5b6000918252602090912001549150829050565b600580548290811061025e57fe5b90600052602060002090016000915090508054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103035780601f106102d857610100808354040283529160200191610303565b820191906000526020600020905b8154815290600101906020018083116102e657829003601f168201915b5050505050815600a165627a7a72305820d1ce832adb17397fceb95eb41c1b6ad2708ee692981a7633e75a24eb2adf2ffa0029",
   "sourceMap": "55:668:9:-;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "55:668:9:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;685:55:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;876:54;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;779:51;;;;;;;;;;;;;;1002:50;;;;;;;;;;;;;;;;;;1057:28;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:2;8:100;;;99:1;94:3;90;84:5;71:3;;;64:6;52:2;45:3;8:100;;;12:14;3:109;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;685:55:6;;;;;;;;;;;;;:::o;876:54::-;;;;;;;;;;;;;;;:::o;779:51::-;;;;;;;;;;;;;;;:::o;1002:50::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;1002:50:6;;-1:-1:-1;1002:50:6:o;1057:28::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
   "source": "pragma solidity ^0.4.18;\n\nimport \"./FighterBase.sol\";\n\ncontract FighterTraining is FighterBase {\n  event Test(bytes32 _keccak1, bytes32 _keccak2);\n\n  function _train(uint _fighterId, string _attribute, uint _attributeIncrease) internal {\n    if (keccak256(_attribute) == keccak256('maxHealth')) {\n      _trainMaxHealth(_fighterId, _attributeIncrease, msg.sender);\n    } else if (keccak256(_attribute) == keccak256('strength')) {\n      _trainStrength(_fighterId, _attributeIncrease, msg.sender);\n    } else if (keccak256(_attribute) == keccak256('speed')) {\n      _trainSpeed(_fighterId, _attributeIncrease, msg.sender);\n    }\n  }\n\n  function _heal(uint _fighterId) internal {\n    _healFighter(_fighterId, msg.sender);\n  }\n}\n",
-  "sourcePath": "/Users/kendalla/projects/cryptoclash/contracts/fighter/FighterTraining.sol",
+  "sourcePath": "/Users/Aaron/Projects/cryptoclash/contracts/fighter/FighterTraining.sol",
   "ast": {
     "attributes": {
-      "absolutePath": "/Users/kendalla/projects/cryptoclash/contracts/fighter/FighterTraining.sol",
+      "absolutePath": "/Users/Aaron/Projects/cryptoclash/contracts/fighter/FighterTraining.sol",
       "exportedSymbols": {
         "FighterTraining": [
           1768
@@ -280,7 +280,7 @@
       {
         "attributes": {
           "SourceUnit": 864,
-          "absolutePath": "/Users/kendalla/projects/cryptoclash/contracts/fighter/FighterBase.sol",
+          "absolutePath": "/Users/Aaron/Projects/cryptoclash/contracts/fighter/FighterBase.sol",
           "file": "./FighterBase.sol",
           "scope": 1769,
           "symbolAliases": [
@@ -560,7 +560,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 8604,
+                                  "referencedDeclaration": 9175,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
@@ -613,7 +613,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 8604,
+                                  "referencedDeclaration": 9175,
                                   "type": "function () pure returns (bytes32)",
                                   "value": "keccak256"
                                 },
@@ -740,7 +740,7 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 8610,
+                                          "referencedDeclaration": 9181,
                                           "type": "msg",
                                           "value": "msg"
                                         },
@@ -811,7 +811,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 8604,
+                                      "referencedDeclaration": 9175,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
@@ -864,7 +864,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 8604,
+                                      "referencedDeclaration": 9175,
                                       "type": "function () pure returns (bytes32)",
                                       "value": "keccak256"
                                     },
@@ -991,7 +991,7 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 8610,
+                                              "referencedDeclaration": 9181,
                                               "type": "msg",
                                               "value": "msg"
                                             },
@@ -1065,7 +1065,7 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 8604,
+                                          "referencedDeclaration": 9175,
                                           "type": "function () pure returns (bytes32)",
                                           "value": "keccak256"
                                         },
@@ -1118,7 +1118,7 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 8604,
+                                          "referencedDeclaration": 9175,
                                           "type": "function () pure returns (bytes32)",
                                           "value": "keccak256"
                                         },
@@ -1245,7 +1245,7 @@
                                                   "overloadedDeclarations": [
                                                     null
                                                   ],
-                                                  "referencedDeclaration": 8610,
+                                                  "referencedDeclaration": 9181,
                                                   "type": "msg",
                                                   "value": "msg"
                                                 },
@@ -1432,7 +1432,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 8610,
+                                  "referencedDeclaration": 9181,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -1481,5 +1481,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-13T13:34:19.938Z"
+  "updatedAt": "2018-04-16T19:58:19.861Z"
 }
