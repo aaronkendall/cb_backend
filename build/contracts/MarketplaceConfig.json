@@ -157,7 +157,7 @@
       "absolutePath": "/Users/kendalla/projects/cryptoclash/contracts/marketplace/MarketplaceConfig.sol",
       "exportedSymbols": {
         "MarketplaceConfig": [
-          9179
+          10207
         ]
       }
     },
@@ -171,7 +171,7 @@
             ".18"
           ]
         },
-        "id": 9092,
+        "id": 10120,
         "name": "PragmaDirective",
         "src": "0:24:14"
       },
@@ -180,13 +180,13 @@
           "SourceUnit": 410,
           "absolutePath": "/Users/kendalla/projects/cryptoclash/contracts/base/Ownable.sol",
           "file": "../base/Ownable.sol",
-          "scope": 9180,
+          "scope": 10208,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 9093,
+        "id": 10121,
         "name": "ImportDirective",
         "src": "26:29:14"
       },
@@ -199,11 +199,11 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            9179,
+            10207,
             409
           ],
           "name": "MarketplaceConfig",
-          "scope": 9180
+          "scope": 10208
         },
         "children": [
           {
@@ -220,12 +220,12 @@
                   "referencedDeclaration": 409,
                   "type": "contract Ownable"
                 },
-                "id": 9094,
+                "id": 10122,
                 "name": "UserDefinedTypeName",
                 "src": "87:7:14"
               }
             ],
-            "id": 9095,
+            "id": 10123,
             "name": "InheritanceSpecifier",
             "src": "87:7:14"
           },
@@ -233,7 +233,7 @@
             "attributes": {
               "constant": false,
               "name": "marketplaceCut",
-              "scope": 9179,
+              "scope": 10207,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -245,7 +245,7 @@
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 9096,
+                "id": 10124,
                 "name": "ElementaryTypeName",
                 "src": "99:4:14"
               },
@@ -262,12 +262,12 @@
                   "type": "int_const 5",
                   "value": "5"
                 },
-                "id": 9097,
+                "id": 10125,
                 "name": "Literal",
                 "src": "128:1:14"
               }
             ],
-            "id": 9098,
+            "id": 10126,
             "name": "VariableDeclaration",
             "src": "99:30:14"
           },
@@ -275,7 +275,7 @@
             "attributes": {
               "constant": false,
               "name": "combatEndpoint",
-              "scope": 9179,
+              "scope": 10207,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "string storage ref",
@@ -287,7 +287,7 @@
                   "name": "string",
                   "type": "string storage pointer"
                 },
-                "id": 9099,
+                "id": 10127,
                 "name": "ElementaryTypeName",
                 "src": "133:6:14"
               },
@@ -304,12 +304,12 @@
                   "type": "literal_string \"https://rinkebybrawlbackend.herokuapp.com/api/arena/calculateWinner\"",
                   "value": "https://rinkebybrawlbackend.herokuapp.com/api/arena/calculateWinner"
                 },
-                "id": 9100,
+                "id": 10128,
                 "name": "Literal",
                 "src": "164:69:14"
               }
             ],
-            "id": 9101,
+            "id": 10129,
             "name": "VariableDeclaration",
             "src": "133:100:14"
           },
@@ -317,7 +317,7 @@
             "attributes": {
               "constant": false,
               "name": "oraclizeGasLimit",
-              "scope": 9179,
+              "scope": 10207,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -329,7 +329,7 @@
                   "name": "uint",
                   "type": "uint256"
                 },
-                "id": 9102,
+                "id": 10130,
                 "name": "ElementaryTypeName",
                 "src": "237:4:14"
               },
@@ -346,12 +346,12 @@
                   "type": "int_const 750000",
                   "value": "750000"
                 },
-                "id": 9103,
+                "id": 10131,
                 "name": "Literal",
                 "src": "268:6:14"
               }
             ],
-            "id": 9104,
+            "id": 10132,
             "name": "VariableDeclaration",
             "src": "237:37:14"
           },
@@ -362,7 +362,7 @@
               "isConstructor": false,
               "name": "setNewMarketplaceCut",
               "payable": false,
-              "scope": 9179,
+              "scope": 10207,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "external"
@@ -374,7 +374,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_newCut",
-                      "scope": 9116,
+                      "scope": 10144,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -387,17 +387,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 9105,
+                        "id": 10133,
                         "name": "ElementaryTypeName",
                         "src": "309:4:14"
                       }
                     ],
-                    "id": 9106,
+                    "id": 10134,
                     "name": "VariableDeclaration",
                     "src": "309:12:14"
                   }
                 ],
-                "id": 9107,
+                "id": 10135,
                 "name": "ParameterList",
                 "src": "308:14:14"
               },
@@ -408,7 +408,7 @@
                   ]
                 },
                 "children": [],
-                "id": 9110,
+                "id": 10138,
                 "name": "ParameterList",
                 "src": "342:0:14"
               },
@@ -429,12 +429,12 @@
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 9108,
+                    "id": 10136,
                     "name": "Identifier",
                     "src": "332:9:14"
                   }
                 ],
-                "id": 9109,
+                "id": 10137,
                 "name": "ModifierInvocation",
                 "src": "332:9:14"
               },
@@ -459,11 +459,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9098,
+                              "referencedDeclaration": 10126,
                               "type": "uint256",
                               "value": "marketplaceCut"
                             },
-                            "id": 9111,
+                            "id": 10139,
                             "name": "Identifier",
                             "src": "348:14:14"
                           },
@@ -473,31 +473,31 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9106,
+                              "referencedDeclaration": 10134,
                               "type": "uint256",
                               "value": "_newCut"
                             },
-                            "id": 9112,
+                            "id": 10140,
                             "name": "Identifier",
                             "src": "365:7:14"
                           }
                         ],
-                        "id": 9113,
+                        "id": 10141,
                         "name": "Assignment",
                         "src": "348:24:14"
                       }
                     ],
-                    "id": 9114,
+                    "id": 10142,
                     "name": "ExpressionStatement",
                     "src": "348:24:14"
                   }
                 ],
-                "id": 9115,
+                "id": 10143,
                 "name": "Block",
                 "src": "342:35:14"
               }
             ],
-            "id": 9116,
+            "id": 10144,
             "name": "FunctionDefinition",
             "src": "279:98:14"
           },
@@ -508,7 +508,7 @@
               "isConstructor": false,
               "name": "withdrawBalance",
               "payable": false,
-              "scope": 9179,
+              "scope": 10207,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "external"
@@ -521,7 +521,7 @@
                   ]
                 },
                 "children": [],
-                "id": 9117,
+                "id": 10145,
                 "name": "ParameterList",
                 "src": "405:2:14"
               },
@@ -532,7 +532,7 @@
                   ]
                 },
                 "children": [],
-                "id": 9120,
+                "id": 10148,
                 "name": "ParameterList",
                 "src": "427:0:14"
               },
@@ -553,12 +553,12 @@
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 9118,
+                    "id": 10146,
                     "name": "Identifier",
                     "src": "417:9:14"
                   }
                 ],
-                "id": 9119,
+                "id": 10147,
                 "name": "ModifierInvocation",
                 "src": "417:9:14"
               },
@@ -608,12 +608,12 @@
                                   "type": "address",
                                   "value": "owner"
                                 },
-                                "id": 9121,
+                                "id": 10149,
                                 "name": "Identifier",
                                 "src": "433:5:14"
                               }
                             ],
-                            "id": 9123,
+                            "id": 10151,
                             "name": "MemberAccess",
                             "src": "433:14:14"
                           },
@@ -635,36 +635,36 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9220,
+                                  "referencedDeclaration": 10248,
                                   "type": "contract MarketplaceConfig",
                                   "value": "this"
                                 },
-                                "id": 9124,
+                                "id": 10152,
                                 "name": "Identifier",
                                 "src": "448:4:14"
                               }
                             ],
-                            "id": 9125,
+                            "id": 10153,
                             "name": "MemberAccess",
                             "src": "448:12:14"
                           }
                         ],
-                        "id": 9126,
+                        "id": 10154,
                         "name": "FunctionCall",
                         "src": "433:28:14"
                       }
                     ],
-                    "id": 9127,
+                    "id": 10155,
                     "name": "ExpressionStatement",
                     "src": "433:28:14"
                   }
                 ],
-                "id": 9128,
+                "id": 10156,
                 "name": "Block",
                 "src": "427:39:14"
               }
             ],
-            "id": 9129,
+            "id": 10157,
             "name": "FunctionDefinition",
             "src": "381:85:14"
           },
@@ -675,7 +675,7 @@
               "isConstructor": false,
               "name": "withdrawBalanceToAddress",
               "payable": false,
-              "scope": 9179,
+              "scope": 10207,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "external"
@@ -687,7 +687,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_recipient",
-                      "scope": 9144,
+                      "scope": 10172,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -700,17 +700,17 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 9130,
+                        "id": 10158,
                         "name": "ElementaryTypeName",
                         "src": "504:7:14"
                       }
                     ],
-                    "id": 9131,
+                    "id": 10159,
                     "name": "VariableDeclaration",
                     "src": "504:18:14"
                   }
                 ],
-                "id": 9132,
+                "id": 10160,
                 "name": "ParameterList",
                 "src": "503:20:14"
               },
@@ -721,7 +721,7 @@
                   ]
                 },
                 "children": [],
-                "id": 9135,
+                "id": 10163,
                 "name": "ParameterList",
                 "src": "543:0:14"
               },
@@ -742,12 +742,12 @@
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 9133,
+                    "id": 10161,
                     "name": "Identifier",
                     "src": "533:9:14"
                   }
                 ],
-                "id": 9134,
+                "id": 10162,
                 "name": "ModifierInvocation",
                 "src": "533:9:14"
               },
@@ -793,16 +793,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9131,
+                                  "referencedDeclaration": 10159,
                                   "type": "address",
                                   "value": "_recipient"
                                 },
-                                "id": 9136,
+                                "id": 10164,
                                 "name": "Identifier",
                                 "src": "549:10:14"
                               }
                             ],
-                            "id": 9138,
+                            "id": 10166,
                             "name": "MemberAccess",
                             "src": "549:19:14"
                           },
@@ -824,36 +824,36 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9220,
+                                  "referencedDeclaration": 10248,
                                   "type": "contract MarketplaceConfig",
                                   "value": "this"
                                 },
-                                "id": 9139,
+                                "id": 10167,
                                 "name": "Identifier",
                                 "src": "569:4:14"
                               }
                             ],
-                            "id": 9140,
+                            "id": 10168,
                             "name": "MemberAccess",
                             "src": "569:12:14"
                           }
                         ],
-                        "id": 9141,
+                        "id": 10169,
                         "name": "FunctionCall",
                         "src": "549:33:14"
                       }
                     ],
-                    "id": 9142,
+                    "id": 10170,
                     "name": "ExpressionStatement",
                     "src": "549:33:14"
                   }
                 ],
-                "id": 9143,
+                "id": 10171,
                 "name": "Block",
                 "src": "543:44:14"
               }
             ],
-            "id": 9144,
+            "id": 10172,
             "name": "FunctionDefinition",
             "src": "470:117:14"
           },
@@ -864,7 +864,7 @@
               "isConstructor": false,
               "name": "killConract",
               "payable": false,
-              "scope": 9179,
+              "scope": 10207,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "external"
@@ -877,7 +877,7 @@
                   ]
                 },
                 "children": [],
-                "id": 9145,
+                "id": 10173,
                 "name": "ParameterList",
                 "src": "611:2:14"
               },
@@ -888,7 +888,7 @@
                   ]
                 },
                 "children": [],
-                "id": 9148,
+                "id": 10176,
                 "name": "ParameterList",
                 "src": "633:0:14"
               },
@@ -909,12 +909,12 @@
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 9146,
+                    "id": 10174,
                     "name": "Identifier",
                     "src": "623:9:14"
                   }
                 ],
-                "id": 9147,
+                "id": 10175,
                 "name": "ModifierInvocation",
                 "src": "623:9:14"
               },
@@ -948,11 +948,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9197,
+                              "referencedDeclaration": 10225,
                               "type": "function (address)",
                               "value": "selfdestruct"
                             },
-                            "id": 9149,
+                            "id": 10177,
                             "name": "Identifier",
                             "src": "639:12:14"
                           },
@@ -966,27 +966,27 @@
                               "type": "address",
                               "value": "owner"
                             },
-                            "id": 9150,
+                            "id": 10178,
                             "name": "Identifier",
                             "src": "652:5:14"
                           }
                         ],
-                        "id": 9151,
+                        "id": 10179,
                         "name": "FunctionCall",
                         "src": "639:19:14"
                       }
                     ],
-                    "id": 9152,
+                    "id": 10180,
                     "name": "ExpressionStatement",
                     "src": "639:19:14"
                   }
                 ],
-                "id": 9153,
+                "id": 10181,
                 "name": "Block",
                 "src": "633:30:14"
               }
             ],
-            "id": 9154,
+            "id": 10182,
             "name": "FunctionDefinition",
             "src": "591:72:14"
           },
@@ -997,7 +997,7 @@
               "isConstructor": false,
               "name": "setNewCombatEndpoint",
               "payable": false,
-              "scope": 9179,
+              "scope": 10207,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "external"
@@ -1009,7 +1009,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "newEndpoint",
-                      "scope": 9166,
+                      "scope": 10194,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "string calldata",
@@ -1022,17 +1022,17 @@
                           "name": "string",
                           "type": "string storage pointer"
                         },
-                        "id": 9155,
+                        "id": 10183,
                         "name": "ElementaryTypeName",
                         "src": "697:6:14"
                       }
                     ],
-                    "id": 9156,
+                    "id": 10184,
                     "name": "VariableDeclaration",
                     "src": "697:18:14"
                   }
                 ],
-                "id": 9157,
+                "id": 10185,
                 "name": "ParameterList",
                 "src": "696:20:14"
               },
@@ -1043,7 +1043,7 @@
                   ]
                 },
                 "children": [],
-                "id": 9160,
+                "id": 10188,
                 "name": "ParameterList",
                 "src": "736:0:14"
               },
@@ -1064,12 +1064,12 @@
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 9158,
+                    "id": 10186,
                     "name": "Identifier",
                     "src": "726:9:14"
                   }
                 ],
-                "id": 9159,
+                "id": 10187,
                 "name": "ModifierInvocation",
                 "src": "726:9:14"
               },
@@ -1094,11 +1094,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9101,
+                              "referencedDeclaration": 10129,
                               "type": "string storage ref",
                               "value": "combatEndpoint"
                             },
-                            "id": 9161,
+                            "id": 10189,
                             "name": "Identifier",
                             "src": "742:14:14"
                           },
@@ -1108,31 +1108,31 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9156,
+                              "referencedDeclaration": 10184,
                               "type": "string calldata",
                               "value": "newEndpoint"
                             },
-                            "id": 9162,
+                            "id": 10190,
                             "name": "Identifier",
                             "src": "759:11:14"
                           }
                         ],
-                        "id": 9163,
+                        "id": 10191,
                         "name": "Assignment",
                         "src": "742:28:14"
                       }
                     ],
-                    "id": 9164,
+                    "id": 10192,
                     "name": "ExpressionStatement",
                     "src": "742:28:14"
                   }
                 ],
-                "id": 9165,
+                "id": 10193,
                 "name": "Block",
                 "src": "736:39:14"
               }
             ],
-            "id": 9166,
+            "id": 10194,
             "name": "FunctionDefinition",
             "src": "667:108:14"
           },
@@ -1143,7 +1143,7 @@
               "isConstructor": false,
               "name": "setNewOraclizeGasLimit",
               "payable": false,
-              "scope": 9179,
+              "scope": 10207,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "external"
@@ -1155,7 +1155,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "newGas",
-                      "scope": 9178,
+                      "scope": 10206,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1168,17 +1168,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 9167,
+                        "id": 10195,
                         "name": "ElementaryTypeName",
                         "src": "811:4:14"
                       }
                     ],
-                    "id": 9168,
+                    "id": 10196,
                     "name": "VariableDeclaration",
                     "src": "811:11:14"
                   }
                 ],
-                "id": 9169,
+                "id": 10197,
                 "name": "ParameterList",
                 "src": "810:13:14"
               },
@@ -1189,7 +1189,7 @@
                   ]
                 },
                 "children": [],
-                "id": 9172,
+                "id": 10200,
                 "name": "ParameterList",
                 "src": "843:0:14"
               },
@@ -1210,12 +1210,12 @@
                       "type": "modifier ()",
                       "value": "onlyOwner"
                     },
-                    "id": 9170,
+                    "id": 10198,
                     "name": "Identifier",
                     "src": "833:9:14"
                   }
                 ],
-                "id": 9171,
+                "id": 10199,
                 "name": "ModifierInvocation",
                 "src": "833:9:14"
               },
@@ -1240,11 +1240,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9104,
+                              "referencedDeclaration": 10132,
                               "type": "uint256",
                               "value": "oraclizeGasLimit"
                             },
-                            "id": 9173,
+                            "id": 10201,
                             "name": "Identifier",
                             "src": "849:16:14"
                           },
@@ -1254,41 +1254,41 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 9168,
+                              "referencedDeclaration": 10196,
                               "type": "uint256",
                               "value": "newGas"
                             },
-                            "id": 9174,
+                            "id": 10202,
                             "name": "Identifier",
                             "src": "868:6:14"
                           }
                         ],
-                        "id": 9175,
+                        "id": 10203,
                         "name": "Assignment",
                         "src": "849:25:14"
                       }
                     ],
-                    "id": 9176,
+                    "id": 10204,
                     "name": "ExpressionStatement",
                     "src": "849:25:14"
                   }
                 ],
-                "id": 9177,
+                "id": 10205,
                 "name": "Block",
                 "src": "843:36:14"
               }
             ],
-            "id": 9178,
+            "id": 10206,
             "name": "FunctionDefinition",
             "src": "779:100:14"
           }
         ],
-        "id": 9179,
+        "id": 10207,
         "name": "ContractDefinition",
         "src": "57:824:14"
       }
     ],
-    "id": 9180,
+    "id": 10208,
     "name": "SourceUnit",
     "src": "0:882:14"
   },
@@ -1298,5 +1298,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-17T12:56:36.433Z"
+  "updatedAt": "2018-04-17T15:15:17.992Z"
 }
