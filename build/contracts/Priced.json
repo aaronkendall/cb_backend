@@ -1,15 +1,15 @@
 {
   "contractName": "Priced",
   "abi": [],
-  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a723058201ce544d1ef80451551b7b18690feb3530c30ed39b58db028db77dcf1fb63fec30029",
-  "deployedBytecode": "0x6060604052600080fd00a165627a7a723058201ce544d1ef80451551b7b18690feb3530c30ed39b58db028db77dcf1fb63fec30029",
+  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820b176e07e17965b8f7cae813ed4c1f6990b3ff27bd37d9946358e609852042a530029",
+  "deployedBytecode": "0x6060604052600080fd00a165627a7a72305820b176e07e17965b8f7cae813ed4c1f6990b3ff27bd37d9946358e609852042a530029",
   "sourceMap": "26:101:5:-;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "26:101:5:-;;;;;",
   "source": "pragma solidity ^0.4.18;\n\ncontract Priced {\n  modifier costs(uint price) {\n    if (msg.value >= price) {\n        _;\n    }\n  }\n}\n",
-  "sourcePath": "/Users/Aaron/Projects/cryptoclash/contracts/base/Priced.sol",
+  "sourcePath": "/Users/kendalla/projects/cryptoclash/contracts/base/Priced.sol",
   "ast": {
     "attributes": {
-      "absolutePath": "/Users/Aaron/Projects/cryptoclash/contracts/base/Priced.sol",
+      "absolutePath": "/Users/kendalla/projects/cryptoclash/contracts/base/Priced.sol",
       "exportedSymbols": {
         "Priced": [
           424
@@ -127,7 +127,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 9181,
+                                  "referencedDeclaration": 9187,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -202,5 +202,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-16T19:58:19.855Z"
+  "updatedAt": "2018-04-17T12:30:53.351Z"
 }
