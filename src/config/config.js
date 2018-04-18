@@ -13,7 +13,8 @@ const envConfig = {
 const defaultConfig = {
   queryReturnLimit: 40,
   contractAddress: process.env.CONTRACT_ADDRESS,
-  fromEthAddress: process.env.FROM_ETH_ADDRESS
+  fromEthAddress: process.env.FROM_ETH_ADDRESS,
+  webSocketTimeout: process.env.WEB_SOCKET_TIMEOUT
 };
 
 const config = Object.assign({}, defaultConfig, envConfig[environment]);

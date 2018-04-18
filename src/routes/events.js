@@ -2,24 +2,51 @@ const express = require('express');
 const router = express.Router();
 const config = require('../config/config');
 const User = require('../models/event.model');
-const { queryReturnLimit } = config;
+const { queryReturnLimit, webSocketTimeout } = config;
 
-router.get('/all/:address/:offset', async (req, res, next) => {
-  const { address, offset } = req.params;
+router.get('/all/:address', (req, res, next) => {
+  const { address } = req.params
 
   User
     .findOne({ address })
-    .skip(offset * queryReturnLimit)
-    .limit(queryReturnLimit)
     .populate('events')
     .exec()
     .then((user) => {
       return res.status(200).send({ events: user.events })
     })
     .catch((error) => {
-      return res.status(404).send({ error, message: 'could not find not get information for user' })
+      return res.status(404).send({ error, message: 'could not get events for address' })
     })
 });
+
+router.ws('/listen/:address', (ws, req) => {
+  const { address } = req.params
+  let openInterval
+  let connectionAlive = true
+
+  ws.on('open', () => {
+    openInterval = setInterval(async () => {
+      try {
+        if (!connectionAlive) clearInterval(openInterval)
+
+        const events = await User.recentEvents(address, webSocketTimeout)
+        ws.send({ events })
+      } catch(error) {
+        if (openInterval) clearInterval(openInterval)
+        ws.close(500, `Error encountered and connection closed by server. Error: ${error}`)
+      }
+    }, webSocketTimeout)
+  })
+
+  ws.on('close', (code, reason) => {
+    if (openInterval) clearInterval(openInterval)
+    console.log(`web socket connection closed with ${address}, code: ${code}, reason: ${reason}`)
+  })
+
+  ws.on('ping', () => {
+    
+  })
+})
 
 
 module.exports = router;
