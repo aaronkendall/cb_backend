@@ -12,7 +12,7 @@ const accountEvents = (contract) => {
 
     try {
       const newFighter = await new Fighter({ _id: fighterId, strength, speed, maxHealth, health: maxHealth, level, type: fighterType }).save()
-      const creationEvent = await new Event({ fighterId, type: 'Creation', message: `Fighter #${fighterId} created!` }).save()
+      const creationEvent = await new Event({  _creator: fighterId, type: 'Creation', message: `Fighter #${fighterId} created!` }).save()
 
       await User.findOneAndUpdate(
         { address: owner },
@@ -37,8 +37,8 @@ const accountEvents = (contract) => {
       console.log(`Transferring Fighter #${tokenId.toNumber()}`)
       const idNumber = tokenId.toNumber()
 
-      const fromEvent = await new Event({ idNumber, type: 'Transfer', message: `Fighter #${idNumber} transferred to ${to}` }).save()
-      const toEvent = await new Event({ idNumber, type: 'Transfer', message: `Fighter #${idNumber} transferred to you from ${from}` }).save()
+      const fromEvent = await new Event({ _creator: idNumber, type: 'Transfer', message: `Fighter #${idNumber} transferred to ${to}` }).save()
+      const toEvent = await new Event({ _creator: idNumber, type: 'Transfer', message: `Fighter #${idNumber} transferred to you from ${from}` }).save()
 
       await Promise.all([
         User.update(
@@ -72,7 +72,7 @@ const accountEvents = (contract) => {
 
     try {
       const fighter = await Fighter.findById(fighterId.toNumber()).exec()
-      const newEvent = await new Event({ fighterId, type: 'Attribute Increase', message: `Fighter #${fighterId}'s ${attribute} increased by ${increaseValue}!` }).save()
+      const newEvent = await new Event({ _creator: fighterId, type: 'Attribute Increase', message: `Fighter #${fighterId}'s ${attribute} increased by ${increaseValue}!` }).save()
 
       fighter[attribute] = fighter[attribute] + increaseValue.toNumber()
       // Double check that the fighter's level hasn't updated
@@ -92,7 +92,7 @@ const accountEvents = (contract) => {
     const { owner, fighterId, maxHealth } = tx.args
 
     try {
-      const newEvent = await new Event({ fighterId, type: 'Heal', message: `Fighter #${fighterId} was healed to full health!` }).save()
+      const newEvent = await new Event({ _creator: fighterId, type: 'Heal', message: `Fighter #${fighterId} was healed to full health!` }).save()
       await Promise.all([
         Fighter.update({ _id: fighterId }, { $set: { health: maxHealth.toNumber() } }),
         User.update({ address: owner }, { $addToSet: { events: newEvent } })
@@ -111,7 +111,7 @@ const accountEvents = (contract) => {
     if (!fighterWasFound) return
 
     try {
-      const newEvent = await new Event({ fighterId, type: 'Fighter Found', message: `You found Fighter #${fighterId} while patrolling the streets!` }).save()
+      const newEvent = await new Event({ _creator: fighterId, type: 'Fighter Found', message: `You found Fighter #${fighterId} while patrolling the streets!` }).save()
       await User.update({ address: owner }, { $addToSet: { events: newEvent } })
 
       console.log(`Owner ${owner} found Fighter #${fighterId}`)
