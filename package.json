@@ -19,6 +19,7 @@
     "dotenv": "4.0.0",
     "ethereum-units": "0.0.1-b",
     "express": "4.15.2",
+    "express-ws": "^3.0.0",
     "mongodb": "^3.0.1",
     "mongoose": "^5.0.2",
     "mongoose-timestamp": "^0.6.0",
