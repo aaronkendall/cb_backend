@@ -6,7 +6,7 @@ const envConfig = {
   },
   production: {
     httpProvider: `https://${process.env.ETH_ENV}.infura.io`,
-    webSocketProvider: `wss://${process.env.ETH_ENV}.infura.io/ws`
+    webSocketProvider: `wss://${process.env.ETH_ENV}.infura.io/_ws`
   }
 };
 
