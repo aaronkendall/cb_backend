@@ -21,16 +21,18 @@ router.get('/all/:address', (req, res, next) => {
 
 router.ws('/listen/:address', (ws, req) => {
   const { address } = req.params
-  let openInterval
   let connectionAlive = true
 
   ws.on('open', () => {
-    openInterval = setInterval(async () => {
+    const openInterval = setInterval(async () => {
       try {
-        if (!connectionAlive) clearInterval(openInterval)
+        if (!connectionAlive) return clearInterval(openInterval)
 
         const events = await User.recentEvents(address, webSocketTimeout)
         ws.send({ events })
+
+        connectionAlive = false
+        ws.ping()
       } catch(error) {
         if (openInterval) clearInterval(openInterval)
         ws.close(500, `Error encountered and connection closed by server. Error: ${error}`)
@@ -43,8 +45,8 @@ router.ws('/listen/:address', (ws, req) => {
     console.log(`web socket connection closed with ${address}, code: ${code}, reason: ${reason}`)
   })
 
-  ws.on('ping', () => {
-    
+  ws.on('pong', () => {
+    connectionAlive = true
   })
 })
 
