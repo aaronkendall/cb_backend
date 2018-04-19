@@ -26,7 +26,10 @@ router.ws('/listen/:address', (ws, req) => {
   ws.on('open', () => {
     const openInterval = setInterval(async () => {
       try {
-        if (!connectionAlive) return clearInterval(openInterval)
+        if (!connectionAlive) {
+          clearInterval(openInterval)
+          return ws.terminate()
+        }
 
         const events = await User.recentEvents(address, webSocketTimeout)
         ws.send({ events })
