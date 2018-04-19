@@ -16,8 +16,8 @@ const arenaEvents = (contract) => {
         Fighter.update({ _id: loserId.toNumber() }, { $set: { isInArena: false } })
       ])
 
-      const loserEvent = await new Event({ _creator:: loserId.toNumber(), type: 'Fight Complete', message: `You lost Fighter #${loserId} in a brawl with Fighter #${winnerId}!` }).save()
-      const winnerEvent = await new Event({ _creator:: winnerId.toNumber(), type: 'Fight Complete', message: `You won Fighter #${loserId} in a brawl with Fighter #${winnerId}!` }).save()
+      const loserEvent = await new Event({ _creator:: loser, type: 'Fight Complete', message: `You lost Fighter #${loserId} in a brawl with Fighter #${winnerId}!` }).save()
+      const winnerEvent = await new Event({ _creator:: winner, type: 'Fight Complete', message: `You won Fighter #${loserId} in a brawl with Fighter #${winnerId}!` }).save()
       await Promise.all([
         User.update({ address: loser }, { $addToSet: { events: loserEvent } }),
         User.update({ address: winner }, { $addToSet: { events: winnerEvent } })

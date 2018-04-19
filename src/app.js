@@ -17,9 +17,11 @@ mongoose.connect(process.env.MONGODB_URI);
 const app = express();
 const expressWs = require('express-ws')(app);
 
+// routes
 const marketplace = require('./routes/marketplace');
 const arena = require('./routes/arena');
 const account = require('./routes/account');
+const events = require('./routes/events');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,6 +37,7 @@ app.use(cors());
 app.use('/api/marketplace', marketplace);
 app.use('/api/arena', arena);
 app.use('/api/account', account);
+app.use('/api/events', events);
 
 
 // Ethereum provider setup

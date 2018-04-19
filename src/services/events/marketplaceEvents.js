@@ -17,8 +17,8 @@ const marketplaceEvents = (contract) => {
       const idNumber = fighterId.toNumber()
 
       await Sale.findOneAndRemove({ 'fighter': idNumber })
-      const sellerEvent = await new Event({ _creator: idNumber, type: 'PurchaseSuccess', message: `You sold Fighter #${idNumber} for ${ethPrice}` }).save()
-      const buyerEvent = await new Event({ _creator: idNumber, type: 'PurchaseSuccess', message: `You bought Fighter #${idNumber} for ${ethPrice}` }).save()
+      const sellerEvent = await new Event({ _creator: seller, type: 'PurchaseSuccess', message: `You sold Fighter #${idNumber} for ${ethPrice}` }).save()
+      const buyerEvent = await new Event({ _creator: buyer, type: 'PurchaseSuccess', message: `You bought Fighter #${idNumber} for ${ethPrice}` }).save()
 
       await Fighter.update({ _id: idNumber }, { $set: { isForSale: false } })
       await Promise.all([
