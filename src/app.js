@@ -21,7 +21,7 @@ const expressWs = require('express-ws')(app);
 const marketplace = require('./routes/marketplace');
 const arena = require('./routes/arena');
 const account = require('./routes/account');
-const events = require('./routes/events');
+const eventRoutes = require('./routes/events');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,7 +37,7 @@ app.use(cors());
 app.use('/api/marketplace', marketplace);
 app.use('/api/arena', arena);
 app.use('/api/account', account);
-app.use('/api/events', events);
+app.use('/api/events', eventRoutes);
 
 
 // Ethereum provider setup
